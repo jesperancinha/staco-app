@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jesperancinha</groupId>
-    <artifactId>stamps-and-coins</artifactId>
+    <artifactId>staco-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>Stamps and Coins Root</name>

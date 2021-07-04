@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  postgres:
+    hostname: postgres
+    build:
+      context: ./docker-psql/.
+    env_file:
+      - ./docker-psql/.env
+    volumes:
+      - ./docker-psql/init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_MULTIPLE_DATABASES=staco
+    ports:
+      - "5433:5432"

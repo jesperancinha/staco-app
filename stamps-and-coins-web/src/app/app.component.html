@@ -1,0 +1,10 @@
+<div class="container">
+  <ul class="nav nav-pills">
+    <li *ngIf="app.token"><a routerLinkActive="active" routerLink="/search">Search</a></li>
+    <li><a routerLinkActive="active" routerLink="/">Login</a></li>
+  </ul>
+</div>
+<router-outlet></router-outlet>
+<h1>Sign out - Remember that this does not work if you are using GitHub to sign in</h1>
+
+<button (click)="logout()">Logout</button >

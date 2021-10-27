@@ -5,5 +5,4 @@ class ResponseDto(
     val currentPage: Int,
     val totalRecords: Int,
     val totalPages: Int,
-) {
-}
+)

@@ -1,5 +1,8 @@
 package org.jesperancinha.enterprise.engine.repository
 
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.engine.domain.Currency
 import org.jesperancinha.enterprise.engine.domain.StaCo
@@ -59,9 +62,10 @@ internal class StaCoRepositoryTest {
                 searchItem,
                 Pageable.unpaged()
             )
-        assertThat(entityRecords).hasSize(1);
+
+        entityRecords.shouldHaveSize(1)
         val entity = entityRecords.elementAt(0)
-        assertThat(entity).isEqualTo(staCo2);
-        assertThat(entity).isNotEqualTo(staCo1);
+        entity shouldBe staCo2
+        entity shouldNotBe staCo1
     }
 }

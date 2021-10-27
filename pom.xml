@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <groupId>org.jesperancinha.enterprise</groupId>
     <artifactId>staco-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -13,6 +20,16 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <kotlin.version>1.6.0-M1</kotlin.version>
+        <spring-boot-starter-validation.version>2.5.5</spring-boot-starter-validation.version>
+        <h2.version>1.4.200</h2.version>
+        <postgresql.version>42.2.24.jre7</postgresql.version>
+        <okta-spring-boot-starter.version>2.1.2</okta-spring-boot-starter.version>
+        <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
+        <kotest.version>5.0.0.M3</kotest.version>
+        <mockk.version>1.12.0</mockk.version>
+        <springmockk.version>3.0.1</springmockk.version>
+        <spring.security.version>5.5.1</spring.security.version>
     </properties>
 
     <modules>

@@ -15,7 +15,7 @@
 	<description>Provides a service for a collector's archive. The interface is being developed to provide registration and visualization possibilities</description>
 	<properties>
 		<java.version>11</java.version>
-		<kotlin.version>1.4.30</kotlin.version>
+		<kotlin.version>1.5.21</kotlin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -50,7 +50,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-oauth2-client</artifactId>
-			<version>5.4.5</version>
+			<version>5.5.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>org.springframework.security.oauth</groupId>
 			<artifactId>spring-security-oauth2</artifactId>
-			<version>2.5.0.RELEASE</version>
+			<version>2.5.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
@@ -81,7 +81,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.13</version>
+			<version>42.2.23.jre7</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>

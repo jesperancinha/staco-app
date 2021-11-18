@@ -37,7 +37,13 @@ prune-all: stop
 	docker system prune --all --volumes
 stop:
 	docker-compose down --remove-orphans
-k8-mac-os-install:
-	brew install kubectl kubectl
+mac-os-install:
+	curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+	sudo installer -pkg AWSCLIV2.pkg -target /
+	brew tap aws/tap
+	brew install aws-sam-cli
+	brew install kubectl kubectl helm
+k8-endpoint:
+	./bash/endpoint.sh
 minikube-vmware:
 	minikube start --driver=vmware

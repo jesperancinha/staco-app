@@ -4,3 +4,8 @@
 
 1. Explore LocalStack
 2. Clean code and add other authentication profiles
+
+## References
+
+- [LocalStack](https://github.com/localstack/localstack)
+- [LocalStack Cloud](https://localstack.cloud/)

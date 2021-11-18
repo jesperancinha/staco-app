@@ -34,3 +34,9 @@ tmlog*.log
 
 # NodeJS
 node_modules
+
+# AWS
+*.pkg
+
+# Gradle
+.gradle

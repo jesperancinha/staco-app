@@ -23,6 +23,14 @@
 
 ---
 
+## Setup environment
+
+```shell
+. ./bash/endpoint.sh 
+```
+
+---
+
 ## How to run
 
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧 Under construction 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
@@ -145,6 +153,12 @@ psql -p 5433 -h localhost -U postgres -d staco -f initial.sql
 ### Videos
 
 - [Running AWS Services In A Laptop Using LocalStack](https://www.youtube.com/watch?v=8hi9P1ffaQk)
+
+### Online
+
+
+- [LocalStack](https://github.com/localstack/localstack)
+- [LocalStack Cloud](https://localstack.cloud/)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

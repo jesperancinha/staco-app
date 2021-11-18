@@ -44,6 +44,25 @@ export AWS_SECRET_ACCESS_KEY=test
 export AWS_DEFAULT_REGION=eu-central-1
 ```
 
+## AWS commands
+
+```shell
+alias aws="aws --endpoint-url $LOCAL_STACK"
+aws s3api list-buckets
+aws s3api create-bucket --bucket staco
+aws s3api put-object --bucket staco --key warehouse1 --body docker-psql/init-scripts/stamps_coins.json
+aws s3api list-objects --bucket staco
+aws s3api get-object --bucket staco --key warehouse1 test.json
+aws s3api delete-object --bucket staco --key warehouse1
+aws s3api delete-bucket --bucket staco
+aws rds create-db-instance --db-instance-identifier staco-app --db-instance-class c1 --engine postgres
+aws ecr create-repository --repository-name staco-app
+kubectl --namespace localstack logs --selector app.kubernetes.io/name=localstack --tail 100
+aws eks create-cluster --name staco-cluster --role-arn staco-role --resources-vpc-config '{}'
+aws eks list-clusters
+aws configure
+aws eks describe-cluster --name staco-cluster
+```
 
 ## References
 

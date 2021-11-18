@@ -156,7 +156,7 @@ psql -p 5433 -h localhost -U postgres -d staco -f initial.sql
 
 ### Online
 
-
+- [Local Stack Pro Features](https://localstack.cloud/features/#pro)
 - [LocalStack](https://github.com/localstack/localstack)
 - [LocalStack Cloud](https://localstack.cloud/)
 

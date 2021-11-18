@@ -1,4 +1,5 @@
 #!/bin/bash
+helm upgrade --install localstack localstack/localstack --namespace localstack --create-namespace --values values.yaml
 # shellcheck disable=SC2155
 export NODE_PORT=$(kubectl get --namespace localstack -o jsonpath="{.spec.ports[0].nodePort}" services localstack)
 # shellcheck disable=SC2155

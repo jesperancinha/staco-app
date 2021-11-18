@@ -37,5 +37,7 @@ prune-all: stop
 	docker system prune --all --volumes
 stop:
 	docker-compose down --remove-orphans
+k8-mac-os-install:
+	brew install kubectl kubectl
 minikube-vmware:
 	minikube start --driver=vmware

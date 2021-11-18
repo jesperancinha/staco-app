@@ -1,0 +1,3 @@
+extraEnvVars:
+  - name: SERVICES
+    value: s3, ec2, eks, iam, ecr, rds

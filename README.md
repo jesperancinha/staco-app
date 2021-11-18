@@ -117,7 +117,7 @@ sequenceDiagram
     StaCo App->>StaCo Service: A list of coins and stamps is requested by filter
     StaCo Service->>PostgreSQL Database: Data is fetched via the filter
     PostgreSQL Database ->>StaCo Service: Data is returned
-    StaCo Service->>StaCo App: Minimal data manipulationb and return
+    StaCo Service->>StaCo App: Minimal data manipulation and return
     StaCo App->>User: Results given to the User
     
     end
@@ -139,6 +139,12 @@ docker system prune --all
 ```bash
 psql -p 5433 -h localhost -U postgres -d staco -f initial.sql 
 ```
+
+## References
+
+### Videos
+
+- [Running AWS Services In A Laptop Using LocalStack](https://www.youtube.com/watch?v=8hi9P1ffaQk)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

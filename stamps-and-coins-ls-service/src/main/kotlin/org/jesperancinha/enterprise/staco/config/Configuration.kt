@@ -7,5 +7,6 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 @Configuration
 internal class StacoConfiguration {
     @Bean
-    fun dynamoDbClient(): DynamoDbClient = DynamoDbClient.create()
+    fun dynamoDbClient(dynamoProperties: DynamoProperties): DynamoDbClient = DynamoDbClient
+        .create()
 }

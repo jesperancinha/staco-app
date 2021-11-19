@@ -1,5 +1,6 @@
 version: "3.7"
 services:
+
   postgres:
     hostname: postgres
     build:
@@ -14,3 +15,22 @@ services:
       - POSTGRES_MULTIPLE_DATABASES=staco
     ports:
       - "5433:5432"
+
+  localstack:
+    image: localstack/localstack
+    hostname: localstack
+    container_name: localstack
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+      - "8090:8090"
+    environment:
+      - SERVICES=${SERVICES}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - PORT_WEB_UI=8090
+      - DEFAULT_REGION=eu-central-1
+      - DATA_DIR=/tmp/localstack/data
+      - LAMBDA_EXECUTOR=local
+      - START_WEB=1
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"

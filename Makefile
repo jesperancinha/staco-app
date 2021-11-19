@@ -29,6 +29,8 @@ docker-delete: stop
 docker-cleanup: docker-delete
 	docker images -q | xargs docker rmi
 docker-delete-apps: stop
+docker-localstack:
+	docker-compose up -d --build --remove-orphans localstack
 prune-all: stop
 	docker ps -a --format '{{.ID}}' -q | xargs docker stop
 	docker ps -a --format '{{.ID}}' -q | xargs docker rm

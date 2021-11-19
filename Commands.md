@@ -62,6 +62,7 @@ aws eks create-cluster --name staco-cluster --role-arn staco-role --resources-vp
 aws eks list-clusters
 aws configure
 aws eks describe-cluster --name staco-cluster
+aws dynamodb list-tables
 ```
 
 ## References

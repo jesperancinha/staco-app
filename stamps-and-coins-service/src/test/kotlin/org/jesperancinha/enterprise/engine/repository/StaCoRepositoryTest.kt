@@ -3,10 +3,10 @@ package org.jesperancinha.enterprise.engine.repository
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.engine.domain.Currency
 import org.jesperancinha.enterprise.engine.domain.StaCo
 import org.jesperancinha.enterprise.engine.dto.StaCoDto
+import org.jesperancinha.enterprise.engine.dto.toStaCo
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

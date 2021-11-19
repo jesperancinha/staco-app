@@ -25,8 +25,11 @@
 
 ## Setup environment
 
+Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed:
+
 ```shell
 . ./bash/endpoint.sh 
+. ./sdk17.sh
 ```
 
 ---
@@ -152,10 +155,14 @@ psql -p 5433 -h localhost -U postgres -d staco -f initial.sql
 
 ### Videos
 
+- [Setting up AWS v2 with Spring Boot and Localstack](https://www.youtube.com/watch?v=FOzAdoxdnSc)
 - [Running AWS Services In A Laptop Using LocalStack](https://www.youtube.com/watch?v=8hi9P1ffaQk)
 
 ### Online
 
+- [Working with Queries in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)
+- [How to determine if Amazon DynamoDB is appropriate for your needs, and then plan your migration](https://aws.amazon.com/blogs/database/how-to-determine-if-amazon-dynamodb-is-appropriate-for-your-needs-and-then-plan-your-migration/)
+- [5 Use Cases for DynamoDB](https://rockset.com/blog/5-use-cases-for-dynamodb/)
 - [Local Stack Pro Features](https://localstack.cloud/features/#pro)
 - [LocalStack](https://github.com/localstack/localstack)
 - [LocalStack Cloud](https://localstack.cloud/)

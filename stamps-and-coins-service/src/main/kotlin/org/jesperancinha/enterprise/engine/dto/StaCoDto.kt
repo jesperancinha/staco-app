@@ -3,7 +3,7 @@ package org.jesperancinha.enterprise.engine.dto
 import org.jesperancinha.enterprise.engine.domain.Currency
 import org.jesperancinha.enterprise.engine.domain.StaCo
 
-class StaCoDto(
+data class StaCoDto(
     val description: String?,
     val year: String?,
     val value: String?,
@@ -66,18 +66,18 @@ class StaCoDto(
             )
         }
     }
+}
 
-    fun toStaCo(): StaCo {
-        return StaCo(
-            -1L,
-            description = description,
-            year = year,
-            value = value,
-            currency = currency,
-            diameterMM = diameterMM,
-            internalDiameterMM = internalDiameterMM,
-            heightMM = heightMM,
-            widthMM = widthMM
-        )
-    }
+fun StaCoDto.toStaCo(): StaCo {
+    return StaCo(
+        -1L,
+        description = description,
+        year = year,
+        value = value,
+        currency = currency,
+        diameterMM = diameterMM,
+        internalDiameterMM = internalDiameterMM,
+        heightMM = heightMM,
+        widthMM = widthMM
+    )
 }

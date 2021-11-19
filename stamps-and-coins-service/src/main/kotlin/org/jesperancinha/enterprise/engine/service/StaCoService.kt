@@ -18,13 +18,9 @@ class StaCoService(
         return staCoRepository.save(staCo);
     }
 
-    fun readStaco(id: Long): StaCo? {
-        return staCoRepository.findByIdOrNull(id)
-    }
+    fun readStaco(id: Long): StaCo? = staCoRepository.findByIdOrNull(id)
 
-    fun updateStaco(StaCo: StaCo): StaCo {
-        return staCoRepository.save(StaCo)
-    }
+    fun updateStaco(StaCo: StaCo): StaCo = staCoRepository.save(StaCo)
 
     fun deleteStaco(id: Long): Boolean {
         staCoRepository.deleteById(id);

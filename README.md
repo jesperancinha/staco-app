@@ -125,6 +125,8 @@ curl -H "Authorization: Bearer TOKEN" http://localhost:4200/api/staco/logout
 
 ## Sequence diagram
 
+#### Rough Sketch
+
 ```mermaid
 
 sequenceDiagram

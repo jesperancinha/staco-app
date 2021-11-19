@@ -31,7 +31,7 @@
         <springmockk.version>3.0.1</springmockk.version>
         <spring.security.version>5.5.1</spring.security.version>
         <reactor-test.version>3.4.12</reactor-test.version>
-        <aws-java-sdk-dynamodb.version>1.12.113</aws-java-sdk-dynamodb.version>
+        <sofware.amazon.version>2.17.85</sofware.amazon.version>
     </properties>
 
     <modules>
@@ -42,11 +42,14 @@
     <packaging>pom</packaging>
 
     <dependencyManagement>
+
         <dependencies>
             <dependency>
-                <groupId>com.amazonaws</groupId>
-                <artifactId>aws-java-sdk-dynamodb</artifactId>
-                <version>${aws-java-sdk-dynamodb.version}</version>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${sofware.amazon.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>com.okta.spring</groupId>

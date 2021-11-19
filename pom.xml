@@ -4,13 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
     <groupId>org.jesperancinha.enterprise</groupId>
     <artifactId>staco-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -32,6 +25,7 @@
         <spring.security.version>5.5.1</spring.security.version>
         <reactor-test.version>3.4.12</reactor-test.version>
         <sofware.amazon.version>2.17.85</sofware.amazon.version>
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
     </properties>
 
     <modules>
@@ -51,6 +45,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.okta.spring</groupId>
                 <artifactId>okta-spring-boot-starter</artifactId>

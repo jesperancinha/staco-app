@@ -11,7 +11,7 @@ import software.amazon.awssdk.services.ssm.SsmAsyncClient
 
 
 @Configuration
-internal class StacoConfiguration {
+internal class StaCoConfiguration {
 
     @Bean
     fun dynamoDbClient(awsProperties: AwsProperties): DynamoDbAsyncClient =

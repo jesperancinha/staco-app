@@ -31,6 +31,7 @@
     <modules>
         <module>stamps-and-coins-service</module>
         <module>stamps-and-coins-ls-service</module>
+        <module>stamps-and-coins-cloud-service</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -39,13 +40,19 @@
 
         <dependencies>
             <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR12</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>bom</artifactId>
                 <version>${sofware.amazon.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>

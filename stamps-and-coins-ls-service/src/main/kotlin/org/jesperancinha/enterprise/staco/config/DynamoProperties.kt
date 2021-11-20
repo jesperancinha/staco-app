@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import java.net.URI
 
 @ConfigurationProperties("dynamo")
-class DynamoProperties (
-    val endpoint: URI
+data class DynamoProperties (
+    val endpoint: URI,
+    val region:String
 )

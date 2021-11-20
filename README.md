@@ -173,6 +173,10 @@ psql -p 5433 -h localhost -U postgres -d staco -f initial.sql
 
 ### Online
 
+- [Amazon Web Services Systems Manager](https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm)
+- [Don’t Be Intimidated — Learn How to Run AWS on Your Local Machine With LocalStack](https://betterprogramming.pub/dont-be-intimidated-learn-how-to-run-aws-on-your-local-machine-with-localstack-2f3448462254)
+- [Spring Boot Integration Tests With AWS Services Using LocalStack](https://rieckpil.de/test-spring-applications-using-aws-with-testcontainers-and-localstack/)
+- [Using LocalStack for Development Environments](https://www.maxcode.net/blog/using-localstack-for-development-environments/)
 - [Configuring Docker Swarm as Container Orchestrator on Windows](https://koukia.ca/configuring-docker-swarm-as-container-orchestrator-on-windows-1f89a2037dac)
 - [What is a Docker Swarm](https://www.sumologic.com/glossary/docker-swarm/)
 - [Kubernetes vs. Docker](https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker/)

@@ -1,11 +1,11 @@
 package org.jesperancinha.enterprise.staco
 
-import org.jesperancinha.enterprise.staco.config.DynamoProperties
+import org.jesperancinha.enterprise.staco.config.AwsProperties
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 
-@EnableConfigurationProperties(DynamoProperties::class)
+@EnableConfigurationProperties(AwsProperties::class)
 @SpringBootApplication
 class StampsAndCoinsLocalStackLauncher
 

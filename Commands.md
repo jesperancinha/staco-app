@@ -63,6 +63,8 @@ aws eks list-clusters
 aws configure
 aws eks describe-cluster --name staco-cluster
 aws dynamodb list-tables
+aws ssm put-parameter --name love --value "What is love"
+aws ssm get-parameter --name love
 ```
 
 ## References

@@ -1,7 +1,7 @@
 package org.jesperancinha.enterprise.staco
 
 import mu.KotlinLogging
-import org.jesperancinha.enterprise.staco.config.AwsProperties
+import org.jesperancinha.enterprise.staco.ls.config.AwsProperties
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.SpringApplication
@@ -59,6 +59,7 @@ class StampsAndCoinsLocalStackLauncher(
                     listTables().thenApply { response ->
                         response.tableNames().forEach { logger.info { it } }
                     }
+
                 }
         }
     }

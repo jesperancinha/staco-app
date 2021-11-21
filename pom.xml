@@ -27,6 +27,7 @@
         <sofware.amazon.version>2.17.85</sofware.amazon.version>
         <spring-boot.version>2.6.0</spring-boot.version>
         <kotlin-logging.version>2.1.0</kotlin-logging.version>
+        <aws-java-sdk.version>1.12.113</aws-java-sdk.version>
     </properties>
 
     <modules>
@@ -67,6 +68,11 @@
                 <groupId>org.jesperancinha.enterprise</groupId>
                 <artifactId>stamps-and-coins-common</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-dynamodb</artifactId>
+                <version>${aws-java-sdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.microutils</groupId>

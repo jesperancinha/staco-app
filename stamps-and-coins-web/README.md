@@ -1,5 +1,13 @@
 # StaCo Web Application
 
+## Updates
+
+```shell
+npm install -g npm-check-updates
+ncu -u
+npm update
+```
+
 ## Installation
 
 ```bash

@@ -4,7 +4,7 @@ build: build-npm
 build-npm:
 	cd stamps-and-coins-web && yarn install && npm run build
 build-maven:
-	mvn clean install -Pdemo -DskipTests
+	mvn clean install -DskipTests
 test:
 	mvn test
 test-maven:

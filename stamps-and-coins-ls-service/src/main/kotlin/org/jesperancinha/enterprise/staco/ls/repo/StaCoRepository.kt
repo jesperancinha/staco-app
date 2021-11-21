@@ -8,7 +8,7 @@ import org.jesperancinha.enterprise.staco.ls.domain.StaCo
 import org.springframework.stereotype.Repository
 
 @Repository
-class StaCoDao(
+class StaCoRepository(
     val dynamoDBMapper: DynamoDBMapper
 ) {
     fun save(staCo: StaCo): StaCo {

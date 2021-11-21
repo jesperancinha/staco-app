@@ -1,6 +1,6 @@
 package org.jesperancinha.enterprise.engine.domain
 
-enum class Currency {
+enum class CurrencyEnum {
     EUR,
     USD,
     JPY,

@@ -26,12 +26,14 @@
         <reactor-test.version>3.4.12</reactor-test.version>
         <sofware.amazon.version>2.17.85</sofware.amazon.version>
         <spring-boot.version>2.6.0</spring-boot.version>
+        <kotlin-logging.version>2.1.0</kotlin-logging.version>
     </properties>
 
     <modules>
         <module>stamps-and-coins-service</module>
         <module>stamps-and-coins-ls-service</module>
         <module>stamps-and-coins-cloud-service</module>
+        <module>stamps-and-coins-common</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -61,6 +63,21 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.jesperancinha.enterprise</groupId>
+                <artifactId>stamps-and-coins-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.microutils</groupId>
+                <artifactId>kotlin-logging-jvm</artifactId>
+                <version>${kotlin-logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.microutils</groupId>
+                <artifactId>kotlin-logging</artifactId>
+                <version>${kotlin-logging.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.okta.spring</groupId>
                 <artifactId>okta-spring-boot-starter</artifactId>

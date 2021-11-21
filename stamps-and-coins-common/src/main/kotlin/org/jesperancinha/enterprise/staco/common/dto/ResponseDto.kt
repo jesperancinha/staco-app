@@ -1,6 +1,4 @@
-package org.jesperancinha.enterprise.engine.dto
-
-import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
+package org.jesperancinha.enterprise.staco.common.dto
 
 data class ResponseDto(
     val staCoDtos: List<StaCoDto>,

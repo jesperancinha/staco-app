@@ -2,7 +2,7 @@ package org.jesperancinha.enterprise.engine.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.assertj.core.api.Assertions.assertThat
-import org.jesperancinha.enterprise.engine.domain.Currency
+import org.jesperancinha.enterprise.engine.domain.CurrencyEnum
 import org.jesperancinha.enterprise.engine.dto.ResponseDto
 import org.jesperancinha.enterprise.engine.dto.StaCoDto
 import org.jesperancinha.enterprise.engine.service.LoginService
@@ -38,7 +38,7 @@ internal class StaCoControllerTest {
                 description = "Queen Coin",
                 year = "1900",
                 value = "10",
-                currency = Currency.EUR,
+                currency = CurrencyEnum.EUR,
                 diameterMM = "10",
                 internalDiameterMM = "0"
             ),
@@ -46,7 +46,7 @@ internal class StaCoControllerTest {
                 description = "Queen Stammp",
                 year = "1900",
                 value = "10",
-                currency = Currency.EUR,
+                currency = CurrencyEnum.EUR,
                 widthMM = "10",
                 heightMM = "0"
             )

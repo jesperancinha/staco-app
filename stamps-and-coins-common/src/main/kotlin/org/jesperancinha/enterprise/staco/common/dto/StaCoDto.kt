@@ -1,7 +1,7 @@
-package org.jesperancinha.enterprise.engine.dto
+package org.jesperancinha.enterprise.staco.common.dto
 
-import org.jesperancinha.enterprise.engine.domain.Currency
-import org.jesperancinha.enterprise.engine.domain.StaCo
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
+import org.jesperancinha.enterprise.staco.common.domain.StaCo
 
 data class StaCoDto(
     val description: String?,
@@ -30,7 +30,7 @@ data class StaCoDto(
             description: String?,
             year: String?,
             value: String?,
-            currency: Currency,
+            currency: CurrencyEnum,
             diameterMM: String?,
             internalDiameterMM: String?,
         ): StaCoDto {
@@ -50,7 +50,7 @@ data class StaCoDto(
             description: String?,
             year: String?,
             value: String?,
-            currency: Currency,
+            currency: CurrencyEnum,
             heightMM: String?,
             widthMM: String?
         ): StaCoDto {
@@ -66,18 +66,4 @@ data class StaCoDto(
             )
         }
     }
-}
-
-fun StaCoDto.toStaCo(): StaCo {
-    return StaCo(
-        -1L,
-        description = description,
-        year = year,
-        value = value,
-        currency = currency,
-        diameterMM = diameterMM,
-        internalDiameterMM = internalDiameterMM,
-        heightMM = heightMM,
-        widthMM = widthMM
-    )
 }

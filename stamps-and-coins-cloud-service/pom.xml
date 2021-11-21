@@ -88,7 +88,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>org.jesperancinha.enterprise.staco.StampsAndCoinsLocalStackLauncherKt</mainClass>
+                    <mainClass>org.jesperancinha.enterprise.staco.StampsAndCoinsCloudLauncherKt</mainClass>
                 </configuration>
                 <executions>
                     <execution>

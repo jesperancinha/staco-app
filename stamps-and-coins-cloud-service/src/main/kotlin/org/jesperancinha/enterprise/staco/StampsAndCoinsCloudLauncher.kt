@@ -7,9 +7,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @EnableConfigurationProperties(AwsProperties::class)
 @SpringBootApplication
-class StampsAndCoinsLocalStackLauncher
+class StampsAndCoinsCloudLauncher
 
 fun main(args: Array<String>) {
-    SpringApplication.run(StampsAndCoinsLocalStackLauncher::class.java, *args)
+    SpringApplication.run(StampsAndCoinsCloudLauncher::class.java, *args)
 }
 

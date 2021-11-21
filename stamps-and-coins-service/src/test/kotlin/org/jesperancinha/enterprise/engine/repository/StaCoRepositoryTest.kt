@@ -3,7 +3,7 @@ package org.jesperancinha.enterprise.engine.repository
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.jesperancinha.enterprise.engine.domain.Currency
+import org.jesperancinha.enterprise.engine.domain.CurrencyEnum
 import org.jesperancinha.enterprise.engine.domain.StaCo
 import org.jesperancinha.enterprise.engine.dto.StaCoDto
 import org.jesperancinha.enterprise.engine.dto.toStaCo
@@ -20,7 +20,7 @@ internal class StaCoRepositoryTest {
         description = "Queen Coin",
         year = "1900",
         value = "10",
-        currency = Currency.EUR,
+        currency = CurrencyEnum.EUR,
         diameterMM = "10",
         internalDiameterMM = "0"
     ).toStaCo()
@@ -29,7 +29,7 @@ internal class StaCoRepositoryTest {
         description = "Queen Stamp",
         year = "1900",
         value = "10",
-        currency = Currency.EUR,
+        currency = CurrencyEnum.EUR,
         widthMM = "10",
         heightMM = "0"
     ).toStaCo()

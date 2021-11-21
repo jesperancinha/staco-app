@@ -1,11 +1,15 @@
 package org.jesperancinha.enterprise.staco.jpa.controller
 
-import org.jesperancinha.enterprise.engine.dto.ResponseDto
-import org.jesperancinha.enterprise.engine.service.LoginService
-import org.jesperancinha.enterprise.engine.service.StaCoService
+import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
+import org.jesperancinha.enterprise.staco.jpa.service.LoginService
+import org.jesperancinha.enterprise.staco.jpa.service.StaCoService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 import javax.validation.constraints.Pattern

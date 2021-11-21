@@ -1,21 +1,22 @@
 package org.jesperancinha.enterprise.staco.jpa.service
 
-import org.jesperancinha.enterprise.engine.domain.StaCo
-import org.jesperancinha.enterprise.engine.domain.toDto
-import org.jesperancinha.enterprise.engine.dto.ResponseDto
-import org.jesperancinha.enterprise.engine.repository.StaCoRepository
+import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
+import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
+import org.jesperancinha.enterprise.staco.jpa.domain.toDto
+import org.jesperancinha.enterprise.staco.jpa.repository.StaCoRepository
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.util.Locale
 
 @Service
 class StaCoService(
     val staCoRepository: StaCoRepository
 ) {
     fun createStaco(staCo: StaCo): StaCo {
-        return staCoRepository.save(staCo);
+        return staCoRepository.save(staCo)
     }
 
     fun readStaco(id: Long): StaCo? = staCoRepository.findByIdOrNull(id)
@@ -23,8 +24,8 @@ class StaCoService(
     fun updateStaco(StaCo: StaCo): StaCo = staCoRepository.save(StaCo)
 
     fun deleteStaco(id: Long): Boolean {
-        staCoRepository.deleteById(id);
-        return true;
+        staCoRepository.deleteById(id)
+        return true
     }
 
     @Cacheable("stacos-all")
@@ -49,7 +50,7 @@ class StaCoService(
                 pageable = PageRequest.of(
                     pageEntities,
                     pageSizeEntities,
-                    Sort.by(Sort.Direction.valueOf(order.toUpperCase()), sortColumn)
+                    Sort.by(Sort.Direction.valueOf(order.uppercase(Locale.getDefault())), sortColumn)
                 )
             )
         val contentEntities = searchEntities.content

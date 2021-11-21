@@ -1,6 +1,6 @@
 package org.jesperancinha.enterprise.staco.jpa.repository
 
-import org.jesperancinha.enterprise.engine.domain.StaCo
+import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.PagingAndSortingRepository

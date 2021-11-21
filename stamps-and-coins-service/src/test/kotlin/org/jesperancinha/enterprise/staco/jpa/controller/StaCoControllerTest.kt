@@ -2,12 +2,11 @@ package org.jesperancinha.enterprise.staco.jpa.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.assertj.core.api.Assertions.assertThat
-import org.jesperancinha.enterprise.engine.dto.ResponseDto
-import org.jesperancinha.enterprise.engine.service.LoginService
-import org.jesperancinha.enterprise.engine.service.StaCoService
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum.EUR
+import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
+import org.jesperancinha.enterprise.staco.jpa.service.LoginService
+import org.jesperancinha.enterprise.staco.jpa.service.StaCoService
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -92,8 +91,8 @@ internal class StaCoControllerTest {
             )
             .andReturn()
 
-        val contentAsString = result.response.getContentAsString()
-        assertThat(contentAsString).isNotNull();
+        val contentAsString = result.response.contentAsString
+        assertThat(contentAsString).isNotNull
 
     }
 
@@ -106,7 +105,7 @@ internal class StaCoControllerTest {
         }
 
         assertThat(exception).hasCauseExactlyInstanceOf(ConstraintViolationException::class.java)
-        val constraintViolations = (exception.cause as ConstraintViolationException).constraintViolations;
+        val constraintViolations = (exception.cause as ConstraintViolationException).constraintViolations
         assertThat(constraintViolations).hasSize(1)
         assertThat(constraintViolations.elementAt(0).message).isEqualTo("size must be between 1 and 10")
     }
@@ -120,7 +119,7 @@ internal class StaCoControllerTest {
         }
 
         assertThat(exception).hasCauseExactlyInstanceOf(ConstraintViolationException::class.java)
-        val constraintViolations = (exception.cause as ConstraintViolationException).constraintViolations;
+        val constraintViolations = (exception.cause as ConstraintViolationException).constraintViolations
         assertThat(constraintViolations).hasSize(1)
         assertThat(constraintViolations.elementAt(0).message).isEqualTo("must match \"[a-zA-Z0-9 ]*\"")
     }

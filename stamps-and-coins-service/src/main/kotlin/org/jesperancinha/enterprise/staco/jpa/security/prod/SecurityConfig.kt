@@ -19,7 +19,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
             .logout()
             .and()
             .csrf()
-            .disable();
+            .disable()
     }
 
 

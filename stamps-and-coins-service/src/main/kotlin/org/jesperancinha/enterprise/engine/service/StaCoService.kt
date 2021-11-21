@@ -1,8 +1,8 @@
 package org.jesperancinha.enterprise.engine.service
 
 import org.jesperancinha.enterprise.engine.domain.StaCo
+import org.jesperancinha.enterprise.engine.domain.toDto
 import org.jesperancinha.enterprise.engine.dto.ResponseDto
-import org.jesperancinha.enterprise.engine.dto.StaCoDto
 import org.jesperancinha.enterprise.engine.repository.StaCoRepository
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.PageRequest
@@ -55,7 +55,7 @@ class StaCoService(
         val contentEntities = searchEntities.content
 
         return ResponseDto(
-            staCoDtos = contentEntities.map { StaCoDto(it) },
+            staCoDtos = contentEntities.map { it.toDto },
             currentPage = pageEntities,
             totalRecords = searchEntities.numberOfElements,
             totalPages = searchEntities.totalPages

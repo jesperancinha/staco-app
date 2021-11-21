@@ -2,11 +2,12 @@ package org.jesperancinha.enterprise.engine.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.assertj.core.api.Assertions.assertThat
-import org.jesperancinha.enterprise.engine.domain.CurrencyEnum
 import org.jesperancinha.enterprise.engine.dto.ResponseDto
-import org.jesperancinha.enterprise.engine.dto.StaCoDto
 import org.jesperancinha.enterprise.engine.service.LoginService
 import org.jesperancinha.enterprise.engine.service.StaCoService
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum.EUR
+import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -38,7 +39,7 @@ internal class StaCoControllerTest {
                 description = "Queen Coin",
                 year = "1900",
                 value = "10",
-                currency = CurrencyEnum.EUR,
+                currency = EUR,
                 diameterMM = "10",
                 internalDiameterMM = "0"
             ),
@@ -46,7 +47,7 @@ internal class StaCoControllerTest {
                 description = "Queen Stammp",
                 year = "1900",
                 value = "10",
-                currency = CurrencyEnum.EUR,
+                currency = EUR,
                 widthMM = "10",
                 heightMM = "0"
             )

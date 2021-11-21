@@ -3,10 +3,10 @@ package org.jesperancinha.enterprise.engine.repository
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.jesperancinha.enterprise.engine.domain.CurrencyEnum
 import org.jesperancinha.enterprise.engine.domain.StaCo
-import org.jesperancinha.enterprise.engine.dto.StaCoDto
-import org.jesperancinha.enterprise.engine.dto.toStaCo
+import org.jesperancinha.enterprise.engine.domain.toData
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
+import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,7 +23,7 @@ internal class StaCoRepositoryTest {
         currency = CurrencyEnum.EUR,
         diameterMM = "10",
         internalDiameterMM = "0"
-    ).toStaCo()
+    ).toData
 
     val staCo2: StaCo = StaCoDto.createStamp(
         description = "Queen Stamp",
@@ -32,7 +32,7 @@ internal class StaCoRepositoryTest {
         currency = CurrencyEnum.EUR,
         widthMM = "10",
         heightMM = "0"
-    ).toStaCo()
+    ).toData
 
     @Autowired
     lateinit var staCoRepository: StaCoRepository

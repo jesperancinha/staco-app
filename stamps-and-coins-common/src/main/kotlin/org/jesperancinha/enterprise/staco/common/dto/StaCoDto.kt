@@ -1,29 +1,17 @@
 package org.jesperancinha.enterprise.staco.common.dto
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
-import org.jesperancinha.enterprise.staco.common.domain.StaCo
 
 data class StaCoDto(
     val description: String?,
     val year: String?,
     val value: String?,
-    val currency: String,
+    val currency: CurrencyEnum?,
     val diameterMM: String?,
     val internalDiameterMM: String?,
     val heightMM: String?,
     val widthMM: String?,
 ) {
-
-    constructor(staCo: StaCo) : this(
-        staCo.description,
-        staCo.year,
-        staCo.value,
-        staCo.currency.toString(),
-        staCo.diameterMM,
-        staCo.internalDiameterMM,
-        staCo.heightMM,
-        staCo.widthMM
-    )
 
     companion object {
         fun createCoin(
@@ -38,7 +26,7 @@ data class StaCoDto(
                 description = description,
                 year = year,
                 value = value,
-                currency = currency.toString(),
+                currency = currency,
                 diameterMM = diameterMM,
                 internalDiameterMM = internalDiameterMM,
                 heightMM = null,
@@ -58,7 +46,7 @@ data class StaCoDto(
                 description = description,
                 year = year,
                 value = value,
-                currency = currency.toString(),
+                currency = currency,
                 diameterMM = null,
                 internalDiameterMM = null,
                 heightMM = heightMM,

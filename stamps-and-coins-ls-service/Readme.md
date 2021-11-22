@@ -1,5 +1,9 @@
 # Stamps and Coins LocalStack Service
 
+## References
+
+- [Spring WebFlux File Upload](https://vinsguru.medium.com/spring-webflux-file-upload-f6e3f3d3f5e1)
+
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)

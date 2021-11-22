@@ -2,14 +2,13 @@ package org.jesperancinha.enterprise.staco.ls.config
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider
 import com.amazonaws.auth.BasicAWSCredentials
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsync
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClientBuilder
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.web.multipart.MultipartResolver
+import org.springframework.web.multipart.support.StandardServletMultipartResolver
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
 import software.amazon.awssdk.awscore.client.builder.AwsClientBuilder
 import software.amazon.awssdk.regions.Region
@@ -36,22 +35,24 @@ internal class StaCoConfiguration {
 
     @Bean
     fun dynamoDbMapperAsync(awsProperties: AwsProperties): DynamoDBMapper? {
-        return DynamoDBMapper(AmazonDynamoDBAsyncClientBuilder.standard()
-            .withEndpointConfiguration(
-                com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration(
-                    awsProperties.endpoint.toString(),
-                    awsProperties.region
-                )
-            )
-            .withCredentials(
-                AWSStaticCredentialsProvider(
-                    BasicAWSCredentials(
-                        awsProperties.accessKey,
-                        awsProperties.secretKey
+        return DynamoDBMapper(
+            AmazonDynamoDBAsyncClientBuilder.standard()
+                .withEndpointConfiguration(
+                    com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration(
+                        awsProperties.endpoint.toString(),
+                        awsProperties.region
                     )
                 )
-            )
-            .build())
+                .withCredentials(
+                    AWSStaticCredentialsProvider(
+                        BasicAWSCredentials(
+                            awsProperties.accessKey,
+                            awsProperties.secretKey
+                        )
+                    )
+                )
+                .build()
+        )
     }
 
     fun <B : AwsClientBuilder<B, C>, C> config(
@@ -63,4 +64,5 @@ internal class StaCoConfiguration {
             .credentialsProvider(DefaultCredentialsProvider.create())
             .build()
     }
+
 }

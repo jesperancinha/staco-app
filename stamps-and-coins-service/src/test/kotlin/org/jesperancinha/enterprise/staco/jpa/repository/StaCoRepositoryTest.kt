@@ -1,9 +1,11 @@
 package org.jesperancinha.enterprise.staco.jpa.repository
 
+import io.kotest.matchers.collections.shouldBeOneOf
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum.EUR
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.jesperancinha.enterprise.staco.jpa.domain.toData
@@ -20,7 +22,7 @@ internal class StaCoRepositoryTest {
         description = "Queen Coin",
         year = "1900",
         value = "10",
-        currency = CurrencyEnum.EUR,
+        currency = EUR,
         diameterMM = "10",
         internalDiameterMM = "0"
     ).toData
@@ -29,7 +31,7 @@ internal class StaCoRepositoryTest {
         description = "Queen Stamp",
         year = "1900",
         value = "10",
-        currency = CurrencyEnum.EUR,
+        currency = EUR,
         widthMM = "10",
         heightMM = "0"
     ).toData
@@ -55,7 +57,7 @@ internal class StaCoRepositoryTest {
                 searchItem,
                 searchItem,
                 searchItem,
-                searchItem,
+                EUR,
                 searchItem,
                 searchItem,
                 searchItem,
@@ -63,9 +65,8 @@ internal class StaCoRepositoryTest {
                 Pageable.unpaged()
             )
 
-        entityRecords.shouldHaveSize(1)
+        entityRecords.shouldHaveSize(2)
         val entity = entityRecords.elementAt(0)
-        entity shouldBe staCo2
-        entity shouldNotBe staCo1
+        entity shouldBeOneOf  listOf(staCo2, staCo1)
     }
 }

@@ -1,5 +1,7 @@
 package org.jesperancinha.enterprise.staco.jpa.service
 
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum.EUR
 import org.jesperancinha.enterprise.staco.jpa.repository.StaCoRepository
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -33,7 +35,7 @@ internal class StaCoServiceTest {
                 searchItem,
                 searchItem,
                 searchItem,
-                searchItem,
+                EUR,
                 searchItem,
                 searchItem,
                 searchItem,
@@ -61,7 +63,7 @@ internal class StaCoServiceTest {
             searchItem,
             searchItem,
             searchItem,
-            searchItem,
+            EUR,
             searchItem,
             searchItem,
             searchItem,

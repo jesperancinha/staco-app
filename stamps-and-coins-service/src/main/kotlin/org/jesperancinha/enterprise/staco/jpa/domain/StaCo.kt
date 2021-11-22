@@ -4,13 +4,16 @@ import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
 
 @Table
 @Entity
 data class StaCo(
-    @Id
+    @field: Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     override val id: Long? = null,
     override val description: String?,
     override var year: String?,

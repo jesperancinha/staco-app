@@ -9,5 +9,5 @@ data class AwsProperties @ConstructorBinding constructor(
     val endpoint: URI,
     val region: String,
     val accessKey: String,
-    val secretKet: String
+    val secretKey: String
 )

@@ -7,6 +7,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsync
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClientBuilder
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
@@ -18,6 +19,7 @@ import software.amazon.awssdk.services.ssm.SsmAsyncClient
 
 
 @Configuration
+@EnableConfigurationProperties(AwsProperties::class)
 internal class StaCoConfiguration {
 
     @Bean
@@ -45,7 +47,7 @@ internal class StaCoConfiguration {
                 AWSStaticCredentialsProvider(
                     BasicAWSCredentials(
                         awsProperties.accessKey,
-                        awsProperties.secretKet
+                        awsProperties.secretKey
                     )
                 )
             )

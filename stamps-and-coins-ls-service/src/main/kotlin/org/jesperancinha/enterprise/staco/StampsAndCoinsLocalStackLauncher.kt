@@ -16,7 +16,6 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
 import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
 import software.amazon.awssdk.services.s3.S3AsyncClient
 
-@EnableConfigurationProperties(AwsProperties::class)
 @SpringBootApplication
 class StampsAndCoinsLocalStackLauncher(
     val s3AsyncClient: S3AsyncClient,
@@ -31,7 +30,20 @@ class StampsAndCoinsLocalStackLauncher(
                 logger.info { it }
             }
         }
-        val createTableRequest: CreateTableRequest = CreateTableRequest.builder()
+        val createTableRequest: CreateTableRequest = createTableRequest()
+        dynamoDbAsyncClient.apply {
+            createTable(createTableRequest)
+                .thenApply {
+                    listTables().thenApply { response ->
+                        response.tableNames().forEach { logger.info { it } }
+                    }
+
+                }
+        }
+    }
+
+    companion object{
+        fun createTableRequest(): CreateTableRequest = CreateTableRequest.builder()
             .tableName("staco")
             .keySchema(
                 KeySchemaElement.builder()
@@ -53,17 +65,7 @@ class StampsAndCoinsLocalStackLauncher(
                     .build()
             )
             .build()
-        dynamoDbAsyncClient.apply {
-            createTable(createTableRequest)
-                .thenApply {
-                    listTables().thenApply { response ->
-                        response.tableNames().forEach { logger.info { it } }
-                    }
-
-                }
-        }
     }
-
 }
 
 fun main(args: Array<String>) {

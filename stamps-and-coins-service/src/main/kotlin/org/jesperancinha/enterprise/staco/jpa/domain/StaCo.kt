@@ -1,6 +1,6 @@
 package org.jesperancinha.enterprise.staco.jpa.domain
 
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import javax.persistence.Entity
@@ -18,7 +18,7 @@ data class StaCo(
     override val description: String?,
     override var year: String?,
     override var value: String?,
-    override var currency: CurrencyEnum?,
+    override var currency: CurrencyType?,
     override val diameterMM: String?,
     override val internalDiameterMM: String?,
     override val heightMM: String?,

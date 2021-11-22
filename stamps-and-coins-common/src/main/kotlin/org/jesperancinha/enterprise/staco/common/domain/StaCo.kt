@@ -5,7 +5,7 @@ interface IStaCo {
     val description: String?
     var year: String?
     var value: String?
-    var currency: CurrencyEnum?
+    var currency: CurrencyType?
     val diameterMM: String?
     val internalDiameterMM: String?
     val heightMM: String?

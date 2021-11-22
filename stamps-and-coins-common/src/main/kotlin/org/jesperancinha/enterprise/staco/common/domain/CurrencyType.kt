@@ -1,6 +1,6 @@
 package org.jesperancinha.enterprise.staco.common.domain
 
-enum class CurrencyEnum {
+enum class CurrencyType {
     EUR,
     USD,
     JPY,

@@ -2,10 +2,7 @@ package org.jesperancinha.enterprise.staco.jpa.repository
 
 import io.kotest.matchers.collections.shouldBeOneOf
 import io.kotest.matchers.collections.shouldHaveSize
-import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldNotBe
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum.EUR
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.jesperancinha.enterprise.staco.jpa.domain.toData

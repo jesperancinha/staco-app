@@ -1,12 +1,12 @@
 package org.jesperancinha.enterprise.staco.common.dto
 
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 
 data class StaCoDto(
     val description: String?,
     val year: String?,
     val value: String?,
-    val currency: CurrencyEnum?,
+    val currency: CurrencyType?,
     val diameterMM: String?,
     val internalDiameterMM: String?,
     val heightMM: String?,
@@ -18,7 +18,7 @@ data class StaCoDto(
             description: String?,
             year: String?,
             value: String?,
-            currency: CurrencyEnum,
+            currency: CurrencyType,
             diameterMM: String?,
             internalDiameterMM: String?,
         ): StaCoDto {
@@ -38,7 +38,7 @@ data class StaCoDto(
             description: String?,
             year: String?,
             value: String?,
-            currency: CurrencyEnum,
+            currency: CurrencyType,
             heightMM: String?,
             widthMM: String?
         ): StaCoDto {

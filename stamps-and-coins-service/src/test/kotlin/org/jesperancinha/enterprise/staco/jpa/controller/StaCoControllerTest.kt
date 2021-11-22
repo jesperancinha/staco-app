@@ -2,7 +2,7 @@ package org.jesperancinha.enterprise.staco.jpa.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.assertj.core.api.Assertions.assertThat
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum.EUR
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.jpa.service.LoginService

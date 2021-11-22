@@ -1,7 +1,6 @@
 package org.jesperancinha.enterprise.staco.jpa.service
 
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum.EUR
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.jpa.repository.StaCoRepository
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

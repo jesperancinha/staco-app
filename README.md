@@ -38,10 +38,10 @@ Be sure to have [Docker](https://www.docker.com/products/docker-desktop) install
 ```
 
 #### Docker
+
 ```shell
 . ./bash/docker-setup.sh
 ```
-
 
 ---
 
@@ -49,16 +49,15 @@ Be sure to have [Docker](https://www.docker.com/products/docker-desktop) install
 
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧 Under construction 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
-
 There are three modes to run this application:
 
-1.  The application runs with a local and hard-coded BASIC authentication
-2.  The application uses OAuth in combination with GitHub. You can make your own app with it
-3.  The application runs with a local (and outdated) local OAuth token repository under PostgreSQL
+1. The application runs with a local and hard-coded BASIC authentication
+2. The application uses OAuth in combination with GitHub. You can make your own app with it
+3. The application runs with a local (and outdated) local OAuth token repository under PostgreSQL
 
 ### Run details
 
-1.  Start docker compose with the provided [build.sh](./build.sh).
+1. Start docker compose with the provided [build.sh](./build.sh).
 
 If that doesn't work please try these steps:
 
@@ -101,21 +100,21 @@ npm start
 
 [http://localhost:4200](http://localhost:4200/)
 
-1.  In a non-oauth environment(default) use admin/admin as passwords.
+1. In a non-oauth environment(default) use admin/admin as passwords.
 
-2.  In a oauth-enabled environment enabled with github(prod) use your own github credentials
+2. In a oauth-enabled environment enabled with github(prod) use your own github credentials
 
-3.  In a local oauth-enabled environment with local tokens (locaprod) Login angular 2 page next...
+3. In a local oauth-enabled environment with local tokens (locaprod) Login angular 2 page next...
 
 ##### Testing with OAuth
 
-1.  Main page
+1. Main page
 
 [http://localhost:4200](http://localhost:4200/)
 
-2.  Login with credentials admin/admin
+2. Login with credentials admin/admin
 
-3.  Alternatively you can use OAuth2 token creation as described in this BASH list of commands:
+3. Alternatively you can use OAuth2 token creation as described in this BASH list of commands:
 
 ```bash
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=password&username=admin&password=admin&client_id=stamps-and-coins-client&client_secret=stamps-and-coins&scope=read&redirect_uri=http://localhost:8081/oauth" http://localhost:8081/oauth/token
@@ -152,7 +151,7 @@ sequenceDiagram
 
 [![dockeri.co](https://dockeri.co/image/library/postgres)](https://hub.docker.com/r/library/postgres)
 
--   Remove all Docker images and builds
+- Remove all Docker images and builds
 
 ```bash
 docker system prune --all
@@ -165,7 +164,7 @@ psql -p 5433 -h localhost -U postgres -d staco -f initial.sql
 ```
 
 ## References
-    
+
 ### Videos
 
 - [Spring Boot CRUD Example using AWS DynamoDB](https://www.youtube.com/watch?v=3ay92ZdCgwQ)
@@ -175,19 +174,20 @@ psql -p 5433 -h localhost -U postgres -d staco -f initial.sql
 
 ### Online
 
--   [Amazon Web Services Systems Manager](https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm)
--   [Don’t Be Intimidated — Learn How to Run AWS on Your Local Machine With LocalStack](https://betterprogramming.pub/dont-be-intimidated-learn-how-to-run-aws-on-your-local-machine-with-localstack-2f3448462254)
--   [Spring Boot Integration Tests With AWS Services Using LocalStack](https://rieckpil.de/test-spring-applications-using-aws-with-testcontainers-and-localstack/)
--   [Using LocalStack for Development Environments](https://www.maxcode.net/blog/using-localstack-for-development-environments/)
--   [Configuring Docker Swarm as Container Orchestrator on Windows](https://koukia.ca/configuring-docker-swarm-as-container-orchestrator-on-windows-1f89a2037dac)
--   [What is a Docker Swarm](https://www.sumologic.com/glossary/docker-swarm/)
--   [Kubernetes vs. Docker](https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker/)
--   [Working with Queries in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)
--   [How to determine if Amazon DynamoDB is appropriate for your needs, and then plan your migration](https://aws.amazon.com/blogs/database/how-to-determine-if-amazon-dynamodb-is-appropriate-for-your-needs-and-then-plan-your-migration/)
--   [5 Use Cases for DynamoDB](https://rockset.com/blog/5-use-cases-for-dynamodb/)
--   [Local Stack Pro Features](https://localstack.cloud/features/#pro)
--   [LocalStack](https://github.com/localstack/localstack)
--   [LocalStack Cloud](https://localstack.cloud/)
+- [From PostgreSQL to DynamoDB](https://www.dyspatch.io/blog/from-postgresql-to-dynamodb/)
+- [Amazon Web Services Systems Manager](https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm)
+- [Don’t Be Intimidated — Learn How to Run AWS on Your Local Machine With LocalStack](https://betterprogramming.pub/dont-be-intimidated-learn-how-to-run-aws-on-your-local-machine-with-localstack-2f3448462254)
+- [Spring Boot Integration Tests With AWS Services Using LocalStack](https://rieckpil.de/test-spring-applications-using-aws-with-testcontainers-and-localstack/)
+- [Using LocalStack for Development Environments](https://www.maxcode.net/blog/using-localstack-for-development-environments/)
+- [Configuring Docker Swarm as Container Orchestrator on Windows](https://koukia.ca/configuring-docker-swarm-as-container-orchestrator-on-windows-1f89a2037dac)
+- [What is a Docker Swarm](https://www.sumologic.com/glossary/docker-swarm/)
+- [Kubernetes vs. Docker](https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker/)
+- [Working with Queries in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)
+- [How to determine if Amazon DynamoDB is appropriate for your needs, and then plan your migration](https://aws.amazon.com/blogs/database/how-to-determine-if-amazon-dynamodb-is-appropriate-for-your-needs-and-then-plan-your-migration/)
+- [5 Use Cases for DynamoDB](https://rockset.com/blog/5-use-cases-for-dynamodb/)
+- [Local Stack Pro Features](https://localstack.cloud/features/#pro)
+- [LocalStack](https://github.com/localstack/localstack)
+- [LocalStack Cloud](https://localstack.cloud/)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

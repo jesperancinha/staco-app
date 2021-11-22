@@ -37,6 +37,7 @@
         <module>stamps-and-coins-ls-service</module>
         <module>stamps-and-coins-cloud-service</module>
         <module>stamps-and-coins-common</module>
+        <module>stamps-and-coins-batch</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -1,7 +1,6 @@
 package org.jesperancinha.enterprise.staco.jpa.repository
 
-import org.hibernate.type.CurrencyType
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyEnum
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -13,7 +12,7 @@ interface StaCoRepository : PagingAndSortingRepository<StaCo, Long> {
         description: String,
         year: String,
         value: String,
-        currency: CurrencyEnum,
+        currency: CurrencyType,
         diameterMM: String,
         internalDiameterMM: String,
         heightMM: String,

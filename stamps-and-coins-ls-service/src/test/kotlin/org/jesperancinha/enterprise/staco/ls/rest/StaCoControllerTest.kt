@@ -2,7 +2,7 @@ package org.jesperancinha.enterprise.staco.ls.rest
 
 import io.kotest.matchers.collections.shouldContain
 import org.jesperancinha.enterprise.staco.StampsAndCoinsLocalStackLauncher.Companion.createTableRequest
-import org.jesperancinha.enterprise.staco.ls.config.StaCoConfiguration
+import org.jesperancinha.enterprise.staco.ls.config.LsStaCoConfiguration
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -22,7 +22,7 @@ val localStackContainer: LocalStackContainer =
 @SpringBootTest
 @ContextConfiguration(
     initializers = [StaCoControllerTest.Initializer::class],
-    classes = [StaCoConfiguration::class],
+    classes = [LsStaCoConfiguration::class],
 )
 @TestPropertySource(locations = ["classpath:application.properties"])
 internal class StaCoControllerTest(

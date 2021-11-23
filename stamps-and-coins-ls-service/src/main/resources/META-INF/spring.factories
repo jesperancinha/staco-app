@@ -1,2 +1,2 @@
 org.springframework.boot.env.EnvironmentPostProcessor=\
-  org.jesperancinha.enterprise.staco.ls.config.ParameterStorePropertySourceEnvironmentPostProcessor
+  org.jesperancinha.enterprise.staco.common.aws.ParameterStorePropertySourceEnvironmentPostProcessor

@@ -4,11 +4,10 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider
 import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClientBuilder
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.web.multipart.MultipartResolver
-import org.springframework.web.multipart.support.StandardServletMultipartResolver
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
 import software.amazon.awssdk.awscore.client.builder.AwsClientBuilder
 import software.amazon.awssdk.regions.Region
@@ -20,6 +19,12 @@ import software.amazon.awssdk.services.ssm.SsmAsyncClient
 @Configuration
 @EnableConfigurationProperties(AwsProperties::class)
 internal class StaCoConfiguration {
+
+    @Value("\${aws.username:}")
+    lateinit var username: String
+
+    @Value("\${username:username}")
+    lateinit var usernameTest: String
 
     @Bean
     fun dynamoDbClient(awsProperties: AwsProperties): DynamoDbAsyncClient =

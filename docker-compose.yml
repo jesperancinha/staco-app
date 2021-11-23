@@ -17,7 +17,7 @@ services:
       - "5433:5432"
 
   localstack:
-    image: localstack/localstack
+    image: localstack/localstack:0.13.0
     hostname: localstack
     container_name: localstack
     ports:

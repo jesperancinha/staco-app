@@ -11,3 +11,6 @@ export AWS_SECRET_ACCESS_KEY=test
 export AWS_DEFAULT_REGION=eu-central-1
 echo http://$NODE_IP:$NODE_PORT
 alias aws="aws --endpoint-url $LOCAL_STACK"
+
+aws ssm put-parameter --name /dev/postgres/username --value "postgres"
+aws ssm put-parameter --name /dev/postgres/password --value "password"

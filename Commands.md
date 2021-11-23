@@ -65,6 +65,10 @@ aws eks describe-cluster --name staco-cluster
 aws dynamodb list-tables
 aws ssm put-parameter --name love --value "What is love"
 aws ssm get-parameter --name love
+aws ssm describe-parameters
+aws ssm put-parameter --name /dev/postgres/username --value "postgres"
+aws ssm put-parameter --name /dev/postgres/password --value "password"
+aws s3api get-object --bucket staco --key staco-image-e4b80aa3-5b49-49b4-829a-463501279615.png test.png
 ```
 
 ## References

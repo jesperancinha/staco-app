@@ -23,6 +23,17 @@
 
 ---
 
+### Project Layout
+
+- [Stamps and Coins Demo](./stamps-and-coins-demo) - Module used to create Demo data. It sends Coin and Stamps images and it can generate the initial data
+- [Stamps and Coins Common](./stamps-and-coins-common) - Contains common libraries, namely, Data Transfer Objects, Domain model and Parameter Store Property Provider
+- [Stamps and Coins Batch](./stamps-and-coins-batch) - Spring batch Quartz based Jobs. They dump the data from PostgreSQL to a file and ship it to S3. Another Job retrieves the data, unpacks it and sends it to DynamoDB.
+- [Stamps and Coins Service](./stamps-and-coins-service) - This is our starting point. It contains a Reactive Application which uses PostgreSQL using R2DBC repos on coroutines
+- [Stamps and Coins Local Stack Service](./stamps-and-coins-ls-service) - This application serves data in the same way as the above except that it connects to DynamoDB. All Localstack implementations are manual
+- [Stamps and Coins Cloud Server](./stamps-and-coins-cloud-service) - Uses automated configuration and tries to use Localstack as much as possible.
+- [Stamps and Coins Web](./stamps-and-coins-web) - Front End Application to explore the different implementations. Pagination is implemented
+
+---
 ## Setup environment
 
 Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed:
@@ -48,6 +59,12 @@ Be sure to have [Docker](https://www.docker.com/products/docker-desktop) install
 ## How to run
 
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧 Under construction 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
+
+#### 1. Running all automatically
+
+```shell
+make docker-clean-build-start
+```
 
 There are three modes to run this application:
 

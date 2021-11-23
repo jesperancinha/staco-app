@@ -14,6 +14,9 @@ services:
       - POSTGRES_MULTIPLE_DATABASES=staco
     ports:
       - "5432:5432"
+    networks:
+      staco_net:
+        ipv4_address: ${STACO_AWS_POSTGRESQL_IP}
 
   localstack:
     image: localstack/localstack:0.13.0

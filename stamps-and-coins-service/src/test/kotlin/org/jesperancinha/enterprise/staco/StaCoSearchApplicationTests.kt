@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.jpa
+package org.jesperancinha.enterprise.staco
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

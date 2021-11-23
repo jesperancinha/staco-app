@@ -13,25 +13,31 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <kotlin.version>1.6.0-M1</kotlin.version>
-        <spring-boot-starter-validation.version>2.5.5</spring-boot-starter-validation.version>
+        <aws-java-sdk.version>1.12.113</aws-java-sdk.version>
+
         <h2.version>1.4.200</h2.version>
         <postgresql.version>42.2.24.jre7</postgresql.version>
+
         <okta-spring-boot-starter.version>2.1.2</okta-spring-boot-starter.version>
-        <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
-        <kotest.version>5.0.0.M3</kotest.version>
-        <mockk.version>1.12.0</mockk.version>
-        <springmockk.version>3.0.1</springmockk.version>
-        <spring.security.version>5.5.1</spring.security.version>
-        <reactor-test.version>3.4.12</reactor-test.version>
         <sofware.amazon.version>2.17.85</sofware.amazon.version>
+
         <spring-boot.version>2.6.0</spring-boot.version>
-        <kotlin-logging.version>2.1.0</kotlin-logging.version>
-        <aws-java-sdk.version>1.12.113</aws-java-sdk.version>
-        <testcontainers.version>1.16.2</testcontainers.version>
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <spring-boot-starter-validation.version>2.5.5</spring-boot-starter-validation.version>
         <spring-cloud-dependencies.version>2021.0.0-M2</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>2.3.2</spring-cloud-aws-dependencies.version>
+        <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
+        <spring.security.version>5.5.1</spring.security.version>
+
+        <kotlinx-coroutines.version>1.6.0-RC</kotlinx-coroutines.version>
+        <kotlin-logging.version>2.1.0</kotlin-logging.version>
+
+        <springmockk.version>3.0.1</springmockk.version>
+        <mockk.version>1.12.0</mockk.version>
+        <kotest.version>5.0.0.M3</kotest.version>
+        <reactor-test.version>3.4.12</reactor-test.version>
+        <testcontainers.version>1.16.2</testcontainers.version>
     </properties>
 
     <modules>
@@ -138,6 +144,22 @@
                 <artifactId>kotlin-reflect</artifactId>
                 <version>${kotlin.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-reactor</artifactId>
+                <version>${kotlinx-coroutines.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-core</artifactId>
+                <version>${kotlinx-coroutines.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-core-jvm</artifactId>
+                <version>${kotlinx-coroutines.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>

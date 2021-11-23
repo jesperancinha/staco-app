@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.jpa
+package org.jesperancinha.enterprise.staco
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

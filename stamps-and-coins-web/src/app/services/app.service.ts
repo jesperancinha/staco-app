@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, retry} from "rxjs/internal/operators";
 import {StaCo} from "../model/staCo";
-import {Observable, of} from "rxjs";
+import {catchError, Observable, of, retry} from "rxjs";
 
 @Injectable()
 export class AppService {

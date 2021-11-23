@@ -1,7 +1,6 @@
-import {catchError, retry} from 'rxjs/internal/operators';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from "rxjs";
+import {catchError, Observable, of, retry} from "rxjs";
 import {AppService} from "./app.service";
 import {StaCoResponse} from "../model/staCoResponse";
 

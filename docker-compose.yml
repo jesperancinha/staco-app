@@ -13,7 +13,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_MULTIPLE_DATABASES=staco
     ports:
-      - "5433:5432"
+      - "5432:5432"
 
   localstack:
     image: localstack/localstack:0.13.0

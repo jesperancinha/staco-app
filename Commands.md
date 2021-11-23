@@ -11,6 +11,17 @@ helm repo update
 helm upgrade --install localstack localstack/localstack --namespace localstack --create-namespace --values values.yaml
 ```
 
+```shell
+mkdir config
+pip install awscli-plugin-endpoint
+pip install sceptre
+pip install boto3
+aws configure set plugins.endpoint awscli_plugin_endpoint
+aws configure --profile local set dynamodb.endpoint_url http://localhost:4566
+aws configure --profile local set stack.endpoint_url http://localhost:4566
+aws configure --profile local set s3.endpoint_url http://localhost:4566
+```
+
 ## Extras
 
 ```shell

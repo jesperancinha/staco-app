@@ -1,4 +1,3 @@
-version: "3.7"
 services:
 
   postgres:
@@ -32,5 +31,54 @@ services:
       - DATA_DIR=/tmp/localstack/data
       - LAMBDA_EXECUTOR=local
       - START_WEB=1
+    healthcheck:
+      test: ["CMD", "/usr/bin/curl", "http://localhost:4566/health"]
     volumes:
       - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+    networks:
+      staco_net:
+        ipv4_address: ${STACO_AWS_LOCALSTACK_IP}
+
+  aws-cli-1:
+    image: amazon/aws-cli:2.4.0
+    hostname: aws-cli-1
+    container_name: aws-cli-1
+    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/username --value postgres --type text
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
+    depends_on:
+      localstack:
+        condition: service_healthy
+    networks:
+      staco_net:
+        ipv4_address: ${STACO_AWS_CLI_1_IP}
+
+  aws-cli-2:
+    image: amazon/aws-cli:2.4.0
+    hostname: aws-cli-2
+    container_name: aws-cli-2
+    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/password --value admin --type text
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
+    depends_on:
+      localstack:
+        condition: service_healthy
+    networks:
+      staco_net:
+        ipv4_address: ${STACO_AWS_CLI_2_IP}
+
+networks:
+  staco_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${NETWORK_SUBNET}

@@ -73,6 +73,7 @@ aws s3api get-object --bucket staco --key staco-image-e4b80aa3-5b49-49b4-829a-46
 
 ## References
 
+- [AWS SDK: “Unable to locate credentials”, a cheat sheet for solving the issue](https://faun.pub/aws-sdk-unable-to-locate-credentials-a-cheat-sheet-for-solving-the-issue-f72f8965a2c1 )
 - [How to Install Kubernetes on Ubuntu 18.04](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu)
 - [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 - [LocalStack](https://github.com/localstack/localstack)

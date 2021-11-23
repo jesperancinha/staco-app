@@ -15,6 +15,7 @@ no-test:
 	mvn clean install -DskipTests
 docker:
 	docker-compose up -d --build --remove-orphans
+	make localstack-config
 docker-databases: stop local
 build-images:
 build-docker: stop no-test build-npm
@@ -31,7 +32,13 @@ docker-cleanup: docker-delete
 docker-delete-apps: stop
 docker-localstack:
 	docker-compose rm -svf
-	docker-compose up -d --build --remove-orphans localstack
+	docker-compose up -d --build --remove-orphans localstack aws-cli-1 aws-cli-2
+docker-cli:
+	docker-compose up -d --build --remove-orphans aws-cli-1 aws-cli-2
+localstack-config:
+	sleep 1
+	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/username --value "postgres"
+	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/password --value "password"
 prune-all: stop
 	docker ps -a --format '{{.ID}}' -q | xargs docker stop
 	docker ps -a --format '{{.ID}}' -q | xargs docker rm

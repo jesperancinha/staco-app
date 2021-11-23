@@ -2,9 +2,11 @@ package org.jesperancinha.enterprise.staco
 
 import mu.KotlinLogging
 import org.jesperancinha.enterprise.staco.ls.config.AwsProperties
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
@@ -21,6 +23,12 @@ class StampsAndCoinsLocalStackLauncher(
     val s3AsyncClient: S3AsyncClient,
     val dynamoDbAsyncClient: DynamoDbAsyncClient
 ) : ApplicationRunner {
+
+    @Value("\${aws.username:}")
+    lateinit var username: String
+
+    @Value("\${aws.password}")
+    lateinit var password: String
 
     private val logger = KotlinLogging.logger {}
 
@@ -40,6 +48,7 @@ class StampsAndCoinsLocalStackLauncher(
 
                 }
         }
+        logger.info { "Starting application with postgress user $username and password $password. Shhhh! Do not tell this to anyone! It comes from Localstack!" }
     }
 
     companion object{

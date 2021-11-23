@@ -2,6 +2,7 @@
 
 ## References
 
+- [Spring Boot and AWS Parameter Store](https://source.coveo.com/2018/08/03/spring-boot-and-aws-parameter-store/)
 - [Spring WebFlux File Upload](https://vinsguru.medium.com/spring-webflux-file-upload-f6e3f3d3f5e1)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈

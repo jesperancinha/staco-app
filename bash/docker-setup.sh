@@ -15,3 +15,7 @@ aws ssm put-parameter --name /config/StaCoLsService/username --value "postgres"
 aws ssm put-parameter --name /config/StaCoLsService/password --value "password"
 aws ssm put-parameter --name /config/application/server.port --value 8080
 
+
+aws ssm put-parameter --name /config/StaCoLsService/dev/username --value "postgres"
+aws ssm put-parameter --name /config/StaCoLsService/dev/password --value "password"
+

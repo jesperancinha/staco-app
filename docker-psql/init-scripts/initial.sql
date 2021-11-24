@@ -25,7 +25,7 @@ create type sta_co_json as
     "year" varchar (255),
     "value" varchar (255),
     currency varchar (255),
-    "diameter_MM" varchar (255),
+    "diameterMM" varchar (255),
     "internalDiameterMM" varchar (255),
     "heightMM" varchar (255),
     "widthMM" varchar (255));

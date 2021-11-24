@@ -1,6 +1,10 @@
 # Stamps and Coins Service
 
-## Rererences
+## Test endpoints
+
+1. [http://localhost:8081/api/staco/service/stacos/all](http://localhost:8081/api/staco/service/stacos/all)
+
+## References
 
 - [From Reactor to Coroutines](https://blog.frankel.ch/reactor-to-coroutines/)
 

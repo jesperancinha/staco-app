@@ -64,4 +64,7 @@ class StaCoService(
             totalPages = staCoRepository.count()
         )
     }
+
+     fun getAll() =
+         staCoRepository.findAll()
 }

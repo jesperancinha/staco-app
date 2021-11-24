@@ -1,6 +1,8 @@
 package org.jesperancinha.enterprise.staco.jpa.controller
 
+import kotlinx.coroutines.flow.Flow
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
+import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.jesperancinha.enterprise.staco.jpa.service.StaCoService
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
@@ -13,18 +15,18 @@ import javax.validation.constraints.Size
 
 
 @RestController
-@RequestMapping("api")
-@Validated
+@RequestMapping("stacos")
 class StaCoController(
     val staCoService: StaCoService,
 ) {
-    @GetMapping("staco/login")
+    @GetMapping("login")
     suspend fun login(httpServletResponse: HttpServletResponse) {
         httpServletResponse.addHeader("Location", "http://localhost:4200/search")
         httpServletResponse.status = 302
     }
 
-    @GetMapping("staco/all/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
+    @Validated
+    @GetMapping("search/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
     suspend fun getAllInAllBySearchItem(
         @PathVariable
         @Size(min = 1, max = 10)
@@ -48,4 +50,8 @@ class StaCoController(
         )
 
     }
+
+    @GetMapping("all")
+    fun getAll(): Flow<StaCo> =
+        staCoService.getAll()
 }

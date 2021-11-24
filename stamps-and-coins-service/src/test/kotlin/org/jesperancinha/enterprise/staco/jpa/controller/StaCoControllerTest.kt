@@ -8,8 +8,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
-import org.jesperancinha.enterprise.staco.jpa.service.LoginService
 import org.jesperancinha.enterprise.staco.jpa.service.StaCoService
+import org.jesperancinha.enterprise.staco.jpa.utils.AbstractStaCoTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -29,9 +29,9 @@ import javax.validation.ConstraintViolationException
 
 @WebMvcTest(controllers = [StaCoController::class])
 @ActiveProfiles("test")
-@MockkBean(classes = [DataSource::class, LoginService::class])
+@MockkBean(classes = [DataSource::class])
 @Disabled
-internal class StaCoControllerTest {
+internal class StaCoControllerTest: AbstractStaCoTest() {
 
     private lateinit var mockMvc: MockMvc
 

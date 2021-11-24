@@ -37,7 +37,7 @@ internal class StaCoServiceTest {
     fun setUp() {
 
         val searchItem = "%Ma%"
-        val thenReturn = `when`(
+        `when`(
             staCoSearchRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
                 searchItem,
                 searchItem,

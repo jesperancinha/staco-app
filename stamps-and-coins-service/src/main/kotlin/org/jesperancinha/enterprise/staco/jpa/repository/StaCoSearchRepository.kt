@@ -24,4 +24,4 @@ interface StaCoSearchRepository : ReactiveSortingRepository<StaCo, Long> {
 }
 
 @Repository
-interface StaCoRepository:CoroutineSortingRepository<StaCo, Long>
+interface StaCoRepository : CoroutineSortingRepository<StaCo, Long>

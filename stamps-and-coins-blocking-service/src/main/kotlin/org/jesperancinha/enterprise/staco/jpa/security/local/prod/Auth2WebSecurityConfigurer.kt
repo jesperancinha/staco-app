@@ -24,12 +24,10 @@ class Auth2WebSecurityConfigurer(
 ) : WebSecurityConfigurerAdapter() {
 
     @Bean
-    @Throws(Exception::class)
     override fun authenticationManagerBean(): AuthenticationManager {
         return super.authenticationManagerBean()
     }
 
-    @Throws(Exception::class)
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.userDetailsService(userDetailsService)
             .passwordEncoder(passwordEncoder)

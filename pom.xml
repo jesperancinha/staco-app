@@ -37,9 +37,9 @@
         <mockk.version>1.12.0</mockk.version>
         <kotest.version>5.0.0.M3</kotest.version>
         <reactor-test.version>3.4.12</reactor-test.version>
-        <testcontainers.version>1.16.2</testcontainers.version>
         <r2dbc.version>0.9.0.M1</r2dbc.version>
         <spring-data-r2dbc.version>1.4.1-SNAPSHOT</spring-data-r2dbc.version>
+        <test.containers.version>1.16.2</test.containers.version>
     </properties>
 
     <modules>
@@ -234,14 +234,20 @@
             </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
-                <artifactId>testcontainers</artifactId>
-                <version>${testcontainers.version}</version>
+                <artifactId>postgresql</artifactId>
+                <version>${test.containers.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
-                <artifactId>localstack</artifactId>
-                <version>${testcontainers.version}</version>
+                <artifactId>testcontainers</artifactId>
+                <version>${test.containers.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${test.containers.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

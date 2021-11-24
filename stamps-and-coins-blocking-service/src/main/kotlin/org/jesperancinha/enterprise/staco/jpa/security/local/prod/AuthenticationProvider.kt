@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Profile
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
-import org.springframework.security.core.AuthenticationException
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -20,10 +19,9 @@ class AuthenticationProvider(userRepository: UserRepository, passwordEncoder: Pa
     private val userRepository: UserRepository
     private val passwordEncoder: PasswordEncoder
 
-    @Throws(AuthenticationException::class)
     override fun authenticate(authentication: Authentication): Authentication {
         if (authentication.name == null || authentication.credentials == null) {
-            return throw RuntimeException("Credentials failure!")
+            throw RuntimeException("Credentials failure!")
         }
         if (authentication.name
                 .isEmpty() || authentication.credentials

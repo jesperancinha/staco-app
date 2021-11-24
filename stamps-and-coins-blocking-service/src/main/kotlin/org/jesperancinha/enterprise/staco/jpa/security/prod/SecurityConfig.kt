@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Profile("prod && !test")
 @EnableWebSecurity
 class SecurityConfig : WebSecurityConfigurerAdapter() {
-    @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
             .anyRequest().authenticated()

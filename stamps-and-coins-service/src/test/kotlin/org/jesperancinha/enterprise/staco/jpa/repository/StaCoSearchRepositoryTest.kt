@@ -6,6 +6,7 @@ import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldBeOneOf
 import io.kotest.matchers.collections.shouldHaveSize
 import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.reactive.asFlow
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.cache.CacheManager
+import org.springframework.data.domain.Pageable
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.DynamicPropertyRegistry
@@ -49,6 +51,46 @@ internal class StaCoSearchRepositoryTest {
     ).toData.copy(id = 2)
 
 
+    @Autowired
+    lateinit var staCoRepository: StaCoRepository
+
+
+    @Autowired
+    lateinit var staCoSearchRepository: StaCoSearchRepository
+
+    @BeforeEach
+    fun setUp(): Unit = runBlocking {
+        staCoRepository.save(staCo1)
+        staCoRepository.save(staCo2)
+        val entityRecords = staCoRepository.findAll().toList()
+
+    }
+
+    @Test
+    fun testStaCoLike_whenSearchName_thenCallSearchName(): Unit = runBlocking {
+        val searchItem = "%Stamp%"
+        val entityRecords =
+            staCoSearchRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
+                searchItem,
+                searchItem,
+                searchItem,
+                EUR,
+                searchItem,
+                searchItem,
+                searchItem,
+                searchItem,
+                Pageable.unpaged()
+            ).asFlow().toList()
+
+//        val entityRecords = staCoRepository.findAll().toList()
+        entityRecords.shouldHaveSize(2)
+        val entity1 = entityRecords.elementAt(0)
+        entity1 shouldBeIn  listOf(staCo2.copy(version = 0), staCo1.copy(version = 0))
+        val entity2 = entityRecords.elementAt(1)
+        entity2 shouldBeIn  listOf(staCo2.copy(version = 0), staCo1.copy(version = 0))
+//        entityRecords shouldBeIn listOf(staCo2.copy(version = 0), staCo1.copy(version = 0))
+    }
+
     companion object {
         @Container
         @JvmField
@@ -70,42 +112,4 @@ internal class StaCoSearchRepositoryTest {
             ) { "r2dbc:postgresql://postgres@localhost:${postgreSQLContainer.getFirstMappedPort()}/staco" }
         }
     }
-
-
-    @Autowired
-    lateinit var staCoRepository: StaCoRepository
-
-    @BeforeEach
-    fun setUp(): Unit = runBlocking {
-        staCoRepository.save(staCo1)
-        staCoRepository.save(staCo2)
-        val entityRecords = staCoRepository.findAll().toList()
-
-    }
-
-    @Test
-    fun testStaCoLike_whenSearchName_thenCallSearchName(): Unit = runBlocking {
-        val searchItem = "%Stamp%"
-//        val entityRecords =
-//            staCoSearchRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
-//                searchItem,
-//                searchItem,
-//                searchItem,
-//                EUR,
-//                searchItem,
-//                searchItem,
-//                searchItem,
-//                searchItem,
-//                Pageable.unpaged()
-//            ).blockFirst()
-
-        val entityRecords = staCoRepository.findAll().toList()
-        entityRecords.shouldHaveSize(2)
-        val entity1 = entityRecords.elementAt(0)
-        entity1 shouldBeIn  listOf(staCo2.copy(version = 0), staCo1.copy(version = 0))
-        val entity2 = entityRecords.elementAt(1)
-        entity2 shouldBeIn  listOf(staCo2.copy(version = 0), staCo1.copy(version = 0))
-//        entityRecords shouldBeIn listOf(staCo2.copy(version = 0), staCo1.copy(version = 0))
-    }
-
 }

@@ -4,6 +4,8 @@ import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
@@ -18,6 +20,7 @@ data class StaCo(
     override val description: String?,
     override var year: String?,
     override var value: String?,
+    @Enumerated(EnumType.STRING)
     override var currency: CurrencyType?,
     override val diameterMM: String?,
     override val internalDiameterMM: String?,

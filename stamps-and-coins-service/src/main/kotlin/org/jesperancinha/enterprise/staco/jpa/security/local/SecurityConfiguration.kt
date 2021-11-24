@@ -9,8 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.provisioning.JdbcUserDetailsManager
 import javax.sql.DataSource
 
-
-@Profile("!prod && !localprod && !test")
 @Configuration
 class SecurityConfiguration(
     val dataSource: DataSource

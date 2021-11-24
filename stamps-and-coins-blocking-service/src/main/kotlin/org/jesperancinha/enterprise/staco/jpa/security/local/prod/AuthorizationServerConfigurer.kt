@@ -26,7 +26,6 @@ class AuthorizationServerConfigurer(
 ) :
     AuthorizationServerConfigurerAdapter() {
 
-
     override fun configure(clients: ClientDetailsServiceConfigurer) {
         clients.inMemory()
             .withClient(CLIENT_ID)

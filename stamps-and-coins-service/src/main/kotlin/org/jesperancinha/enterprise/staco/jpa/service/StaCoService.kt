@@ -41,7 +41,6 @@ class StaCoService(
         sortColumn: String,
         order: String,
     ): ResponseDto {
-
         val searchEntities =
             staCoSearchRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
                 description = searchItemValue,
@@ -57,9 +56,9 @@ class StaCoService(
                     pageSizeEntities,
                     Sort.by(Sort.Direction.valueOf(order.uppercase(Locale.getDefault())), sortColumn)
                 )
-            ).asFlow().toList()
+            ).asFlow().toList().map { it.toDto }
         return ResponseDto(
-            staCoDtos = searchEntities.map { it.toDto },
+            staCoDtos = searchEntities,
             currentPage = pageEntities,
             totalRecords = searchEntities.size.toLong(),
             totalPages = staCoRepository.count()

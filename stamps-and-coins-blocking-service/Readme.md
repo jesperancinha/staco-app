@@ -61,7 +61,7 @@ npm start
 
 [http://localhost:4200](http://localhost:4200/)
 
-1. In a non-oauth environment(default) use admin/admin as passwords.
+1. In a non-oauth environment(default) use admin/admin as username/password.
 
 2. In a oauth-enabled environment enabled with github(prod) use your own github credentials
 

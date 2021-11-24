@@ -32,11 +32,15 @@
 - [Stamps and Coins Local Stack Service](./stamps-and-coins-ls-service) - This application serves data in the same way as the above except that it connects to DynamoDB. All Localstack implementations are manual
 - [Stamps and Coins Cloud Server](./stamps-and-coins-cloud-service) - Uses automated configuration and tries to use Localstack as much as possible.
 - [Stamps and Coins Web](./stamps-and-coins-web) - Front End Application to explore the different implementations. Pagination is implemented
-
+- [Stamps and Coins Blocking Service](./stamps-and-coins-blocking-service) - The initial application that started this project back in April 2021. It is now a login authentication/authorization security exploration module, which contains implementations of BASIC Auth, OAUTH2 local Auth and OAUTH with GitHub.
 ---
 ## Setup environment
 
-Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed:
+Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed.
+
+#### Install sdk7
+
+Be sure to have [SDK-MAN](https://sdkman.io/) installed for this to work. You can choose another way. It is only important to have JDK17 installed to have this working.
 
 ```shell
 . ./sdk17.sh

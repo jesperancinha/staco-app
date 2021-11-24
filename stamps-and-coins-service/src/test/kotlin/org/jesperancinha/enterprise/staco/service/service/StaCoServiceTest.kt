@@ -1,12 +1,12 @@
-package org.jesperancinha.enterprise.staco.jpa.service
+package org.jesperancinha.enterprise.staco.service.service
 
 import io.kotest.common.runBlocking
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
-import org.jesperancinha.enterprise.staco.jpa.repository.StaCoRepository
-import org.jesperancinha.enterprise.staco.jpa.repository.StaCoSearchRepository
+import org.jesperancinha.enterprise.staco.service.repository.StaCoRepository
+import org.jesperancinha.enterprise.staco.service.repository.StaCoSearchRepository
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith

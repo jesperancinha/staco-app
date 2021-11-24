@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.jpa.repository
+package org.jesperancinha.enterprise.staco.service.repository
 
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.common.runBlocking
@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.reactive.asFlow
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
-import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
-import org.jesperancinha.enterprise.staco.jpa.domain.toData
-import org.jesperancinha.enterprise.staco.jpa.utils.AbstractStaCoTest
+import org.jesperancinha.enterprise.staco.service.domain.StaCo
+import org.jesperancinha.enterprise.staco.service.domain.toData
+import org.jesperancinha.enterprise.staco.service.utils.AbstractStaCoTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,7 +23,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 
 @SpringBootTest
 @Testcontainers
-@ActiveProfiles("test", "starter")
+@ActiveProfiles("test")
 @MockkBean(CacheManager::class)
 internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
 

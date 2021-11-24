@@ -1,9 +1,9 @@
-package org.jesperancinha.enterprise.staco.jpa.controller
+package org.jesperancinha.enterprise.staco.service.controller
 
 import kotlinx.coroutines.flow.Flow
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
-import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
-import org.jesperancinha.enterprise.staco.jpa.service.StaCoService
+import org.jesperancinha.enterprise.staco.service.domain.StaCo
+import org.jesperancinha.enterprise.staco.service.service.StaCoService
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

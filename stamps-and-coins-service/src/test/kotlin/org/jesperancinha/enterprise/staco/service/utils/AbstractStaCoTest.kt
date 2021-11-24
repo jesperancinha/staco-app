@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.jpa.utils
+package org.jesperancinha.enterprise.staco.service.utils
 
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
@@ -17,13 +17,14 @@ abstract class AbstractStaCoTest {
             .withUsername("postgres")
             .withPassword("admin")
             .withDatabaseName("staco")
+            .withInitScript("schema.sql")
 
         @DynamicPropertySource
         @JvmStatic
         fun setProperties(registry: DynamicPropertyRegistry) {
             registry.add(
-                "spring.datasource.url"
-            ) { "jdbc:postgresql://localhost:${postgreSQLContainer.getFirstMappedPort()}/staco" }
+                "spring.r2dbc.url"
+            ) { "r2dbc:postgresql://postgres@localhost:${postgreSQLContainer.firstMappedPort}/staco" }
         }
     }
 }

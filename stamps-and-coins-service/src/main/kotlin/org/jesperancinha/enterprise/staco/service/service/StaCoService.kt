@@ -1,14 +1,14 @@
-package org.jesperancinha.enterprise.staco.jpa.service
+package org.jesperancinha.enterprise.staco.service.service
 
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.reactive.asFlow
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
-import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
-import org.jesperancinha.enterprise.staco.jpa.domain.toDto
-import org.jesperancinha.enterprise.staco.jpa.repository.StaCoRepository
-import org.jesperancinha.enterprise.staco.jpa.repository.StaCoSearchRepository
+import org.jesperancinha.enterprise.staco.service.domain.StaCo
+import org.jesperancinha.enterprise.staco.service.domain.toDto
+import org.jesperancinha.enterprise.staco.service.repository.StaCoRepository
+import org.jesperancinha.enterprise.staco.service.repository.StaCoSearchRepository
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort

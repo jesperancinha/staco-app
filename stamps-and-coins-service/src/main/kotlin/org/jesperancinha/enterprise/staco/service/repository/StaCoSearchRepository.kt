@@ -1,7 +1,7 @@
-package org.jesperancinha.enterprise.staco.jpa.repository
+package org.jesperancinha.enterprise.staco.service.repository
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
-import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
+import org.jesperancinha.enterprise.staco.service.domain.StaCo
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.kotlin.CoroutineSortingRepository
 import org.springframework.data.repository.reactive.ReactiveSortingRepository

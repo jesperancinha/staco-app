@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.jpa.controller
+package org.jesperancinha.enterprise.staco.service.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.ninjasquad.springmockk.MockkBean
@@ -8,8 +8,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
-import org.jesperancinha.enterprise.staco.jpa.service.StaCoService
-import org.jesperancinha.enterprise.staco.jpa.utils.AbstractStaCoTest
+import org.jesperancinha.enterprise.staco.service.service.StaCoService
+import org.jesperancinha.enterprise.staco.service.utils.AbstractStaCoTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test

@@ -24,7 +24,7 @@ abstract class AbstractStaCoTest {
         fun setProperties(registry: DynamicPropertyRegistry) {
             registry.add(
                 "spring.datasource.url"
-            ) { "jdbc:postgresql://localhost:${postgreSQLContainer.getFirstMappedPort()}/staco" }
+            ) { "jdbc:postgresql://localhost:${postgreSQLContainer.firstMappedPort}/staco" }
         }
     }
 }

@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.jpa.domain
+package org.jesperancinha.enterprise.staco.service.domain
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo

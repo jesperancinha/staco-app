@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.jpa.security
+package org.jesperancinha.enterprise.staco.service.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

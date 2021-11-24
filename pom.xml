@@ -38,6 +38,8 @@
         <kotest.version>5.0.0.M3</kotest.version>
         <reactor-test.version>3.4.12</reactor-test.version>
         <testcontainers.version>1.16.2</testcontainers.version>
+        <r2dbc.version>0.9.0.M1</r2dbc.version>
+        <spring-data-r2dbc.version>1.4.1-SNAPSHOT</spring-data-r2dbc.version>
     </properties>
 
     <modules>
@@ -94,6 +96,16 @@
                 <groupId>org.jesperancinha.enterprise</groupId>
                 <artifactId>stamps-and-coins-common</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.r2dbc</groupId>
+                <artifactId>r2dbc-h2</artifactId>
+                <version>${r2dbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.r2dbc</groupId>
+                <artifactId>r2dbc-spi</artifactId>
+                <version>${r2dbc.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.amazonaws</groupId>
@@ -159,6 +171,11 @@
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kotlinx-coroutines-core-jvm</artifactId>
                 <version>${kotlinx-coroutines.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-r2dbc</artifactId>
+                <version>${spring-data-r2dbc.version}</version>
             </dependency>
 
             <dependency>
@@ -297,6 +314,11 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>spring-libs-snapshot</id>
+            <name>Spring Snapshot Repository</name>
+            <url>https://repo.spring.io/libs-snapshot</url>
         </repository>
     </repositories>
 

@@ -9,10 +9,10 @@ create table if not exists sta_co
     year                varchar(255),
     value               varchar(255),
     currency            varchar(255),
-    diametermm          varchar(255),
-    internal_diametermm varchar(255),
-    heightmm            varchar(255),
-    widthmm             varchar(255)
+    diameter_mm          varchar(255),
+    internal_diameter_mm varchar(255),
+    height_mm            varchar(255),
+    width_mm             varchar(255)
 );
 
 alter table sta_co owner to postgres;
@@ -46,9 +46,9 @@ select ROW_NUMBER() OVER (
        "year",
        "value",
        currency,
-       "diameterMM"         as diametermm,
-       "internalDiameterMM" as internal_diametermm,
-       "heightMM"           as heightmm,
-       "widthMM"            as widthmm
+       "diameterMM"         as diameter_mm,
+       "internalDiameterMM" as internal_diameter_mm,
+       "heightMM"           as height_mm,
+       "widthMM"            as width_mm
 from sta_co_json l
          cross join lateral json_populate_recordset(null::sta_co_json, doc);

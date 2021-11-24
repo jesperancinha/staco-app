@@ -1,36 +1,40 @@
 package org.jesperancinha.enterprise.staco.jpa.service
 
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.reactive.asFlow
+import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
+import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.jesperancinha.enterprise.staco.jpa.domain.toDto
 import org.jesperancinha.enterprise.staco.jpa.repository.StaCoRepository
+import org.jesperancinha.enterprise.staco.jpa.repository.StaCoSearchRepository
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.util.Locale
 
 @Service
 class StaCoService(
-    val staCoRepository: StaCoRepository
+    val staCoRepository: StaCoRepository,
+    val staCoSearchRepository: StaCoSearchRepository
 ) {
-    fun createStaco(staCo: StaCo): StaCo {
-        return staCoRepository.save(staCo)
+    suspend fun createStaco(staCo: StaCo): StaCoDto {
+        return staCoRepository.save(staCo).toDto
     }
 
-    fun readStaco(id: Long): StaCo? = staCoRepository.findByIdOrNull(id)
+    suspend fun readStaco(id: Long): StaCo? = staCoRepository.findById(id)
 
-    fun updateStaco(StaCo: StaCo): StaCo = staCoRepository.save(StaCo)
+    suspend fun updateStaco(staCo: StaCo): StaCoDto = staCoRepository.save(staCo).toDto
 
-    fun deleteStaco(id: Long): Boolean {
+    suspend fun deleteStaco(id: Long): Boolean {
         staCoRepository.deleteById(id)
         return true
     }
 
     @Cacheable("stacos-all")
-    fun getAllInAllBySearchItem(
+    suspend fun getAllInAllBySearchItem(
         searchItemValue: String,
         pageEntities: Int,
         pageSizeEntities: Int,
@@ -39,11 +43,11 @@ class StaCoService(
     ): ResponseDto {
 
         val searchEntities =
-            staCoRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
+            staCoSearchRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
                 description = searchItemValue,
                 year = searchItemValue,
                 value = searchItemValue,
-                currency = EUR,
+                currency = CurrencyType.EUR,
                 diameterMM = searchItemValue,
                 internalDiameterMM = searchItemValue,
                 heightMM = searchItemValue,
@@ -53,14 +57,12 @@ class StaCoService(
                     pageSizeEntities,
                     Sort.by(Sort.Direction.valueOf(order.uppercase(Locale.getDefault())), sortColumn)
                 )
-            )
-        val contentEntities = searchEntities.content
-
+            ).asFlow().toList()
         return ResponseDto(
-            staCoDtos = contentEntities.map { it.toDto },
+            staCoDtos = searchEntities.map { it.toDto },
             currentPage = pageEntities,
-            totalRecords = searchEntities.numberOfElements,
-            totalPages = searchEntities.totalPages
+            totalRecords = searchEntities.size.toLong(),
+            totalPages = staCoRepository.count()
         )
     }
 }

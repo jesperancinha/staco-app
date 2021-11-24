@@ -1,9 +1,9 @@
 package org.jesperancinha.enterprise.staco.jpa.security.local.prod
 
 import org.springframework.context.annotation.Profile
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
 @Profile("localprod && !test")
-interface UserRepository : JpaRepository<ApplicationUser?, String?> {
+interface UserRepository : CoroutineCrudRepository<ApplicationUser?, String?> {
     fun findUserByName(name: String?): ApplicationUser?
 }

@@ -3,18 +3,15 @@ package org.jesperancinha.enterprise.staco.jpa.domain
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.Table
+import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.Version
+import org.springframework.data.domain.Persistable
+import org.springframework.data.relational.core.mapping.Table
 
 @Table
-@Entity
 data class StaCo(
     @field: Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    override val id: Long? = null,
+    override val id: Long?,
     override val description: String?,
     override var year: String?,
     override var value: String?,
@@ -23,7 +20,13 @@ data class StaCo(
     override val internalDiameterMM: String?,
     override val heightMM: String?,
     override val widthMM: String?,
-) : IStaCo
+    @field: Version
+    val version: Long? = null,
+) : IStaCo, Persistable<String> {
+    override fun getId(): String = id.toString()
+
+    override fun isNew(): Boolean = (version ?: 0) <= 0
+}
 
 
 internal val StaCo.toDto: StaCoDto
@@ -40,6 +43,7 @@ internal val StaCo.toDto: StaCoDto
 
 internal val StaCoDto.toData: StaCo
     get() = StaCo(
+        id = null,
         description = description,
         year = year,
         value = value,

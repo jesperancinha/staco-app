@@ -1,5 +1,8 @@
 package org.jesperancinha.enterprise.staco.jpa.security.local.prod
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -64,15 +67,17 @@ class AuthorizationServerConfigurer(
 
     @Bean
     fun runner(): CommandLineRunner? {
-        return CommandLineRunner { args: Array<String?>? ->
+        return CommandLineRunner {
             run {
-                val user = ApplicationUser()
-                user.name = "admin"
-                user.role = "ROLE_ADMIN"
-                user.password = passwordEncoder.encode("admin")
-                user.date = Timestamp.valueOf(LocalDateTime.now())
-                user.email = "thismail@thatmail.thatscope"
-                userRepository.save(user)
+                CoroutineScope(IO).launch {
+                    val user = ApplicationUser()
+                    user.name = "admin"
+                    user.role = "ROLE_ADMIN"
+                    user.password = passwordEncoder.encode("admin")
+                    user.date = Timestamp.valueOf(LocalDateTime.now())
+                    user.email = "thismail@thatmail.thatscope"
+                    userRepository.save(user)
+                }
             }
         }
     }

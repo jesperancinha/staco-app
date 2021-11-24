@@ -25,18 +25,18 @@ class StaCoController(
     var loginService: LoginService
 ) {
     @GetMapping("staco/login")
-    fun login(httpServletResponse: HttpServletResponse) {
+    suspend fun login(httpServletResponse: HttpServletResponse) {
         httpServletResponse.addHeader("Location", "http://localhost:4200/search")
         httpServletResponse.status = 302
     }
 
     @PostMapping("staco/logout")
-    fun logout(request: HttpServletRequest, response: HttpServletResponse) {
-        loginService.logout(request)
+    suspend fun logout(request: HttpServletRequest, response: HttpServletResponse) {
+//        loginService.logout(request)
     }
 
     @GetMapping("staco/all/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
-    fun getAllInAllBySearchItem(
+    suspend fun getAllInAllBySearchItem(
         @PathVariable
         @Size(min = 1, max = 10)
         @Pattern(regexp = "[a-zA-Z0-9 ]*")

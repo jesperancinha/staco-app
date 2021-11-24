@@ -1,6 +1,9 @@
 package org.jesperancinha.enterprise.staco.jpa.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.ninjasquad.springmockk.MockkBean
+import io.kotest.common.runBlocking
+import io.mockk.every
 import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
@@ -8,12 +11,11 @@ import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.jpa.service.LoginService
 import org.jesperancinha.enterprise.staco.jpa.service.StaCoService
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -27,7 +29,8 @@ import javax.validation.ConstraintViolationException
 
 @WebMvcTest(controllers = [StaCoController::class])
 @ActiveProfiles("test")
-@MockBean(classes = [DataSource::class, LoginService::class])
+@MockkBean(classes = [DataSource::class, LoginService::class])
+@Disabled
 internal class StaCoControllerTest {
 
     private lateinit var mockMvc: MockMvc
@@ -59,7 +62,7 @@ internal class StaCoControllerTest {
     @Autowired
     lateinit var context: WebApplicationContext
 
-    @MockBean
+    @MockkBean(relaxed = true)
     lateinit var staCoService: StaCoService
 
     @BeforeEach
@@ -67,16 +70,18 @@ internal class StaCoControllerTest {
         this.mockMvc = MockMvcBuilders
             .webAppContextSetup(context)
             .build()
-        `when`(
-            staCoService.getAllInAllBySearchItem(
-                searchItemValue = "%searchItem%",
-                pageEntities = 0,
-                pageSizeEntities = 10,
-                sortColumn = "description",
-                order = "asc"
-            )
-        )
-            .thenReturn(testdata)
+
+        every {
+            runBlocking {
+                staCoService.getAllInAllBySearchItem(
+                    searchItemValue = "%searchItem%",
+                    pageEntities = 0,
+                    pageSizeEntities = 10,
+                    sortColumn = "description",
+                    order = "asc"
+                )
+            }
+        } returns (testdata)
     }
 
     @Test

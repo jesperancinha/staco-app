@@ -1,5 +1,6 @@
 package org.jesperancinha.enterprise.staco.jpa.security.local.prod
 
+import kotlinx.coroutines.runBlocking
 import org.springframework.context.annotation.Profile
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
@@ -11,13 +12,10 @@ import org.springframework.stereotype.Service
 @Profile("localprod && !test")
 class UserDetailsService(private val userRepository: UserRepository) : UserDetailsService {
 
-    override fun loadUserByUsername(username: String): UserDetails {
-        val userEntity = userRepository.findById(username)
-        if (userEntity.isPresent) {
-            val user = userEntity.get()
-            return createUserDetails(user)
-        }
-        throw RuntimeException("Credentials failure!")
+    override fun loadUserByUsername(username: String): UserDetails = runBlocking {
+        userRepository.findById(username)?.let {
+            createUserDetails(it)
+        } ?: throw RuntimeException("Credentials failure!")
     }
 
     private fun createUserDetails(applicationUser: ApplicationUser): User {

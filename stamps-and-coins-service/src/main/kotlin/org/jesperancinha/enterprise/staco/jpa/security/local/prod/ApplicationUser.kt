@@ -1,22 +1,17 @@
 package org.jesperancinha.enterprise.staco.jpa.security.local.prod
 
 import org.springframework.context.annotation.Profile
+import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Column
+import org.springframework.data.relational.core.mapping.Table
 import org.springframework.lang.Nullable
 import java.sql.Timestamp
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.Table
 
-@Entity
-@Table(name = "users")
+@Table("users")
 @Profile("localprod && !test")
 class ApplicationUser {
     @Id
-    @Column(unique = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     var id: Long? = null
 
     @Column
@@ -31,7 +26,6 @@ class ApplicationUser {
     @Column
     var role: String? = null
 
-    @get:Nullable
     @Column
     @Nullable
     var date: Timestamp? = null

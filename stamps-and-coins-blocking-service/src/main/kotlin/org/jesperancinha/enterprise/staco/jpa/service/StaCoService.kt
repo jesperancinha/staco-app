@@ -59,8 +59,8 @@ class StaCoService(
         return ResponseDto(
             staCoDtos = contentEntities.map { it.toDto },
             currentPage = pageEntities,
-            totalRecords = searchEntities.numberOfElements,
-            totalPages = searchEntities.totalPages
+            totalRecords = searchEntities.numberOfElements.toLong(),
+            totalPages = searchEntities.totalPages.toLong()
         )
     }
 }

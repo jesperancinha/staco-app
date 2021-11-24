@@ -2,11 +2,13 @@ package org.jesperancinha.enterprise.staco.jpa.repository
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import org.springframework.data.repository.PagingAndSortingRepository
+import org.springframework.data.repository.kotlin.CoroutineSortingRepository
+import org.springframework.data.repository.reactive.ReactiveSortingRepository
+import org.springframework.stereotype.Repository
+import reactor.core.publisher.Flux
 
-interface StaCoRepository : PagingAndSortingRepository<StaCo, Long> {
+interface StaCoSearchRepository : ReactiveSortingRepository<StaCo, Long> {
 
     fun findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
         description: String,
@@ -18,5 +20,8 @@ interface StaCoRepository : PagingAndSortingRepository<StaCo, Long> {
         heightMM: String,
         widthMM: String,
         pageable: Pageable
-    ): Page<StaCo>
+    ): Flux<StaCo>
 }
+
+@Repository
+interface StaCoRepository:CoroutineSortingRepository<StaCo, Long>

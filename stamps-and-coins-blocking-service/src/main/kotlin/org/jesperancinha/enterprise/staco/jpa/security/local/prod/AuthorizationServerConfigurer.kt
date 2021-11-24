@@ -27,7 +27,6 @@ class AuthorizationServerConfigurer(
     AuthorizationServerConfigurerAdapter() {
 
 
-    @Throws(Exception::class)
     override fun configure(clients: ClientDetailsServiceConfigurer) {
         clients.inMemory()
             .withClient(CLIENT_ID)

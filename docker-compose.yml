@@ -46,7 +46,7 @@ services:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-1
     container_name: aws-cli-1
-    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/username --value postgres --type text
+    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/username --value postgres --type text
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
@@ -64,7 +64,7 @@ services:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-2
     container_name: aws-cli-2
-    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/password --value admin --type text
+    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/password --value admin --type text
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}

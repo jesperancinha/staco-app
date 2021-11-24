@@ -25,7 +25,7 @@ create type sta_co_json as
     "year" varchar (255),
     "value" varchar (255),
     currency varchar (255),
-    "diameterMM" varchar (255),
+    "diameter_MM" varchar (255),
     "internalDiameterMM" varchar (255),
     "heightMM" varchar (255),
     "widthMM" varchar (255));
@@ -38,7 +38,7 @@ with sta_co_json (doc) as (
 )
 
 insert
-into sta_co (id, description, year, value, currency, diametermm, internal_diametermm, heightmm, widthmm)
+into sta_co (id, description, year, value, currency, diameter_mm, internal_diameter_mm, height_mm, width_mm)
 select ROW_NUMBER() OVER (
     ORDER BY description
     ),

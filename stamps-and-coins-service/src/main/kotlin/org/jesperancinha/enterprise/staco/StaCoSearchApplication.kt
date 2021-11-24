@@ -1,7 +1,9 @@
 package org.jesperancinha.enterprise.staco
 
 import io.r2dbc.spi.ConnectionFactory
+import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.cache.annotation.EnableCaching
@@ -16,10 +18,16 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 @EnableCaching
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-class StaCoSearchApplication {
+class StaCoSearchApplication(
+    @Value("\${spring.r2dbc.username}")
+    private val postgresUsername: String
+) {
+
+    private val logger = KotlinLogging.logger {}
 
     @Bean
     fun initializer(@Qualifier("connectionFactory") connectionFactory: ConnectionFactory): ConnectionFactoryInitializer? {
+        logger.info("Using postgres user: $postgresUsername")
         val initializer = ConnectionFactoryInitializer()
         initializer.setConnectionFactory(connectionFactory)
         val resource = ResourceDatabasePopulator(ClassPathResource("schema.sql"))

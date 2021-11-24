@@ -27,7 +27,7 @@ class StaCoSearchApplication(
     private val logger = KotlinLogging.logger {}
 
     @Bean
-    @Profile("startup")
+    @Profile("starter")
     fun initializer(@Qualifier("connectionFactory") connectionFactory: ConnectionFactory): ConnectionFactoryInitializer? {
         logger.info("Using postgres user: $postgresUsername")
         val initializer = ConnectionFactoryInitializer()

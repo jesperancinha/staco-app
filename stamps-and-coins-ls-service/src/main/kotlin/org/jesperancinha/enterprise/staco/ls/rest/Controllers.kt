@@ -24,18 +24,13 @@ internal class StaCoController(
     val stacoDao: StacoDao
 ) {
     @PostMapping("coin")
-    suspend fun sendCoin(@RequestBody staCoDto: StaCoDto) {
-        stacoDao.saveCoin(staCoDto)
-    }
+    suspend fun sendCoin(@RequestBody staCoDto: StaCoDto): StaCoDto = stacoDao.saveCoin(staCoDto)
 
     @PostMapping("stamp")
-    suspend fun sendStamp(@RequestBody staCoDto: StaCoDto) {
-        stacoDao.saveStamp(staCoDto)
-    }
+    suspend fun sendStamp(@RequestBody staCoDto: StaCoDto): StaCoDto = stacoDao.saveStamp(staCoDto)
 
     @GetMapping("all")
-    fun getAll(): Flux<StaCoDto> =
-        stacoDao.getAll()
+    fun getAll(): Flux<StaCoDto> = stacoDao.getAll()
 }
 
 @RestController

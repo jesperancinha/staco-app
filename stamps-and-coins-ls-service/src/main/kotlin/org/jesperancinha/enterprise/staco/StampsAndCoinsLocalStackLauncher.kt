@@ -48,7 +48,11 @@ class StampsAndCoinsLocalStackLauncher(
         logger.info { "Starting application with postgress user $username and password $password. Shhhh! Do not tell this to anyone! It comes from Localstack!" }
     }
 
-    companion object{
+    /**
+     * This table isn't in use at the moment
+     * But I'll leave it here for your understanding and reading.
+     */
+    companion object {
         fun createTableRequest(): CreateTableRequest = CreateTableRequest.builder()
             .tableName("staco")
             .keySchema(

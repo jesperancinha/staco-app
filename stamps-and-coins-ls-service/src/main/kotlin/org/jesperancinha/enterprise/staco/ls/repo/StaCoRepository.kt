@@ -1,6 +1,6 @@
 package org.jesperancinha.enterprise.staco.ls.repo
 
-import org.springframework.context.annotation.Profile
+import mu.KotlinLogging
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -25,9 +25,11 @@ class StaCoRepository(
     val dynamoDbAsyncClient: DynamoDbAsyncClient
 ) {
 
+    private val logger = KotlinLogging.logger {}
+
     fun save(staCoEvent: Map<String, AttributeValue>): Map<String, AttributeValue> {
         val putItemRequest = PutItemRequest.builder()
-            .tableName("stacos")
+            .tableName(TABLE_STACOS)
             .item(staCoEvent)
             .build()
         dynamoDbAsyncClient.putItem(putItemRequest).get()
@@ -44,23 +46,24 @@ class StaCoRepository(
      **/
     fun findAll(): Flux<MutableMap<String, AttributeValue>> {
         return Mono.fromFuture(
-            dynamoDbAsyncClient.scan(ScanRequest.builder().tableName("stacos").build())
+            dynamoDbAsyncClient.scan(ScanRequest.builder().tableName(TABLE_STACOS).build())
         ).map { it.items() }.flatMapIterable { it }
     }
 
 
     @PostConstruct
-    @Profile("sta")
     fun createTableIfNeeded() {
         val listTableResponse: CompletableFuture<ListTablesResponse> = dynamoDbAsyncClient.listTables()
         val createTableRequest = listTableResponse
             .thenCompose { response: ListTablesResponse ->
                 val tableExist = response
                     .tableNames()
-                    .contains("stacos")
+                    .contains(TABLE_STACOS)
                 if (!tableExist) {
+                    logger.info { "Table $TABLE_STACOS does not exist! Creating..." }
                     return@thenCompose createTable()
                 } else {
+                    logger.info { "Table $TABLE_STACOS already exists" }
                     return@thenCompose CompletableFuture.completedFuture<CreateTableResponse>(null)
                 }
             }
@@ -70,21 +73,26 @@ class StaCoRepository(
     private fun createTable(): CompletableFuture<CreateTableResponse> {
         val keySchemaElement: KeySchemaElement = KeySchemaElement
             .builder()
-            .attributeName("id")
+            .attributeName(ID)
             .keyType(KeyType.HASH)
             .build()
         val dynId: AttributeDefinition = AttributeDefinition
             .builder()
-            .attributeName("id")
+            .attributeName(ID)
             .attributeType(ScalarAttributeType.S)
             .build()
         val request: CreateTableRequest = CreateTableRequest.builder()
-            .tableName("stacos")
+            .tableName(TABLE_STACOS)
             .keySchema(keySchemaElement)
             .attributeDefinitions(dynId)
             .billingMode(BillingMode.PAY_PER_REQUEST)
             .build()
         return dynamoDbAsyncClient.createTable(request)
+    }
+
+    companion object {
+        const val TABLE_STACOS = "stacos"
+        const val ID = "id"
     }
 
 }

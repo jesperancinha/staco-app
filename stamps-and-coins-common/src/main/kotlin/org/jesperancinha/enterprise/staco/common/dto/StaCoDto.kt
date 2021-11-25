@@ -2,8 +2,20 @@ package org.jesperancinha.enterprise.staco.common.dto
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 
+/**
+ * Either the description is null or the description must be at least 10 characters long.
+ */
+class Description(val value: String?) {
+    init {
+        value?.let {
+            require(value.isNotBlank())
+            require(value.length > 10)
+        }
+    }
+}
+
 data class StaCoDto(
-    val description: String? = null,
+    val description: Description? = null,
     val year: String? = null,
     val value: String? = null,
     val currency: CurrencyType? = null,
@@ -22,7 +34,7 @@ data class StaCoDto(
             internalDiameterMM: String?,
         ): StaCoDto {
             return StaCoDto(
-                description = description,
+                description = Description(description),
                 year = year,
                 value = value,
                 currency = currency,
@@ -42,7 +54,7 @@ data class StaCoDto(
             widthMM: String?
         ): StaCoDto {
             return StaCoDto(
-                description = description,
+                description = Description(description),
                 year = year,
                 value = value,
                 currency = currency,

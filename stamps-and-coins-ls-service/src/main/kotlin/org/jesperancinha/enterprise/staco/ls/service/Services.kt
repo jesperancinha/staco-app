@@ -2,6 +2,7 @@ package org.jesperancinha.enterprise.staco.ls.service
 
 import mu.KotlinLogging
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
+import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.ls.repo.StaCoRepository
 import org.springframework.stereotype.Service
@@ -15,13 +16,14 @@ internal class StacoDao(
 ) {
     private val logger = KotlinLogging.logger {}
 
-    suspend fun saveCoin(staCoDto: StaCoDto) {
+    suspend fun saveCoin(staCoDto: StaCoDto) = run {
         staCoRepository.save(staCoDto.toEvent).toDto
-    }
+    }.also { logger.debug { "Coin $staCoDto saved in dynamoDb" } }
 
-    suspend fun saveStamp(staCoDto: StaCoDto) {
+    suspend fun saveStamp(staCoDto: StaCoDto) = run {
         staCoRepository.save(staCoDto.toEvent).toDto
-    }
+    }.also { logger.debug { "Stamp $staCoDto saved in dynamoDb" } }
+
 
     fun getAll(): Flux<StaCoDto> = staCoRepository.findAll().map { it.toDto }
 }
@@ -30,7 +32,7 @@ internal class StacoDao(
 private val StaCoDto.toEvent: Map<String, AttributeValue>
     get() = mapOf(
         "id" to AttributeValue.builder().s(UUID.randomUUID().toString()).build(),
-        "description" to AttributeValue.builder().s(description).build(),
+        "description" to AttributeValue.builder().s(description?.value).build(),
         "year" to AttributeValue.builder().s(year).build(),
         "currency" to AttributeValue.builder().s(currency.toString()).build(),
         "diameterMM" to AttributeValue.builder().s(diameterMM ?: "").build(),
@@ -41,7 +43,7 @@ private val StaCoDto.toEvent: Map<String, AttributeValue>
 
 private val Map<String, AttributeValue>.toDto: StaCoDto
     get() = StaCoDto(
-        description = this["description"]?.s(),
+        description = Description(this["description"]?.s()),
         year = this["year"]?.s(),
         currency = this["currency"]?.let { CurrencyType.valueOf(it.s()) },
         diameterMM = this["diameterMM"]?.s(),

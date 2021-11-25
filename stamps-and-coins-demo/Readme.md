@@ -11,6 +11,8 @@ curl -v -F "image=@coin-sample.png" http://localhost:8082/api/staco/ls/images/sa
 
 ```shell
 curl -v -H "Content-Type: application/json" -d @coin.json http://localhost:8082/api/staco/ls/stacos/coin
+#This test fails because description exists and is shorter than 10 characters
+curl -v -H "Content-Type: application/json" -d @coin_desc_fail.json http://localhost:8082/api/staco/ls/stacos/coin
 aws dynamodb describe-table --table-name stacos
 aws dynamodb scan --table-name stacos
 ```

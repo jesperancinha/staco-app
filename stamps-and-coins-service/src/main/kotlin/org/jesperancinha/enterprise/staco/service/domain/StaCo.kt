@@ -2,6 +2,7 @@ package org.jesperancinha.enterprise.staco.service.domain
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
+import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.Version
@@ -31,7 +32,7 @@ data class StaCo(
 
 internal val StaCo.toDto: StaCoDto
     get() = StaCoDto(
-        description,
+        Description(description),
         year,
         value,
         currency,
@@ -44,7 +45,7 @@ internal val StaCo.toDto: StaCoDto
 internal val StaCoDto.toData: StaCo
     get() = StaCo(
         id = null,
-        description = description,
+        description = description?.value,
         year = year,
         value = value,
         currency = currency,

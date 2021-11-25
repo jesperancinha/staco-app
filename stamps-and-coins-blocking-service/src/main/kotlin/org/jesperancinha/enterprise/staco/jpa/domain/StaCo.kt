@@ -2,7 +2,9 @@ package org.jesperancinha.enterprise.staco.jpa.domain
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
+import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
@@ -16,7 +18,8 @@ import javax.persistence.Table
 data class StaCo(
     @field: Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    override val stacoId: Long? = null,
+    @Column(name = "id")
+    override val stacoId: String? = null,
     override val description: String?,
     override var year: String?,
     override var value: String?,
@@ -31,7 +34,8 @@ data class StaCo(
 
 internal val StaCo.toDto: StaCoDto
     get() = StaCoDto(
-        description,
+        null,
+        Description(description),
         year,
         value,
         currency,
@@ -43,7 +47,7 @@ internal val StaCo.toDto: StaCoDto
 
 internal val StaCoDto.toData: StaCo
     get() = StaCo(
-        description = description,
+        description = description.toString(),
         year = year,
         value = value,
         currency = currency,

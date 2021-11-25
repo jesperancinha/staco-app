@@ -19,7 +19,7 @@ import org.springframework.data.domain.Pageable
 internal class StaCoRepositoryTest : AbstractStaCoTest() {
 
     val staCo1: StaCo = StaCoDto.createCoin(
-        description = "Queen Coin",
+        description = "Queen Coinny",
         year = "1900",
         value = "10",
         currency = EUR,

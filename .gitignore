@@ -40,3 +40,6 @@ node_modules
 
 # Gradle
 .gradle
+
+# Batch jobs
+.csv

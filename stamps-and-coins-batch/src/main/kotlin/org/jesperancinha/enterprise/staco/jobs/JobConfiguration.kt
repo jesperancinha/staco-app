@@ -1,10 +1,8 @@
 package org.jesperancinha.enterprise.staco.jobs
 
 import org.quartz.CronTrigger.MISFIRE_INSTRUCTION_DO_NOTHING
-import org.quartz.DisallowConcurrentExecution
 import org.quartz.Job
 import org.quartz.JobDetail
-import org.quartz.JobExecutionContext
 import org.quartz.Trigger
 import org.quartz.spi.TriggerFiredBundle
 import org.springframework.beans.factory.annotation.Qualifier
@@ -17,7 +15,6 @@ import org.springframework.scheduling.quartz.CronTriggerFactoryBean
 import org.springframework.scheduling.quartz.JobDetailFactoryBean
 import org.springframework.scheduling.quartz.SchedulerFactoryBean
 import org.springframework.scheduling.quartz.SpringBeanJobFactory
-import org.springframework.stereotype.Component
 import java.util.Calendar
 import java.util.Properties
 import java.util.UUID
@@ -86,29 +83,8 @@ fun <T : Job> createJobDetail(jobClass: Class<T>, jobName: String): JobDetailFac
     return factoryBean
 }
 
-@Component
-@DisallowConcurrentExecution
-class StaCoS3LoaderJob : Job {
-
-    override fun execute(context: JobExecutionContext) {
-        print("S3!")
-        //TODO: DynamoDB
-    }
-}
-
-@Component
-@DisallowConcurrentExecution
-class DynamoDBLoaderJob : Job {
-
-    override fun execute(context: JobExecutionContext) {
-        //TODO: DynamoDB
-        print("DynamoDB!")
-    }
-}
-
 @Configuration
 class QuartzSubmitJobs {
-
     @Bean(name = ["staCoS3LoaderBeanJob"])
     fun jobMemberClassStats(): JobDetailFactoryBean {
         return createJobDetail(StaCoS3LoaderJob::class.java, "Class StaCoS3Loader Job")
@@ -122,4 +98,5 @@ class QuartzSubmitJobs {
     companion object {
         private const val CRON_EVERY_MINUTE = "0 0/1 * ? * * *"
     }
+
 }

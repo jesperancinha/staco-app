@@ -77,6 +77,42 @@ services:
     networks:
       staco_net:
         ipv4_address: ${STACO_AWS_CLI_2_IP}
+  aws-cli-3:
+    image: amazon/aws-cli:2.4.0
+    hostname: aws-cli-3
+    container_name: aws-cli-3
+    command: s3api --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket stacos
+
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
+    depends_on:
+      localstack:
+        condition: service_healthy
+    networks:
+      staco_net:
+        ipv4_address: ${STACO_AWS_CLI_3_IP}
+
+  aws-cli-4:
+    image: amazon/aws-cli:2.4.0
+    hostname: aws-cli-4
+    container_name: aws-cli-4
+    command: s3api --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket images
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
+    depends_on:
+      localstack:
+        condition: service_healthy
+    networks:
+      staco_net:
+        ipv4_address: ${STACO_AWS_CLI_4_IP}
 
 networks:
   staco_net:

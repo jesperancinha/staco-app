@@ -27,8 +27,17 @@ curl http://localhost:8082/api/staco/ls/stacos/all
 ```shell
 aws dynamodb scan --table-name stacos
 aws dynamodb delete-table --table-name stacos
-
 ```
+
+## stamps-and-coins-batch
+
+#### 1. Checking results with aws
+
+```shell
+aws s3api create-bucket --bucket stacos
+aws s3api create-bucket --bucket images
+```
+
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

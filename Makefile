@@ -32,9 +32,9 @@ docker-delete-apps: stop
 docker-localstack:
 	docker-compose rm -svf
 	docker-compose rm localstack
-	docker-compose up -d --build --remove-orphans localstack aws-cli-1 aws-cli-2
+	docker-compose up -d --build --remove-orphans localstack aws-cli-1 aws-cli-2 aws-cli-3 aws-cli-4
 docker-cli:
-	docker-compose up -d --build --remove-orphans aws-cli-1 aws-cli-2
+	docker-compose up -d --build --remove-orphans aws-cli-1 aws-cli-2 aws-cli-3 aws-cli-4
 localstack-config:
 	sleep 1
 	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/username --value "postgres"

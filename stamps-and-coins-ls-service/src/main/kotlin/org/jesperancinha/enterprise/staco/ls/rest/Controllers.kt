@@ -46,7 +46,7 @@ internal class StaCoImageController(
         return filePartMono.flatMapMany {
             it.content()
         }.map {
-            val putObjectRequest = PutObjectRequest.builder().bucket("staco").key("staco-image-$uuid.png").build()
+            val putObjectRequest = PutObjectRequest.builder().bucket("image").key("staco-image-$uuid.png").build()
             s3AsyncClient.putObject(
                 putObjectRequest,
                 AsyncRequestBody.fromBytes(it.asByteBuffer().array())

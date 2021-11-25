@@ -17,7 +17,7 @@ import javax.persistence.Table
 @Entity
 data class StaCo(
     @field: Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     override val stacoId: String? = null,
     override val description: String?,

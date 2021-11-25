@@ -38,7 +38,7 @@ internal class StaCoControllerTest: AbstractStaCoTest() {
     private val testdata = ResponseDto(
         staCoDtos = arrayListOf(
             StaCoDto.createCoin(
-                description = "Queen Coin",
+                description = "Queen Coinny",
                 year = "1900",
                 value = "10",
                 currency = EUR,

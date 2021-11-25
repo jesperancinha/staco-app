@@ -17,7 +17,7 @@ create table authorities
 
 create table sta_co
 (
-    id                   bigint primary key,
+    id                   varchar(50),
     description          varchar(50),
     year                 varchar(50),
     value                varchar(50),

@@ -7,12 +7,14 @@ import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.Version
 import org.springframework.data.domain.Persistable
+import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 
 @Table
 data class StaCo(
     @field: Id
-    override val id: Long?,
+    @field: Column("id")
+    override val stacoId: String?,
     override val description: String?,
     override var year: String?,
     override var value: String?,
@@ -24,14 +26,15 @@ data class StaCo(
     @field: Version
     val version: Long? = null,
 ) : IStaCo, Persistable<String> {
-    fun getStacoId(): String = stacoId.toString()
 
+    override fun getId(): String = stacoId.toString()
     override fun isNew(): Boolean = (version ?: 0) <= 0
 }
 
 
 internal val StaCo.toDto: StaCoDto
     get() = StaCoDto(
+        null,
         Description(description),
         year,
         value,

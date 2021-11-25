@@ -28,13 +28,13 @@ import org.testcontainers.junit.jupiter.Testcontainers
 internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
 
     private val staCo1: StaCo = StaCoDto.createCoin(
-        description = "Queen Coin",
+        description = "Queen Coinny",
         year = "1900",
         value = "10",
         currency = EUR,
         diameterMM = "10",
         internalDiameterMM = "0"
-    ).toData.copy(stacoId = 1)
+    ).toData.copy(stacoId = "1")
 
     private val staCo2: StaCo = StaCoDto.createStamp(
         description = "Queen Stamp",
@@ -43,7 +43,7 @@ internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
         currency = EUR,
         widthMM = "10",
         heightMM = "0"
-    ).toData.copy(stacoId = 2)
+    ).toData.copy(stacoId = "2")
 
 
     @Autowired

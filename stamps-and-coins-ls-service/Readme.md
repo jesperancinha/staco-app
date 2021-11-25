@@ -1,5 +1,9 @@
 # Stamps and Coins LocalStack Service
 
+## Test Endpoints
+
+1. [http://localhost:8082/api/staco/ls/stacos/all](http://localhost:8082/api/staco/ls/stacos/all)
+
 ## References
 
 - [Microservice: Async Rest Client to DynamoDB using Spring Boot](https://dzone.com/articles/java-microservice-async-rest-client-to-dynamodb-us)

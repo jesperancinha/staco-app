@@ -54,7 +54,7 @@ class StampsAndCoinsLocalStackLauncher(
             .keySchema(
                 KeySchemaElement.builder()
                     .keyType(HASH)
-                    .attributeName("dynId")
+                    .attributeName("id")
                     .build()
             )
             .attributeDefinitions(

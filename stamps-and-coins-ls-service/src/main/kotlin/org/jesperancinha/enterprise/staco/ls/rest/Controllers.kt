@@ -3,12 +3,14 @@ package org.jesperancinha.enterprise.staco.ls.rest
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.ls.service.StacoDao
 import org.springframework.http.codec.multipart.FilePart
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.bind.annotation.RestController
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import software.amazon.awssdk.core.async.AsyncRequestBody
 import software.amazon.awssdk.services.s3.S3AsyncClient
@@ -21,16 +23,19 @@ import java.util.UUID
 internal class StaCoController(
     val stacoDao: StacoDao
 ) {
-
     @PostMapping("coin")
-    fun sendCoin(@RequestBody staCoDto: StaCoDto) {
+    suspend fun sendCoin(@RequestBody staCoDto: StaCoDto) {
         stacoDao.saveCoin(staCoDto)
     }
 
     @PostMapping("stamp")
-    fun sendStamp(@RequestBody staCoDto: StaCoDto) {
+    suspend fun sendStamp(@RequestBody staCoDto: StaCoDto) {
         stacoDao.saveStamp(staCoDto)
     }
+
+    @GetMapping("all")
+    fun getAll(): Flux<StaCoDto> =
+        stacoDao.getAll()
 }
 
 @RestController
@@ -41,7 +46,7 @@ internal class StaCoImageController(
     @PostMapping("/save/{id}")
     fun saveUser(
         @RequestPart(value = "image", required = false) filePartMono: Mono<FilePart>,
-        @PathVariable("id") uuid:UUID
+        @PathVariable("id") uuid: UUID
     ): Mono<Void> {
         return filePartMono.flatMapMany {
             it.content()

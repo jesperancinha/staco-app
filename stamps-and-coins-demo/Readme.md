@@ -1,16 +1,32 @@
 # Stamps and Coins Demo
 
+
+## stamps-and-coins-ls-service
+
+#### 1. Talking with the API
 ```shell
-curl -v -F "image=@stamp-sample.png" http://localhost:8080/api/staco/ls/images/save/$(uuidgen)
-curl -v -F "image=@coin-sample.png" http://localhost:8080/api/staco/ls/images/save/$(uuidgen)
+curl -v -F "image=@stamp-sample.png" http://localhost:8082/api/staco/ls/images/save/$(uuidgen)
+curl -v -F "image=@coin-sample.png" http://localhost:8082/api/staco/ls/images/save/$(uuidgen)
 ```
 
 ```shell
-curl -v -H "Content-Type: application/json" -d @coin.json http://localhost:8080/api/staco/ls/stacos/coin
+curl -v -H "Content-Type: application/json" -d @coin.json http://localhost:8082/api/staco/ls/stacos/coin
 aws dynamodb describe-table --table-name stacos
 aws dynamodb scan --table-name stacos
 ```
 
+```shell
+curl http://localhost:8082/api/staco/ls/stacos/all
+```
+
+#### 2. Checking results with aws
+>Remember to run `. ../bash/docker-setup.sh`
+
+```shell
+aws dynamodb scan --table-name stacos
+aws dynamodb delete-table --table-name stacos
+
+```
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

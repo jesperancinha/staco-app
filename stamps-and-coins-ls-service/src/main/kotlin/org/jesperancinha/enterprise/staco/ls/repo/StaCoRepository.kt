@@ -1,9 +1,9 @@
 package org.jesperancinha.enterprise.staco.ls.repo
 
-import mu.KotlinLogging
-import org.jesperancinha.enterprise.staco.ls.domain.StaCo
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Repository
+import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -15,7 +15,7 @@ import software.amazon.awssdk.services.dynamodb.model.KeyType
 import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest
 import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
-import java.util.UUID
+import software.amazon.awssdk.services.dynamodb.model.ScanRequest
 import java.util.concurrent.CompletableFuture
 import javax.annotation.PostConstruct
 
@@ -24,17 +24,30 @@ import javax.annotation.PostConstruct
 class StaCoRepository(
     val dynamoDbAsyncClient: DynamoDbAsyncClient
 ) {
-    private val logger = KotlinLogging.logger {}
 
-    fun save(staCo: StaCo): StaCo =
-        staCo.copy(dynId = UUID.randomUUID().toString()).also {
-            val putItemRequest = PutItemRequest.builder()
-                .tableName("stacos")
-                .item(it.toEvent)
-                .build()
-            dynamoDbAsyncClient.putItem(putItemRequest).get()
-            logger.info { "Saved item $staCo" }
-        }
+    fun save(staCoEvent: Map<String, AttributeValue>): Map<String, AttributeValue> {
+        val putItemRequest = PutItemRequest.builder()
+            .tableName("stacos")
+            .item(staCoEvent)
+            .build()
+        dynamoDbAsyncClient.putItem(putItemRequest).get()
+        return staCoEvent
+    }
+
+    /**
+     * We take advantage of the fromFuture function provided by Mono.
+     * We then get the items and flatMap them
+     * The only thing we block is the retrieval of the items.
+     * The function itself is not blocked.
+     * Since Flux belongs to WebFlux and not coroutines, we don't use suspend in this case
+     * Flux is itself already reactive, although in a completely different setting than flow.
+     **/
+    fun findAll(): Flux<MutableMap<String, AttributeValue>> {
+        return Mono.fromFuture(
+            dynamoDbAsyncClient.scan(ScanRequest.builder().tableName("stacos").build())
+        ).map { it.items() }.flatMapIterable { it }
+    }
+
 
     @PostConstruct
     @Profile("sta")
@@ -57,52 +70,12 @@ class StaCoRepository(
     private fun createTable(): CompletableFuture<CreateTableResponse> {
         val keySchemaElement: KeySchemaElement = KeySchemaElement
             .builder()
-            .attributeName("dynId")
-            .keyType(KeyType.HASH)
-            .build()
-        val keySchemaElementD: KeySchemaElement = KeySchemaElement
-            .builder()
-            .attributeName("description")
+            .attributeName("id")
             .keyType(KeyType.HASH)
             .build()
         val dynId: AttributeDefinition = AttributeDefinition
             .builder()
-            .attributeName("dynId")
-            .attributeType(ScalarAttributeType.S)
-            .build()
-        val description: AttributeDefinition = AttributeDefinition
-            .builder()
-            .attributeName("description")
-            .attributeType(ScalarAttributeType.S)
-            .build()
-        val year: AttributeDefinition = AttributeDefinition
-            .builder()
-            .attributeName("year")
-            .attributeType(ScalarAttributeType.S)
-            .build()
-        val currency: AttributeDefinition = AttributeDefinition
-            .builder()
-            .attributeName("currency")
-            .attributeType(ScalarAttributeType.S)
-            .build()
-        val diameterMM: AttributeDefinition = AttributeDefinition
-            .builder()
-            .attributeName("diameterMM")
-            .attributeType(ScalarAttributeType.S)
-            .build()
-        val internalDiameterMM: AttributeDefinition = AttributeDefinition
-            .builder()
-            .attributeName("internalDiameterMM")
-            .attributeType(ScalarAttributeType.S)
-            .build()
-        val heightMM: AttributeDefinition = AttributeDefinition
-            .builder()
-            .attributeName("heightMM")
-            .attributeType(ScalarAttributeType.S)
-            .build()
-        val widthMM: AttributeDefinition = AttributeDefinition
-            .builder()
-            .attributeName("widthMM")
+            .attributeName("id")
             .attributeType(ScalarAttributeType.S)
             .build()
         val request: CreateTableRequest = CreateTableRequest.builder()
@@ -114,17 +87,4 @@ class StaCoRepository(
         return dynamoDbAsyncClient.createTable(request)
     }
 
-
 }
-
-private val StaCo.toEvent: Map<String, AttributeValue>
-    get() = mapOf(
-        "dynId" to AttributeValue.builder().s(dynId).build(),
-//        "description" to AttributeValue.builder().s(description).build(),
-//        "year" to AttributeValue.builder().s(year).build(),
-//        "currency" to AttributeValue.builder().s(currency.toString()).build(),
-//        "diameterMM" to AttributeValue.builder().s(diameterMM).build(),
-//        "internalDiameterMM" to AttributeValue.builder().s(internalDiameterMM).build(),
-//        "heightMM" to AttributeValue.builder().s(heightMM).build(),
-//        "widthMM" to AttributeValue.builder().s(widthMM).build()
-    )

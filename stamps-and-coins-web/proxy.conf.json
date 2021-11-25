@@ -1,17 +1,11 @@
 {
-  "/api/staco/*": {
+  "/api/staco/service/*": {
     "target": "http://localhost:8081",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
   },
-  "/logout": {
-    "target": "http://localhost:8081",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true
-  },
-  "/login": {
+  "/api/staco/ls/*": {
     "target": "http://localhost:8081",
     "secure": false,
     "logLevel": "debug",

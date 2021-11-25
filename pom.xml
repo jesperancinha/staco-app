@@ -306,7 +306,7 @@
                 </executions>
                 <configuration>
                     <compilerPlugins>
-                        <plugin>noarg</plugin>
+                        <plugin>no-arg</plugin>
                         <plugin>jpa</plugin>
                         <plugin>spring</plugin>
                     </compilerPlugins>

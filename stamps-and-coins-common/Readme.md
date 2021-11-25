@@ -1,11 +1,4 @@
-# Stamps and Coins LocalStack Service
-
-## References
-
-- [Microservice: Async Rest Client to DynamoDB using Spring Boot](https://dzone.com/articles/java-microservice-async-rest-client-to-dynamodb-us)
-- [DynamoDB CLI Commands & Query Examples Cheat Sheet](https://dynobase.dev/dynamodb-cli-query-examples/)
-- [Spring Boot and AWS Parameter Store](https://source.coveo.com/2018/08/03/spring-boot-and-aws-parameter-store/)
-- [Spring WebFlux File Upload](https://vinsguru.medium.com/spring-webflux-file-upload-f6e3f3d3f5e1)
+# Stamps and Coins Common
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

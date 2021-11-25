@@ -31,14 +31,14 @@
 
 ### Project Layout
 
-- [Stamps and Coins Demo](./stamps-and-coins-demo) - Module used to create Demo data. It sends Coin and Stamps images and it can generate the initial data
-- [Stamps and Coins Common](./stamps-and-coins-common) - Contains common libraries, namely, Data Transfer Objects, Domain model and Parameter Store Property Provider
-- [Stamps and Coins Batch](./stamps-and-coins-batch) - Spring batch Quartz based Jobs. They dump the data from PostgreSQL to a file and ship it to S3. Another Job retrieves the data, unpacks it and sends it to DynamoDB.
-- [Stamps and Coins Service](./stamps-and-coins-service) - This is our starting point. It contains a Reactive Application which uses PostgreSQL using R2DBC repos on coroutines
-- [Stamps and Coins Local Stack Service](./stamps-and-coins-ls-service) - This application serves data in the same way as the above except that it connects to DynamoDB. All Localstack implementations are manual
-- [Stamps and Coins Cloud Server](./stamps-and-coins-cloud-service) - Uses automated configuration and tries to use Localstack as much as possible.
-- [Stamps and Coins Web](./stamps-and-coins-web) - Front End Application to explore the different implementations. Pagination is implemented
-- [Stamps and Coins Blocking Service](./stamps-and-coins-blocking-service) - The initial application that started this project back in April 2021. It is now a login authentication/authorization security exploration module, which contains implementations of BASIC Auth, OAUTH2 local Auth and OAUTH with GitHub.
+-   [Stamps and Coins Demo](./stamps-and-coins-demo) - Module used to create Demo data. It sends Coin and Stamps images and it can generate the initial data
+-   [Stamps and Coins Common](./stamps-and-coins-common) - Contains common libraries, namely, Data Transfer Objects, Domain model and Parameter Store Property Provider
+-   [Stamps and Coins Batch](./stamps-and-coins-batch) - Spring batch Quartz based Jobs. They dump the data from PostgreSQL to a file and ship it to S3. Another Job retrieves the data, unpacks it and sends it to DynamoDB.
+-   [Stamps and Coins Service](./stamps-and-coins-service) - This is our starting point. It contains a Reactive Application which uses PostgreSQL using R2DBC repos on coroutines
+-   [Stamps and Coins Local Stack Service](./stamps-and-coins-ls-service) - This application serves data in the same way as the above except that it connects to DynamoDB. All Localstack implementations are manual
+-   [Stamps and Coins Cloud Server](./stamps-and-coins-cloud-service) - Uses automated configuration and tries to use Localstack as much as possible.
+-   [Stamps and Coins Web](./stamps-and-coins-web) - Front End Application to explore the different implementations. Pagination is implemented
+-   [Stamps and Coins Blocking Service](./stamps-and-coins-blocking-service) - The initial application that started this project back in April 2021. It is now a login authentication/authorization security exploration module, which contains implementations of BASIC Auth, OAUTH2 local Auth and OAUTH with GitHub.
 ---
 ## Setup environment
 
@@ -70,7 +70,7 @@ Be sure to have [SDK-MAN](https://sdkman.io/) installed for this to work. You ca
 
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧 Under construction 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
-#### 1. Running all automatically
+#### 1.  Running all automatically
 
 ```shell
 make docker-clean-build-start
@@ -104,27 +104,27 @@ sequenceDiagram
 
 ### Videos
 
-- [Spring Boot CRUD Example using AWS DynamoDB](https://www.youtube.com/watch?v=3ay92ZdCgwQ)
-- [How to externalize Spring Boot Properties to an AWS System Manager Parameter Store](https://towardsaws.com/how-to-externalize-spring-boot-properties-to-an-aws-system-manager-parameter-store-2a945b1e856f)
-- [Setting up AWS v2 with Spring Boot and Localstack](https://www.youtube.com/watch?v=FOzAdoxdnSc)
-- [Running AWS Services In A Laptop Using LocalStack](https://www.youtube.com/watch?v=8hi9P1ffaQk)
+-   [Spring Boot CRUD Example using AWS DynamoDB](https://www.youtube.com/watch?v=3ay92ZdCgwQ)
+-   [How to externalize Spring Boot Properties to an AWS System Manager Parameter Store](https://towardsaws.com/how-to-externalize-spring-boot-properties-to-an-aws-system-manager-parameter-store-2a945b1e856f)
+-   [Setting up AWS v2 with Spring Boot and Localstack](https://www.youtube.com/watch?v=FOzAdoxdnSc)
+-   [Running AWS Services In A Laptop Using LocalStack](https://www.youtube.com/watch?v=8hi9P1ffaQk)
 
 ### Online
 
-- [From PostgreSQL to DynamoDB](https://www.dyspatch.io/blog/from-postgresql-to-dynamodb/)
-- [Amazon Web Services Systems Manager](https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm)
-- [Don’t Be Intimidated — Learn How to Run AWS on Your Local Machine With LocalStack](https://betterprogramming.pub/dont-be-intimidated-learn-how-to-run-aws-on-your-local-machine-with-localstack-2f3448462254)
-- [Spring Boot Integration Tests With AWS Services Using LocalStack](https://rieckpil.de/test-spring-applications-using-aws-with-testcontainers-and-localstack/)
-- [Using LocalStack for Development Environments](https://www.maxcode.net/blog/using-localstack-for-development-environments/)
-- [Configuring Docker Swarm as Container Orchestrator on Windows](https://koukia.ca/configuring-docker-swarm-as-container-orchestrator-on-windows-1f89a2037dac)
-- [What is a Docker Swarm](https://www.sumologic.com/glossary/docker-swarm/)
-- [Kubernetes vs. Docker](https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker/)
-- [Working with Queries in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)
-- [How to determine if Amazon DynamoDB is appropriate for your needs, and then plan your migration](https://aws.amazon.com/blogs/database/how-to-determine-if-amazon-dynamodb-is-appropriate-for-your-needs-and-then-plan-your-migration/)
-- [5 Use Cases for DynamoDB](https://rockset.com/blog/5-use-cases-for-dynamodb/)
-- [Local Stack Pro Features](https://localstack.cloud/features/#pro)
-- [LocalStack](https://github.com/localstack/localstack)
-- [LocalStack Cloud](https://localstack.cloud/)
+-   [From PostgreSQL to DynamoDB](https://www.dyspatch.io/blog/from-postgresql-to-dynamodb/)
+-   [Amazon Web Services Systems Manager](https://docs.aws.amazon.com/cli/latest/reference/ssm/index.html#cli-aws-ssm)
+-   [Don’t Be Intimidated — Learn How to Run AWS on Your Local Machine With LocalStack](https://betterprogramming.pub/dont-be-intimidated-learn-how-to-run-aws-on-your-local-machine-with-localstack-2f3448462254)
+-   [Spring Boot Integration Tests With AWS Services Using LocalStack](https://rieckpil.de/test-spring-applications-using-aws-with-testcontainers-and-localstack/)
+-   [Using LocalStack for Development Environments](https://www.maxcode.net/blog/using-localstack-for-development-environments/)
+-   [Configuring Docker Swarm as Container Orchestrator on Windows](https://koukia.ca/configuring-docker-swarm-as-container-orchestrator-on-windows-1f89a2037dac)
+-   [What is a Docker Swarm](https://www.sumologic.com/glossary/docker-swarm/)
+-   [Kubernetes vs. Docker](https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker/)
+-   [Working with Queries in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)
+-   [How to determine if Amazon DynamoDB is appropriate for your needs, and then plan your migration](https://aws.amazon.com/blogs/database/how-to-determine-if-amazon-dynamodb-is-appropriate-for-your-needs-and-then-plan-your-migration/)
+-   [5 Use Cases for DynamoDB](https://rockset.com/blog/5-use-cases-for-dynamodb/)
+-   [Local Stack Pro Features](https://localstack.cloud/features/#pro)
+-   [LocalStack](https://github.com/localstack/localstack)
+-   [LocalStack Cloud](https://localstack.cloud/)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

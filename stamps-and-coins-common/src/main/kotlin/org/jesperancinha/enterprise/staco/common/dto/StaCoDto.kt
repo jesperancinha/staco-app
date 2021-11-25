@@ -3,16 +3,15 @@ package org.jesperancinha.enterprise.staco.common.dto
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 
 data class StaCoDto(
-    val description: String?,
-    val year: String?,
-    val value: String?,
-    val currency: CurrencyType?,
-    val diameterMM: String?,
-    val internalDiameterMM: String?,
-    val heightMM: String?,
-    val widthMM: String?,
+    val description: String? = null,
+    val year: String? = null,
+    val value: String? = null,
+    val currency: CurrencyType? = null,
+    val diameterMM: String? = null,
+    val internalDiameterMM: String? = null,
+    val heightMM: String? = null,
+    val widthMM: String? = null,
 ) {
-
     companion object {
         fun createCoin(
             description: String?,

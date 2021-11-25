@@ -288,7 +288,7 @@
                 </executions>
                 <configuration>
                     <compilerPlugins>
-                        <plugin>no-arg</plugin>
+                        <plugin>noarg</plugin>
                         <plugin>jpa</plugin>
                         <plugin>spring</plugin>
                     </compilerPlugins>

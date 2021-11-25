@@ -1,10 +1,13 @@
 package org.jesperancinha.enterprise.staco.cloud.config
 
+import com.amazonaws.auth.AWSStaticCredentialsProvider
+import com.amazonaws.auth.BasicAWSCredentials
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClientBuilder
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
+import org.jesperancinha.enterprise.staco.common.aws.AwsProperties
+import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.config
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
-import software.amazon.awssdk.awscore.client.builder.AwsClientBuilder
-import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.s3.S3AsyncClient
 import software.amazon.awssdk.services.ssm.SsmAsyncClient
@@ -25,13 +28,26 @@ internal class StacoConfiguration {
     fun ssmClient(awsProperties: AwsProperties): SsmAsyncClient =
         config(awsProperties, SsmAsyncClient.builder())
 
-    fun <B : AwsClientBuilder<B, C>, C> config(
-        awsProperties: AwsProperties,
-        awsClientBuilder: AwsClientBuilder<B, C>
-    ): C {
-        return awsClientBuilder.region(Region.of(awsProperties.region))
-            .endpointOverride(awsProperties.endpoint)
-            .credentialsProvider(DefaultCredentialsProvider.create())
-            .build()
+    @Bean
+    fun dynamoDbMapperAsync(awsProperties: AwsProperties): DynamoDBMapper {
+        return DynamoDBMapper(
+            AmazonDynamoDBAsyncClientBuilder.standard()
+                .withEndpointConfiguration(
+                    com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration(
+                        awsProperties.endpoint.toString(),
+                        awsProperties.region
+                    )
+                )
+                .withCredentials(
+                    AWSStaticCredentialsProvider(
+                        BasicAWSCredentials(
+                            awsProperties.accessKey,
+                            awsProperties.secretKey
+                        )
+                    )
+                )
+                .build()
+        )
     }
+
 }

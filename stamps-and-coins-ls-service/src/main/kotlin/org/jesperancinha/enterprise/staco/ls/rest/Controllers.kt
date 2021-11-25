@@ -17,7 +17,7 @@ import java.util.UUID
 
 
 @RestController
-@RequestMapping("staco")
+@RequestMapping("stacos")
 internal class StaCoController(
     val stacoDao: StacoDao
 ) {
@@ -27,7 +27,6 @@ internal class StaCoController(
         stacoDao.saveCoin(staCoDto)
     }
 
-
     @PostMapping("stamp")
     fun sendStamp(@RequestBody staCoDto: StaCoDto) {
         stacoDao.saveStamp(staCoDto)
@@ -35,10 +34,11 @@ internal class StaCoController(
 }
 
 @RestController
+@RequestMapping("images")
 internal class StaCoImageController(
     val s3AsyncClient: S3AsyncClient
 ) {
-    @PostMapping("/staco/save/{id}")
+    @PostMapping("/save/{id}")
     fun saveUser(
         @RequestPart(value = "image", required = false) filePartMono: Mono<FilePart>,
         @PathVariable("id") uuid:UUID

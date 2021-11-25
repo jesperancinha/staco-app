@@ -34,7 +34,7 @@ internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
         currency = EUR,
         diameterMM = "10",
         internalDiameterMM = "0"
-    ).toData.copy(id = 1)
+    ).toData.copy(stacoId = 1)
 
     private val staCo2: StaCo = StaCoDto.createStamp(
         description = "Queen Stamp",
@@ -43,7 +43,7 @@ internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
         currency = EUR,
         widthMM = "10",
         heightMM = "0"
-    ).toData.copy(id = 2)
+    ).toData.copy(stacoId = 2)
 
 
     @Autowired

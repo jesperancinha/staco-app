@@ -15,6 +15,7 @@ class Description(val value: String?) {
 }
 
 data class StaCoDto(
+    val id: String? = null,
     val description: Description? = null,
     val year: String? = null,
     val value: String? = null,

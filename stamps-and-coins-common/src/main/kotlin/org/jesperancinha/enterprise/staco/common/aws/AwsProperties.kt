@@ -24,5 +24,9 @@ data class AwsProperties @ConstructorBinding constructor(
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build()
         }
+
+        const val STACOS_BUCKET= "stacos"
+        const val IMAGES_BUCKET= "images"
+        const val CREDENTIALS_BUCKET= "credentials"
     }
 }

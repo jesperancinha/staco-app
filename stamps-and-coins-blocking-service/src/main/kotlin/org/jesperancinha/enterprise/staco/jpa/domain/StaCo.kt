@@ -16,7 +16,7 @@ import javax.persistence.Table
 data class StaCo(
     @field: Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    override val id: Long? = null,
+    override val stacoId: Long? = null,
     override val description: String?,
     override var year: String?,
     override var value: String?,

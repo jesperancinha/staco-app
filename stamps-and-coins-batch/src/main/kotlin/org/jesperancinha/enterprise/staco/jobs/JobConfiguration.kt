@@ -86,13 +86,23 @@ fun <T : Job> createJobDetail(jobClass: Class<T>, jobName: String): JobDetailFac
 @Configuration
 class QuartzSubmitJobs {
     @Bean(name = ["staCoS3LoaderBeanJob"])
-    fun jobMemberClassStats(): JobDetailFactoryBean {
+    fun staCoS3LoaderBeanJob(): JobDetailFactoryBean {
         return createJobDetail(StaCoS3LoaderJob::class.java, "Class StaCoS3Loader Job")
     }
 
     @Bean(name = ["staCoS3LoaderTrigger"])
-    fun triggerMemberClassStats(@Qualifier("staCoS3LoaderBeanJob") jobDetail: JobDetail): CronTriggerFactoryBean {
+    fun staCoS3LoaderTrigger(@Qualifier("staCoS3LoaderBeanJob") jobDetail: JobDetail): CronTriggerFactoryBean {
         return createCronTrigger(jobDetail, CRON_EVERY_MINUTE, "Class StaCoS3Loader Trigger")
+    }
+
+    @Bean(name = ["staCoDynamoDBLoaderBeanJob"])
+    fun staCoDynamoDBLoaderBeanJob(): JobDetailFactoryBean {
+        return createJobDetail(StaCoDynamoDBLoaderJob::class.java, "Class StaCoDynamoDBLoader Job")
+    }
+
+    @Bean(name = ["staCoDynamoDBLoaderTrigger"])
+    fun staCoDynamoDBLoaderTrigger(@Qualifier("staCoDynamoDBLoaderBeanJob") jobDetail: JobDetail): CronTriggerFactoryBean {
+        return createCronTrigger(jobDetail, CRON_EVERY_MINUTE, "Class StaCoDynamoDBLoader Trigger")
     }
 
     companion object {

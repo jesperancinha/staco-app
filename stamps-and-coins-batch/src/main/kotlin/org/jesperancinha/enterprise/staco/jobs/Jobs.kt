@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component
 
 @Component
 @DisallowConcurrentExecution
-class StaCoS3LoaderJob() : Job {
+class StaCoS3LoaderJob : Job {
 
     @Autowired
     lateinit var awsStacoFileService: AwsStacoFileService
@@ -35,13 +35,18 @@ class StaCoS3LoaderJob() : Job {
 
 @Component
 @DisallowConcurrentExecution
-class DynamoDBLoaderJob : Job {
+class StaCoDynamoDBLoaderJob : Job {
 
     private val logger = KotlinLogging.logger {}
 
+    @Autowired
+    lateinit var awsStacoFileService: AwsStacoFileService
+
     override fun execute(context: JobExecutionContext) {
-        //TODO: DynamoDB
-        logger.info { "DynamoDB!" }
+        logger.info { "Downloading from S3 file has started..." }
+        CoroutineScope(IO).launch {
+            awsStacoFileService.downloadFileFromS3UpdateDynamoDBAndDelete()
+        }
 
     }
 }

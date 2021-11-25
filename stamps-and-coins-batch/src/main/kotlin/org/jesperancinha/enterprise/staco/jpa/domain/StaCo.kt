@@ -2,17 +2,17 @@ package org.jesperancinha.enterprise.staco.jpa.domain
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
-import org.jesperancinha.enterprise.staco.common.dto.Description
-import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.Version
 import org.springframework.data.domain.Persistable
+import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 
 @Table
 data class StaCo(
     @field: Id
-    override val id: Long?,
+    @Column("id")
+    override val stacoId: String?,
     override val description: String?,
     override var year: String?,
     override var value: String?,
@@ -24,7 +24,8 @@ data class StaCo(
     @field: Version
     val version: Long? = null,
 ) : IStaCo, Persistable<String> {
-    override fun getId(): String = id.toString()
+
+    override fun getId(): String = stacoId.toString()
 
     override fun isNew(): Boolean = (version ?: 0) <= 0
 }

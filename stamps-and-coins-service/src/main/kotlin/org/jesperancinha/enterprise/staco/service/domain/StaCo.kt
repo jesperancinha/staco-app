@@ -24,7 +24,7 @@ data class StaCo(
     @field: Version
     val version: Long? = null,
 ) : IStaCo, Persistable<String> {
-    override fun getId(): String = id.toString()
+    fun getStacoId(): String = stacoId.toString()
 
     override fun isNew(): Boolean = (version ?: 0) <= 0
 }
@@ -44,7 +44,7 @@ internal val StaCo.toDto: StaCoDto
 
 internal val StaCoDto.toData: StaCo
     get() = StaCo(
-        id = null,
+        stacoId = null,
         description = description?.value,
         year = year,
         value = value,

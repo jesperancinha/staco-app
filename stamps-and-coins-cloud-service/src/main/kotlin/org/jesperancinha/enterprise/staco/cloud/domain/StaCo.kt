@@ -16,7 +16,7 @@ data class StaCo(
     val dynId: String? = null,
 
     @DynamoDBAttribute
-    override val id: Long? = null,
+    override val stacoId: Long? = null,
 
     @DynamoDBAttribute
     override val description: String?,

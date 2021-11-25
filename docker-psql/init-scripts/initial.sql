@@ -2,7 +2,7 @@ drop table if exists sta_co;
 
 create table if not exists sta_co
 (
-    id                  bigint not null
+    id                  varchar(255) not null
         constraint staco_pkey
             primary key,
     description         varchar(255),
@@ -20,7 +20,7 @@ alter table sta_co owner to postgres;
 drop
 type if exists sta_co_json;
 create type sta_co_json as
-(id bigint ,
+(id varchar(255) ,
     description varchar (255),
     "year" varchar (255),
     "value" varchar (255),

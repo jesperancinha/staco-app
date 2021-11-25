@@ -37,6 +37,11 @@ aws dynamodb delete-table --table-name stacos
 aws s3api create-bucket --bucket stacos
 aws s3api create-bucket --bucket images
 ```
+```shell
+aws dynamodb scan --table-name stacos
+aws dynamodb delete-table --table-name stacos
+```
+
 
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈

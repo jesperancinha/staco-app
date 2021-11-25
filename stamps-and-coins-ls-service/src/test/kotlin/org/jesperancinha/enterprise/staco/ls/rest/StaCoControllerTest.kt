@@ -1,8 +1,8 @@
 package org.jesperancinha.enterprise.staco.ls.rest
 
 import io.kotest.matchers.collections.shouldContain
-import org.jesperancinha.enterprise.staco.StampsAndCoinsLocalStackLauncher.Companion.createTableRequest
 import org.jesperancinha.enterprise.staco.ls.config.LsStaCoConfiguration
+import org.jesperancinha.enterprise.staco.ls.domain.StaCoRepository.Companion.createTableRequest
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

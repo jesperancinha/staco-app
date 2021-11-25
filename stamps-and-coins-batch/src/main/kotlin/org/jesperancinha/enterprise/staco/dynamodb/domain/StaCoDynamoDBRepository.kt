@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.ls.repo
+package org.jesperancinha.enterprise.staco.dynamodb.domain
 
 import mu.KotlinLogging
 import org.springframework.stereotype.Repository
@@ -21,7 +21,7 @@ import javax.annotation.PostConstruct
 
 
 @Repository
-class StaCoRepository(
+class StaCoDynamoDBRepository(
     val dynamoDbAsyncClient: DynamoDbAsyncClient
 ) {
 

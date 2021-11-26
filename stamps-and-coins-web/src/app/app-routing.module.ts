@@ -5,6 +5,8 @@ import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
   {path: 'search', component: SearchComponent},
+  {path: 'service/', component: SearchComponent},
+  {path: 'login', component: LoginComponent},
   {path: '', component: LoginComponent}
 ];
 

@@ -1,10 +1,9 @@
-<div class="container">
-  <ul class="nav nav-pills">
-    <li *ngIf="app.token"><a routerLinkActive="active" routerLink="/search">Search</a></li>
-    <li><a routerLinkActive="active" routerLink="/">Login</a></li>
-  </ul>
+<div style="align-content: center; width: 100%; text-align: center; vertical-align: center">
+  <router-outlet style="width: 100%; align-items: center"></router-outlet>
+  <div *ngIf="appService.token">
+    <div style="width: 100%;">
+      <button (click)="logout()">Logout</button>
+    </div>
+    <div style="width: 100%"><a routerLinkActive="active" routerLink="/search">Search</a></div>
+  </div>
 </div>
-<router-outlet></router-outlet>
-<h1>Sign out - Remember that this does not work if you are using GitHub to sign in</h1>
-
-<button (click)="logout()">Logout</button >

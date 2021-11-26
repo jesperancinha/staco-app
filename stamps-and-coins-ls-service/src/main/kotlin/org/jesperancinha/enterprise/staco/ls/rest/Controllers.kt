@@ -15,14 +15,19 @@ import reactor.core.publisher.Mono
 import software.amazon.awssdk.core.async.AsyncRequestBody
 import software.amazon.awssdk.services.s3.S3AsyncClient
 import software.amazon.awssdk.services.s3.model.PutObjectRequest
+import java.security.Principal
 import java.util.UUID
-
 
 @RestController
 @RequestMapping("stacos")
 internal class StaCoController(
     val stacoDao: StacoDao
 ) {
+    @RequestMapping("/user")
+    fun user(user: Principal): Principal {
+        return user
+    }
+
     @PostMapping("coin")
     suspend fun sendCoin(@RequestBody staCoDto: StaCoDto): StaCoDto = stacoDao.saveCoin(staCoDto)
 

@@ -21,6 +21,17 @@ interface StaCoSearchRepository : ReactiveSortingRepository<StaCo, Long> {
         widthMM: String,
         pageable: Pageable
     ): Flux<StaCo>
+
+    suspend fun countStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
+        description: String,
+        year: String,
+        value: String,
+        currency: CurrencyType,
+        diameterMM: String,
+        internalDiameterMM: String,
+        heightMM: String,
+        widthMM: String
+    ): Long
 }
 
 @Repository

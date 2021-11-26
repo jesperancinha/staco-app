@@ -1,6 +1,6 @@
 import {StaCo} from "./staCo";
 
-export interface StaCoResponse {
+export interface StacoResponse {
   staCoDtos: StaCo[];
   currentPage: number;
   totalRecords: number;

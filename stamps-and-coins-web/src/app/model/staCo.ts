@@ -1,6 +1,10 @@
+interface Description {
+  value: string
+}
+
 export interface StaCo {
-  id?:number;
-  description?: string;
+  id?: number;
+  description?: Description;
   year: string;
   value: string;
   currency: string;

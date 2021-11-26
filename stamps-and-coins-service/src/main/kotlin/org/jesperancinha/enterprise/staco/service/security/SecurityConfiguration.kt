@@ -13,7 +13,6 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.server.SecurityWebFilterChain
 
-
 @Configuration
 class SecurityConfiguration {
     @Bean
@@ -45,6 +44,7 @@ class SecurityConfiguration {
             }
             .httpBasic(withDefaults())
             .formLogin(withDefaults())
+            .csrf().disable()
         return http.build()
     }
 }

@@ -9,22 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.servlet.http.HttpServletResponse
 import javax.validation.constraints.Pattern
 import javax.validation.constraints.Size
 
+@RestController
+class RedirectController {
+    @GetMapping("/")
+    fun redirect() = "status" to "UP"
+}
 
 @RestController
 @RequestMapping("stacos")
 class StaCoController(
     val staCoService: StaCoService,
 ) {
-    @GetMapping("login")
-    suspend fun login(httpServletResponse: HttpServletResponse) {
-        httpServletResponse.addHeader("Location", "http://localhost:4200/search")
-        httpServletResponse.status = 302
-    }
-
     @Validated
     @GetMapping("search/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
     suspend fun getAllInAllBySearchItem(

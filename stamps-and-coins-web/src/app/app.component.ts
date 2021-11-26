@@ -12,24 +12,15 @@ import {catchError, Observable, of, retry} from "rxjs";
 export class AppComponent {
   title = 'stamps-and-coins-manager';
 
-  constructor(private app: AppService, private http: HttpClient, private router: Router) {
-    this.app.authenticate(undefined, undefined);
+  constructor(public appService: AppService, private http: HttpClient, private router: Router) {
   }
 
   logout() {
-    let url
-    let destination
-    if (this.app.token) {
-      url = '/api/staco/logout';
-      destination = () => this.router.navigateByUrl('/');
-    } else {
-      url = '/logout';
-      destination = () => window.location.href = 'http://localhost:4200/search';
-    }
+    let url = '/api/staco/service/logout';
     this.http.post(url, {}).pipe(
       retry(3), catchError(this.handleError<string>())).subscribe(() => {
-        this.app.token = null;
-        destination();
+        this.appService.token = null;
+        window.location.href = "/login";
       }
     );
   }
@@ -38,7 +29,7 @@ export class AppComponent {
     return (error: any): Observable<T> => {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/login');
       return of(result as T);
     };
   }

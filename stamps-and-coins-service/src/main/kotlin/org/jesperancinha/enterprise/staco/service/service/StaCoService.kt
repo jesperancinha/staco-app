@@ -61,10 +61,19 @@ class StaCoService(
             staCoDtos = searchEntities,
             currentPage = pageEntities,
             totalRecords = searchEntities.size.toLong(),
-            totalPages = staCoRepository.count()
+            totalPages = staCoSearchRepository.countStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
+                description = searchItemValue,
+                year = searchItemValue,
+                value = searchItemValue,
+                currency = CurrencyType.EUR,
+                diameterMM = searchItemValue,
+                internalDiameterMM = searchItemValue,
+                heightMM = searchItemValue,
+                widthMM = searchItemValue
+            ) / pageSizeEntities
         )
     }
 
-     fun getAll() =
-         staCoRepository.findAll()
+    fun getAll() =
+        staCoRepository.findAll()
 }

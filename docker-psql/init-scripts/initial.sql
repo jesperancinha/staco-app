@@ -12,7 +12,8 @@ create table if not exists sta_co
     diameter_mm          varchar(255),
     internal_diameter_mm varchar(255),
     height_mm            varchar(255),
-    width_mm             varchar(255)
+    width_mm             varchar(255),
+    version              int
 );
 
 alter table sta_co owner to postgres;

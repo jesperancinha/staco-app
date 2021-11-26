@@ -1,44 +1,50 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {StaCo} from "../model/staCo";
-import {catchError, Observable, of, retry} from "rxjs";
+import {BehaviorSubject, catchError, Observable, of, retry} from 'rxjs';
+
+import {User} from "../model/user";
+import {StacoResponse} from "../model/staco.response";
 
 @Injectable()
 export class AppService {
-
-  token: string;
-  failedLogin: string;
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
+  token: any;
+  failedLogin: any;
 
   constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  authenticate(credentials, callback) {
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-
-    if (credentials) {
-      this.http.post('/oauth/token',
-        'grant_type=password&username=' + credentials.username + '&password=' + credentials.password + '&client_id=stamps-and-coins-client&client_secret=stamps-and-coins&scope=read&redirect_uri=http://localhost:8081/oauth',
-        {headers: headers})
-        .pipe(retry(3), catchError(this.handleError<StaCo[]>()))
-        .subscribe(response => {
-          if (response) {
-            this.token = response['access_token'];
-            this.failedLogin = null;
-            return callback && callback();
-          }
-        });
-    }
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
   }
+
+  login(username: string, password: string) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      })
+    };
+    return this.http.post<any>(`/api/staco/service/login`, `username=${username}&password=${password}`, httpOptions)
+      .pipe(
+        retry(3), catchError(this.handleError<StacoResponse>()))
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+  }
+
 
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      if (error.status == 401) {
-        this.failedLogin = "Authentication Failed!"
-      }
+      console.log(`${operation} failed: ${error.message}`);
+      console.log(result)
       return of(result as T);
     };
   }

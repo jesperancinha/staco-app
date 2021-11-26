@@ -5,13 +5,15 @@ import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 /**
  * Either the description is null or the description must be at least 10 characters long.
  */
-class Description(val value: String?) {
+data class Description(val value: String?) {
     init {
         value?.let {
             require(value.isNotBlank())
             require(value.length > 10)
         }
     }
+
+    override fun toString(): String = value ?: ""
 }
 
 data class StaCoDto(

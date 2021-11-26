@@ -26,7 +26,7 @@ export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const xhr = req.clone({
-      headers: req.headers.set('Authorization', 'Bearer ' + this.appService.token)
+      headers: req.headers.set('Authorization', 'Basic ' + this.appService.token)
     });
     return next.handle(xhr);
   }
@@ -48,9 +48,10 @@ export class XhrInterceptor implements HttpInterceptor {
     BrowserAnimationsModule,
     MatTableModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
-  providers: [AppService, {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}],
+  providers: [
+    AppService, {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

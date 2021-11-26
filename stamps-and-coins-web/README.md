@@ -11,6 +11,8 @@ npm update
 ## Installation
 
 ```bash
+npm install typescript@">=4.4.2 and <4.5.0" --save-dev
+npm install typescript@">=4.4.2 and <4.5.0" --save
 curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 yarn install
 ```

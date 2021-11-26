@@ -5,7 +5,13 @@
     "logLevel": "debug",
     "changeOrigin": true
   },
-  "/api/staco/ls/*": {
+  "/api/staco/ls/stacos": {
+    "target": "http://localhost:8082",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/api/staco/ls/images": {
     "target": "http://localhost:8082",
     "secure": false,
     "logLevel": "debug",

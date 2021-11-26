@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
-import {StaCoService} from "../../services/sta-co.service";
+import {StaCoService} from "../../services/sta.co.service";
 import {AppService} from "../../services/app.service";
 
 @Component({
@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
   sortColumn: string = 'description';
   order: string = 'asc';
 
-  constructor(private staCoService: StaCoService, private app: AppService) {
+  constructor(private staCoService: StaCoService, public appService: AppService) {
   }
 
   ngOnInit(): void {
@@ -48,6 +48,7 @@ export class SearchComponent implements OnInit {
         this.sortColumn,
         this.order)
         .subscribe(data => {
+          this.appService.token = "authenticated";
           this.allStaCos = data.staCoDtos;
           if (this.allStaCos.length < this.tableSizeEntities * (this.pageResults - 1)) {
             this.pageResults = 1;
@@ -84,4 +85,5 @@ export class SearchComponent implements OnInit {
     this.sortColumn = sortColumn;
     this.fetchData();
   }
+
 }

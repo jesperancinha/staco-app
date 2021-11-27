@@ -2,14 +2,12 @@ package org.jesperancinha.enterprise.staco.service.service
 
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.reactive.asFlow
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.service.domain.StaCo
 import org.jesperancinha.enterprise.staco.service.domain.toDto
 import org.jesperancinha.enterprise.staco.service.repository.StaCoRepository
 import org.jesperancinha.enterprise.staco.service.repository.StaCoSearchRepository
-import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
@@ -33,7 +31,7 @@ class StaCoService(
         return true
     }
 
-    @Cacheable("stacos-all")
+    //    @Cacheable("stacos-all")
     suspend fun getAllInAllBySearchItem(
         searchItemValue: String,
         pageEntities: Int,
@@ -42,15 +40,8 @@ class StaCoService(
         order: String,
     ): ResponseDto {
         val searchEntities =
-            staCoSearchRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
-                description = searchItemValue,
-                year = searchItemValue,
-                value = searchItemValue,
-                currency = CurrencyType.EUR,
-                diameterMM = searchItemValue,
-                internalDiameterMM = searchItemValue,
-                heightMM = searchItemValue,
-                widthMM = searchItemValue,
+            staCoSearchRepository.findStaCosByDescriptionLike(
+                description = "%$searchItemValue%",
                 pageable = PageRequest.of(
                     pageEntities,
                     pageSizeEntities,
@@ -61,19 +52,34 @@ class StaCoService(
             staCoDtos = searchEntities,
             currentPage = pageEntities,
             totalRecords = searchEntities.size.toLong(),
-            totalPages = staCoSearchRepository.countStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
-                description = searchItemValue,
-                year = searchItemValue,
-                value = searchItemValue,
-                currency = CurrencyType.EUR,
-                diameterMM = searchItemValue,
-                internalDiameterMM = searchItemValue,
-                heightMM = searchItemValue,
-                widthMM = searchItemValue
+            totalPages = staCoSearchRepository.countStaCosByDescriptionLike(
+                description = "%$searchItemValue%"
             ) / pageSizeEntities
         )
     }
 
     fun getAll() =
         staCoRepository.findAll()
+
+    suspend fun getUnfiltered(
+        pageEntities: Int,
+        pageSizeEntities: Int,
+        sortColumn: String,
+        order: String,
+    ): ResponseDto {
+        val searchEntities =
+            staCoSearchRepository.findStaCoBy(
+                pageable = PageRequest.of(
+                    pageEntities,
+                    pageSizeEntities,
+                    Sort.by(Sort.Direction.valueOf(order.uppercase(Locale.getDefault())), sortColumn)
+                )
+            ).asFlow().toList().map { it.toDto }
+        return ResponseDto(
+            staCoDtos = searchEntities,
+            currentPage = pageEntities,
+            totalRecords = searchEntities.size.toLong(),
+            totalPages = staCoRepository.count() / pageSizeEntities
+        )
+    }
 }

@@ -29,7 +29,7 @@ class StaCoController(
         @PathVariable
         @Size(min = 1, max = 10)
         @Pattern(regexp = "[a-zA-Z0-9 ]*")
-        search: String,
+        search: String?,
         @PathVariable
         pageEntity: Int,
         @PathVariable
@@ -39,8 +39,11 @@ class StaCoController(
         @PathVariable
         order: String,
     ): ResponseDto {
+        if (search.isNullOrEmpty()) {
+            return getUnfiltered(pageEntity, sizeEntities, sortColumn, order)
+        }
         return staCoService.getAllInAllBySearchItem(
-            searchItemValue = "%".plus(search).plus("%"),
+            searchItemValue = search,
             pageEntities = pageEntity,
             pageSizeEntities = sizeEntities,
             sortColumn = sortColumn,
@@ -52,4 +55,27 @@ class StaCoController(
     @GetMapping("all")
     fun getAll(): Flow<StaCo> =
         staCoService.getAll()
+
+
+    @GetMapping("unfiltered/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
+    suspend fun getUnfiltered(
+        @PathVariable
+        pageEntity: Int,
+        @PathVariable
+        sizeEntities: Int,
+        @PathVariable
+        sortColumn: String,
+        @PathVariable
+        order: String,
+    )
+            : ResponseDto {
+        return staCoService.getUnfiltered(
+            pageEntities = pageEntity,
+            pageSizeEntities = sizeEntities,
+            sortColumn = sortColumn,
+            order = order
+        )
+
+    }
+
 }

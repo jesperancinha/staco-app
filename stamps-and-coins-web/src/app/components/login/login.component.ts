@@ -17,7 +17,9 @@ export class LoginComponent {
     private loading: boolean;
 
     constructor(public appService: AppService, private http: HttpClient, private router: Router) {
-
+      if(!router.url.endsWith("login")){
+        router.navigateByUrl("/login")
+      }
     }
 
     login() {

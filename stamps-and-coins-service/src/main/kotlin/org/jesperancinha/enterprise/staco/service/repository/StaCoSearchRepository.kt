@@ -10,27 +10,17 @@ import reactor.core.publisher.Flux
 
 interface StaCoSearchRepository : ReactiveSortingRepository<StaCo, Long> {
 
-    fun findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
-        description: String,
-        year: String,
-        value: String,
-        currency: CurrencyType,
-        diameterMM: String,
-        internalDiameterMM: String,
-        heightMM: String,
-        widthMM: String,
+    fun findStaCoBy(
         pageable: Pageable
     ): Flux<StaCo>
 
-    suspend fun countStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
+    fun findStaCosByDescriptionLike(
         description: String,
-        year: String,
-        value: String,
-        currency: CurrencyType,
-        diameterMM: String,
-        internalDiameterMM: String,
-        heightMM: String,
-        widthMM: String
+        pageable: Pageable
+    ): Flux<StaCo>
+
+    suspend fun countStaCosByDescriptionLike(
+        description: String
     ): Long
 }
 

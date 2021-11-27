@@ -4,7 +4,6 @@ import io.kotest.common.runBlocking
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.service.repository.StaCoRepository
 import org.jesperancinha.enterprise.staco.service.repository.StaCoSearchRepository
 import org.junit.jupiter.api.BeforeEach
@@ -38,14 +37,7 @@ internal class StaCoServiceTest {
 
         val searchItem = "%Ma%"
         `when`(
-            staCoSearchRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
-                searchItem,
-                searchItem,
-                searchItem,
-                EUR,
-                searchItem,
-                searchItem,
-                searchItem,
+            staCoSearchRepository.findStaCosByDescriptionLike(
                 searchItem,
                 PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "description"))
             )
@@ -69,14 +61,7 @@ internal class StaCoServiceTest {
         verify(
             staCoSearchRepository,
             times(1)
-        ).findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
-            searchItem,
-            searchItem,
-            searchItem,
-            EUR,
-            searchItem,
-            searchItem,
-            searchItem,
+        ).findStaCosByDescriptionLike(
             searchItem,
             PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "description"))
         )

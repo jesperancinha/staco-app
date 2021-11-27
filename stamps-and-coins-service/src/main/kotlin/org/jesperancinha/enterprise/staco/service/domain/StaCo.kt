@@ -19,10 +19,10 @@ data class StaCo(
     override var year: String?,
     override var value: String?,
     override var currency: CurrencyType?,
-    override val diameterMM: String?,
-    override val internalDiameterMM: String?,
-    override val heightMM: String?,
-    override val widthMM: String?,
+    override val diameterMM: String? = "",
+    override val internalDiameterMM: String? = "",
+    override val heightMM: String? = "",
+    override val widthMM: String? = "",
     @field: Version
     val version: Long? = null,
 ) : IStaCo, Persistable<String> {

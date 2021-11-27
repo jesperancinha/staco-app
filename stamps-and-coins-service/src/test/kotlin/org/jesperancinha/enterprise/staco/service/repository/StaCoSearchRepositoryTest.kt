@@ -63,14 +63,7 @@ internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
     fun testStaCoLike_whenSearchName_thenCallSearchName(): Unit = runBlocking {
         val searchItem = "%Stamp%"
         val entityRecords =
-            staCoSearchRepository.findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
-                searchItem,
-                searchItem,
-                searchItem,
-                EUR,
-                searchItem,
-                searchItem,
-                searchItem,
+            staCoSearchRepository.findStaCosByDescriptionLike(
                 searchItem,
                 Pageable.unpaged()
             ).asFlow().toList()

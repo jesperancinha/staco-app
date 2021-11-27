@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
 import {StaCoService} from "../../services/sta.co.service";
 import {AppService} from "../../services/app.service";
+import {StacoResponse} from "../../model/staco.response";
 
 @Component({
   selector: 'search-component',
@@ -47,19 +48,26 @@ export class SearchComponent implements OnInit {
         this.currentPageStaCoSize,
         this.sortColumn,
         this.order)
-        .subscribe(data => {
-          this.appService.token = "authenticated";
-          this.allStaCos = data.staCoDtos;
-          if (this.allStaCos.length < this.tableSizeEntities * (this.pageResults - 1)) {
-            this.pageResults = 1;
-          }
-          this.pagesStaCos = [];
-          for (let i = 0; i < data.totalPages; i++) {
-            this.pagesStaCos.push(i + 1);
-          }
-        })
+        .subscribe(data => this.processResponse(data))
     } else {
-      this.allStaCos = [];
+      this.staCoService.searchUnfiltered(
+        this.currentPageStaCo,
+        this.currentPageStaCoSize,
+        this.sortColumn,
+        this.order)
+        .subscribe(data => this.processResponse(data))
+    }
+  }
+
+  private processResponse(data: StacoResponse) {
+    this.appService.token = "authenticated";
+    this.allStaCos = data.staCoDtos;
+    if (this.allStaCos.length < this.tableSizeEntities * (this.pageResults - 1)) {
+      this.pageResults = 1;
+    }
+    this.pagesStaCos = [];
+    for (let i = 0; i < data.totalPages; i++) {
+      this.pagesStaCos.push(i + 1);
     }
   }
 

@@ -1,13 +1,13 @@
-<mat-card style="width: 100%; text-align: center; align-items: center">
-  <mat-card style="width: 100%">
-    <mat-form-field appearance="fill" style="background: mediumseagreen; border-style: solid;width: 100%">
-      <mat-card-title style="width: 100%">Search here</mat-card-title>
-      <input style="border-style: solid;" width="100%" matInput [(ngModel)]="term" (keyup)="refresh()">
+<mat-card *ngIf="appService.token" style="width: 100%; text-align: center; align-items: center">
+  <mat-card style="width: 90%; height: 100px">
+    <mat-form-field appearance="fill" style="border-radius:10px; background: darkgreen; border-style: solid;width: 90%; height: 80%">
+      <mat-card-title style="width: 90%">Search here</mat-card-title>
+      <input style="border-style: solid;background: darkseagreen" width="90%" matInput [(ngModel)]="term" (keyup)="refresh()">
       <p style="color: red" *ngIf="!validationSize">Only 10 characters allowed!!</p>
       <p style="color: red" *ngIf="!validationContent">Only alphanumeric characters allowed!</p>
     </mat-form-field>
   </mat-card>
-  <mat-card style="width: 100%">
+  <mat-card style="width: 90%">
     <mat-card-title>Define Page Size</mat-card-title>
     <div class="d-flex flex-row-reverse bd-highlight mb-2">
       <div class="p-2 bd-highlight">
@@ -19,19 +19,7 @@
       </div>
     </div>
   </mat-card>
-  <mat-card *ngIf="selectedRecord" style="background: lightseagreen; width: 100%">
-    <mat-card-title *ngIf="selectedRecord">Selected record</mat-card-title>
-    <p *ngIf="selectedRecord.description.value">Description: {{selectedRecord.description.value}}</p>
-    <p *ngIf="selectedRecord.year">Year: {{selectedRecord.year}}</p>
-    <p *ngIf="selectedRecord.value">Value: {{selectedRecord.value}}</p>
-    <p *ngIf="selectedRecord.currency">Currency: {{selectedRecord.currency}}</p>
-    <p *ngIf="selectedRecord.diameterMM">Diameter: {{selectedRecord.diameterMM}}</p>
-    <p *ngIf="selectedRecord.internalDiameterMM">Internal Diameter: {{selectedRecord.internalDiameterMM}}</p>
-    <p *ngIf="selectedRecord.widthMM">Width: {{selectedRecord.widthMM}}</p>
-    <p *ngIf="selectedRecord.heightMM">Height: {{selectedRecord.heightMM}}</p>
-  </mat-card>
-
-  <mat-card *ngIf="allStaCos && allStaCos.length>0" style="background: lightskyblue">
+  <mat-card *ngIf="allStaCos && allStaCos.length>0" style="background: darkgreen; width: 90%">
     <mat-card-title>Stamps and Coins</mat-card-title>
     <table class="table">
       <thead>
@@ -60,9 +48,20 @@
       </tbody>
     </table>
   </mat-card>
-  <mat-card style="width: 100%">
+  <mat-card *ngIf="selectedRecord" style="background: darkgreen; width: 90%">
+    <mat-card-title *ngIf="selectedRecord">Selected record</mat-card-title>
+    <p *ngIf="selectedRecord.description.value">Description: {{selectedRecord.description.value}}</p>
+    <p *ngIf="selectedRecord.year">Year: {{selectedRecord.year}}</p>
+    <p *ngIf="selectedRecord.value">Value: {{selectedRecord.value}}</p>
+    <p *ngIf="selectedRecord.currency">Currency: {{selectedRecord.currency}}</p>
+    <p *ngIf="selectedRecord.diameterMM">Diameter: {{selectedRecord.diameterMM}}</p>
+    <p *ngIf="selectedRecord.internalDiameterMM">Internal Diameter: {{selectedRecord.internalDiameterMM}}</p>
+    <p *ngIf="selectedRecord.widthMM">Width: {{selectedRecord.widthMM}}</p>
+    <p *ngIf="selectedRecord.heightMM">Height: {{selectedRecord.heightMM}}</p>
+  </mat-card>
+  <mat-card style="width: 90%">
     <p *ngFor="let page of pagesStaCos" (click)="setEntityPage(page-1)"
-       style="padding: 5px; display:inline-block; background: {{currentPageStaCo == page-1? 'green': 'transparent' }}">{{page}}</p>
+       style="padding: 5px; display:inline-block; background: {{currentPageStaCo == page-1? 'green': 'white' }}">{{page}}</p>
   </mat-card>
 
 </mat-card>

@@ -14,13 +14,13 @@ export class SearchComponent implements OnInit {
   term: string = "";
   allStaCos: StaCo[];
   pageResults = 1;
-  tableSizeEntities = 10;
+  tableSizeEntities = 5;
   tableSizes = [5, 10, 15, 20];
   selectedRecord: StaCo;
   validationSize: boolean = true;
   validationContent: boolean = true;
   currentPageStaCo: number = 0;
-  currentPageStaCoSize: number = 10;
+  currentPageStaCoSize: number = 5;
   pagesStaCos: number[] = [];
   sortColumn: string = 'description';
   order: string = 'asc';

@@ -1,25 +1,29 @@
-<mat-card style="width: 100%; text-align: center">
-  <div class="alert alert-danger" [hidden]="!error">
-    There was a problem logging in. Please try again.
-  </div>
+<mat-grid-list cols="1" rows="1" rowHeight="2:1">
+  <mat-grid-tile>
+    <mat-card style="text-align: center">
+      <div class="alert alert-danger" [hidden]="!error">
+        There was a problem logging in. Please try again.
+      </div>
 
-  <mat-card
-    style="border-radius:10px; background: darkgreen; border-style: solid;width: 400px; height: 80%">
-    <form role="form" (submit)="login()" style="width: 100%">
-      <div class="form-group" style="height: 50px;padding-top: 10px">
-        <label for="username">Username:</label>
-        <input type="text"
-               class="form-control" id="username" name="username" [(ngModel)]="credentials.username"/>
-      </div>
-      <div class="form-group" style="height: 50px; padding-top: 10px">
-        <label for="password">Password:</label>
-        <input type="password"
-               class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
-      </div>
-      <div class="form_group" *ngIf="appService.failedLogin">
-        <p style="color: red">{{appService.failedLogin}}</p>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-  </mat-card>
-</mat-card>
+      <mat-card
+        style="border-radius:10px; background: darkgreen; border-style: solid;width: 400px; height: 80%">
+        <form role="form" (submit)="login()" style="width: 100%">
+          <div class="form-group" style="height: 50px;padding-top: 10px">
+            <label for="username">Username:</label>
+            <input type="text"
+                   class="form-control" id="username" name="username" [(ngModel)]="credentials.username"/>
+          </div>
+          <div class="form-group" style="height: 50px; padding-top: 10px">
+            <label for="password">Password:</label>
+            <input type="password"
+                   class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
+          </div>
+          <div class="form_group" *ngIf="appService.failedLogin">
+            <p style="color: red">{{appService.failedLogin}}</p>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </mat-card>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

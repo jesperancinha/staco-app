@@ -1,8 +1,10 @@
 <mat-card *ngIf="appService.token" style="width: 100%; text-align: center; align-items: center">
   <mat-card style="width: 90%; height: 100px">
-    <mat-form-field appearance="fill" style="border-radius:10px; background: darkgreen; border-style: solid;width: 90%; height: 80%">
+    <mat-form-field appearance="fill"
+                    style="border-radius:10px; background: darkgreen; border-style: solid;width: 90%; height: 80%">
       <mat-card-title style="width: 90%">Search here</mat-card-title>
-      <input style="border-style: solid;background: darkseagreen" width="90%" matInput [(ngModel)]="term" (keyup)="refresh()">
+      <input style="border-style: solid;background: darkseagreen" width="90%" matInput [(ngModel)]="term"
+             (keyup)="refresh()">
       <p style="color: red" *ngIf="!validationSize">Only 10 characters allowed!!</p>
       <p style="color: red" *ngIf="!validationContent">Only alphanumeric characters allowed!</p>
     </mat-form-field>
@@ -24,26 +26,51 @@
     <table class="table">
       <thead>
       <tr>
-        <th (click)="setSortColumn('description')" style="background: {{sortColumn === 'description'? 'limegreen':'transparent' }}">Description</th>
-        <th (click)="setSortColumn('year')" style="background: {{sortColumn === 'firstName'? 'limegreen':'transparent' }}">Year</th>
-        <th (click)="setSortColumn('value')" style="background: {{sortColumn === 'value'? 'limegreen':'transparent' }}">Value</th>
-        <th (click)="setSortColumn('currency')" style="background: {{sortColumn === 'currency'? 'limegreen':'transparent' }}">Currency</th>
-        <th (click)="setSortColumn('diameterMM')" style="background: {{sortColumn === 'diameterMM'? 'limegreen':'transparent' }}">Diameter</th>
-        <th (click)="setSortColumn('internalDiameterMM')" style="background: {{sortColumn === 'internalDiameterMM'? 'limegreen':'transparent' }}">Internal Diameter</th>
-        <th (click)="setSortColumn('widthMM')" style="background: {{sortColumn === 'widthMM'? 'limegreen':'transparent' }}">Width</th>
-        <th (click)="setSortColumn('heightMM')" style="background: {{sortColumn === 'heightMM'? 'limegreen':'transparent' }}">Height</th>
+        <th (click)="setSortColumn('description')"
+            style="background: {{sortColumn === 'description'? 'limegreen':'transparent' }}">Description
+        </th>
+        <th (click)="setSortColumn('year')"
+            style="background: {{sortColumn === 'firstName'? 'limegreen':'transparent' }}">Year
+        </th>
+        <th (click)="setSortColumn('value')"
+            style="background: {{sortColumn === 'value'? 'limegreen':'transparent' }}">Value
+        </th>
+        <th (click)="setSortColumn('currency')"
+            style="background: {{sortColumn === 'currency'? 'limegreen':'transparent' }}">Currency
+        </th>
+        <th (click)="setSortColumn('diameterMM')"
+            style="background: {{sortColumn === 'diameterMM'? 'limegreen':'transparent' }}">Diameter
+        </th>
+        <th (click)="setSortColumn('internalDiameterMM')"
+            style="background: {{sortColumn === 'internalDiameterMM'? 'limegreen':'transparent' }}">Internal
+          Diameter
+        </th>
+        <th (click)="setSortColumn('widthMM')"
+            style="background: {{sortColumn === 'widthMM'? 'limegreen':'transparent' }}">Width
+        </th>
+        <th (click)="setSortColumn('heightMM')"
+            style="background: {{sortColumn === 'heightMM'? 'limegreen':'transparent' }}">Height
+        </th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let staCo of allStaCos">
-        <td (click)="setSelected(staCo)" style="background: {{sortColumn === 'description'? 'limegreen':'transparent' }}">{{staCo.description? staCo.description.value : 'N/A'}}</td>
-        <td (click)="setSelected(staCo)" style="background: {{sortColumn === 'year'? 'limegreen':'transparent' }}">{{staCo.year? staCo.year: 'N/A'}}</td>
-        <td (click)="setSelected(staCo)" style="background: {{sortColumn === 'value'? 'limegreen':'transparent' }}">{{staCo.value? staCo.value: 'N/A' }}</td>
-        <td (click)="setSelected(staCo)" style="background: {{sortColumn === 'currency'? 'limegreen':'transparent' }}">{{staCo.currency? staCo.currency: 'N/A' }}</td>
-        <td (click)="setSelected(staCo)" style="background: {{sortColumn === 'diameterMM'? 'limegreen':'transparent' }}">{{staCo.diameterMM? staCo.diameterMM: 'N/A' }}</td>
-        <td (click)="setSelected(staCo)" style="background: {{sortColumn === 'internalDiameterMM'? 'limegreen':'transparent' }}">{{staCo.internalDiameterMM? staCo.internalDiameterMM: 'N/A'}}</td>
-        <td (click)="setSelected(staCo)" style="background: {{sortColumn === 'widthMM'? 'limegreen':'transparent' }}">{{staCo.widthMM? staCo.widthMM: 'N/A'}}</td>
-        <td (click)="setSelected(staCo)" style="background: {{sortColumn === 'heightMM'? 'limegreen':'transparent' }}">{{staCo.heightMM? staCo.heightMM: 'N/A'}}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'description'? 'limegreen':'transparent' }}">{{staCo.description ? staCo.description.value : 'N/A'}}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'year'? 'limegreen':'transparent' }}">{{staCo.year ? staCo.year : 'N/A'}}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'value'? 'limegreen':'transparent' }}">{{staCo.value ? staCo.value : 'N/A' }}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'currency'? 'limegreen':'transparent' }}">{{staCo.currency ? staCo.currency : 'N/A' }}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'diameterMM'? 'limegreen':'transparent' }}">{{staCo.diameterMM ? staCo.diameterMM : 'N/A' }}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'internalDiameterMM'? 'limegreen':'transparent' }}">{{staCo.internalDiameterMM ? staCo.internalDiameterMM : 'N/A'}}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'widthMM'? 'limegreen':'transparent' }}">{{staCo.widthMM ? staCo.widthMM : 'N/A'}}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'heightMM'? 'limegreen':'transparent' }}">{{staCo.heightMM ? staCo.heightMM : 'N/A'}}</td>
       </tr>
       </tbody>
     </table>
@@ -59,9 +86,9 @@
     <p *ngIf="selectedRecord.widthMM">Width: {{selectedRecord.widthMM}}</p>
     <p *ngIf="selectedRecord.heightMM">Height: {{selectedRecord.heightMM}}</p>
   </mat-card>
-  <mat-card style="width: 90%">
+  <mat-card style="width: 90%;">
     <p *ngFor="let page of pagesStaCos" (click)="setEntityPage(page-1)"
-       style="padding: 5px; display:inline-block; background: {{currentPageStaCo == page-1? 'green': 'white' }}">{{page}}</p>
+       style="border-radius: 5px; padding: 5px; display:inline-block; background: {{currentPageStaCo == page-1? 'green': 'white' }}">{{page}}</p>
   </mat-card>
 
 </mat-card>

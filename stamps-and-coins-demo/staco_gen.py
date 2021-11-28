@@ -1,7 +1,6 @@
 # Requiresa Python 3.5+
 import json
-
-from pandas.io.json import to_json
+from random import random
 
 
 class Coin:
@@ -36,8 +35,16 @@ if __name__ == '__main__':
 
     all_stacos = []
     with open(filename, 'w') as file_object:
+        count = 1
         for i in range(1, 100):
-            all_stacos.append(Coin(1, "aeioiegbiaauei aeioiegbiaauei", 1996, 15, "EUR", 10, 0).__dict__)
+            all_stacos.append(
+                Coin(count, "aeioiegbiaauei aeioiegbiaauei", int(1000 + random() * 1021), int(1 + random() * 100),
+                     "EUR",
+                     int(1 + random() * 10), int(1 + random() * 10)).__dict__)
+            count += 1
         for i in range(1, 100):
-            all_stacos.append(Stamp(1, "aeioiegbiaauei aeioiegbiaauei", 1996, 15, "EUR", 10, 0).__dict__)
+            all_stacos.append(
+                Stamp(count, "aeioiegbiaauei aeioiegbiaauei", int(1000 + random() * 1021), 15, "EUR",
+                      int(1 + random() * 10), int(1 + random() * 10)).__dict__)
+            count += 1
         json.dump(all_stacos, file_object)

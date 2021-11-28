@@ -3,6 +3,8 @@ package org.jesperancinha.enterprise.staco.jpa.controller
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
+import org.jesperancinha.enterprise.staco.common.domain.ObjectType
+import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.jpa.service.LoginService
@@ -34,21 +36,27 @@ internal class StaCoControllerTest {
 
     private val testdata = ResponseDto(
         staCoDtos = arrayListOf(
-            StaCoDto.createCoin(
-                description = "Queen Coinny",
+            StaCoDto(
+                description = Description(value = "Queen Coinny"),
                 year = "1900",
                 value = "10",
                 currency = EUR,
+                type = ObjectType.COIN,
                 diameterMM = "10",
-                internalDiameterMM = "0"
+                internalDiameterMM = "0",
+                heightMM = null,
+                widthMM = null
             ),
-            StaCoDto.createStamp(
-                description = "Queen Stammp",
+            StaCoDto(
+                description = Description(value = "Queen Stammp"),
                 year = "1900",
                 value = "10",
                 currency = EUR,
-                widthMM = "10",
-                heightMM = "0"
+                type = ObjectType.STAMP,
+                diameterMM = null,
+                internalDiameterMM = null,
+                heightMM = "0",
+                widthMM = "10"
             )
         ),
         currentPage = 0,

@@ -7,6 +7,8 @@ import io.kotest.matchers.collections.shouldHaveSize
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.reactive.asFlow
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
+import org.jesperancinha.enterprise.staco.common.domain.ObjectType
+import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.service.domain.StaCo
 import org.jesperancinha.enterprise.staco.service.domain.toData
@@ -27,22 +29,28 @@ import org.testcontainers.junit.jupiter.Testcontainers
 @MockkBean(CacheManager::class)
 internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
 
-    private val staCo1: StaCo = StaCoDto.createCoin(
-        description = "Queen Coinny",
+    private val staCo1: StaCo = StaCoDto(
+        description = Description(value = "Queen Coinny"),
         year = "1900",
         value = "10",
         currency = EUR,
+        type = ObjectType.COIN,
         diameterMM = "10",
-        internalDiameterMM = "0"
+        internalDiameterMM = "0",
+        heightMM = null,
+        widthMM = null
     ).toData.copy(stacoId = "1")
 
-    private val staCo2: StaCo = StaCoDto.createStamp(
-        description = "Queen Stamp",
+    private val staCo2: StaCo = StaCoDto(
+        description = Description(value = "Queen Stamp"),
         year = "1900",
         value = "10",
         currency = EUR,
-        widthMM = "10",
-        heightMM = "0"
+        type = ObjectType.STAMP,
+        diameterMM = null,
+        internalDiameterMM = null,
+        heightMM = "0",
+        widthMM = "10"
     ).toData.copy(stacoId = "2")
 
 

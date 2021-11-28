@@ -13,7 +13,6 @@ export class SearchComponent implements OnInit {
   title = 'stamps-and-coins-manager';
   term: string = "";
   allStaCos: StaCo[];
-  pageResults = 1;
   tableSizeEntities = 5;
   tableSizes = [5, 10, 15, 20];
   selectedRecord: StaCo;
@@ -62,8 +61,9 @@ export class SearchComponent implements OnInit {
   private processResponse(data: StacoResponse) {
     this.appService.token = "authenticated";
     this.allStaCos = data.staCoDtos;
-    if (this.allStaCos.length < this.tableSizeEntities * (this.pageResults - 1)) {
-      this.pageResults = 1;
+    if(this.allStaCos.length == 0 && this.currentPageStaCo > 1){
+      this.currentPageStaCo = 0
+      this.fetchData()
     }
     this.pagesStaCos = [];
     for (let i = 0; i < data.totalPages; i++) {

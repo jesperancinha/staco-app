@@ -3,6 +3,8 @@ package org.jesperancinha.enterprise.staco.jpa.repository
 import io.kotest.matchers.collections.shouldBeOneOf
 import io.kotest.matchers.collections.shouldHaveSize
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
+import org.jesperancinha.enterprise.staco.common.domain.ObjectType
+import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.jesperancinha.enterprise.staco.jpa.domain.toData
@@ -18,22 +20,28 @@ import org.springframework.data.domain.Pageable
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 internal class StaCoRepositoryTest : AbstractStaCoTest() {
 
-    val staCo1: StaCo = StaCoDto.createCoin(
-        description = "Queen Coinny",
+    val staCo1: StaCo = StaCoDto(
+        description = Description(value = "Queen Coinny"),
         year = "1900",
         value = "10",
         currency = EUR,
+        type = ObjectType.COIN,
         diameterMM = "10",
-        internalDiameterMM = "0"
+        internalDiameterMM = "0",
+        heightMM = null,
+        widthMM = null
     ).toData
 
-    val staCo2: StaCo = StaCoDto.createStamp(
-        description = "Queen Stamp",
+    val staCo2: StaCo = StaCoDto(
+        description = Description(value = "Queen Stamp"),
         year = "1900",
         value = "10",
         currency = EUR,
-        widthMM = "10",
-        heightMM = "0"
+        type = ObjectType.STAMP,
+        diameterMM = null,
+        internalDiameterMM = null,
+        heightMM = "0",
+        widthMM = "10"
     ).toData
 
     @Autowired

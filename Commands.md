@@ -22,6 +22,8 @@ aws configure --profile local set stack.endpoint_url http://localhost:4566
 aws configure --profile local set s3.endpoint_url http://localhost:4566
 ```
 
+---
+
 ## Extras
 
 ```shell
@@ -29,12 +31,16 @@ kubectl config use-context docker-for-desktop
 kubectl config view --raw >~/.kube/config
 ```
 
+---
+
 ## Test Variables
 
 ```shell
 export KUBERNETES_MASTER=http://127.0.0.1:8080
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ```
+
+---
 
 ## Checks
 
@@ -44,6 +50,19 @@ export NODE_PORT=$(kubectl get --namespace localstack -o jsonpath="{.spec.ports[
 export NODE_IP=$(kubectl get nodes --namespace localstack -o jsonpath="{.items[0].status.addresses[0].address}")
 echo http://$NODE_IP:$NODE_PORT
 ```
+---
+
+## Temporary file locations
+
+```shell
+getconf DARWIN_USER_CACHE_DIR
+getconf DARWIN_USER_TEMP_DIR
+echo $TMPDIR
+```
+
+[Info](http://www.magnusviri.com/what-is-var-folders.html)
+
+---
 
 ## Locally
 
@@ -84,6 +103,7 @@ aws s3api get-object --bucket staco --key staco-image-e4b80aa3-5b49-49b4-829a-46
 
 ## References
 
+- [What is "/var/folders"?](http://www.magnusviri.com/what-is-var-folders.html)
 - [AWS SDK: “Unable to locate credentials”, a cheat sheet for solving the issue](https://faun.pub/aws-sdk-unable-to-locate-credentials-a-cheat-sheet-for-solving-the-issue-f72f8965a2c1 )
 - [How to Install Kubernetes on Ubuntu 18.04](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu)
 - [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)

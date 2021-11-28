@@ -29,22 +29,33 @@ class Stamp:
         self.witdthMM = width_mm
 
 
+def createRandomFromI(i, n):
+    return int(i + random() * n)
+
+
 if __name__ == '__main__':
 
     filename = 'sample.json'
-
+    currencies = ["EUR", "USD", "JPY", "CHF", "PTE", "ESP"]
     all_stacos = []
     with open(filename, 'w') as file_object:
         count = 1
         for i in range(1, 100):
             all_stacos.append(
-                Coin(count, "aeioiegbiaauei aeioiegbiaauei", int(1000 + random() * 1021), int(1 + random() * 100),
-                     "EUR",
-                     int(1 + random() * 10), int(1 + random() * 10)).__dict__)
+                Coin(count, "aeioiegbiaauei aeioiegbiaauei",
+                     createRandomFromI(1000, 1021),
+                     createRandomFromI(1, 100),
+                     currencies[createRandomFromI(1, 5)],
+                     createRandomFromI(1, 10),
+                     createRandomFromI(1, 10)).__dict__)
             count += 1
         for i in range(1, 100):
             all_stacos.append(
-                Stamp(count, "aeioiegbiaauei aeioiegbiaauei", int(1000 + random() * 1021), 15, "EUR",
-                      int(1 + random() * 10), int(1 + random() * 10)).__dict__)
+                Stamp(count, "aeioiegbiaauei aeioiegbiaauei",
+                      createRandomFromI(1000, 1021),
+                      createRandomFromI(1, 100),
+                      currencies[int(random() * 5)],
+                      createRandomFromI(1, 10),
+                      createRandomFromI(1, 10)).__dict__)
             count += 1
         json.dump(all_stacos, file_object)

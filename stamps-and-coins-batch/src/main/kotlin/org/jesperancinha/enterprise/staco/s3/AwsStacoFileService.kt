@@ -6,6 +6,7 @@ import org.apache.commons.csv.CSVParser
 import org.apache.commons.csv.CSVPrinter
 import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.STACOS_BUCKET
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
+import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.jesperancinha.enterprise.staco.common.domain.toEvent
 import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
@@ -111,6 +112,7 @@ class AwsStacoFileService(
                                         year = csvRecord.get("year"),
                                         value = csvRecord.get("value"),
                                         currency = CurrencyType.valueOf(csvRecord.get("currency")),
+                                        type = ObjectType.valueOf(csvRecord.get("type")),
                                         diameterMM = csvRecord.get("diameterMM"),
                                         internalDiameterMM = csvRecord.get("internalDiameterMM"),
                                         heightMM = csvRecord.get("heightMM"),

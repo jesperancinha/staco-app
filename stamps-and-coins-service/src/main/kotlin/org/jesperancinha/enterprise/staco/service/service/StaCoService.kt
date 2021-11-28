@@ -8,6 +8,7 @@ import org.jesperancinha.enterprise.staco.service.domain.StaCo
 import org.jesperancinha.enterprise.staco.service.domain.toDto
 import org.jesperancinha.enterprise.staco.service.repository.StaCoRepository
 import org.jesperancinha.enterprise.staco.service.repository.StaCoSearchRepository
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
@@ -31,7 +32,7 @@ class StaCoService(
         return true
     }
 
-    //    @Cacheable("stacos-all")
+    @Cacheable("stacos-all")
     suspend fun getAllInAllBySearchItem(
         searchItemValue: String,
         pageEntities: Int,
@@ -52,9 +53,10 @@ class StaCoService(
             staCoDtos = searchEntities,
             currentPage = pageEntities,
             totalRecords = searchEntities.size.toLong(),
-            totalPages = staCoSearchRepository.countStaCosByDescriptionLike(
-                description = "%$searchItemValue%"
-            ) / pageSizeEntities
+            totalPages = staCoSearchRepository
+                .countStaCosByDescriptionLike(
+                    description = "%$searchItemValue%"
+                ) / pageSizeEntities
         )
     }
 

@@ -24,9 +24,9 @@ data class StaCoDto(
     val value: String? = null,
     val currency: CurrencyType? = null,
     val type: ObjectType,
-    val diameterMM: String? = null,
-    val internalDiameterMM: String? = null,
-    val heightMM: String? = null,
-    val widthMM: String? = null,
+    val diameterMM: String? = "",
+    val internalDiameterMM: String? = "",
+    val heightMM: String? = "",
+    val widthMM: String? = "",
 ) {
 }

@@ -22,6 +22,7 @@ create table sta_co
     year                 varchar(50),
     value                varchar(50),
     currency             varchar(50),
+    type                 varchar(50),
     height_mm            varchar(50),
     width_mm             varchar(50),
     diameter_mm          varchar(50),

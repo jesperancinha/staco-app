@@ -2,6 +2,7 @@ package org.jesperancinha.enterprise.staco.jpa.domain
 
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
+import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.Version
 import org.springframework.data.domain.Persistable
@@ -17,6 +18,7 @@ data class StaCo(
     override var year: String?,
     override var value: String?,
     override var currency: CurrencyType?,
+    override var type: ObjectType,
     override val diameterMM: String?,
     override val internalDiameterMM: String?,
     override val heightMM: String?,

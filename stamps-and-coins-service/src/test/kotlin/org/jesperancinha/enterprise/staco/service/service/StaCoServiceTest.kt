@@ -1,34 +1,31 @@
 package org.jesperancinha.enterprise.staco.service.service
 
 import io.kotest.common.runBlocking
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
+import io.mockk.coEvery
+import io.mockk.every
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
+import io.mockk.verify
 import org.jesperancinha.enterprise.staco.service.repository.StaCoRepository
 import org.jesperancinha.enterprise.staco.service.repository.StaCoSearchRepository
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.InjectMocks
-import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.times
-import org.mockito.Mockito.verify
-import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import reactor.core.publisher.Flux
 
-@ExtendWith(MockitoExtension::class)
+@ExtendWith(MockKExtension::class)
 internal class StaCoServiceTest {
 
-    @InjectMocks
+    @InjectMockKs
     lateinit var staCoService: StaCoService
 
-    @Mock
+    @MockK
     lateinit var staCoSearchRepository: StaCoSearchRepository
 
-    @Mock
+    @MockK
     lateinit var staCoRepository: StaCoRepository
 
 
@@ -36,21 +33,23 @@ internal class StaCoServiceTest {
     fun setUp() {
 
         val searchItem = "%Ma%"
-        `when`(
+        every {
             staCoSearchRepository.findStaCosByDescriptionLike(
                 searchItem,
                 PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "description"))
             )
-        )
-            .thenReturn(Flux.empty())
-        CoroutineScope(IO).launch {
-            `when`(staCoRepository.count()).thenReturn(10);
-        }
+        } returns Flux.empty()
+
+        coEvery {
+            staCoSearchRepository.countStaCosByDescriptionLike(
+                description = searchItem
+            )
+        } returns (10);
     }
 
     @Test
     fun testPersonLike_whenSearchName_thenCallSearchName(): Unit = runBlocking {
-        val searchItem = "%Ma%"
+        val searchItem = "Ma"
         staCoService.getAllInAllBySearchItem(
             searchItemValue = searchItem,
             pageEntities = 0,
@@ -58,12 +57,10 @@ internal class StaCoServiceTest {
             sortColumn = "description",
             order = "ASC"
         )
-        verify(
-            staCoSearchRepository,
-            times(1)
-        ).findStaCosByDescriptionLike(
-            searchItem,
-            PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "description"))
-        )
+        verify(exactly = 1) {
+            staCoSearchRepository.findStaCosByDescriptionLike(
+                "%$searchItem%",
+                PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "description")))
+        }
     }
 }

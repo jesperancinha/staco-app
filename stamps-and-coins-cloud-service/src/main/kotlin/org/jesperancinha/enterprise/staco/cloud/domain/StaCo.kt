@@ -7,6 +7,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConvertedEnum
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.common.domain.IStaCo
+import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 
@@ -32,6 +33,10 @@ data class StaCo(
     @DynamoDBAttribute
     override var currency: CurrencyType?,
 
+    @DynamoDBTypeConvertedEnum
+    @DynamoDBAttribute
+    override var type: ObjectType,
+
     @DynamoDBAttribute
     override val diameterMM: String?,
 
@@ -53,6 +58,7 @@ internal val StaCo.toDto: StaCoDto
         year,
         value,
         currency,
+        type,
         diameterMM,
         internalDiameterMM,
         heightMM,
@@ -65,6 +71,7 @@ internal val StaCoDto.toData: StaCo
         year = year,
         value = value,
         currency = currency,
+        type = type,
         diameterMM = diameterMM,
         internalDiameterMM = internalDiameterMM,
         heightMM = heightMM,

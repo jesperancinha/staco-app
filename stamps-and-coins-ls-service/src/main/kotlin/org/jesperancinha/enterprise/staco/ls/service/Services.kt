@@ -31,15 +31,11 @@ internal class StacoDao(
     fun getAll(): Flux<StaCoDto> = staCoRepository.findAll().map { it.toDto }
 
     suspend fun getAllInAllBySearchItem(
-        searchItemValue: String,
         pageNumber: Int,
         pageSize: Int,
-        sortColumn: String,
-        order: String
     ): ResponseDto {
 
         val stacos = getAllStacos(
-            searchItemValue,
             pageNumber,
             pageSize
         ).asFlow().map { it.toDto }.toList()
@@ -51,12 +47,11 @@ internal class StacoDao(
     }
 
     private fun getAllStacos(
-        searchItemValue: String,
         pageNumber: Int,
         pageSize: Int,
     ): Flux<MutableMap<String, AttributeValue>> = if (pageNumber > 1) {
-        staCoRepository.findByDescriptionLike(searchItemValue, pageSize, pageNumber)
+        staCoRepository.findByDescriptionLike(pageSize, pageNumber)
     } else {
-        staCoRepository.findByDescriptionLike(searchItemValue, pageSize)
+        staCoRepository.findByDescriptionLike(pageSize)
     }
 }

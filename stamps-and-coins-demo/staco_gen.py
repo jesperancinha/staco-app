@@ -70,7 +70,7 @@ def create_word():
 
 
 def create_comment():
-    n = randint(1, 20)
+    n = randint(4, 20)
     text = create_word()
     for k in range(1, n):
         text += " " + create_word()

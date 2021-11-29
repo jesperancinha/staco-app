@@ -17,6 +17,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {LoginComponent} from "./components/login/login.component";
 import {AppService} from "./services/app.service";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {SearchDynamoComponent} from "./components/search-dynamo/search.dynamo.component";
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -35,7 +36,7 @@ export class XhrInterceptor implements HttpInterceptor {
 
 @NgModule({
   declarations: [
-    AppComponent, SearchComponent, LoginComponent
+    AppComponent, SearchComponent, LoginComponent, SearchDynamoComponent
   ],
   imports: [
     BrowserModule,

@@ -19,8 +19,6 @@ import software.amazon.awssdk.services.s3.S3AsyncClient
 import software.amazon.awssdk.services.s3.model.PutObjectRequest
 import java.security.Principal
 import java.util.UUID
-import javax.validation.constraints.Pattern
-import javax.validation.constraints.Size
 
 @RestController
 @RequestMapping("stacos")
@@ -41,29 +39,20 @@ internal class StaCoController(
     @GetMapping("all")
     fun getAll(): Flux<StaCoDto> = stacoDao.getAll()
 
-    @GetMapping("searcn/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
+    @GetMapping("count")
+    fun getCount(): Mono<Long> = stacoDao.getAll().count()
+
+    @GetMapping("search/{pageEntity}/{sizeEntities}")
     suspend fun getAllInAllBySearchItem(
-        @PathVariable
-        @Size(min = 1, max = 10)
-        @Pattern(regexp = "[a-zA-Z0-9 ]*")
-        search: String,
         @PathVariable
         pageEntity: Int,
         @PathVariable
         sizeEntities: Int,
-        @PathVariable
-        sortColumn: String,
-        @PathVariable
-        order: String,
     ): ResponseDto {
         return stacoDao.getAllInAllBySearchItem(
-            searchItemValue = "%".plus(search).plus("%"),
             pageNumber = pageEntity,
             pageSize = sizeEntities,
-            sortColumn = sortColumn,
-            order = order
         )
-
     }
 }
 

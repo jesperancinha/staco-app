@@ -46,8 +46,8 @@ aws dynamodb delete-table --table-name stacos
 
 #### 1. Endpoints
 
-- [http://localhost:8082/api/staco/ls/stacos/search/test/1/20/year/ASC](http://localhost:8082/api/staco/ls/stacos/staco/all/test/1/20/year/ASC)
-- [http://localhost:8082/api/staco/ls/stacos/search/test/1/10/year/ASC](http://localhost:8082/api/staco/ls/stacos/staco/all/test/1/10/year/ASC)
+- [http://localhost:8082/api/staco/ls/stacos/search/1/20/year](http://localhost:8082/api/staco/ls/stacos/search/1/20/year)
+- [http://localhost:8082/api/staco/ls/stacos/search/1/10/year/ASC](http://localhost:8082/api/staco/ls/stacos/search/1/10/year)
 
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈

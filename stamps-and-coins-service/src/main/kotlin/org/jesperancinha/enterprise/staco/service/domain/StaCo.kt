@@ -11,6 +11,7 @@ import org.springframework.data.domain.Persistable
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 
+
 @Table
 data class StaCo(
     @field: Id
@@ -28,11 +29,10 @@ data class StaCo(
     @field: Version
     val version: Long? = null,
 ) : IStaCo, Persistable<String> {
-
     override fun getId(): String = stacoId.toString()
     override fun isNew(): Boolean = (version ?: 0) <= 0
-}
 
+}
 
 internal val StaCo.toDto: StaCoDto
     get() = StaCoDto(

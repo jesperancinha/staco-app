@@ -51,7 +51,7 @@ class StaCoRepository(
     }
 
 
-    fun findByDescriptionLike(searchItemValue: String, pageSize: Int): Flux<MutableMap<String, AttributeValue>> {
+    fun findByDescriptionLike(pageSize: Int): Flux<MutableMap<String, AttributeValue>> {
         return Mono.fromFuture(
             dynamoDbAsyncClient.scan(
                 ScanRequest
@@ -68,7 +68,6 @@ class StaCoRepository(
     }
 
     fun findByDescriptionLike(
-        searchItemValue: String,
         pageSize: Int,
         pageNumber: Int
     ): Flux<MutableMap<String, AttributeValue>> {

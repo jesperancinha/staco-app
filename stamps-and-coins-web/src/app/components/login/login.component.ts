@@ -32,4 +32,8 @@ export class LoginComponent {
             })
 
     }
+
+  goToDynamoDb() {
+    this.router.navigateByUrl('/search/dynamo');
+  }
 }

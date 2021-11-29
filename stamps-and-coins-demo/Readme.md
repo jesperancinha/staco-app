@@ -1,7 +1,7 @@
 # Stamps and Coins Demo
 
 
-## stamps-and-coins-ls-service
+## I. stamps-and-coins-ls-service
 
 #### 1. Talking with the API
 ```shell
@@ -29,7 +29,7 @@ aws dynamodb scan --table-name stacos
 aws dynamodb delete-table --table-name stacos
 ```
 
-## stamps-and-coins-batch
+## II. stamps-and-coins-batch
 
 #### 1. Checking results with aws
 
@@ -42,6 +42,12 @@ aws dynamodb scan --table-name stacos
 aws dynamodb delete-table --table-name stacos
 ```
 
+## III. stamps-and-coins-ls-service
+
+#### 1. Endpoints
+
+- [http://localhost:8082/api/staco/ls/stacos/search/test/1/20/year/ASC](http://localhost:8082/api/staco/ls/stacos/staco/all/test/1/20/year/ASC)
+- [http://localhost:8082/api/staco/ls/stacos/search/test/1/10/year/ASC](http://localhost:8082/api/staco/ls/stacos/staco/all/test/1/10/year/ASC)
 
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈

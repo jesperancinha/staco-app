@@ -51,6 +51,52 @@ class StaCoRepository(
     }
 
 
+    fun findByDescriptionLike(searchItemValue: String, pageSize: Int): Flux<MutableMap<String, AttributeValue>> {
+        return Mono.fromFuture(
+            dynamoDbAsyncClient.scan(
+                ScanRequest
+                    .builder()
+                    .limit(pageSize)
+                    .tableName(TABLE_STACOS)
+                    .exclusiveStartKey(null)
+                    .build()
+            )
+        ).map {
+            it.items()
+        }.flatMapIterable { it }
+
+    }
+
+    fun findByDescriptionLike(
+        searchItemValue: String,
+        pageSize: Int,
+        pageNumber: Int
+    ): Flux<MutableMap<String, AttributeValue>> {
+        return Mono.fromFuture(
+            dynamoDbAsyncClient.scan(
+                ScanRequest
+                    .builder()
+                    .limit(pageSize * (pageNumber - 1))
+                    .tableName(TABLE_STACOS)
+                    .build()
+            )
+        ).flatMap {
+            Mono.fromFuture(
+                dynamoDbAsyncClient.scan(
+                    ScanRequest
+                        .builder()
+                        .limit(pageSize)
+                        .tableName(TABLE_STACOS)
+                        .exclusiveStartKey(it.lastEvaluatedKey())
+                        .build()
+                )
+            )
+        }.map {
+            it.items()
+        }.flatMapIterable { it }
+
+    }
+
     @PostConstruct
     fun createTableIfNotExists() {
         val listTableResponse: CompletableFuture<ListTablesResponse> = dynamoDbAsyncClient.listTables()

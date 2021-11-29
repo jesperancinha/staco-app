@@ -23,6 +23,7 @@ import java.util.UUID
 class AutowiringSpringBeanJobFactory : SpringBeanJobFactory(), ApplicationContextAware {
     @Transient
     private var beanFactory: AutowireCapableBeanFactory? = null
+
     override fun setApplicationContext(context: ApplicationContext) {
         beanFactory = context.autowireCapableBeanFactory
     }

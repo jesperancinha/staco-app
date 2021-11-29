@@ -54,6 +54,7 @@ class AwsStacoFileService(
                 it.year,
                 it.value,
                 it.currency,
+                it.type,
                 it.diameterMM,
                 it.internalDiameterMM,
                 it.heightMM,
@@ -105,20 +106,24 @@ class AwsStacoFileService(
                             val csvParser = CSVParser(reader, CSV_HEADER)
                             val records = csvParser.records
                             for (csvRecord in records.takeLast(records.size - 1)) {
-                                staCoDynamoDBRepository.save(
-                                    StaCoDto(
-                                        id = csvRecord.get("id"),
-                                        description = Description(csvRecord.get("description")),
-                                        year = csvRecord.get("year"),
-                                        value = csvRecord.get("value"),
-                                        currency = CurrencyType.valueOf(csvRecord.get("currency")),
-                                        type = ObjectType.valueOf(csvRecord.get("type")),
-                                        diameterMM = csvRecord.get("diameterMM"),
-                                        internalDiameterMM = csvRecord.get("internalDiameterMM"),
-                                        heightMM = csvRecord.get("heightMM"),
-                                        widthMM = csvRecord.get("widthMM")
-                                    ).toEvent
-                                )
+                                try {
+                                    staCoDynamoDBRepository.save(
+                                        StaCoDto(
+                                            id = csvRecord.get("id"),
+                                            description = Description(csvRecord.get("description")),
+                                            year = csvRecord.get("year"),
+                                            value = csvRecord.get("value"),
+                                            currency = CurrencyType.valueOf(csvRecord.get("currency")),
+                                            type = ObjectType.valueOf(csvRecord.get("type")),
+                                            diameterMM = csvRecord.get("diameterMM"),
+                                            internalDiameterMM = csvRecord.get("internalDiameterMM"),
+                                            heightMM = csvRecord.get("heightMM"),
+                                            widthMM = csvRecord.get("widthMM")
+                                        ).toEvent
+                                    )
+                                } catch (ex: IllegalArgumentException) {
+                                    logger.info { "Record $csvRecord was rejected!. Reason: $ex" }
+                                }
                             }
                             logger.info { "Download and parsing of file $output complete!" }
                             removeResource(targetFileKey)
@@ -168,6 +173,7 @@ class AwsStacoFileService(
                 "year",
                 "value",
                 "currency",
+                "type",
                 "diameterMM",
                 "internalDiameterMM",
                 "heightMM",

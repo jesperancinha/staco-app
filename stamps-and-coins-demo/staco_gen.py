@@ -37,7 +37,7 @@ class Stamp(object):
         self.type = "STAMP"
         self.currency = currency
         self.heightMM = height_mm
-        self.witdthMM = width_mm
+        self.widthMM = width_mm
 
     def _get_bar(self):
         return self.__id
@@ -56,7 +56,7 @@ def create_random_from_i(start, delta):
 
 
 def create_word():
-    n = randint(3, 20)
+    n = randint(3, 5)
     word = ""
     first_letter = randint(0, len(consonants) - 1)
     word += consonants[first_letter].upper()

@@ -1,6 +1,8 @@
 package org.jesperancinha.enterprise.staco.ls.rest
 
+import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
+import org.jesperancinha.enterprise.staco.common.rest.IStaCoController
 import org.jesperancinha.enterprise.staco.ls.service.StacoDao
 import org.springframework.http.codec.multipart.FilePart
 import org.springframework.web.bind.annotation.GetMapping
@@ -17,12 +19,14 @@ import software.amazon.awssdk.services.s3.S3AsyncClient
 import software.amazon.awssdk.services.s3.model.PutObjectRequest
 import java.security.Principal
 import java.util.UUID
+import javax.validation.constraints.Pattern
+import javax.validation.constraints.Size
 
 @RestController
 @RequestMapping("stacos")
 internal class StaCoController(
     val stacoDao: StacoDao
-) {
+) : IStaCoController {
     @RequestMapping("/user")
     fun user(user: Principal): Principal {
         return user
@@ -36,6 +40,31 @@ internal class StaCoController(
 
     @GetMapping("all")
     fun getAll(): Flux<StaCoDto> = stacoDao.getAll()
+
+    @GetMapping("searcn/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
+    suspend fun getAllInAllBySearchItem(
+        @PathVariable
+        @Size(min = 1, max = 10)
+        @Pattern(regexp = "[a-zA-Z0-9 ]*")
+        search: String,
+        @PathVariable
+        pageEntity: Int,
+        @PathVariable
+        sizeEntities: Int,
+        @PathVariable
+        sortColumn: String,
+        @PathVariable
+        order: String,
+    ): ResponseDto {
+        return stacoDao.getAllInAllBySearchItem(
+            searchItemValue = "%".plus(search).plus("%"),
+            pageNumber = pageEntity,
+            pageSize = sizeEntities,
+            sortColumn = sortColumn,
+            order = order
+        )
+
+    }
 }
 
 @RestController

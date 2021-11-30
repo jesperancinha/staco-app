@@ -156,13 +156,16 @@ services:
     build:
       context: stamps-and-coins-service/.
     ports:
-      - "8081"
+      - "8081:8081"
+    expose:
+      - 8081
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_APP_BACKEND_PROFILE=docker
+      - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
       - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_POSTGRESQL_IP=${STACO_AWS_POSTGRESQL_IP}
     restart: on-failure
     deploy:
       resources:
@@ -180,12 +183,14 @@ services:
     build:
       context: stamps-and-coins-ls-service/.
     ports:
-      - "8082"
+      - "8082:8082"
+    expose:
+      - 8082
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_APP_BACKEND_PROFILE=docker
+      - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
       - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
     restart: on-failure
     deploy:
@@ -204,13 +209,16 @@ services:
     build:
       context: stamps-and-coins-batch/.
     ports:
-      - "8083"
+      - "8083:8083"
+    expose:
+      - 8083
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_APP_BACKEND_PROFILE=docker
+      - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
       - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_POSTGRESQL_IP=${STACO_AWS_POSTGRESQL_IP}
     restart: on-failure
     deploy:
       resources:

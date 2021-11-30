@@ -1,7 +1,6 @@
 package org.jesperancinha.enterprise.staco.common.aws
 
 import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.config
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.env.EnvironmentPostProcessor
 import org.springframework.core.env.ConfigurableEnvironment
@@ -10,13 +9,8 @@ import software.amazon.awssdk.services.ssm.SsmAsyncClient
 import software.amazon.awssdk.services.ssm.model.GetParameterRequest
 import java.net.URI
 
-
 internal class ParameterStorePropertySource(name: String, ssmAsyncClient: SsmAsyncClient) :
     PropertySource<SsmAsyncClient>(name, ssmAsyncClient) {
-
-    @Value("\${org.jesperancinha.enterprise.staco.localstack.url}")
-    lateinit var localstackUrl: String
-
     override fun getProperty(propertyName: String): Any? {
         logger.debug("Property $propertyName is not yet configured")
         if (propertyName.startsWith("/")) {

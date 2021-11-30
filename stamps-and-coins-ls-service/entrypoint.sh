@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-java -jar stamps-and-coins-ls-service.jar
+java -jar -Dspring.profiles.active=docker stamps-and-coins-ls-service.jar

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {catchError, Observable, of, retry} from "rxjs";
-import {AppService} from "./app.service";
 import {StacoResponse} from "../model/staco.response";
+import {catchError, Observable, of, retry} from "rxjs";
 
 const searchUrl = '/api/staco/service/stacos/search';
 const unfilteredUrl = '/api/staco/service/stacos/unfiltered';
@@ -12,7 +11,7 @@ const unfilteredUrl = '/api/staco/service/stacos/unfiltered';
 })
 export class StaCoService {
 
-  constructor(private http: HttpClient, private appService: AppService) {
+  constructor(private http: HttpClient) {
   }
 
   searchByTerm(term: string, page: number, sizePage: number, sortColumn: string, order: string): Observable<StacoResponse> {
@@ -20,6 +19,7 @@ export class StaCoService {
     return this.http.get<StacoResponse>(url).pipe(
       retry(3), catchError(this.handleError<StacoResponse>()));
   }
+
   searchUnfiltered(page: number, sizePage: number, sortColumn: string, order: string): Observable<StacoResponse> {
     let url = unfilteredUrl + '/' + page + '/' + sizePage + '/' + sortColumn + '/' + order;
     return this.http.get<StacoResponse>(url).pipe(

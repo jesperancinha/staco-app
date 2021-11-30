@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {catchError, Observable, of, retry} from "rxjs";
-import {AppService} from "./app.service";
 import {StacoResponse} from "../model/staco.response";
 
 const searchDynamoUrl = '/api/staco/ls/stacos';
@@ -11,7 +10,7 @@ const searchDynamoUrl = '/api/staco/ls/stacos';
 })
 export class StaCoDynamodbService {
 
-  constructor(private http: HttpClient, private appService: AppService) {
+  constructor(private http: HttpClient) {
   }
 
   searchUnfilteredDynamoDb(page: number, sizePage: number): Observable<StacoResponse> {

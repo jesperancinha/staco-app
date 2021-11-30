@@ -28,13 +28,17 @@ docker-delete: stop
 	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs docker rm
 docker-cleanup: docker-delete
 	docker images -q | xargs docker rmi
+docker-clean:
+	docker-compose rm -svf
+docker-clean-build-start: docker-clean b docker
 docker-delete-apps: stop
 docker-localstack:
 	docker-compose rm -svf
 	docker-compose rm localstack
-	docker-compose up -d --build --remove-orphans localstack aws-cli-1 aws-cli-2 aws-cli-3 aws-cli-4
+	docker-compose up -d --build --remove-orphans localstack
+	make docker-cli
 docker-cli:
-	docker-compose up -d --build --remove-orphans aws-cli-1 aws-cli-2 aws-cli-3 aws-cli-4
+	docker-compose up -d --build --remove-orphans aws-cli-1 aws-cli-2 aws-cli-3 aws-cli-4 aws-cli-5 aws-cli-6
 localstack-config:
 	sleep 1
 	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/username --value "postgres"

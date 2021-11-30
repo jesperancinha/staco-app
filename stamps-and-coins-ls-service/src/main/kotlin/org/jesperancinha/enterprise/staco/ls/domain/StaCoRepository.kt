@@ -64,7 +64,6 @@ class StaCoRepository(
         ).map {
             it.items()
         }.flatMapIterable { it }
-
     }
 
     fun findByDescriptionLike(

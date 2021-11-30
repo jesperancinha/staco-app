@@ -63,11 +63,12 @@ class AwsStacoFileService(
         }
         writer.flush()
         writer.close()
-        val output: Path = Files.createTempFile(fileName, ".gz")
 
+        val output: Path = Files.createTempFile(fileName, ".gz")
         compressGZIP(path, output)
         val fileIn: InputStream = Files.newInputStream(output)
         val size: Long = Files.size(output)
+
         s3AsyncClient.putObject(
             PutObjectRequest.builder().bucket(STACOS_BUCKET).key(fileName)
                 .metadata(

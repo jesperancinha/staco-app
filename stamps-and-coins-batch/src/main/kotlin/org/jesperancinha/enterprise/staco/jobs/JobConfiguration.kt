@@ -30,7 +30,7 @@ class AutowiringSpringBeanJobFactory : SpringBeanJobFactory(), ApplicationContex
 
     override fun createJobInstance(bundle: TriggerFiredBundle): Any {
         val job: Any = super.createJobInstance(bundle)
-        beanFactory!!.autowireBean(job)
+        beanFactory?.autowireBean(job)
         return job
     }
 }

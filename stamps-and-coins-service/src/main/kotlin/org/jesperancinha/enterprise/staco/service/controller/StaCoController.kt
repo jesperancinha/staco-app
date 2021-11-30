@@ -1,5 +1,7 @@
 package org.jesperancinha.enterprise.staco.service.controller
 
+import jakarta.validation.constraints.Pattern
+import jakarta.validation.constraints.Size
 import kotlinx.coroutines.flow.Flow
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.service.domain.StaCo
@@ -9,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.validation.constraints.Pattern
-import javax.validation.constraints.Size
 
 @RestController
 class RedirectController {

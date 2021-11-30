@@ -142,8 +142,8 @@ sequenceDiagram
     PostgreSQL Database->>Reactive Service: Returns Data
     Reactive Service->>Web: Returns Data
     Web->>Localstack Reactive Service: User asks data from application
-    Localstack Reactive Service->>DynamodDB: Requests Data
-    DynamodDB->>Localstack Reactive Service: Sends data back
+    Localstack Reactive Service->>DynamoDB: Requests Data
+    DynamoDB->>Localstack Reactive Service: Sends data back
     Localstack Reactive Service->>Web: Sends data back
     Batch->>PostgreSQL Database: Requests Data
     PostgreSQL Database->>Batch: Sends Data Back

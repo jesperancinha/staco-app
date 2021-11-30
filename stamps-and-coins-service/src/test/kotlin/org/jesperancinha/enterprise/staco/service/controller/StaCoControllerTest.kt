@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.common.runBlocking
 import io.mockk.every
+import jakarta.validation.ConstraintViolationException
 import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType
@@ -26,14 +27,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 import javax.sql.DataSource
-import javax.validation.ConstraintViolationException
 
 
 @WebMvcTest(controllers = [StaCoController::class])
 @ActiveProfiles("test")
 @MockkBean(classes = [DataSource::class])
 @Disabled
-internal class StaCoControllerTest: AbstractStaCoTest() {
+internal class StaCoControllerTest : AbstractStaCoTest() {
 
     private lateinit var mockMvc: MockMvc
 

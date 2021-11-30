@@ -8,6 +8,7 @@ export interface StaCo {
   year: string;
   value: string;
   currency: string;
+  type: string;
   diameterMM?: string;
   internalDiameterMM?: string;
   heightMM?: string;

@@ -23,13 +23,16 @@
             style="background: {{sortColumn === 'description'? 'limegreen':'transparent' }}">Description
         </th>
         <th (click)="setSortColumn('year')"
-            style="background: {{sortColumn === 'firstName'? 'limegreen':'transparent' }}">Year
+            style="background: {{sortColumn === 'year'? 'limegreen':'transparent' }}">Year
         </th>
         <th (click)="setSortColumn('value')"
             style="background: {{sortColumn === 'value'? 'limegreen':'transparent' }}">Value
         </th>
         <th (click)="setSortColumn('currency')"
             style="background: {{sortColumn === 'currency'? 'limegreen':'transparent' }}">Currency
+        </th>
+        <th (click)="setSortColumn('type')"
+            style="background: {{sortColumn === 'type'? 'limegreen':'transparent' }}">Type
         </th>
         <th (click)="setSortColumn('diameterMM')"
             style="background: {{sortColumn === 'diameterMM'? 'limegreen':'transparent' }}">Diameter
@@ -56,6 +59,8 @@
             style="background: {{sortColumn === 'value'? 'limegreen':'transparent' }}">{{staCo.value ? staCo.value : 'N/A' }}</td>
         <td (click)="setSelected(staCo)"
             style="background: {{sortColumn === 'currency'? 'limegreen':'transparent' }}">{{staCo.currency ? staCo.currency : 'N/A' }}</td>
+        <td (click)="setSelected(staCo)"
+            style="background: {{sortColumn === 'type'? 'limegreen':'transparent' }}">{{staCo.type ? staCo.type : 'N/A' }}</td>
         <td (click)="setSelected(staCo)"
             style="background: {{sortColumn === 'diameterMM'? 'limegreen':'transparent' }}">{{staCo.diameterMM ? staCo.diameterMM : 'N/A' }}</td>
         <td (click)="setSelected(staCo)"

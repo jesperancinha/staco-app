@@ -14,11 +14,10 @@ class StampsAndCoinsLocalStackLauncher(
     val s3AsyncClient: S3AsyncClient,
     val dynamoDbAsyncClient: DynamoDbAsyncClient
 ) : ApplicationRunner {
-
-    @Value("\${aws.username:}")
+    @Value("\${org.jesperancinha.enterprise.staco.root.name}")
     lateinit var username: String
 
-    @Value("\${aws.password}")
+    @Value("\${org.jesperancinha.enterprise.staco.root.password}")
     lateinit var password: String
 
     private val logger = KotlinLogging.logger {}
@@ -36,7 +35,8 @@ class StampsAndCoinsLocalStackLauncher(
                 }
             }
         }
-        logger.info { "Starting application with postgress user $username and password $password. Shhhh! Do not tell this to anyone! It comes from Localstack!" }
+        logger.info { "Starting application with postgres user $username and password $password. Shhhh! Do not tell this to anyone! It comes from Localstack!" }
+        logger.info { "We do not use any postgres application here though" }
     }
 }
 

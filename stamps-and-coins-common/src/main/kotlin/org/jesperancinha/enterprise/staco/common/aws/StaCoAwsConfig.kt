@@ -1,6 +1,7 @@
 package org.jesperancinha.enterprise.staco.common.aws
 
 import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.config
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.env.EnvironmentPostProcessor
 import org.springframework.core.env.ConfigurableEnvironment
@@ -12,6 +13,10 @@ import java.net.URI
 
 internal class ParameterStorePropertySource(name: String, ssmAsyncClient: SsmAsyncClient) :
     PropertySource<SsmAsyncClient>(name, ssmAsyncClient) {
+
+    @Value("\${org.jesperancinha.enterprise.staco.localstack.url}")
+    lateinit var localstackUrl: String
+
     override fun getProperty(propertyName: String): Any? {
         logger.debug("Property $propertyName is not yet configured")
         if (propertyName.startsWith("/")) {
@@ -29,12 +34,20 @@ internal class ParameterStorePropertySource(name: String, ssmAsyncClient: SsmAsy
 
 internal class ParameterStorePropertySourceEnvironmentPostProcessor : EnvironmentPostProcessor {
     override fun postProcessEnvironment(environment: ConfigurableEnvironment, application: SpringApplication) {
+        val host = System.getenv("STACO_AWS_LOCALSTACK_IP") ?: "localhost"
+        val port = System.getenv("STACO_AWS_LOCALSTACK_PORT") ?: "4566"
+        val protocol = System.getenv("STACO_AWS_LOCALSTACK_PROTOCOL") ?: "http"
         environment.propertySources
             .addLast(
                 ParameterStorePropertySource(
                     "AWSParameterStorePropertySource",
                     config(
-                        AwsProperties(URI.create("http://localhost:4566"), "eu-central-1", "test", "test"),
+                        AwsProperties(
+                            URI.create("$protocol://$host:$port"),
+                            "eu-central-1",
+                            "test",
+                            "test"
+                        ),
                         SsmAsyncClient.builder()
                     )
                 )

@@ -8,7 +8,11 @@ authentication and authorization with Spring.
 In this module you'll find 3 different implementations and code. In short, you'll find BASIC, OAUTH local and OAUTH2
 with GitHub.
 
-## How to run
+## How to startup
+
+You can start this SpringBoot application without environment variables.
+However, it will preferably use STACO_AWS_LOCALSTACK_IP as a variable to configure where localstack actually is.
+You can also add STACO_AWS_LOCALSTACK_PORT to specify the port. It uses 4566 by default
 
 There are three modes to run this application:
 

@@ -1,5 +1,11 @@
 # Stamps and Coins Batch
 
+## How to startup
+
+You can start this SpringBoot application without environment variables.
+However, it will preferably use STACO_AWS_LOCALSTACK_IP as a variable to configure where localstack actually is.
+You can also add STACO_AWS_LOCALSTACK_PORT to specify the port. It uses 4566 by default
+
 ## References
 
 - [Read & Write CSV Files in Kotlin](https://chercher.tech/kotlin/read-write-csv-files-kotlin)

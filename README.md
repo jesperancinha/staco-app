@@ -118,6 +118,13 @@ sequenceDiagram
 
 ### Online
 
+- [Representational state transfer](https://www.wikiwand.com/en/Representational_state_transfer)
+- [REST (REpresentational State Transfer)](https://searchapparchitecture.techtarget.com/definition/REST-REpresentational-State-Transfer)
+- [Wat is on-premise en wat is de cloud?](https://www.dynamicsonline.nl/erp-software/wat-is-on-premise-en-wat-is-de-cloud/)
+- [Who Coined 'Cloud Computing'?](https://www.technologyreview.com/2011/10/31/257406/who-coined-cloud-computing/)
+- [The history of cloud computing](https://www.scality.com/solved/the-history-of-cloud-computing/)
+- [My First 12 Years at Amazon.com](http://jeff-barr.com/2014/08/19/my-first-12-years-at-amazon-dot-com/)
+- [A Brief History of AWS](https://mediatemple.net/blog/cloud-hosting/brief-history-aws/)
 - [When to use (and when not to use) DynamoDB Filter Expressions](https://www.alexdebrie.com/posts/dynamodb-filter-expressions/)
 - [DynamoDB Scan vs Query - Everything You Need To Know](https://dynobase.dev/dynamodb-scan-vs-query/)
 - [What is "/var/folders"?](http://www.magnusviri.com/what-is-var-folders.html)

@@ -150,6 +150,66 @@ services:
       staco_net:
         ipv4_address: ${STACO_AWS_CLI_6_IP}
 
+  staco_app_service_reactive:
+    hostname: staco_app_service_reactive
+    container_name: staco_app_service_reactive
+    build:
+      context: stamps-and-coins-service/.
+    ports:
+      - "8081"
+    environment:
+      - STACO_APP_BACKEND_PROFILE=docker
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+        reservations:
+          memory: 400M
+    networks:
+      vma_net:
+        ipv4_address: ${STACO_APP_SERVICE_REACTIVE_IP}
+
+  staco_app_service_localstack:
+    hostname: staco_app_service_localstack
+    container_name: staco_app_service_localstack
+    build:
+      context: stamps-and-coins-ls-service/.
+    ports:
+      - "8082"
+    environment:
+      - STACO_APP_BACKEND_PROFILE=docker
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+        reservations:
+          memory: 400M
+    networks:
+      vma_net:
+        ipv4_address: ${STACO_APP_SERVICE_LOCALSTACK_IP}
+
+  staco_app_batch:
+    hostname: staco_app_batch
+    container_name: staco_app_batch
+    build:
+      context: stamps-and-coins-batch/.
+    ports:
+      - "8083"
+    environment:
+      - STACO_APP_BACKEND_PROFILE=docker
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+        reservations:
+          memory: 400M
+    networks:
+      vma_net:
+        ipv4_address: ${STACO_APP_BATCH_IP}
+
 networks:
   staco_net:
     driver: bridge

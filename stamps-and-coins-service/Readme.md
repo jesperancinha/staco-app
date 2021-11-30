@@ -1,5 +1,11 @@
 # Stamps and Coins Service
 
+## How to startup
+
+You can start this SpringBoot application without environment variables.
+However, it will preferably use STACO_AWS_LOCALSTACK_IP as a variable to configure where localstack actually is.
+You can also add STACO_AWS_LOCALSTACK_PORT to specify the port. It uses 4566 by default
+
 ## Test endpoints
 
 1.  [http://localhost:8081/api/staco/service/stacos/all](http://localhost:8081/api/staco/service/stacos/all)

@@ -153,7 +153,14 @@ sequenceDiagram
     S3->>Batch: Sends GZ file back
     Batch->>Batch: Uncompresses file
     Batch->>DynamoDB: Saves data in data base
-    
+    Reactive Service->>SSM: Startup
+    SSM->>Reactive Service: Configuration Data
+    Localstack Reactive Service->>SSM: Startup
+    SSM->>Localstack Reactive Service: Configuration Data
+    Batch->>SSM: Startup
+    SSM->>Batch: Configuration Data
+    Cloud Service->>SSM: Startup
+    SSM->>Cloud Service: Configuration Data
     end
 ```
 

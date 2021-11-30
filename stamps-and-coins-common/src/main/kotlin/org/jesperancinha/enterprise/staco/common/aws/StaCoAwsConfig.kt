@@ -1,5 +1,6 @@
 package org.jesperancinha.enterprise.staco.common.aws
 
+import mu.KotlinLogging
 import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.config
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.env.EnvironmentPostProcessor
@@ -9,15 +10,19 @@ import software.amazon.awssdk.services.ssm.SsmAsyncClient
 import software.amazon.awssdk.services.ssm.model.GetParameterRequest
 import java.net.URI
 
+private val logger = KotlinLogging.logger {}
+
 internal class ParameterStorePropertySource(name: String, ssmAsyncClient: SsmAsyncClient) :
     PropertySource<SsmAsyncClient>(name, ssmAsyncClient) {
     override fun getProperty(propertyName: String): Any? {
         logger.debug("Property $propertyName is not yet configured")
         if (propertyName.startsWith("/")) {
-            return source.getParameter(
+            val localstackValue = source.getParameter(
                 GetParameterRequest.builder().name("/config/StaCoLsService/$propertyName")
                     .build()
             )?.get()?.parameter()?.value()
+            logger.info("Localstack param /config/StaCoLsService$propertyName created with value $localstackValue")
+            return localstackValue
 
         }
         return null

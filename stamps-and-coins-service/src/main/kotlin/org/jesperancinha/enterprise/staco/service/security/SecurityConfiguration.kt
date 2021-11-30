@@ -1,5 +1,7 @@
 package org.jesperancinha.enterprise.staco.service.security
 
+import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.Customizer.withDefaults
@@ -14,7 +16,15 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.server.SecurityWebFilterChain
 
 @Configuration
-class SecurityConfiguration {
+class SecurityConfiguration(
+    @Value("\${org.jesperancinha.enterprise.staco.root.name}")
+    private val username: String,
+    @Value("\${org.jesperancinha.enterprise.staco.root.password}")
+    private val password: String
+) {
+
+    private val logger = KotlinLogging.logger {}
+
     @Bean
     fun bCryptPasswordEncoder(): BCryptPasswordEncoder? {
         return BCryptPasswordEncoder()
@@ -27,11 +37,12 @@ class SecurityConfiguration {
 
     @Bean
     fun userDetailsService(passwordEncoder: PasswordEncoder): MapReactiveUserDetailsService? {
-        val user: UserDetails = User.withUsername("admin")
+        val user: UserDetails = User.withUsername(username)
             .passwordEncoder { passwordEncoder.encode(it) }
-            .password("admin")
+            .password(password)
             .roles("USER")
             .build()
+        logger.info { "Your root user has been registered: $user" }
         return MapReactiveUserDetailsService(user)
     }
 

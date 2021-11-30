@@ -35,25 +35,37 @@
 
 ##### Article related
 
-- [Stamps and Coins Demo](./stamps-and-coins-demo) - Module used to create Demo data. It sends Coin and Stamps images and it can generate the initial data
-- [Stamps and Coins Common](./stamps-and-coins-common) - Contains common libraries, namely, Data Transfer Objects, Domain model and Parameter Store Property Provider
-- [Stamps and Coins Batch](./stamps-and-coins-batch) - Spring batch Quartz based Jobs. They dump the data from PostgreSQL to a file and ship it to S3. Another Job retrieves the data, unpacks it and sends it to DynamoDB.
-- [Stamps and Coins Service](./stamps-and-coins-service) - This is our starting point. It contains a Reactive Application which uses PostgreSQL using R2DBC repos on coroutines
-- [Stamps and Coins Local Stack Service](./stamps-and-coins-ls-service) - This application serves data in the same way as the above except that it connects to DynamoDB. All Localstack implementations are manual
-- [Stamps and Coins Web](./stamps-and-coins-web) - Front End Application to explore the different implementations. Pagination is implemented
+- [Stamps and Coins Demo](./stamps-and-coins-demo) - Module used to create Demo data. It sends Coin and Stamps images
+  and it can generate the initial data
+- [Stamps and Coins Common](./stamps-and-coins-common) - Contains common libraries, namely, Data Transfer Objects,
+  Domain model and Parameter Store Property Provider
+- [Stamps and Coins Batch](./stamps-and-coins-batch) - Spring batch Quartz based Jobs. They dump the data from
+  PostgreSQL to a file and ship it to S3. Another Job retrieves the data, unpacks it and sends it to DynamoDB.
+- [Stamps and Coins Service](./stamps-and-coins-service) - This is our starting point. It contains a Reactive
+  Application which uses PostgreSQL using R2DBC repos on coroutines
+- [Stamps and Coins Local Stack Service](./stamps-and-coins-ls-service) - This application serves data in the same way
+  as the above except that it connects to DynamoDB. All Localstack implementations are manual
+- [Stamps and Coins Web](./stamps-and-coins-web) - Front End Application to explore the different implementations.
+  Pagination is implemented
 
 ##### External to article
 
-- [Stamps and Coins Cloud Server](./stamps-and-coins-cloud-service) - Uses automated configuration and tries to use Localstack as much as possible.
-- [Stamps and Coins Blocking Service](./stamps-and-coins-blocking-service) - The initial application that started this project back in April 2021. It is now a login authentication/authorization security exploration module, which contains implementations of BASIC Auth, OAUTH2 local Auth and OAUTH with GitHub.
+- [Stamps and Coins Cloud Server](./stamps-and-coins-cloud-service) - Uses automated configuration and tries to use
+  Localstack as much as possible.
+- [Stamps and Coins Blocking Service](./stamps-and-coins-blocking-service) - The initial application that started this
+  project back in April 2021. It is now a login authentication/authorization security exploration module, which contains
+  implementations of BASIC Auth, OAUTH2 local Auth and OAUTH with GitHub.
+
 ---
+
 ## Setup environment
 
 Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed.
 
 #### Install sdk7
 
-Be sure to have [SDK-MAN](https://sdkman.io/) installed for this to work. You can choose another way. It is only important to have JDK17 installed to have this working.
+Be sure to have [SDK-MAN](https://sdkman.io/) installed for this to work. You can choose another way. It is only
+important to have JDK17 installed to have this working.
 
 ```shell
 . ./sdk17.sh
@@ -75,9 +87,7 @@ Be sure to have [SDK-MAN](https://sdkman.io/) installed for this to work. You ca
 
 ## How to run
 
-🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧 Under construction 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
-
-#### 1.  Running all automatically
+#### Running all automatically
 
 ```shell
 make docker-clean-build-start
@@ -85,7 +95,7 @@ make docker-clean-build-start
 
 ## Sequence diagram
 
-#### Rough Sketch
+#### Old Sketch
 
 ```mermaid
 
@@ -97,12 +107,52 @@ sequenceDiagram
     
     rect rgb(200,200,200)
     
-    User->>StaCo App: Use logs into application
+    User->>StaCo App: User logs into application
     StaCo App->>StaCo Service: A list of coins and stamps is requested by filter
     StaCo Service->>PostgreSQL Database: Data is fetched via the filter
     PostgreSQL Database ->>StaCo Service: Data is returned
     StaCo Service->>StaCo App: Minimal data manipulation and return
     StaCo App->>User: Results given to the User
+    
+    end
+```
+
+#### Current Sequence Diagram
+
+```mermaid
+
+sequenceDiagram
+    participant Web
+    participant Reactive Service
+    participant Localstack Reactive Service
+    participant Batch
+    participant Blocking Service
+    participant Cloud Service
+    participant PostgreSQL Database
+    participant S3
+    participant DynamoDB
+    participant SSM
+    
+    rect rgb(200,200,200)
+    
+    Web->>Reactive Service: User logs into application
+    Web->>Blocking Service: User logs into application
+    Web->>Blocking Service: User asks data from application
+    Reactive Service->>PostgreSQL Database: Request Data
+    PostgreSQL Database->>Reactive Service: Returns Data
+    Reactive Service->>Web: Returns Data
+    Web->>Localstack Reactive Service: User asks data from application
+    Localstack Reactive Service->>DynamodDB: Requests Data
+    DynamodDB->>Localstack Reactive Service: Sends data back
+    Localstack Reactive Service->>Web: Sends data back
+    Batch->>PostgreSQL Database: Requests Data
+    PostgreSQL Database->>Batch: Sends Data Back
+    Batch->>Batch: Processes data and creates CSV
+    Batch->>S3: Sends GZ file
+    Batch->>S3: Asks for data
+    S3->>Batch: Sends GZ file back
+    Batch->>Batch: Uncompresses file
+    Batch->>DynamoDB: Saves data in data base
     
     end
 ```

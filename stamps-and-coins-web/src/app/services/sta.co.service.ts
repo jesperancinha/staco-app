@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {StacoResponse} from "../model/staco.response";
 import {catchError, Observable, of, retry} from "rxjs";
+import {Router} from "@angular/router";
 
 const searchUrl = '/api/staco/service/stacos/search';
 const unfilteredUrl = '/api/staco/service/stacos/unfiltered';
@@ -11,7 +12,7 @@ const unfilteredUrl = '/api/staco/service/stacos/unfiltered';
 })
 export class StaCoService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public router: Router) {
   }
 
   searchByTerm(term: string, page: number, sizePage: number, sortColumn: string, order: string): Observable<StacoResponse> {
@@ -30,7 +31,7 @@ export class StaCoService {
     return (error: any): Observable<T> => {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-      window.location.href = "http://localhost:4200/login";
+      this.router.navigateByUrl("/login");
       return of(result as T);
     };
   }

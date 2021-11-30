@@ -3,11 +3,11 @@ services:
   postgres:
     hostname: postgres
     build:
-      context: ./docker-psql/.
+      context: ./docker-images/docker-psql/.
     env_file:
-      - ./docker-psql/.env
+      - ./docker-images/docker-psql/.env
     volumes:
-      - ./docker-psql/init-scripts:/docker-entrypoint-initdb.d
+      - ./docker-images/docker-psql/init-scripts:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
@@ -229,6 +229,26 @@ services:
     networks:
       staco_net:
         ipv4_address: ${STACO_APP_BATCH_IP}
+
+  nginx:
+    hostname: nginx
+    container_name: nginx
+    build:
+      context: ./docker-images/nginx/.
+    ports:
+      - "8080:8080"
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+        reservations:
+          memory: 300M
+    env_file:
+      - .env
+    networks:
+      staco_net:
+        ipv4_address: ${STACO_NGINX_IP}
 
 networks:
   staco_net:

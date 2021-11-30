@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {catchError, Observable, of, retry} from "rxjs";
 import {StacoResponse} from "../model/staco.response";
+import {Router} from "@angular/router";
 
 const searchDynamoUrl = '/api/staco/ls/stacos';
 
@@ -10,7 +11,7 @@ const searchDynamoUrl = '/api/staco/ls/stacos';
 })
 export class StaCoDynamodbService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public router: Router) {
   }
 
   searchUnfilteredDynamoDb(page: number, sizePage: number): Observable<StacoResponse> {
@@ -29,7 +30,7 @@ export class StaCoDynamodbService {
     return (error: any): Observable<T> => {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-      window.location.href = "http://localhost:4200/dynamo/login";
+      this.router.navigateByUrl("/dynamo/login");
       return of(result as T);
     };
   }

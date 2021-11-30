@@ -3,6 +3,8 @@ build: build-npm
 	mvn clean install
 build-npm:
 	cd stamps-and-coins-web && yarn install && npm run build
+	rm -rf docker-images/nginx/dist
+	mv stamps-and-coins-web/dist docker-images/nginx/
 build-maven:
 	mvn clean install -DskipTests
 test:

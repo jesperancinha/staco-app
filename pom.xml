@@ -43,6 +43,7 @@
         <r2dbc-postgresql.version>0.8.10.RELEASE</r2dbc-postgresql.version>
         <commons-compress.version>1.21</commons-compress.version>
         <commons-csv.version>1.8</commons-csv.version>
+        <jakarta.validation-api.version>3.0.0</jakarta.validation-api.version>
     </properties>
 
     <modules>
@@ -194,6 +195,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-csv</artifactId>
                 <version>${commons-csv.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta.validation-api.version}</version>
             </dependency>
 
             <dependency>

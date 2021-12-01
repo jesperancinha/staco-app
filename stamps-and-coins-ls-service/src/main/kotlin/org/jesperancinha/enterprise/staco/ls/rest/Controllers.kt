@@ -1,7 +1,6 @@
 package org.jesperancinha.enterprise.staco.ls.rest
 
 import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.IMAGES_BUCKET
-import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.common.rest.IStaCoController
 import org.jesperancinha.enterprise.staco.ls.service.StacoDao
@@ -44,17 +43,15 @@ internal class StaCoController(
     fun getCount(): Mono<Long> = stacoDao.getAll().count()
 
     @GetMapping("search/{pageEntity}/{sizeEntities}")
-    suspend fun getAllInAllBySearchItem(
+    fun getAllInAllBySearchItem(
         @PathVariable
         pageEntity: Int,
         @PathVariable
         sizeEntities: Int,
-    ): ResponseDto {
-        return stacoDao.getAllByPageNumberAndSize(
-            pageNumber = pageEntity,
-            pageSize = sizeEntities,
-        )
-    }
+    ) = stacoDao.getAllByPageNumberAndSize(
+        pageNumber = pageEntity,
+        pageSize = sizeEntities
+    )
 }
 
 @RestController
@@ -70,7 +67,8 @@ internal class StaCoImageController(
         return filePartMono.flatMapMany {
             it.content()
         }.map {
-            val putObjectRequest = PutObjectRequest.builder().bucket(IMAGES_BUCKET).key("staco-image-$uuid.png").build()
+            val putObjectRequest =
+                PutObjectRequest.builder().bucket(IMAGES_BUCKET).key("staco-image-$uuid.png").build()
             s3AsyncClient.putObject(
                 putObjectRequest,
                 AsyncRequestBody.fromBytes(it.asByteBuffer().array())

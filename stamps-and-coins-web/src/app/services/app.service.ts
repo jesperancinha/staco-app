@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, catchError, Observable, of, retry} from 'rxjs';
 
 import {User} from "../model/user";
-import {StacoResponse} from "../model/staco.response";
 
 @Injectable()
 export class AppService {
@@ -30,7 +29,7 @@ export class AppService {
     };
     return this.http.post<any>(`/api/staco/service/login`, `username=${username}&password=${password}`, httpOptions)
       .pipe(
-        retry(3), catchError(this.handleError<StacoResponse>()))
+        retry(3), catchError(this.handleError<Object>()))
   }
 
   logout() {

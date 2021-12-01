@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
 import {AppService} from "../../services/app.service";
-import {StacoResponse} from "../../model/staco.response";
 import {StaCoDynamodbService} from "../../services/sta.co.dynamodb.service";
 
 @Component({
@@ -40,21 +39,25 @@ export class SearchDynamoComponent implements OnInit {
       this.currentPageStaCo + 1,
       this.currentPageStaCoSize)
       .subscribe(data => this.processResponse(data))
-    this.staCoDynamodbService.countRecordsDynamoDb()
-      .subscribe(data => this.totalPages = data / this.currentPageStaCoSize)
   }
 
-  private processResponse(data: StacoResponse) {
+  private processResponse(data: StaCo[]) {
     this.appService.token = "authenticated";
-    this.allStaCos = data.staCoDtos;
+    this.allStaCos = data;
     if (this.allStaCos.length == 0 && this.currentPageStaCo > 1) {
       this.currentPageStaCo = 0
       this.fetchData()
     }
-    this.pagesStaCos = [];
-    for (let i = 0; i < this.totalPages; i++) {
-      this.pagesStaCos.push(i + 1);
-    }
+
+    this.staCoDynamodbService.countRecordsDynamoDb()
+      .subscribe(data => {
+        this.totalPages = data / this.currentPageStaCoSize
+        this.pagesStaCos = [];
+        for (let i = 0; i < this.totalPages; i++) {
+          this.pagesStaCos.push(i + 1);
+        }
+      })
+
   }
 
   onTableSizeChange(event): void {

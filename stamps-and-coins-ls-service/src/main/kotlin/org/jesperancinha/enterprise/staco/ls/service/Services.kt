@@ -1,13 +1,9 @@
 package org.jesperancinha.enterprise.staco.ls.service
 
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.reactive.asFlow
 import mu.KotlinLogging
 import org.jesperancinha.enterprise.staco.common.aws.StaCoDynamoDBRepository
 import org.jesperancinha.enterprise.staco.common.aws.toDto
 import org.jesperancinha.enterprise.staco.common.aws.toEvent
-import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -28,21 +24,13 @@ internal class StacoDao(
 
     fun getAll(): Flux<StaCoDto> = staCoDynamoDBRepository.findAll().map { it.toDto }
 
-    suspend fun getAllByPageNumberAndSize(
+    fun getAllByPageNumberAndSize(
         pageNumber: Int,
         pageSize: Int,
-    ): ResponseDto {
-
-        val stacos = getByPageNumberAndPageSize(
-            pageNumber,
-            pageSize
-        ).asFlow().map { it.toDto }.toList()
-
-        return ResponseDto(
-            staCoDtos = stacos,
-            currentPage = pageNumber,
-        )
-    }
+    ) = getByPageNumberAndPageSize(
+        pageNumber,
+        pageSize
+    ).map { it.toDto }
 
     private fun getByPageNumberAndPageSize(
         pageNumber: Int,

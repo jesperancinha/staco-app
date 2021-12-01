@@ -1,5 +1,6 @@
 package org.jesperancinha.enterprise.staco.ls.rest
 
+import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.IMAGES_BUCKET
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.common.rest.IStaCoController
@@ -31,10 +32,10 @@ internal class StaCoController(
     }
 
     @PostMapping("coin")
-    suspend fun sendCoin(@RequestBody staCoDto: StaCoDto): StaCoDto = stacoDao.saveCoin(staCoDto)
+    fun sendCoin(@RequestBody staCoDto: StaCoDto): Mono<StaCoDto> = stacoDao.saveCoin(staCoDto)
 
     @PostMapping("stamp")
-    suspend fun sendStamp(@RequestBody staCoDto: StaCoDto): StaCoDto = stacoDao.saveStamp(staCoDto)
+    fun sendStamp(@RequestBody staCoDto: StaCoDto): Mono<StaCoDto> = stacoDao.saveStamp(staCoDto)
 
     @GetMapping("all")
     fun getAll(): Flux<StaCoDto> = stacoDao.getAll()
@@ -69,7 +70,7 @@ internal class StaCoImageController(
         return filePartMono.flatMapMany {
             it.content()
         }.map {
-            val putObjectRequest = PutObjectRequest.builder().bucket("image").key("staco-image-$uuid.png").build()
+            val putObjectRequest = PutObjectRequest.builder().bucket(IMAGES_BUCKET).key("staco-image-$uuid.png").build()
             s3AsyncClient.putObject(
                 putObjectRequest,
                 AsyncRequestBody.fromBytes(it.asByteBuffer().array())

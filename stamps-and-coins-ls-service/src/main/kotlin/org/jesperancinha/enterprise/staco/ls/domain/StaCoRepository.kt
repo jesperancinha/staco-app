@@ -16,6 +16,7 @@ import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 import software.amazon.awssdk.services.dynamodb.model.KeyType
 import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest
+import software.amazon.awssdk.services.dynamodb.model.PutItemResponse
 import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
 import software.amazon.awssdk.services.dynamodb.model.ScanRequest
 import java.util.concurrent.CompletableFuture
@@ -29,13 +30,13 @@ class StaCoRepository(
 
     private val logger = KotlinLogging.logger {}
 
-    fun save(staCoEvent: Map<String, AttributeValue>): Map<String, AttributeValue> {
+    fun save(staCoEvent: Map<String, AttributeValue>): Mono<PutItemResponse> {
         val putItemRequest = PutItemRequest.builder()
             .tableName(STACOS_TABLE)
             .item(staCoEvent)
             .build()
-        dynamoDbAsyncClient.putItem(putItemRequest).get()
-        return staCoEvent
+        dynamoDbAsyncClient.putItem(putItemRequest)
+        return Mono.fromFuture {  dynamoDbAsyncClient.putItem(putItemRequest) }
     }
 
     /**
@@ -51,47 +52,6 @@ class StaCoRepository(
             dynamoDbAsyncClient.scan(ScanRequest.builder().tableName(STACOS_TABLE).build())
         ).map { it.items() }.flatMapIterable { it }
     }
-
-    @PostConstruct
-    fun createTableIfNotExists() {
-        val listTableResponse: CompletableFuture<ListTablesResponse> = dynamoDbAsyncClient.listTables()
-        val createTableRequest = listTableResponse
-            .thenCompose { response: ListTablesResponse ->
-                val tableExist = response
-                    .tableNames()
-                    .contains(STACOS_TABLE)
-                if (!tableExist) {
-                    logger.info { "Table $STACOS_TABLE does not exist! Creating..." }
-                    return@thenCompose createStaCosTable()
-                } else {
-                    logger.info { "Table $STACOS_TABLE already exists" }
-                    return@thenCompose CompletableFuture.completedFuture<CreateTableResponse>(null)
-                }
-            }
-        createTableRequest.get()
-    }
-
-    private fun createStaCosTable(): CompletableFuture<CreateTableResponse> {
-        val keySchemaElement: KeySchemaElement = KeySchemaElement
-            .builder()
-            .attributeName(ID)
-            .keyType(KeyType.HASH)
-            .build()
-        val dynId: AttributeDefinition = AttributeDefinition
-            .builder()
-            .attributeName(ID)
-            .attributeType(ScalarAttributeType.S)
-            .build()
-        return dynamoDbAsyncClient.createTable(
-            CreateTableRequest.builder()
-                .tableName(STACOS_TABLE)
-                .keySchema(keySchemaElement)
-                .attributeDefinitions(dynId)
-                .billingMode(BillingMode.PAY_PER_REQUEST)
-                .build()
-        )
-    }
-
 
     fun findByDescriptionLike(pageSize: Int): Flux<MutableMap<String, AttributeValue>> {
         return Mono.fromFuture(
@@ -138,4 +98,43 @@ class StaCoRepository(
     }
 
 
+    @PostConstruct
+    fun createTableIfNotExists() {
+        val listTableResponse: CompletableFuture<ListTablesResponse> = dynamoDbAsyncClient.listTables()
+        val createTableRequest = listTableResponse
+            .thenCompose { response: ListTablesResponse ->
+                val tableExist = response
+                    .tableNames()
+                    .contains(STACOS_TABLE)
+                if (!tableExist) {
+                    logger.info { "Table $STACOS_TABLE does not exist! Creating..." }
+                    return@thenCompose createStaCosTable()
+                } else {
+                    logger.info { "Table $STACOS_TABLE already exists" }
+                    return@thenCompose CompletableFuture.completedFuture<CreateTableResponse>(null)
+                }
+            }
+        createTableRequest.get()
+    }
+
+    private fun createStaCosTable(): CompletableFuture<CreateTableResponse> {
+        val keySchemaElement: KeySchemaElement = KeySchemaElement
+            .builder()
+            .attributeName(ID)
+            .keyType(KeyType.HASH)
+            .build()
+        val dynId: AttributeDefinition = AttributeDefinition
+            .builder()
+            .attributeName(ID)
+            .attributeType(ScalarAttributeType.S)
+            .build()
+        return dynamoDbAsyncClient.createTable(
+            CreateTableRequest.builder()
+                .tableName(STACOS_TABLE)
+                .keySchema(keySchemaElement)
+                .attributeDefinitions(dynId)
+                .billingMode(BillingMode.PAY_PER_REQUEST)
+                .build()
+        )
+    }
 }

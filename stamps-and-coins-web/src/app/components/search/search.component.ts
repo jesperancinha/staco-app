@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
 import {StaCoService} from "../../services/sta.co.service";
 import {AppService} from "../../services/app.service";
-import {StacoResponse} from "../../model/staco.response";
 
 @Component({
   selector: 'search-component',
@@ -58,16 +57,29 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  private processResponse(data: StacoResponse) {
+  private processResponse(data: StaCo[]) {
     this.appService.token = "authenticated";
-    this.allStaCos = data.staCoDtos;
-    if(this.allStaCos.length == 0 && this.currentPageStaCo > 1){
+    this.allStaCos = data
+    if (this.allStaCos.length == 0 && this.currentPageStaCo > 1) {
       this.currentPageStaCo = 0
       this.fetchData()
     }
-    this.pagesStaCos = [];
-    for (let i = 0; i < data.totalPages; i++) {
-      this.pagesStaCos.push(i + 1);
+
+    if (this.term) {
+      this.staCoService.countByTerm(
+        this.term,
+        this.currentPageStaCo,
+        this.currentPageStaCoSize,
+        this.sortColumn,
+        this.order)
+        .subscribe(data => this.makePages(data))
+    } else {
+      this.staCoService.countUnfiltered(
+        this.currentPageStaCo,
+        this.currentPageStaCoSize,
+        this.sortColumn,
+        this.order)
+        .subscribe(data => this.makePages(data))
     }
   }
 
@@ -94,4 +106,10 @@ export class SearchComponent implements OnInit {
     this.fetchData();
   }
 
+  private makePages(data: number) {
+    this.pagesStaCos = [];
+    for (let i = 0; i < data / this.currentPageStaCoSize; i++) {
+      this.pagesStaCos.push(i + 1);
+    }
+  }
 }

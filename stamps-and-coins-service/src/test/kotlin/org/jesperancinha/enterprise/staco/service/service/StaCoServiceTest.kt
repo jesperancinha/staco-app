@@ -15,6 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 @ExtendWith(MockKExtension::class)
 internal class StaCoServiceTest {
@@ -40,11 +41,11 @@ internal class StaCoServiceTest {
             )
         } returns Flux.empty()
 
-        coEvery {
+        every {
             staCoSearchRepository.countStaCosByDescriptionLike(
                 description = searchItem
             )
-        } returns (10);
+        } returns (Mono.just(0));
     }
 
     @Test

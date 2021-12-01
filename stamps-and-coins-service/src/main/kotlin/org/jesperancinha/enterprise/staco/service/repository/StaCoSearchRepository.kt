@@ -6,6 +6,7 @@ import org.springframework.data.repository.kotlin.CoroutineSortingRepository
 import org.springframework.data.repository.reactive.ReactiveSortingRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 interface StaCoSearchRepository : ReactiveSortingRepository<StaCo, Long> {
     fun findStaCoBy(
@@ -19,7 +20,7 @@ interface StaCoSearchRepository : ReactiveSortingRepository<StaCo, Long> {
 
      fun countStaCosByDescriptionLike(
         description: String
-    ): Long
+    ): Mono<Long>
 }
 
 @Repository

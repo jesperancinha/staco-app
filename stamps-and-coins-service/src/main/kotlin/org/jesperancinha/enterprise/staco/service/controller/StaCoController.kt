@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 @RestController
 class RedirectController {
@@ -55,11 +56,11 @@ class StaCoController(
 
     @Validated
     @GetMapping("count/search/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
-    suspend fun countBySearchItem(
+    fun countBySearchItem(
         @PathVariable
         @Size(min = 1, max = 10)
         @Pattern(regexp = "[a-zA-Z0-9 ]*")
-        search: String?,
+        search: String,
         @PathVariable
         pageEntity: Int,
         @PathVariable
@@ -68,10 +69,7 @@ class StaCoController(
         sortColumn: String,
         @PathVariable
         order: String,
-    ): Long {
-        if (search.isNullOrEmpty()) {
-            return countUnfiltered(pageEntity, sizeEntities, sortColumn, order)
-        }
+    ): Mono<Long> {
         return staCoService.countAllBySearchItem(
             searchItemValue = search,
             pageEntities = pageEntity,

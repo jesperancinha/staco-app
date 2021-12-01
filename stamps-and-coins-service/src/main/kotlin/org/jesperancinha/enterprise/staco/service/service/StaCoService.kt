@@ -45,7 +45,7 @@ class StaCoService(
         )
     ).map { it.toDto }
 
-    suspend fun countAllBySearchItem(
+    fun countAllBySearchItem(
         searchItemValue: String,
         pageEntities: Int,
         pageSizeEntities: Int,

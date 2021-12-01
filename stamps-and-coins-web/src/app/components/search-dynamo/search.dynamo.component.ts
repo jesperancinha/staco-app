@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
-import {StaCoService} from "../../services/sta.co.service";
 import {AppService} from "../../services/app.service";
 import {StacoResponse} from "../../model/staco.response";
 import {StaCoDynamodbService} from "../../services/sta.co.dynamodb.service";

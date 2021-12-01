@@ -29,13 +29,13 @@ export class StaCoService {
   }
 
   countByTerm(term: string, page: number, sizePage: number, sortColumn: string, order: string): Observable<number> {
-    let url = root + '/count/search/' + (term ? term : "") + '/' + page + '/' + sizePage + '/' + sortColumn + '/' + order;
+    let url = root + 'count/search/' + (term ? term : "") + '/' + page + '/' + sizePage + '/' + sortColumn + '/' + order;
     return this.http.get<number>(url).pipe(
       retry(3), catchError(this.handleError<number>()));
   }
 
   countUnfiltered(page: number, sizePage: number, sortColumn: string, order: string): Observable<number> {
-    let url = root + '/count/unfiltered/' + page + '/' + sizePage + '/' + sortColumn + '/' + order;
+    let url = root + 'count/unfiltered/' + page + '/' + sizePage + '/' + sortColumn + '/' + order;
     return this.http.get<number>(url).pipe(
       retry(3), catchError(this.handleError<number>()));
   }

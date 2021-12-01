@@ -18,7 +18,7 @@ interface StaCoSearchRepository : ReactiveSortingRepository<StaCo, Long> {
         pageable: Pageable
     ): Flux<StaCo>
 
-     fun countStaCosByDescriptionLike(
+    fun countStaCosByDescriptionLike(
         description: String
     ): Mono<Long>
 }

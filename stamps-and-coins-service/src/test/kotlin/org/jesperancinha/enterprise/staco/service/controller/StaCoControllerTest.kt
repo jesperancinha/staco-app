@@ -9,7 +9,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.jesperancinha.enterprise.staco.common.dto.Description
-import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.service.service.StaCoService
 import org.jesperancinha.enterprise.staco.service.utils.AbstractStaCoTest
@@ -26,6 +25,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
+import reactor.core.publisher.Flux
 import javax.sql.DataSource
 
 
@@ -37,34 +37,29 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
 
     private lateinit var mockMvc: MockMvc
 
-    private val testdata = ResponseDto(
-        staCoDtos = arrayListOf(
-            StaCoDto(
-                description = Description(value = "Queen Coinny"),
-                year = "1900",
-                value = "10",
-                currency = EUR,
-                type = ObjectType.COIN,
-                diameterMM = "10",
-                internalDiameterMM = "0",
-                heightMM = null,
-                widthMM = null
-            ),
-            StaCoDto(
-                description = Description(value = "Queen Stammp"),
-                year = "1900",
-                value = "10",
-                currency = EUR,
-                type = ObjectType.STAMP,
-                diameterMM = null,
-                internalDiameterMM = null,
-                heightMM = "0",
-                widthMM = "10"
-            )
+    private val testdata = arrayListOf(
+        StaCoDto(
+            description = Description(value = "Queen Coinny"),
+            year = "1900",
+            value = "10",
+            currency = EUR,
+            type = ObjectType.COIN,
+            diameterMM = "10",
+            internalDiameterMM = "0",
+            heightMM = null,
+            widthMM = null
         ),
-        currentPage = 0,
-        totalPages = 0,
-        totalRecords = 0,
+        StaCoDto(
+            description = Description(value = "Queen Stammp"),
+            year = "1900",
+            value = "10",
+            currency = EUR,
+            type = ObjectType.STAMP,
+            diameterMM = null,
+            internalDiameterMM = null,
+            heightMM = "0",
+            widthMM = "10"
+        )
     )
 
     @Autowired
@@ -80,16 +75,14 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
             .build()
 
         every {
-            runBlocking {
-                staCoService.getAllInAllBySearchItem(
+                staCoService.getAllBySearchItem(
                     searchItemValue = "%searchItem%",
                     pageEntities = 0,
                     pageSizeEntities = 10,
                     sortColumn = "description",
                     order = "asc"
                 )
-            }
-        } returns (testdata)
+        } returns Flux.fromIterable(testdata)
     }
 
     @Test

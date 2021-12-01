@@ -3,14 +3,16 @@ package org.jesperancinha.enterprise.staco.service.controller
 import jakarta.validation.constraints.Pattern
 import jakarta.validation.constraints.Size
 import kotlinx.coroutines.flow.Flow
-import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
+import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.service.domain.StaCo
+import org.jesperancinha.enterprise.staco.service.domain.toDto
 import org.jesperancinha.enterprise.staco.service.service.StaCoService
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import reactor.core.publisher.Flux
 
 @RestController
 class RedirectController {
@@ -25,7 +27,7 @@ class StaCoController(
 ) {
     @Validated
     @GetMapping("search/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
-    suspend fun getAllInAllBySearchItem(
+    fun getAllBySearchItem(
         @PathVariable
         @Size(min = 1, max = 10)
         @Pattern(regexp = "[a-zA-Z0-9 ]*")
@@ -38,11 +40,39 @@ class StaCoController(
         sortColumn: String,
         @PathVariable
         order: String,
-    ): ResponseDto {
+    ): Flux<StaCoDto> {
         if (search.isNullOrEmpty()) {
             return getUnfiltered(pageEntity, sizeEntities, sortColumn, order)
         }
-        return staCoService.getAllInAllBySearchItem(
+        return staCoService.getAllBySearchItem(
+            searchItemValue = search,
+            pageEntities = pageEntity,
+            pageSizeEntities = sizeEntities,
+            sortColumn = sortColumn,
+            order = order
+        )
+    }
+
+    @Validated
+    @GetMapping("count/search/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
+    suspend fun countBySearchItem(
+        @PathVariable
+        @Size(min = 1, max = 10)
+        @Pattern(regexp = "[a-zA-Z0-9 ]*")
+        search: String?,
+        @PathVariable
+        pageEntity: Int,
+        @PathVariable
+        sizeEntities: Int,
+        @PathVariable
+        sortColumn: String,
+        @PathVariable
+        order: String,
+    ): Long {
+        if (search.isNullOrEmpty()) {
+            return countUnfiltered(pageEntity, sizeEntities, sortColumn, order)
+        }
+        return staCoService.countAllBySearchItem(
             searchItemValue = search,
             pageEntities = pageEntity,
             pageSizeEntities = sizeEntities,
@@ -58,7 +88,7 @@ class StaCoController(
 
 
     @GetMapping("unfiltered/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
-    suspend fun getUnfiltered(
+    fun getUnfiltered(
         @PathVariable
         pageEntity: Int,
         @PathVariable
@@ -67,15 +97,28 @@ class StaCoController(
         sortColumn: String,
         @PathVariable
         order: String,
-    )
-            : ResponseDto {
-        return staCoService.getUnfiltered(
+    ) = staCoService.getUnfiltered(
+        pageEntities = pageEntity,
+        pageSizeEntities = sizeEntities,
+        sortColumn = sortColumn,
+        order = order
+    ).map { it.toDto }
+
+
+    @GetMapping("count/unfiltered/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")
+    suspend fun countUnfiltered(
+        @PathVariable
+        pageEntity: Int,
+        @PathVariable
+        sizeEntities: Int,
+        @PathVariable
+        sortColumn: String,
+        @PathVariable
+        order: String,
+    ) = staCoService.countUnfiltered(
             pageEntities = pageEntity,
             pageSizeEntities = sizeEntities,
             sortColumn = sortColumn,
-            order = order
-        )
-
-    }
+            order = order)
 
 }

@@ -1,8 +1,5 @@
 package org.jesperancinha.enterprise.staco.service.service
 
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.reactive.asFlow
-import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.service.domain.StaCo
 import org.jesperancinha.enterprise.staco.service.domain.toDto
@@ -33,55 +30,61 @@ class StaCoService(
     }
 
     @Cacheable("stacos-all")
-    suspend fun getAllInAllBySearchItem(
+    fun getAllBySearchItem(
         searchItemValue: String,
         pageEntities: Int,
         pageSizeEntities: Int,
         sortColumn: String,
         order: String,
-    ): ResponseDto {
-        val searchEntities =
-            staCoSearchRepository.findStaCosByDescriptionLike(
-                description = "%$searchItemValue%",
-                pageable = PageRequest.of(
-                    pageEntities,
-                    pageSizeEntities,
-                    Sort.by(Sort.Direction.valueOf(order.uppercase(Locale.getDefault())), sortColumn)
-                )
-            ).asFlow().toList().map { it.toDto }
-        return ResponseDto(
-            staCoDtos = searchEntities,
-            currentPage = pageEntities,
-            totalRecords = searchEntities.size.toLong(),
-            totalPages = staCoSearchRepository
-                .countStaCosByDescriptionLike(
-                    description = "%$searchItemValue%"
-                ) / pageSizeEntities
+    ) = staCoSearchRepository.findStaCosByDescriptionLike(
+        description = "%$searchItemValue%",
+        pageable = PageRequest.of(
+            pageEntities,
+            pageSizeEntities,
+            Sort.by(Sort.Direction.valueOf(order.uppercase(Locale.getDefault())), sortColumn)
         )
-    }
+    ).map { it.toDto }
 
-    fun getAll() =
-        staCoRepository.findAll()
-
-    suspend fun getUnfiltered(
+    suspend fun countAllBySearchItem(
+        searchItemValue: String,
         pageEntities: Int,
         pageSizeEntities: Int,
         sortColumn: String,
         order: String,
-    ): ResponseDto {
-        val searchEntities =
-            staCoSearchRepository.findStaCoBy(
-                pageable = PageRequest.of(
-                    pageEntities,
-                    pageSizeEntities,
-                    Sort.by(Sort.Direction.valueOf(order.uppercase(Locale.getDefault())), sortColumn)
-                )
-            ).asFlow().toList().map { it.toDto }
-        return ResponseDto(
-            staCoDtos = searchEntities,
-            currentPage = pageEntities,
-            totalRecords = searchEntities.size.toLong(),
-            totalPages = staCoRepository.count() / pageSizeEntities
+    ) = staCoSearchRepository
+        .countStaCosByDescriptionLike(
+            description = "%$searchItemValue%"
         )
-    }
+
+    suspend fun countAll(
+        searchItemValue: String,
+        pageEntities: Int,
+        pageSizeEntities: Int,
+        sortColumn: String,
+        order: String,
+    ) = staCoRepository.count()
+
+
+    fun getAll() =
+        staCoRepository.findAll()
+
+    fun getUnfiltered(
+        pageEntities: Int,
+        pageSizeEntities: Int,
+        sortColumn: String,
+        order: String,
+    ) = staCoSearchRepository.findStaCoBy(
+        pageable = PageRequest.of(
+            pageEntities,
+            pageSizeEntities,
+            Sort.by(Sort.Direction.valueOf(order.uppercase(Locale.getDefault())), sortColumn)
+        )
+    )
+
+    suspend fun countUnfiltered(
+        pageEntities: Int,
+        pageSizeEntities: Int,
+        sortColumn: String,
+        order: String,
+    ) = staCoRepository.count()
 }

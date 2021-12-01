@@ -50,7 +50,7 @@ internal class StaCoServiceTest {
     @Test
     fun testPersonLike_whenSearchName_thenCallSearchName(): Unit = runBlocking {
         val searchItem = "Ma"
-        staCoService.getAllInAllBySearchItem(
+        staCoService.getAllBySearchItem(
             searchItemValue = searchItem,
             pageEntities = 0,
             pageSizeEntities = 10,

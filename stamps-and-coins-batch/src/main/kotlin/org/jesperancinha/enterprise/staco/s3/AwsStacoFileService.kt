@@ -5,11 +5,7 @@ import org.apache.commons.csv.CSVFormat.DEFAULT
 import org.apache.commons.csv.CSVParser
 import org.apache.commons.csv.CSVPrinter
 import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.STACOS_BUCKET
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
-import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.jesperancinha.enterprise.staco.common.domain.toEvent
-import org.jesperancinha.enterprise.staco.common.dto.Description
-import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.dynamodb.domain.StaCoDynamoDBRepository
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.springframework.stereotype.Component
@@ -108,20 +104,7 @@ class AwsStacoFileService(
                             val records = csvParser.records
                             for (csvRecord in records.takeLast(records.size - 1)) {
                                 try {
-                                    staCoDynamoDBRepository.save(
-                                        StaCoDto(
-                                            id = csvRecord.get("id"),
-                                            description = Description(csvRecord.get("description")),
-                                            year = csvRecord.get("year"),
-                                            value = csvRecord.get("value"),
-                                            currency = CurrencyType.valueOf(csvRecord.get("currency")),
-                                            type = ObjectType.valueOf(csvRecord.get("type")),
-                                            diameterMM = csvRecord.get("diameterMM"),
-                                            internalDiameterMM = csvRecord.get("internalDiameterMM"),
-                                            heightMM = csvRecord.get("heightMM"),
-                                            widthMM = csvRecord.get("widthMM")
-                                        ).toEvent
-                                    )
+                                    staCoDynamoDBRepository.save(csvRecord.toEvent)
                                 } catch (ex: IllegalArgumentException) {
                                     logger.info { "Record $csvRecord was rejected!. Reason: $ex" }
                                 }

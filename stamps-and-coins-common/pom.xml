@@ -60,6 +60,11 @@
             <artifactId>kotlin-logging-jvm</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>

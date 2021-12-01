@@ -53,7 +53,7 @@ class StaCoDynamoDBRepository(
         ).map { it.items() }.flatMapIterable { it }
     }
 
-    fun findByDescriptionLike(pageSize: Int): Flux<MutableMap<String, AttributeValue>> {
+    fun findByPageNumberAndPageSize(pageSize: Int): Flux<MutableMap<String, AttributeValue>> {
         return Mono.fromFuture(
             dynamoDbAsyncClient.scan(
                 ScanRequest
@@ -68,7 +68,7 @@ class StaCoDynamoDBRepository(
         }.flatMapIterable { it }
     }
 
-    fun findByDescriptionLike(
+    fun findByPageNumberAndPageSize(
         pageSize: Int,
         pageNumber: Int
     ): Flux<MutableMap<String, AttributeValue>> {

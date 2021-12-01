@@ -28,12 +28,12 @@ internal class StacoDao(
 
     fun getAll(): Flux<StaCoDto> = staCoDynamoDBRepository.findAll().map { it.toDto }
 
-    suspend fun getAllInAllBySearchItem(
+    suspend fun getAllByPageNumberAndSize(
         pageNumber: Int,
         pageSize: Int,
     ): ResponseDto {
 
-        val stacos = getAllStacos(
+        val stacos = getByPageNumberAndPageSize(
             pageNumber,
             pageSize
         ).asFlow().map { it.toDto }.toList()
@@ -44,12 +44,12 @@ internal class StacoDao(
         )
     }
 
-    private fun getAllStacos(
+    private fun getByPageNumberAndPageSize(
         pageNumber: Int,
         pageSize: Int,
     ): Flux<MutableMap<String, AttributeValue>> = if (pageNumber > 1) {
-        staCoDynamoDBRepository.findByDescriptionLike(pageSize, pageNumber)
+        staCoDynamoDBRepository.findByPageNumberAndPageSize(pageSize, pageNumber)
     } else {
-        staCoDynamoDBRepository.findByDescriptionLike(pageSize)
+        staCoDynamoDBRepository.findByPageNumberAndPageSize(pageSize)
     }
 }

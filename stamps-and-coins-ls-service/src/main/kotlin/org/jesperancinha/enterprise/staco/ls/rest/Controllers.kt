@@ -50,7 +50,7 @@ internal class StaCoController(
         @PathVariable
         sizeEntities: Int,
     ): ResponseDto {
-        return stacoDao.getAllInAllBySearchItem(
+        return stacoDao.getAllByPageNumberAndSize(
             pageNumber = pageEntity,
             pageSize = sizeEntities,
         )

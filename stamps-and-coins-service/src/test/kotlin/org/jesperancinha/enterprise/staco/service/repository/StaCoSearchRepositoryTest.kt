@@ -6,6 +6,7 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.reactive.asFlow
+import org.jesperancinha.enterprise.staco.common.aws.StaCoDynamoDBRepository
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType.COIN
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType.STAMP
@@ -27,7 +28,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 @SpringBootTest
 @Testcontainers
 @ActiveProfiles("test")
-@MockkBean(CacheManager::class)
+@MockkBean(CacheManager::class, StaCoDynamoDBRepository::class)
 internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
 
     private val staCo1: StaCo = StaCoDto(

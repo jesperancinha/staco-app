@@ -1,6 +1,5 @@
 package org.jesperancinha.enterprise.staco.service.repository
 
-import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.service.domain.StaCo
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.kotlin.CoroutineSortingRepository
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
 
 interface StaCoSearchRepository : ReactiveSortingRepository<StaCo, Long> {
-
     fun findStaCoBy(
         pageable: Pageable
     ): Flux<StaCo>

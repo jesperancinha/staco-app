@@ -38,7 +38,8 @@
 - [Stamps and Coins Demo](./stamps-and-coins-demo) - Module used to create Demo data. It sends Coin and Stamps images
   and it can generate the initial data
 - [Stamps and Coins Common](./stamps-and-coins-common) - Contains common libraries, namely, Data Transfer Objects,
-  Domain model and Parameter Store Property Provider
+  Domain model
+- [Stamps and Coins Common Cloud](./stamps-and-coins-common-cloud) - Contains common libraries for the cloud projects.
 - [Stamps and Coins Batch](./stamps-and-coins-batch) - Spring batch Quartz based Jobs. They dump the data from
   PostgreSQL to a file and ship it to S3. Another Job retrieves the data, unpacks it and sends it to DynamoDB.
 - [Stamps and Coins Service](./stamps-and-coins-service) - This is our starting point. It contains a Reactive

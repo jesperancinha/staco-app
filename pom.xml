@@ -51,6 +51,7 @@
         <module>stamps-and-coins-ls-service</module>
         <module>stamps-and-coins-cloud-service</module>
         <module>stamps-and-coins-common</module>
+        <module>stamps-and-coins-common-cloud</module>
         <module>stamps-and-coins-batch</module>
         <module>stamps-and-coins-blocking-service</module>
     </modules>
@@ -99,6 +100,11 @@
             <dependency>
                 <groupId>org.jesperancinha.enterprise</groupId>
                 <artifactId>stamps-and-coins-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jesperancinha.enterprise</groupId>
+                <artifactId>stamps-and-coins-common-cloud</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

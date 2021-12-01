@@ -4,9 +4,9 @@ import mu.KotlinLogging
 import org.apache.commons.csv.CSVFormat.DEFAULT
 import org.apache.commons.csv.CSVParser
 import org.apache.commons.csv.CSVPrinter
-import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.STACOS_BUCKET
-import org.jesperancinha.enterprise.staco.common.domain.toEvent
-import org.jesperancinha.enterprise.staco.dynamodb.domain.StaCoDynamoDBRepository
+import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.STACOS_BUCKET
+import org.jesperancinha.enterprise.staco.common.aws.StaCoDynamoDBRepository
+import org.jesperancinha.enterprise.staco.common.aws.toEvent
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.springframework.stereotype.Component
 import software.amazon.awssdk.core.async.AsyncRequestBody
@@ -32,7 +32,6 @@ class AwsStacoFileService(
     private val s3AsyncClient: S3AsyncClient,
     private val staCoDynamoDBRepository: StaCoDynamoDBRepository
 ) {
-
     private val logger = KotlinLogging.logger {}
 
     fun createCompressAndUploadToS3(stacos: List<StaCo>) {

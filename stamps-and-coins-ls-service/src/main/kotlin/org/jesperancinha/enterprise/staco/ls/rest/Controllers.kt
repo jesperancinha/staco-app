@@ -1,6 +1,6 @@
 package org.jesperancinha.enterprise.staco.ls.rest
 
-import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.IMAGES_BUCKET
+import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.IMAGES_BUCKET
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.jesperancinha.enterprise.staco.common.rest.IStaCoController

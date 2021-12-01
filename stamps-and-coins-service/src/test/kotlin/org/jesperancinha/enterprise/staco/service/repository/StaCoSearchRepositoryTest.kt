@@ -2,13 +2,11 @@ package org.jesperancinha.enterprise.staco.service.repository
 
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.common.runBlocking
-import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.reactive.asFlow
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
-import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType.COIN
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType.STAMP
 import org.jesperancinha.enterprise.staco.common.dto.Description
@@ -52,10 +50,8 @@ internal class StaCoSearchRepositoryTest : AbstractStaCoTest() {
         widthMM = "10"
     ).toData.copy(stacoId = "2")
 
-
     @Autowired
     lateinit var staCoRepository: StaCoRepository
-
 
     @Autowired
     lateinit var staCoSearchRepository: StaCoSearchRepository

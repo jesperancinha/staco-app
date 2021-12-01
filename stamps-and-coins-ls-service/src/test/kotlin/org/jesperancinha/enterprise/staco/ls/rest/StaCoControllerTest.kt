@@ -1,9 +1,9 @@
 package org.jesperancinha.enterprise.staco.ls.rest
 
 import io.kotest.matchers.collections.shouldContain
-import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.ID
-import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.STACOS_TABLE
-import org.jesperancinha.enterprise.staco.ls.config.LsStaCoConfiguration
+import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.ID
+import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.STACOS_TABLE
+import org.jesperancinha.enterprise.staco.common.aws.StaCosAwsClientsConfiguration
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -29,7 +29,7 @@ val localStackContainer: LocalStackContainer =
 @SpringBootTest
 @ContextConfiguration(
     initializers = [StaCoControllerTest.Initializer::class],
-    classes = [LsStaCoConfiguration::class],
+    classes = [StaCosAwsClientsConfiguration::class],
 )
 @TestPropertySource(locations = ["classpath:application.properties"])
 internal class StaCoControllerTest(

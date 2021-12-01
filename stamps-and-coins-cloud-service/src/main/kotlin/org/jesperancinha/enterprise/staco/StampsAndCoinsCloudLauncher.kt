@@ -1,11 +1,11 @@
 package org.jesperancinha.enterprise.staco
 
-import org.jesperancinha.enterprise.staco.common.aws.AwsProperties
+import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 
-@EnableConfigurationProperties(AwsProperties::class)
+@EnableConfigurationProperties(StaCoAwsProperties::class)
 @SpringBootApplication
 class StampsAndCoinsCloudLauncher
 

@@ -25,8 +25,11 @@ data class AwsProperties @ConstructorBinding constructor(
                 .build()
         }
 
-        const val STACOS_BUCKET= "stacos"
-        const val IMAGES_BUCKET= "images"
-        const val CREDENTIALS_BUCKET= "credentials"
+        const val STACOS_BUCKET = "stacos"
+        const val STACOS_TABLE = "stacos"
+        const val IMAGES_BUCKET = "images"
+        const val CREDENTIALS_BUCKET = "credentials"
+        const val ID = "id"
+
     }
 }

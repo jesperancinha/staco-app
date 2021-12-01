@@ -1,8 +1,9 @@
 package org.jesperancinha.enterprise.staco.ls.rest
 
 import io.kotest.matchers.collections.shouldContain
+import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.ID
+import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.STACOS_TABLE
 import org.jesperancinha.enterprise.staco.ls.config.LsStaCoConfiguration
-import org.jesperancinha.enterprise.staco.ls.domain.StaCoRepository.Companion.createTableRequest
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -14,6 +15,12 @@ import org.springframework.test.context.TestPropertySource
 import org.testcontainers.containers.localstack.LocalStackContainer
 import org.testcontainers.utility.DockerImageName
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
+import software.amazon.awssdk.services.dynamodb.model.BillingMode
+import software.amazon.awssdk.services.dynamodb.model.CreateTableRequest
+import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
+import software.amazon.awssdk.services.dynamodb.model.KeyType
+import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
 
 val localStackContainer: LocalStackContainer =
     LocalStackContainer(DockerImageName.parse("localstack/localstack:0.11.3"))
@@ -44,7 +51,24 @@ internal class StaCoControllerTest(
 
     @Test
     fun `should create table`() {
-        dynamoDbClient.createTable(createTableRequest())
+        val keySchemaElement: KeySchemaElement = KeySchemaElement
+            .builder()
+            .attributeName(ID)
+            .keyType(KeyType.HASH)
+            .build()
+        val dynId: AttributeDefinition = AttributeDefinition
+            .builder()
+            .attributeName(ID)
+            .attributeType(ScalarAttributeType.S)
+            .build()
+        dynamoDbClient.createTable(
+            CreateTableRequest.builder()
+                .tableName(STACOS_TABLE)
+                .keySchema(keySchemaElement)
+                .attributeDefinitions(dynId)
+                .billingMode(BillingMode.PAY_PER_REQUEST)
+                .build()
+        )
         dynamoDbClient.apply {
             listTables().thenApply {
                 it.tableNames().shouldContain("staco")

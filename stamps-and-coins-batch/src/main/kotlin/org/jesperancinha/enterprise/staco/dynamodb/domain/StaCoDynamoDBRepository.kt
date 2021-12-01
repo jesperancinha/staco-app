@@ -1,9 +1,9 @@
 package org.jesperancinha.enterprise.staco.dynamodb.domain
 
 import mu.KotlinLogging
+import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.ID
+import org.jesperancinha.enterprise.staco.common.aws.AwsProperties.Companion.STACOS_TABLE
 import org.springframework.stereotype.Repository
-import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -15,7 +15,6 @@ import software.amazon.awssdk.services.dynamodb.model.KeyType
 import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest
 import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
-import software.amazon.awssdk.services.dynamodb.model.ScanRequest
 import java.util.concurrent.CompletableFuture
 import javax.annotation.PostConstruct
 
@@ -29,48 +28,33 @@ class StaCoDynamoDBRepository(
 
     fun save(staCoEvent: Map<String, AttributeValue>): Map<String, AttributeValue> {
         val putItemRequest = PutItemRequest.builder()
-            .tableName(TABLE_STACOS)
+            .tableName(STACOS_TABLE)
             .item(staCoEvent)
             .build()
         dynamoDbAsyncClient.putItem(putItemRequest).get()
         return staCoEvent
     }
 
-    /**
-     * We take advantage of the fromFuture function provided by Mono.
-     * We then get the items and flatMap them
-     * The only thing we block is the retrieval of the items.
-     * The function itself is not blocked.
-     * Since Flux belongs to WebFlux and not coroutines, we don't use suspend in this case
-     * Flux is itself already reactive, although in a completely different setting than flow.
-     **/
-    fun findAll(): Flux<MutableMap<String, AttributeValue>> {
-        return Mono.fromFuture(
-            dynamoDbAsyncClient.scan(ScanRequest.builder().tableName(TABLE_STACOS).build())
-        ).map { it.items() }.flatMapIterable { it }
-    }
-
-
     @PostConstruct
-    fun createTableIfNeeded() {
+    fun createTableIfNotExists() {
         val listTableResponse: CompletableFuture<ListTablesResponse> = dynamoDbAsyncClient.listTables()
         val createTableRequest = listTableResponse
             .thenCompose { response: ListTablesResponse ->
                 val tableExist = response
                     .tableNames()
-                    .contains(TABLE_STACOS)
+                    .contains(STACOS_TABLE)
                 if (!tableExist) {
-                    logger.info { "Table $TABLE_STACOS does not exist! Creating..." }
-                    return@thenCompose createTable()
+                    logger.info { "Table $STACOS_TABLE does not exist! Creating..." }
+                    return@thenCompose createStaCosTable()
                 } else {
-                    logger.info { "Table $TABLE_STACOS already exists" }
+                    logger.info { "Table $STACOS_TABLE already exists" }
                     return@thenCompose CompletableFuture.completedFuture<CreateTableResponse>(null)
                 }
             }
         createTableRequest.get()
     }
 
-    private fun createTable(): CompletableFuture<CreateTableResponse> {
+    private fun createStaCosTable(): CompletableFuture<CreateTableResponse> {
         val keySchemaElement: KeySchemaElement = KeySchemaElement
             .builder()
             .attributeName(ID)
@@ -81,18 +65,13 @@ class StaCoDynamoDBRepository(
             .attributeName(ID)
             .attributeType(ScalarAttributeType.S)
             .build()
-        val request: CreateTableRequest = CreateTableRequest.builder()
-            .tableName(TABLE_STACOS)
-            .keySchema(keySchemaElement)
-            .attributeDefinitions(dynId)
-            .billingMode(BillingMode.PAY_PER_REQUEST)
-            .build()
-        return dynamoDbAsyncClient.createTable(request)
+        return dynamoDbAsyncClient.createTable(
+            CreateTableRequest.builder()
+                .tableName(STACOS_TABLE)
+                .keySchema(keySchemaElement)
+                .attributeDefinitions(dynId)
+                .billingMode(BillingMode.PAY_PER_REQUEST)
+                .build()
+        )
     }
-
-    companion object {
-        const val TABLE_STACOS = "stacos"
-        const val ID = "id"
-    }
-
 }

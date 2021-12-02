@@ -102,6 +102,14 @@ make docker-clean-build-start
 
 ## Sequence diagram
 
+
+To visualize these diagrams you may need
+the [mermaid-diagrams](https://chrome.google.com/webstore/detail/mermaid-diagrams/phfcghedmopjadpojhmmaffjmfiakfil)
+plugin installation.
+
+To visualize them in Intellij, please install the [mermaid plugin](https://mermaid-js.github.io/mermaid/#/).
+
+
 #### Old Sketch
 
 ```mermaid

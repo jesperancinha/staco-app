@@ -39,7 +39,6 @@
         <r2dbc.version>0.9.0.RC1</r2dbc.version>
         <spring-data-r2dbc.version>1.4.1-SNAPSHOT</spring-data-r2dbc.version>
         <test.containers.version>1.16.2</test.containers.version>
-        <r2dbc-postgresql.version>0.8.10.RELEASE</r2dbc-postgresql.version>
         <commons-compress.version>1.21</commons-compress.version>
         <commons-csv.version>1.8</commons-csv.version>
         <jakarta.validation-api.version>3.0.0</jakarta.validation-api.version>
@@ -181,11 +180,6 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-r2dbc</artifactId>
                 <version>${spring-data-r2dbc.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.r2dbc</groupId>
-                <artifactId>r2dbc-postgresql</artifactId>
-                <version>${r2dbc-postgresql.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>

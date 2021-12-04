@@ -27,7 +27,7 @@
         <spring-cloud-dependencies.version>2021.0.0-M2</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>2.3.2</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
-        <spring.security.version>5.5.1</spring.security.version>
+        <spring.security.version>5.6.0</spring.security.version>
 
         <kotlinx-coroutines.version>1.6.0-RC</kotlinx-coroutines.version>
         <kotlin-logging.version>2.1.0</kotlin-logging.version>

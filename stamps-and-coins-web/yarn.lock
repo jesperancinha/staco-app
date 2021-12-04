@@ -25,7 +25,6 @@
   dependencies:
     "@angular-devkit/core" "13.0.4"
     rxjs "6.6.7"
-
 "@angular-devkit/build-angular@^13.0.4":
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-13.0.4.tgz#2a976cdc8265a13a10e7aaf615e13da55e39a41a"
@@ -130,12 +129,12 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@13.0.3":
-  version "13.0.3"
-  resolved "https://registry.npmjs.org/@angular-devkit/schematics/-/schematics-13.0.3.tgz"
-  integrity sha512-+Va1E0zJBCg5jqSfITusghoMJgPAwlU+WUs49fuGVCzfJPwfSjTKSrsbhanahMd27+Ys3rovGZq0F2JUdL801A==
+"@angular-devkit/schematics@13.0.4":
+  version "13.0.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.0.4.tgz#9455e695ae25b642d9a93179938149cd52ccdbb1"
+  integrity sha512-3LsmpfAEOxwPyachrktCHtGUYBzQCCzD0++CUjhK8W99v8/IAplkm4dgovFb1RiRkUm44l+HIS7387AbvEIf5A==
   dependencies:
-    "@angular-devkit/core" "13.0.3"
+    "@angular-devkit/core" "13.0.4"
     jsonc-parser "3.0.0"
     magic-string "0.25.7"
     ora "5.4.1"
@@ -157,15 +156,15 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@~13.0.3":
-  version "13.0.3"
-  resolved "https://registry.npmjs.org/@angular/cli/-/cli-13.0.3.tgz"
-  integrity sha512-LDXDXDbQ1MBHVUstu4aNjFbyg5f9hLP52gEKB8Z6fQlf5CB1X5zD6UPcR4IvoYt03EFxg3DHco+ueJQ20oZUWQ==
+"@angular/cli@~13.0.4":
+  version "13.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-13.0.4.tgz#28932cb8e2c9e1eb4a65db459be851932f51eecd"
+  integrity sha512-0QMJXFNn57LVg7ZwZFPO90g6aZHDnoe5yCB7fo3nskOhDw1AW/rnbbaNVMVX/SvP30hOOTLsfVJ1Y3I6eKDgRA==
   dependencies:
-    "@angular-devkit/architect" "0.1300.3"
-    "@angular-devkit/core" "13.0.3"
-    "@angular-devkit/schematics" "13.0.3"
-    "@schematics/angular" "13.0.3"
+    "@angular-devkit/architect" "0.1300.4"
+    "@angular-devkit/core" "13.0.4"
+    "@angular-devkit/schematics" "13.0.4"
+    "@schematics/angular" "13.0.4"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.1"
     debug "4.3.2"
@@ -1312,13 +1311,13 @@
     node-gyp "^8.2.0"
     read-package-json-fast "^2.0.1"
 
-"@schematics/angular@13.0.3":
-  version "13.0.3"
-  resolved "https://registry.npmjs.org/@schematics/angular/-/angular-13.0.3.tgz"
-  integrity sha512-qH6mnmGaDCuG1FM3vLdvSFDG394TeZO0ZvRDrw3iCYlX5Nkbz0Kvt0MPtWNZmlohwFhGlbXKVQiR++1dxa6eEA==
+"@schematics/angular@13.0.4":
+  version "13.0.4"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-13.0.4.tgz#e7efd26bf24abc359c902c4576451f988cc8582a"
+  integrity sha512-P9F5c8ApLbEyfNO4TZNsTyAdrtOjwIhrM/P+eEC4/x6nklWlEFE6TGMYTNjiK/RRhkbX1tBs8gcdJLYxtEqPSg==
   dependencies:
-    "@angular-devkit/core" "13.0.3"
-    "@angular-devkit/schematics" "13.0.3"
+    "@angular-devkit/core" "13.0.4"
+    "@angular-devkit/schematics" "13.0.4"
     jsonc-parser "3.0.0"
 
 "@tootallnate/once@1":

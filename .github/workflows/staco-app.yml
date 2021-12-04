@@ -29,4 +29,4 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: cd stamps-and-coins-web && npm install && npm test
+    - run: cd stamps-and-coins-web && npm install && npm test-headless

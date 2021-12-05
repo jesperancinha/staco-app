@@ -8,14 +8,14 @@ You can also add STACO_AWS_LOCALSTACK_PORT to specify the port. It uses 4566 by 
 
 ## Test Endpoints
 
-1. [http://localhost:8082/api/staco/ls/stacos/all](http://localhost:8082/api/staco/ls/stacos/all)
+1.  [http://localhost:8082/api/staco/ls/stacos/all](http://localhost:8082/api/staco/ls/stacos/all)
 
 ## References
 
-- [Microservice: Async Rest Client to DynamoDB using Spring Boot](https://dzone.com/articles/java-microservice-async-rest-client-to-dynamodb-us)
-- [DynamoDB CLI Commands & Query Examples Cheat Sheet](https://dynobase.dev/dynamodb-cli-query-examples/)
-- [Spring Boot and AWS Parameter Store](https://source.coveo.com/2018/08/03/spring-boot-and-aws-parameter-store/)
-- [Spring WebFlux File Upload](https://vinsguru.medium.com/spring-webflux-file-upload-f6e3f3d3f5e1)
+-   [Microservice: Async Rest Client to DynamoDB using Spring Boot](https://dzone.com/articles/java-microservice-async-rest-client-to-dynamodb-us)
+-   [DynamoDB CLI Commands & Query Examples Cheat Sheet](https://dynobase.dev/dynamodb-cli-query-examples/)
+-   [Spring Boot and AWS Parameter Store](https://source.coveo.com/2018/08/03/spring-boot-and-aws-parameter-store/)
+-   [Spring WebFlux File Upload](https://vinsguru.medium.com/spring-webflux-file-upload-f6e3f3d3f5e1)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

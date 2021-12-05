@@ -15,7 +15,7 @@ alias aws="aws --endpoint-url $LOCAL_STACK"
 
 ## II. stamps-and-coins-ls-service
 
-#### 1. Talking with the API
+#### 1.  Talking with the API
 ```shell
 curl -v -F "image=@stamp-sample.png" http://localhost:8082/api/staco/ls/images/save/$(uuidgen)
 curl -v -F "image=@coin-sample.png" http://localhost:8082/api/staco/ls/images/save/$(uuidgen)
@@ -36,7 +36,7 @@ aws s3api list-objects --bucket stacos
 curl http://localhost:8082/api/staco/ls/stacos/all
 ```
 
-#### 2. Checking results with aws
+#### 2.  Checking results with aws
 >Remember to run `. ../bash/docker-setup.sh`
 
 ```shell
@@ -46,7 +46,7 @@ aws dynamodb delete-table --table-name stacos
 
 ## III. stamps-and-coins-batch
 
-#### 1. Checking results with aws
+#### 1.  Checking results with aws
 
 ```shell
 aws s3api create-bucket --bucket stacos
@@ -59,11 +59,10 @@ aws dynamodb delete-table --table-name stacos
 
 ## IV. stamps-and-coins-ls-service
 
-#### 1. Endpoints
+#### 1.  Endpoints
 
-- [http://localhost:8082/api/staco/ls/stacos/search/1/20/year](http://localhost:8082/api/staco/ls/stacos/search/1/20/year)
-- [http://localhost:8082/api/staco/ls/stacos/search/1/10/year/ASC](http://localhost:8082/api/staco/ls/stacos/search/1/10/year)
-
+-   [http://localhost:8082/api/staco/ls/stacos/search/1/20/year](http://localhost:8082/api/staco/ls/stacos/search/1/20/year)
+-   [http://localhost:8082/api/staco/ls/stacos/search/1/10/year/ASC](http://localhost:8082/api/staco/ls/stacos/search/1/10/year)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

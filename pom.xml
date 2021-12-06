@@ -21,7 +21,7 @@
         <postgresql.version>42.2.24.jre7</postgresql.version>
 
         <okta-spring-boot-starter.version>2.1.3</okta-spring-boot-starter.version>
-        <sofware.amazon.version>2.17.85</sofware.amazon.version>
+        <sofware.amazon.version>2.17.96</sofware.amazon.version>
 
         <spring-boot.version>2.6.1</spring-boot.version>
         <spring-cloud-dependencies.version>2021.0.0-M2</spring-cloud-dependencies.version>

@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <kotlin.version>1.6.0</kotlin.version>
-        <aws-java-sdk.version>1.12.125</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.126</aws-java-sdk.version>
 
         <h2.version>2.0.202</h2.version>
         <postgresql.version>42.2.24.jre7</postgresql.version>

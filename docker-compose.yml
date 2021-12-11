@@ -2,16 +2,16 @@ services:
 
   postgres:
     hostname: postgres
+    container_name: postgres
     build:
       context: ./docker-images/docker-psql/.
-    env_file:
-      - ./docker-images/docker-psql/.env
     volumes:
       - ./docker-images/docker-psql/init-scripts:/docker-entrypoint-initdb.d
+      - ./docker-images/docker-psql/init-scripts/stacos:/docker-entrypoint-initdb.d/stacos
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_MULTIPLE_DATABASES=staco
+      - POSTGRES_MULTIPLE_DATABASES=staco:stacos,stacky
     ports:
       - "5432:5432"
     networks:

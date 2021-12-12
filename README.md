@@ -37,14 +37,11 @@ This repo is the official support repo to my article on medium:
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://itnext.io/learning-aws-with-localstack-and-reactive-kotlin-a-stamps-and-coins-implementation-d10278f98587) [Learning AWS with Localstack and Reactive Kotlin - A stamps and coins implementation](https://itnext.io/learning-aws-with-localstack-and-reactive-kotlin-a-stamps-and-coins-implementation-d10278f98587)
 
-
-#### Walk through
-
 <div align="center">
-      <a title="Learning AWS with Localstack and Reactive Kotli DEMO- A stamps and coins implementation" href="https://www.youtube.com/watch?v=Xe8qjnfWJp4">
+      <a title="Learning AWS with Localstack and Reactive Kotlin - A stamps and coins implementation" href="https://itnext.io/learning-aws-with-localstack-and-reactive-kotlin-a-stamps-and-coins-implementation-d10278f98587">
      <img 
-          src="https://img.youtube.com/vi/Xe8qjnfWJp4/0.jpg" 
-          style="width:50%;">
+          src="./docs/images/article.staco.banner.jpg" 
+          style="width:100%;">
       </a>
 </div>
 
@@ -191,6 +188,16 @@ sequenceDiagram
     SSM->>Cloud Service: Configuration Data
     end
 ```
+
+#### Walk through
+
+<div align="center">
+      <a title="Learning AWS with Localstack and Reactive Kotli DEMO- A stamps and coins implementation" href="https://www.youtube.com/watch?v=Xe8qjnfWJp4">
+     <img 
+          src="https://img.youtube.com/vi/Xe8qjnfWJp4/0.jpg" 
+          style="width:50%;">
+      </a>
+</div>
 
 ## Buy me a coffee
 

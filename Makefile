@@ -3,8 +3,6 @@ build: build-npm
 	mvn clean install
 build-npm:
 	cd stamps-and-coins-web && yarn install && npm run build
-	rm -rf docker-images/nginx/dist
-	mv stamps-and-coins-web/dist docker-images/nginx/
 build-maven:
 	mvn clean install -DskipTests
 test:
@@ -16,6 +14,7 @@ local: no-test
 no-test:
 	mvn clean install -DskipTests
 docker:
+	docker-compose rm -svf
 	docker-compose up -d --build --remove-orphans
 docker-databases: stop local
 build-images:
@@ -48,6 +47,7 @@ localstack-config:
 prune-all: stop
 	docker ps -a --format '{{.ID}}' -q | xargs docker stop
 	docker ps -a --format '{{.ID}}' -q | xargs docker rm
+	docker network prune
 	docker system prune --all
 	docker builder prune
 	docker system prune --all --volumes

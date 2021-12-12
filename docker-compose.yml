@@ -3,17 +3,18 @@ services:
   postgres:
     hostname: postgres
     container_name: postgres
-    build:
-      context: ./docker-images/docker-psql/.
+    image: postgres:14.1
     volumes:
-      - ./docker-images/docker-psql/init-scripts:/docker-entrypoint-initdb.d
-      - ./docker-images/docker-psql/init-scripts/stacos:/docker-entrypoint-initdb.d/stacos
+      - ./docker-images/docker-psql:/docker-entrypoint-initdb.d
+      - ./docker-images/docker-psql/multiple:/docker-entrypoint-initdb.d/multiple
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_MULTIPLE_DATABASES=staco:stacos,stacky
+      - POSTGRES_MULTIPLE_DATABASES=staco
     ports:
       - "5432:5432"
+    expose:
+      - "5432"
     networks:
       staco_net:
         ipv4_address: ${STACO_AWS_POSTGRESQL_IP}

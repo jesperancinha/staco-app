@@ -110,6 +110,8 @@ make docker-clean-build-start
 
 -   Endpoint:  [http://localhost:8080](http://localhost:8080)
 
+> These containers take a while to start, so depending on your machine, the containers can start in anywhere between 10 seconds up to 5 minutes. Keep checking the logs with `docker logs` or `docker-compose logs`.
+
 ## Sequence diagram
 
 

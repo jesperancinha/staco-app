@@ -1,2 +1,0 @@
-FROM postgres:14.1
-EXPOSE 5433 5432

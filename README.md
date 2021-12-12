@@ -111,7 +111,7 @@ important to have JDK17 installed to have this working.
 make docker-clean-build-start
 ```
 
-- Endpoint:  [http://localhost:8080](http://localhost:8080)
+-   Endpoint:  [http://localhost:8080](http://localhost:8080)
 
 ## Sequence diagram
 

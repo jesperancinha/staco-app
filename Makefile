@@ -28,6 +28,7 @@ docker-delete: stop
 	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs docker stop
 	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs docker rm
 docker-cleanup: docker-delete
+	docker network prune
 	docker images -q | xargs docker rmi
 docker-clean:
 	docker-compose rm -svf

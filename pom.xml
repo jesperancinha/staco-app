@@ -28,7 +28,7 @@
         <spring-cloud-aws-dependencies.version>2.3.2</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
 
-        <kotlinx-coroutines.version>1.6.0-RC</kotlinx-coroutines.version>
+        <kotlinx-coroutines.version>1.6.0-RC2</kotlinx-coroutines.version>
         <kotlin-logging.version>2.1.15</kotlin-logging.version>
 
         <springmockk.version>3.0.1</springmockk.version>

@@ -64,3 +64,6 @@ k8-endpoint:
 	./bash/endpoint.sh
 minikube-vmware:
 	minikube start --driver=vmware
+#MAC-OS
+install-mac-os:
+	xcode-select --install

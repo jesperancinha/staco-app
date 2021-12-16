@@ -6,6 +6,7 @@
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=StaCo%20App%20🪙%20&color=informational)](https://github.com/jesperancinha/staco-app)
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/kotlin-test-drives.svg)](#)
 
+[![CircleCI](https://circleci.com/gh/jesperancinha/staco-app/tree/main.svg?style=svg)](https://circleci.com/gh/jesperancinha/staco-app/tree/main)
 [![staco-app](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml/badge.svg)](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/staco-app.svg)](#)

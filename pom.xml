@@ -25,7 +25,7 @@
 
         <spring-boot.version>2.6.1</spring-boot.version>
         <spring-cloud-dependencies.version>2021.0.1-SNAPSHOT</spring-cloud-dependencies.version>
-        <spring-cloud-aws-dependencies.version>2.3.2</spring-cloud-aws-dependencies.version>
+        <spring-cloud-aws-dependencies.version>2.3.3</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
 
         <!-- Do not change to RC2! -->

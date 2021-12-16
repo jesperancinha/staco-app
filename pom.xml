@@ -30,7 +30,7 @@
 
         <!-- Do not change to RC2! -->
         <kotlinx-coroutines.version>1.6.0-RC</kotlinx-coroutines.version>
-        <kotlin-logging.version>2.1.16</kotlin-logging.version>
+        <kotlin-logging.version>2.1.20</kotlin-logging.version>
 
         <springmockk.version>3.0.1</springmockk.version>
         <mockk.version>1.12.1</mockk.version>

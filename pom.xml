@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <kotlin.version>1.6.10</kotlin.version>
-        <aws-java-sdk.version>1.12.128</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.129</aws-java-sdk.version>
 
         <h2.version>2.0.202</h2.version>
         <postgresql.version>42.2.24.jre7</postgresql.version>
@@ -25,12 +25,12 @@
 
         <spring-boot.version>2.6.1</spring-boot.version>
         <spring-cloud-dependencies.version>2021.0.1-SNAPSHOT</spring-cloud-dependencies.version>
-        <spring-cloud-aws-dependencies.version>2.3.2</spring-cloud-aws-dependencies.version>
+        <spring-cloud-aws-dependencies.version>2.3.3</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
 
         <!-- Do not change to RC2! -->
         <kotlinx-coroutines.version>1.6.0-RC</kotlinx-coroutines.version>
-        <kotlin-logging.version>2.1.16</kotlin-logging.version>
+        <kotlin-logging.version>2.1.20</kotlin-logging.version>
 
         <springmockk.version>3.0.1</springmockk.version>
         <mockk.version>1.12.1</mockk.version>

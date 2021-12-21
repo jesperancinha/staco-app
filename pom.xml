@@ -40,7 +40,7 @@
         <test.containers.version>1.16.2</test.containers.version>
         <commons-compress.version>1.21</commons-compress.version>
         <commons-csv.version>1.9.0</commons-csv.version>
-        <jakarta.validation-api.version>3.0.0</jakarta.validation-api.version>
+        <jakarta.validation-api.version>3.0.1</jakarta.validation-api.version>
     </properties>
 
     <modules>

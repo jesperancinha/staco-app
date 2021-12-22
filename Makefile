@@ -25,8 +25,8 @@ show:
 docker-delete-idle:
 	docker ps --format '{{.ID}}' -q --filter="name=staco_" | xargs docker rm
 docker-delete: stop
-	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs docker stop
-	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs docker rm
+	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs -I {}  docker stop {}
+	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs -I {}  docker rm {}
 docker-cleanup: docker-delete
 	docker network prune
 	docker images -q | xargs docker rmi
@@ -45,9 +45,7 @@ localstack-config:
 	sleep 1
 	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/username --value "postgres"
 	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/password --value "password"
-prune-all: stop
-	docker ps -a --format '{{.ID}}' -q | xargs docker stop
-	docker ps -a --format '{{.ID}}' -q | xargs docker rm
+prune-all: docker-delete
 	docker network prune
 	docker system prune --all
 	docker builder prune

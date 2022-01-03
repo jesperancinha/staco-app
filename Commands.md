@@ -75,15 +75,19 @@ export AWS_DEFAULT_REGION=eu-central-1
 ```
 
 ## AWS commands
-
+    João
 ```shell
 alias aws="aws --endpoint-url $LOCAL_STACK"
 aws s3api list-buckets
 aws s3api create-bucket --bucket staco
-aws s3api put-object --bucket staco --key warehouse1 --body docker-psql/init-scripts/stamps_coins.json
+aws s3api put-object --bucket stacos --key warehouse1 --body docker-psql/init-scripts/stamps_coins.json
 aws s3api list-objects --bucket staco
-aws s3api get-object --bucket staco --key warehouse1 test.json
-aws s3api delete-object --bucket staco --key warehouse1
+aws s3api list-objects --bucket images
+aws s3api get-object --bucket stacos --key warehouse1 test.json
+aws s3api delete-object --bucket images --key staco-image-60b32714-08d3-4583-a598-969119849745.png
+aws s3api delete-object --bucket images --key staco-image-7852abd6-6be5-49e5-a910-f8a78d95e6c0.png
+aws s3api delete-object --bucket images --key staco-image-e80bdc01-f837-4fb4-b356-47164f95640e.png
+aws s3api delete-object --bucket images --key warehouse1
 aws s3api delete-bucket --bucket staco
 aws rds create-db-instance --db-instance-identifier staco-app --db-instance-class c1 --engine postgres
 aws ecr create-repository --repository-name staco-app
@@ -93,12 +97,13 @@ aws eks list-clusters
 aws configure
 aws eks describe-cluster --name staco-cluster
 aws dynamodb list-tables
+aws dynamodb scan --table-name stacos
 aws ssm put-parameter --name love --value "What is love"
 aws ssm get-parameter --name love
 aws ssm describe-parameters
 aws ssm put-parameter --name /dev/postgres/username --value "postgres"
 aws ssm put-parameter --name /dev/postgres/password --value "password"
-aws s3api get-object --bucket staco --key staco-image-e4b80aa3-5b49-49b4-829a-463501279615.png test.png
+aws s3api get-object --bucket images --key staco-image-e4b80aa3-5b49-49b4-829a-463501279615.png test.png
 ```
 
 ## References

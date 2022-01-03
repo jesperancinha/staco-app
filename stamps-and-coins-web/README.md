@@ -17,6 +17,12 @@ curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 yarn install
 ```
 
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+```
+
+## Project Generation
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 ## Development server

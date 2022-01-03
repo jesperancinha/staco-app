@@ -3,8 +3,6 @@ build: build-npm
 	mvn clean install
 build-npm:
 	cd stamps-and-coins-web && yarn install && npm run build
-	rm -rf docker-images/nginx/dist
-	mv stamps-and-coins-web/dist docker-images/nginx/
 build-maven:
 	mvn clean install -DskipTests
 test:
@@ -16,6 +14,7 @@ local: no-test
 no-test:
 	mvn clean install -DskipTests
 docker:
+	docker-compose rm -svf
 	docker-compose up -d --build --remove-orphans
 docker-databases: stop local
 build-images:
@@ -26,9 +25,10 @@ show:
 docker-delete-idle:
 	docker ps --format '{{.ID}}' -q --filter="name=staco_" | xargs docker rm
 docker-delete: stop
-	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs docker stop
-	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs docker rm
+	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs -I {}  docker stop {}
+	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs -I {}  docker rm {}
 docker-cleanup: docker-delete
+	docker network prune
 	docker images -q | xargs docker rmi
 docker-clean:
 	docker-compose rm -svf
@@ -45,9 +45,8 @@ localstack-config:
 	sleep 1
 	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/username --value "postgres"
 	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/password --value "password"
-prune-all: stop
-	docker ps -a --format '{{.ID}}' -q | xargs docker stop
-	docker ps -a --format '{{.ID}}' -q | xargs docker rm
+prune-all: docker-delete
+	docker network prune
 	docker system prune --all
 	docker builder prune
 	docker system prune --all --volumes
@@ -63,3 +62,6 @@ k8-endpoint:
 	./bash/endpoint.sh
 minikube-vmware:
 	minikube start --driver=vmware
+#MAC-OS
+install-mac-os:
+	xcode-select --install

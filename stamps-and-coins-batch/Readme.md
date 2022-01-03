@@ -8,9 +8,9 @@ You can also add STACO_AWS_LOCALSTACK_PORT to specify the port. It uses 4566 by 
 
 ## References
 
-- [Read & Write CSV Files in Kotlin](https://chercher.tech/kotlin/read-write-csv-files-kotlin)
-- [Adding Quartz to Spring Boot](https://dzone.com/articles/adding-quartz-to-spring-boot)
-- [Quartz Quick Start Guide](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/quick-start.html)
+-   [Read & Write CSV Files in Kotlin](https://chercher.tech/kotlin/read-write-csv-files-kotlin)
+-   [Adding Quartz to Spring Boot](https://dzone.com/articles/adding-quartz-to-spring-boot)
+-   [Quartz Quick Start Guide](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/quick-start.html)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

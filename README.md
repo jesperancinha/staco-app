@@ -9,6 +9,8 @@
 [![CircleCI](https://circleci.com/gh/jesperancinha/staco-app/tree/main.svg?style=svg)](https://circleci.com/gh/jesperancinha/staco-app/tree/main)
 [![staco-app](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml/badge.svg)](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml)
 
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/staco-app/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/staco-app?branch=main)
+
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/staco-app.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/staco-app.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/staco-app.svg)](#)
@@ -76,7 +78,7 @@ This repo is the official support repo to my article on medium:
 
 ## Setup environment
 
-Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed.
+Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed
 
 #### Install sdk7
 
@@ -113,8 +115,11 @@ make docker-clean-build-start
 
 > These containers take a while to start, so depending on your machine, the containers can start in anywhere between 10 seconds up to 5 minutes. Keep checking the logs with `docker logs` or `docker-compose logs`.
 
-## Sequence diagram
+## Troubleshooting
 
+1. If you are running the integration tests on your local machine and realize that the containers remain still and don't respond for a while, this could be a sign of a problem with Docker machine. Please restart your docker desktop/docker-machine and try again. 
+
+## Sequence diagram
 
 To visualize these diagrams you may need
 the [mermaid-diagrams](https://chrome.google.com/webstore/detail/mermaid-diagrams/phfcghedmopjadpojhmmaffjmfiakfil)

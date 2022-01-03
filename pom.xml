@@ -23,7 +23,7 @@
         <okta-spring-boot-starter.version>2.1.4</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.102</sofware.amazon.version>
 
-        <spring-boot.version>2.6.1</spring-boot.version>
+        <spring-boot.version>2.6.2</spring-boot.version>
         <spring-cloud-dependencies.version>2021.0.1-SNAPSHOT</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>2.3.3</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
@@ -33,7 +33,7 @@
         <kotlin-logging.version>2.1.21</kotlin-logging.version>
 
         <springmockk.version>3.1.0</springmockk.version>
-        <mockk.version>1.12.1</mockk.version>
+        <mockk.version>1.12.2</mockk.version>
         <kotest.version>5.0.3</kotest.version>
         <reactor-test.version>3.4.13</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
@@ -41,6 +41,8 @@
         <commons-compress.version>1.21</commons-compress.version>
         <commons-csv.version>1.9.0</commons-csv.version>
         <jakarta.validation-api.version>3.0.1</jakarta.validation-api.version>
+        <omni-coveragereporter-maven-plugin.version>0.0.2</omni-coveragereporter-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     </properties>
 
     <modules>
@@ -94,13 +96,6 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>io.r2dbc</groupId>
-                <artifactId>r2dbc-spi-parent</artifactId>
-                <version>${r2dbc.version}</version>
-                <type>pom</type>
-            </dependency>
-
-            <dependency>
                 <groupId>org.jesperancinha.enterprise</groupId>
                 <artifactId>stamps-and-coins-common</artifactId>
                 <version>${project.version}</version>
@@ -109,16 +104,6 @@
                 <groupId>org.jesperancinha.enterprise</groupId>
                 <artifactId>stamps-and-coins-common-cloud</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.r2dbc</groupId>
-                <artifactId>r2dbc-h2</artifactId>
-                <version>${r2dbc.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.r2dbc</groupId>
-                <artifactId>r2dbc-spi</artifactId>
-                <version>${r2dbc.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.microutils</groupId>
@@ -316,6 +301,30 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jesperancinha.plugins</groupId>
+                <artifactId>omni-coveragereporter-maven-plugin</artifactId>
+                <version>${omni-coveragereporter-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>

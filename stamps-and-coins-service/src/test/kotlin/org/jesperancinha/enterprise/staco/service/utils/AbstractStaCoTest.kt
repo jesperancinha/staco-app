@@ -7,16 +7,18 @@ import org.testcontainers.containers.localstack.LocalStackContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.utility.DockerImageName
 
+class TestPostgresSQLContainer(imageName: String) : PostgreSQLContainer<TestPostgresSQLContainer>(imageName)
+
 abstract class AbstractStaCoTest {
     init {
-        postgreSQLContainer.start()
+        postgresSQLContainer.start()
         localStackContainer.start()
     }
 
     companion object {
         @Container
         @JvmField
-        val postgreSQLContainer: PostgreSQLContainer<*> = PostgreSQLContainer("postgres")
+        val postgresSQLContainer: TestPostgresSQLContainer = TestPostgresSQLContainer("postgres:12")
             .withUsername("postgres")
             .withPassword("admin")
             .withDatabaseName("staco")
@@ -25,7 +27,7 @@ abstract class AbstractStaCoTest {
         @Container
         @JvmField
         val localStackContainer: LocalStackContainer =
-            LocalStackContainer(DockerImageName.parse("localstack/localstack:0.11.3"))
+            LocalStackContainer(DockerImageName.parse("localstack/localstack:0.13.2"))
                 .withServices(LocalStackContainer.Service.DYNAMODB)
 
         @DynamicPropertySource
@@ -33,7 +35,7 @@ abstract class AbstractStaCoTest {
         fun setProperties(registry: DynamicPropertyRegistry) {
             registry.add(
                 "spring.r2dbc.url"
-            ) { "r2dbc:postgresql://postgres@localhost:${postgreSQLContainer.firstMappedPort}/staco" }
+            ) { "r2dbc:postgresql://postgres@localhost:${postgresSQLContainer.firstMappedPort}/staco" }
             registry.add(
                 "aws.endpoint"
             ) { "http://localhost:${localStackContainer.firstMappedPort}" }

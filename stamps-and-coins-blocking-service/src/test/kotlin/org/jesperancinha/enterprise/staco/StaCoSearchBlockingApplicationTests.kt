@@ -7,7 +7,7 @@ import org.springframework.test.context.ActiveProfiles
 
 @SpringBootTest
 @ActiveProfiles("test")
-class StaCoSearchApplicationTests : AbstractStaCoTest() {
+class StaCoSearchBlockingApplicationTests : AbstractStaCoTest() {
 
     @Test
     fun contextLoads() {

@@ -1,10 +1,10 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: staco-app
+name: staco-app-pull-request
 
 on:
-  push:
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -22,10 +22,6 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
-    - name: Generate reports
-      run: mvn clean jacoco:prepare-agent install package jacoco:report omni-coveragereporter:report
-      env:
-         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
     - name: Use Node.js
       uses: actions/setup-node@v1

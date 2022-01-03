@@ -76,7 +76,8 @@ This repo is the official support repo to my article on medium:
 
 ## Setup environment
 
-Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed.
+Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed
+
 
 #### Install sdk7
 

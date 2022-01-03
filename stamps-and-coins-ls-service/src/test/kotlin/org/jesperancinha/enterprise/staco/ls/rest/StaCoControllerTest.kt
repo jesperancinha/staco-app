@@ -23,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.KeyType
 import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
 
 val localStackContainer: LocalStackContainer =
-    LocalStackContainer(DockerImageName.parse("localstack/localstack:0.11.3"))
+    LocalStackContainer(DockerImageName.parse("localstack/localstack:0.13.2"))
         .withServices(LocalStackContainer.Service.DYNAMODB)
 
 @SpringBootTest

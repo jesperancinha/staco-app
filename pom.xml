@@ -28,6 +28,7 @@
         <spring-cloud-aws-dependencies.version>2.3.3</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
 
+        <!-- Do not change to RC2! -->
         <kotlinx-coroutines.version>1.6.0-RC</kotlinx-coroutines.version>
         <kotlin-logging.version>2.1.21</kotlin-logging.version>
 
@@ -95,13 +96,6 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>io.r2dbc</groupId>
-                <artifactId>r2dbc-spi-parent</artifactId>
-                <version>${r2dbc.version}</version>
-                <type>pom</type>
-            </dependency>
-
-            <dependency>
                 <groupId>org.jesperancinha.enterprise</groupId>
                 <artifactId>stamps-and-coins-common</artifactId>
                 <version>${project.version}</version>
@@ -110,16 +104,6 @@
                 <groupId>org.jesperancinha.enterprise</groupId>
                 <artifactId>stamps-and-coins-common-cloud</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.r2dbc</groupId>
-                <artifactId>r2dbc-h2</artifactId>
-                <version>${r2dbc.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.r2dbc</groupId>
-                <artifactId>r2dbc-spi</artifactId>
-                <version>${r2dbc.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.microutils</groupId>

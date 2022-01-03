@@ -10,10 +10,6 @@ import org.testcontainers.utility.DockerImageName
 class TestPostgresSQLContainer(imageName: String) : PostgreSQLContainer<TestPostgresSQLContainer>(imageName)
 
 abstract class AbstractStaCoTest {
-    init {
-        postgresSQLContainer.start()
-        localStackContainer.start()
-    }
 
     companion object {
         @Container
@@ -22,13 +18,13 @@ abstract class AbstractStaCoTest {
             .withUsername("postgres")
             .withPassword("admin")
             .withDatabaseName("staco")
-            .withInitScript("schema.sql")
+            .withInitScript("schema.sql").apply { start() }
 
         @Container
         @JvmField
         val localStackContainer: LocalStackContainer =
-            LocalStackContainer(DockerImageName.parse("localstack/localstack:0.11.3"))
-                .withServices(LocalStackContainer.Service.DYNAMODB)
+            LocalStackContainer(DockerImageName.parse("localstack/localstack:0.13.2"))
+                .withServices(LocalStackContainer.Service.DYNAMODB).apply { start() }
 
         @DynamicPropertySource
         @JvmStatic

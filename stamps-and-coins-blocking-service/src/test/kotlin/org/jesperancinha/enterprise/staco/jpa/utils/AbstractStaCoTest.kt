@@ -11,7 +11,7 @@ abstract class AbstractStaCoTest {
     companion object {
         @Container
         @JvmField
-        val postgreSQLContainer: TestPostgresSQLContainer = TestPostgresSQLContainer("postgres")
+        val postgreSQLContainer: TestPostgresSQLContainer = TestPostgresSQLContainer("postgres:12")
             .withUsername("postgres")
             .withPassword("admin")
             .withDatabaseName("staco")

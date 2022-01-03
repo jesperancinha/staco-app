@@ -23,6 +23,12 @@ jobs:
     - name: Build and Test
       run:  mvn clean install jacoco:prepare-agent package jacoco:report
 
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: cd stamps-and-coins-web && npm install && npm run test-headless
+
     - name: Coverage with Coveralls
       run: mvn omni-coveragereporter:report
       env:
@@ -37,9 +43,3 @@ jobs:
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Kotlin $(find **/jacoco*.xml -printf '-r %p ')
       env:
          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - run: cd stamps-and-coins-web && npm install && npm run test-headless

@@ -100,7 +100,7 @@ docker system prune --all
 ## Import database file
 
 ```bash
-psql -p 5433 -h localhost -U postgres -d staco -f initial.sql 
+psql -p 5433 -h localhost -U postgres -d staco -f initial-staco.sql 
 ```
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈

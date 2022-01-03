@@ -9,13 +9,17 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlinx:kotlinx-coroutines-reactor"
+        versions: ["1.6.0-RC2", "1.6.0-RC3", "1.6.0"]
+      - dependency-name: "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        versions: ["1.6.0-RC2", "1.6.0-RC3", "1.6.0"]
+      - dependency-name: "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"
+        versions: ["1.6.0-RC2", "1.6.0-RC3", "1.6.0"]
 
   # Configuration for npm
   - package-ecosystem: "npm"
     directory: "/stamps-and-coins-web"
     schedule:
       interval: "daily"
-    ignore:
-          - dependency-name: "express"
-            # For Express, ignore all updates for version 4 and 5
-            versions: ["4.x", "5.x"]
+

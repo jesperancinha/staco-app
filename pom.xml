@@ -28,7 +28,7 @@
         <spring-cloud-aws-dependencies.version>2.3.3</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
 
-        <kotlinx-coroutines.version>1.6.0</kotlinx-coroutines.version>
+        <kotlinx-coroutines.version>1.6.0-RC</kotlinx-coroutines.version>
         <kotlin-logging.version>2.1.21</kotlin-logging.version>
 
         <springmockk.version>3.1.0</springmockk.version>
@@ -221,20 +221,6 @@
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-core-jvm</artifactId>
                 <version>${kotest.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-engine</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-launcher</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-suite</artifactId>
-                    </exclusion>
-                </exclusions>
                 <scope>test</scope>
             </dependency>
             <dependency>

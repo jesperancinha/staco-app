@@ -11,6 +11,7 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/3a1f6cb09e9a40c4aa6bf4d372e848fa)](https://www.codacy.com/gh/jesperancinha/staco-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/staco-app&amp;utm_campaign=Badge_Grade)
 
+[![codecov](https://codecov.io/gh/jesperancinha/staco-app/branch/main/graph/badge.svg?token=JmvRFw1ir1)](https://codecov.io/gh/jesperancinha/staco-app)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/staco-app/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/staco-app?branch=main)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/staco-app.svg)](#)

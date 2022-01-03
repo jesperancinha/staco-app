@@ -36,7 +36,7 @@
         <mockk.version>1.12.2</mockk.version>
         <kotest.version>5.0.3</kotest.version>
         <reactor-test.version>3.4.13</reactor-test.version>
-        <r2dbc.version>0.9.0.RELEASE</r2dbc.version>
+        <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.16.2</test.containers.version>
         <commons-compress.version>1.21</commons-compress.version>
         <commons-csv.version>1.9.0</commons-csv.version>

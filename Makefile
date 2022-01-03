@@ -52,6 +52,9 @@ prune-all: docker-delete
 	docker system prune --all --volumes
 stop:
 	docker-compose down --remove-orphans
+delete-all:
+	docker ps -a --format '{{.ID}}' | xargs -I {}  docker stop {}
+	docker ps -a --format '{{.ID}}' | xargs -I {}  docker rm {}
 mac-os-install:
 	curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
 	sudo installer -pkg AWSCLIV2.pkg -target /

@@ -221,6 +221,20 @@
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-core-jvm</artifactId>
                 <version>${kotest.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-engine</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-launcher</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-suite</artifactId>
+                    </exclusion>
+                </exclusions>
                 <scope>test</scope>
             </dependency>
             <dependency>

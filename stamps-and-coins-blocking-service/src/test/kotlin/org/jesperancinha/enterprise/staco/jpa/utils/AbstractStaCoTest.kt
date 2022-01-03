@@ -5,11 +5,13 @@ import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.PostgreSQLContainer
 import org.testcontainers.junit.jupiter.Container
 
+class TestPostgresSQLContainer(imageName: String) : PostgreSQLContainer<TestPostgresSQLContainer>(imageName)
+
 abstract class AbstractStaCoTest {
     companion object {
         @Container
         @JvmField
-        val postgreSQLContainer: PostgreSQLContainer<*> = PostgreSQLContainer("postgres")
+        val postgreSQLContainer: TestPostgresSQLContainer = TestPostgresSQLContainer("postgres:12")
             .withUsername("postgres")
             .withPassword("admin")
             .withDatabaseName("staco")

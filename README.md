@@ -76,7 +76,7 @@ This repo is the official support repo to my article on medium:
 
 ## Setup environment
 
-Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed.
+Be sure to have [Docker](https://www.docker.com/products/docker-desktop) installed
 
 #### Install sdk7
 
@@ -113,8 +113,11 @@ make docker-clean-build-start
 
 > These containers take a while to start, so depending on your machine, the containers can start in anywhere between 10 seconds up to 5 minutes. Keep checking the logs with `docker logs` or `docker-compose logs`.
 
-## Sequence diagram
+## Troubleshooting
 
+1. If you are running the integration tests on your local machine and realize that the containers remain still and don't respond for a while, this could be a sign of a problem with Docker machine. Please restart your docker desktop/docker-machine and try again. 
+
+## Sequence diagram
 
 To visualize these diagrams you may need
 the [mermaid-diagrams](https://chrome.google.com/webstore/detail/mermaid-diagrams/phfcghedmopjadpojhmmaffjmfiakfil)

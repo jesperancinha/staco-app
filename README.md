@@ -9,6 +9,8 @@
 [![CircleCI](https://circleci.com/gh/jesperancinha/staco-app/tree/main.svg?style=svg)](https://circleci.com/gh/jesperancinha/staco-app/tree/main)
 [![staco-app](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml/badge.svg)](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml)
 
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/staco-app/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/staco-app?branch=main)
+
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/staco-app.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/staco-app.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/staco-app.svg)](#)

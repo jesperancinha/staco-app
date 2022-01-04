@@ -20,8 +20,9 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         cache: maven
+
     - name: Build with Maven
-      run: mvn clean install
+      run:  mvn clean install jacoco:prepare-agent package jacoco:report
 
     - name: Use Node.js
       uses: actions/setup-node@v1

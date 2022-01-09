@@ -30,7 +30,7 @@ jobs:
         node-version: '12.x'
     - run: cd stamps-and-coins-web && npm install && npm run test-headless
 
-    - name: Coverage with Coveralls
+    - name: Coverage Reports
       run: mvn omni-coveragereporter:report
       env:
          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}

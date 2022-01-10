@@ -121,8 +121,8 @@ make docker-clean-build-start
 
 ## Troubleshooting
 
-1. If you are running the integration tests on your local machine and realize that the containers remain still and don't respond for a while, this could be a sign of a problem with Docker machine. Please restart your docker desktop/docker-machine and try again. 
-2. If for some reason you cannot start docker-compose and Docker gives this response:
+1.  If you are running the integration tests on your local machine and realize that the containers remain still and don't respond for a while, this could be a sign of a problem with Docker machine. Please restart your docker desktop/docker-machine and try again. 
+2.  If for some reason you cannot start docker-compose and Docker gives this response:
 
 ```shell
 Creating network "staco-app_staco_net" with driver "bridge"

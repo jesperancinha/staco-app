@@ -9,7 +9,7 @@
 [![CircleCI](https://circleci.com/gh/jesperancinha/staco-app/tree/main.svg?style=svg)](https://circleci.com/gh/jesperancinha/staco-app/tree/main)
 [![staco-app](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml/badge.svg)](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3a1f6cb09e9a40c4aa6bf4d372e848fa)](https://www.codacy.com/gh/jesperancinha/staco-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/staco-app&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8d9267cddf834bff8f27cf8419253243)](https://www.codacy.com/gh/jesperancinha/staco-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/staco-app&amp;utm_campaign=Badge_Grade)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/3a1f6cb09e9a40c4aa6bf4d372e848fa)](https://www.codacy.com/gh/jesperancinha/staco-app/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/staco-app&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/jesperancinha/staco-app/branch/main/graph/badge.svg?token=JmvRFw1ir1)](https://codecov.io/gh/jesperancinha/staco-app)

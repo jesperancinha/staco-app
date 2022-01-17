@@ -17,7 +17,7 @@
         <kotlin.version>1.6.10</kotlin.version>
         <aws-java-sdk.version>1.12.141</aws-java-sdk.version>
 
-        <h2.version>2.0.206</h2.version>
+        <h2.version>2.1.210</h2.version>
         <postgresql.version>42.2.24.jre7</postgresql.version>
 
         <okta-spring-boot-starter.version>2.1.4</okta-spring-boot-starter.version>

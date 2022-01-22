@@ -25,18 +25,18 @@ jobs:
             tar xvf openjdk-17.0.2_linux-x64_bin.tar.gz &&
             sudo mv jdk-17*/ /opt/jdk17 &&
             export JAVA_HOME=/opt/jdk17 &&
-            export PATH=\$PATH:\$JAVA_HOME/bin
+            export PATH=$PATH:$JAVA_HOME/bin
 
       - run:
           name: Build
           command: export JAVA_HOME=/opt/jdk17 &&
-              export PATH=\$PATH:\$JAVA_HOME/bin &&
+              export PATH=$PATH:$JAVA_HOME/bin &&
               mvn -B -DskipTests clean package
       # Then run your tests!
       - run:
           name: Test
           command: export JAVA_HOME=/opt/jdk17 &&
-              export PATH=\$PATH:\$JAVA_HOME/bin &&
+              export PATH=$PATH:$JAVA_HOME/bin &&
               mvn test
 
 # Invoke jobs via workflows

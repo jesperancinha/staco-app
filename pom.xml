@@ -15,13 +15,13 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <kotlin.version>1.6.10</kotlin.version>
-        <aws-java-sdk.version>1.12.147</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.148</aws-java-sdk.version>
 
         <h2.version>2.1.210</h2.version>
         <postgresql.version>42.2.24.jre7</postgresql.version>
 
         <okta-spring-boot-starter.version>2.1.4</okta-spring-boot-starter.version>
-        <sofware.amazon.version>2.17.118</sofware.amazon.version>
+        <sofware.amazon.version>2.17.119</sofware.amazon.version>
 
         <spring-boot.version>2.6.3</spring-boot.version>
         <spring-cloud-dependencies.version>2022.0.0-SNAPSHOT</spring-cloud-dependencies.version>

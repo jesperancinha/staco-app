@@ -41,7 +41,7 @@
         <commons-compress.version>1.21</commons-compress.version>
         <commons-csv.version>1.9.0</commons-csv.version>
         <jakarta.validation-api.version>3.0.1</jakarta.validation-api.version>
-        <omni-coveragereporter-maven-plugin.version>0.0.12</omni-coveragereporter-maven-plugin.version>
+        <omni-coveragereporter-maven-plugin.version>0.1.1</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     </properties>
 

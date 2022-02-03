@@ -5,13 +5,6 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     sourcemap-codec "1.4.8"
 
-"@angular-devkit/architect@0.1302.0":
-  version "0.1302.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1302.0.tgz#31a2e6f0c744c5076c85b6db71e31665d7daef55"
-  dependencies:
-    "@angular-devkit/core" "13.2.0"
-    rxjs "6.6.7"
-
 "@angular-devkit/architect@0.1302.1":
   version "0.1302.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1302.1.tgz#0388a9b9b2bbb63ea57085cece8c5e362fbc7f27"
@@ -97,32 +90,9 @@
     "@angular-devkit/architect" "0.1302.1"
     rxjs "6.6.7"
 
-"@angular-devkit/core@13.2.0":
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-13.2.0.tgz#d7ee99ba40af70193a436a27ee1591a1ec754cd9"
-  dependencies:
-    ajv "8.9.0"
-    ajv-formats "2.1.1"
-    fast-json-stable-stringify "2.1.0"
-    magic-string "0.25.7"
-    rxjs "6.6.7"
-    source-map "0.7.3"
-
 "@angular-devkit/core@13.2.1":
   version "13.2.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-13.2.1.tgz#5815de99fa8b8b2a2188b6f7f2472d6bb96f0797"
-
-  dependencies:
-    ajv "8.9.0"
-    ajv-formats "2.1.1"
-    fast-json-stable-stringify "2.1.0"
-    magic-string "0.25.7"
-    rxjs "6.6.7"
-    source-map "0.7.3"
-
-"@angular-devkit/schematics@13.2.0":
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.2.0.tgz#656a5491be9f25e08faffd410c6ad9a75a82a8a2"
   dependencies:
     ajv "8.9.0"
     ajv-formats "2.1.1"
@@ -221,9 +191,9 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@~13.2.0":
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-13.2.0.tgz#67d505c09175d1ba809be721303316db7b0c60d4"
+"@angular/forms@~13.2.1":
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-13.2.1.tgz#3490c50e715f5e5f4ad214166aca76c9511ba0a6"
   dependencies:
     tslib "^2.3.0"
 

@@ -191,9 +191,9 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@~13.2.1":
-  version "13.2.1"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-13.2.1.tgz#3490c50e715f5e5f4ad214166aca76c9511ba0a6"
+"@angular/forms@~13.2.2":
+  version "13.2.2"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-13.2.2.tgz#cdc4f249a85160eab003104d7050f8797a2038a7"
   dependencies:
     tslib "^2.3.0"
 

@@ -19,14 +19,14 @@
     "@angular-devkit/core" "13.2.3"
     rxjs "6.6.7"
 
-"@angular-devkit/build-angular@^13.2.2":
-  version "13.2.2"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-13.2.2.tgz#70ca8ec9b58e0f18259e5d469cb4d6d9b43ff008"
+"@angular-devkit/build-angular@^13.2.3":
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-13.2.3.tgz#03d9bb0f3a620a9125c2794e801c7071a9fea7e7"
   dependencies:
     "@ampproject/remapping" "1.1.1"
-    "@angular-devkit/architect" "0.1302.2"
-    "@angular-devkit/build-webpack" "0.1302.2"
-    "@angular-devkit/core" "13.2.2"
+    "@angular-devkit/architect" "0.1302.3"
+    "@angular-devkit/build-webpack" "0.1302.3"
+    "@angular-devkit/core" "13.2.3"
     "@babel/core" "7.16.12"
     "@babel/generator" "7.16.8"
     "@babel/helper-annotate-as-pure" "7.16.7"
@@ -37,7 +37,7 @@
     "@babel/runtime" "7.16.7"
     "@babel/template" "7.16.7"
     "@discoveryjs/json-ext" "0.5.6"
-    "@ngtools/webpack" "13.2.2"
+    "@ngtools/webpack" "13.2.3"
     ansi-colors "4.1.1"
     babel-loader "8.2.3"
     babel-plugin-istanbul "6.1.1"
@@ -90,11 +90,11 @@
   optionalDependencies:
     esbuild "0.14.14"
 
-"@angular-devkit/build-webpack@0.1302.2":
-  version "0.1302.2"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.1302.2.tgz#367a126351918f9b3efef0e82a9657db4964b36d"
+"@angular-devkit/build-webpack@0.1302.3":
+  version "0.1302.3"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.1302.3.tgz#a1b43f0d61048e91d25f43e2ec14c1545b070655"
   dependencies:
-    "@angular-devkit/architect" "0.1302.2"
+    "@angular-devkit/architect" "0.1302.3"
     rxjs "6.6.7"
 
 "@angular-devkit/core@13.2.2":
@@ -111,6 +111,17 @@
 "@angular-devkit/core@13.2.3":
   version "13.2.3"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-13.2.3.tgz#a5770c7a5e50d1b09e5a41ccb7cf0af140a9e168"
+  dependencies:
+    ajv "8.9.0"
+    ajv-formats "2.1.1"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.7"
+    source-map "0.7.3"
+
+"@angular-devkit/schematics@13.2.2":
+  version "13.2.2"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.2.2.tgz#034aa816a16cc372586c0c153c24dc4569b90f1e"
   dependencies:
     ajv "8.9.0"
     ajv-formats "2.1.1"
@@ -1080,9 +1091,9 @@
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.0.3.tgz#b80093f4edbb5490c49746231513669c8f518acb"
 
-"@ngtools/webpack@13.2.2":
-  version "13.2.2"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.2.2.tgz#b0e3b6441432dc899c42e0ada1a95c72898bc3bc"
+"@ngtools/webpack@13.2.3":
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.2.3.tgz#a4434eb5e2ec3cc04d7f714f20d5203114563f33"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

@@ -22,7 +22,7 @@
     "@angular/material": "^13.0.2",
     "@angular/platform-browser": "~13.2.3",
     "@angular/platform-browser-dynamic": "~13.2.3",
-    "@angular/router": "~13.0.2",
+    "@angular/router": "~13.2.3",
     "ngx-pagination": "^5.1.1",
     "rxjs": "^7.5.4",
     "tslib": "^2.3.1",

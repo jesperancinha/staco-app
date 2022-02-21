@@ -155,18 +155,17 @@
     symbol-observable "4.0.0"
     uuid "8.3.2"
 
-"@angular/common@~13.0.2":
-  version "13.0.3"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-13.0.3.tgz#b76b82433b765cd61c2b0fd51798eeb5c8b18640"
+"@angular/common@~13.2.3":
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-13.2.3.tgz#ded7c5d4645789e041bae86fae790f8b35bf5819"
   dependencies:
     tslib "^2.3.0"
 
-"@angular/compiler-cli@~13.0.2":
-  version "13.0.3"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-13.0.3.tgz#a1f32058741a38db3c9963aee6d0849f206e3d1a"
+"@angular/compiler-cli@~13.2.3":
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-13.2.3.tgz#b9c1bc628e87202e6c2151be1c698feb174164ca"
   dependencies:
     "@babel/core" "^7.8.6"
-    canonical-path "1.0.0"
     chokidar "^3.0.0"
     convert-source-map "^1.5.1"
     dependency-graph "^0.11.0"
@@ -191,9 +190,9 @@
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-9.0.0.tgz#227dc53e1ac81824f998c6e76000b7efc522641e"
 
-"@angular/core@~13.0.2":
-  version "13.0.3"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-13.0.3.tgz#6f789e666559a20cad3bc96251967e275b6ff15d"
+"@angular/core@~13.2.3":
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-13.2.3.tgz#bc1127fe2d53f0f01f58a0c26728efaa5a953145"
   dependencies:
     tslib "^2.3.0"
 
@@ -219,15 +218,15 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser@~13.0.2":
-  version "13.0.3"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-13.0.3.tgz#3de0dea2793851493be868c7e7081f084517a6ce"
+"@angular/platform-browser@~13.2.3":
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-13.2.3.tgz#c67f8631e684bfac0214bad02cd5ca628fc0bdf0"
   dependencies:
     tslib "^2.3.0"
 
-"@angular/router@~13.0.2":
-  version "13.0.3"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-13.0.3.tgz#776781f844492bcb29c3c3c19d3eed3801353771"
+"@angular/router@~13.2.3":
+  version "13.2.3"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-13.2.3.tgz#4a764487a0e63fed2a43f5d1e1bc6b75e85a467c"
   dependencies:
     tslib "^2.3.0"
 

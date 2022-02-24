@@ -23,7 +23,7 @@
         <okta-spring-boot-starter.version>2.1.4</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.135</sofware.amazon.version>
 
-        <spring-boot.version>2.6.3</spring-boot.version>
+        <spring-boot.version>2.6.4</spring-boot.version>
         <spring-cloud-dependencies.version>2022.0.0-SNAPSHOT</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>2.4.0</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>

@@ -15,15 +15,15 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <kotlin.version>1.6.10</kotlin.version>
-        <aws-java-sdk.version>1.12.164</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.165</aws-java-sdk.version>
 
         <h2.version>2.1.210</h2.version>
         <postgresql.version>42.2.25.jre7</postgresql.version>
 
         <okta-spring-boot-starter.version>2.1.4</okta-spring-boot-starter.version>
-        <sofware.amazon.version>2.17.135</sofware.amazon.version>
+        <sofware.amazon.version>2.17.136</sofware.amazon.version>
 
-        <spring-boot.version>2.6.3</spring-boot.version>
+        <spring-boot.version>2.6.4</spring-boot.version>
         <spring-cloud-dependencies.version>2022.0.0-SNAPSHOT</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>2.4.0</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
@@ -32,7 +32,7 @@
         <kotlinx-coroutines.version>1.6.0-RC</kotlinx-coroutines.version>
         <kotlin-logging.version>2.1.21</kotlin-logging.version>
 
-        <springmockk.version>3.1.0</springmockk.version>
+        <springmockk.version>3.1.1</springmockk.version>
         <mockk.version>1.12.2</mockk.version>
         <kotest.version>5.1.0</kotest.version>
         <reactor-test.version>3.4.15</reactor-test.version>

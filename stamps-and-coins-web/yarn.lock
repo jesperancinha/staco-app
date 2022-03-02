@@ -8,14 +8,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@angular-devkit/architect@0.1400.0-next.2":
-  version "0.1400.0-next.2"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.0-next.2.tgz#869453cb16649fb7758c1dd50803bf63b64eaaca"
-  integrity sha512-Y2eByOLnEbaR9mECgDrRxjc8fwV8+HtI+8jY9RvaJZvP/Tshgj93LjJQm00mLVHljxTyiu1cg97STKdgJygaBw==
-  dependencies:
-    "@angular-devkit/core" "14.0.0-next.2"
-    rxjs "6.6.7"
-
 "@angular-devkit/architect@0.1400.0-next.3":
   version "0.1400.0-next.3"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.0-next.3.tgz#5ed4bc74b44c8b08b668499b0f56cfeb735815e5"
@@ -103,34 +95,10 @@
     "@angular-devkit/architect" "0.1400.0-next.3"
     rxjs "6.6.7"
 
-"@angular-devkit/core@14.0.0-next.2":
-  version "14.0.0-next.2"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-14.0.0-next.2.tgz#482b3784301fe53b60de97a91c742fe6c3dfb336"
-  integrity sha512-y0eaKwukSd/cYNvq+f/qQL/gqxQFsj1is2xWPMfkptb3s7bYjcah4hOV6IHtvmTv6F90bxM7rSmH9XcxWV4Mtg==
-  dependencies:
-    ajv "8.10.0"
-    ajv-formats "2.1.1"
-    fast-json-stable-stringify "2.1.0"
-    magic-string "0.25.7"
-    rxjs "6.6.7"
-    source-map "0.7.3"
-
 "@angular-devkit/core@14.0.0-next.3":
   version "14.0.0-next.3"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-14.0.0-next.3.tgz#2e4fad0f7b09c5604c50ae88bd177f8c21d81341"
   integrity sha512-WmvlBb9N3xL5dvrTBMIkIOcrjMPhCBOEuqmaX3BJRrWDfniKPSs5Op+myG04/3JuM2kMXTsibp1Fmo8V12tlcg==
-  dependencies:
-    ajv "8.10.0"
-    ajv-formats "2.1.1"
-    fast-json-stable-stringify "2.1.0"
-    magic-string "0.25.7"
-    rxjs "6.6.7"
-    source-map "0.7.3"
-
-"@angular-devkit/schematics@14.0.0-next.2":
-  version "14.0.0-next.2"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-14.0.0-next.2.tgz#4d1630daaaeb5a0317d7afb563e294e721f5368b"
-  integrity sha512-UPx1cPff4kH92kLLnhnW8T8RzME1ypu+3rqP3R86G5bzqNTRfo08RDknjHJ+GbucfMzuVuoLuQQEUUgipEXnCA==
   dependencies:
     ajv "8.10.0"
     ajv-formats "2.1.1"
@@ -5886,9 +5854,10 @@ tree-kill@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
 
-ts-node@~10.5.0:
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.5.0.tgz#618bef5854c1fbbedf5e31465cbb224a1d524ef9"
+ts-node@~10.6.0:
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.6.0.tgz#c3f4195d5173ce3affdc8f2fd2e9a7ac8de5376a"
+  integrity sha512-CJen6+dfOXolxudBQXnVjRVvYTmTWbyz7cn+xq2XTsvnaXbHqr4gXSCNbS2Jj8yTZMuGwUoBESLaOkLascVVvg==
   dependencies:
     "@cspotcode/source-map-support" "0.7.0"
     "@tsconfig/node10" "^1.0.7"

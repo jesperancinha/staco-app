@@ -27,7 +27,8 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '16'
+
     - run: cd stamps-and-coins-web && npm install && npm run test-headless
 
     - name: Coverage Reports

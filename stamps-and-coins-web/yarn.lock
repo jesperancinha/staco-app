@@ -1317,9 +1317,9 @@
   dependencies:
     "@types/node" "*"
 
-"@types/jasmine@*", "@types/jasmine@~3.10.3":
-  version "3.10.3"
-  resolved "https://registry.npmjs.org/@types/jasmine/-/jasmine-3.10.3.tgz"
+"@types/jasmine@*", "@types/jasmine@~4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-4.0.0.tgz#48bfd99cbe16dcdcde0b7d3bfa62319504d141f9"
 
 "@types/jasminewd2@~2.0.10":
   version "2.0.10"
@@ -5848,9 +5848,9 @@ typed-assert@^1.0.8:
   version "1.0.9"
   resolved "https://registry.npmjs.org/typed-assert/-/typed-assert-1.0.9.tgz"
 
-"typescript@>=4.4.2 and <4.5.0":
-  version "4.4.4"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.4.4.tgz"
+"typescript@>=4.4.2 and <4.6.0":
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
 
 ua-parser-js@^0.7.30:
   version "0.7.31"

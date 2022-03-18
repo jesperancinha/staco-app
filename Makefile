@@ -69,6 +69,7 @@ minikube-vmware:
 install-mac-os:
 	xcode-select --install
 update:
+	git pull
 	npm install -g npm-check-updates
 	cd stamps-and-coins-web && ncu -u && yarn
 install-update: update

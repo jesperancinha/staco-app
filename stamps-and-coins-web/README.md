@@ -21,6 +21,12 @@ yarn install
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ```
 
+## References
+
+- [Announcing TypeScript 4.6](https://devblogs.microsoft.com/typescript/announcing-typescript-4-6/)
+
+---
+
 ## Project Generation
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.

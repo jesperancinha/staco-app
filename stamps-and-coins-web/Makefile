@@ -11,3 +11,4 @@ update-force: update
 	npm audit fix --force
 build:
 	yarn install && npm run build
+

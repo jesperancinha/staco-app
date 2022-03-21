@@ -71,7 +71,7 @@ install-mac-os:
 update:
 	git pull
 	npm install -g npm-check-updates
-	cd stamps-and-coins-web && ncu -u && yarn
+	cd stamps-and-coins-web && npx browserslist --update-db && ncu -u && yarn
 install-update: update
 	npm i -g snyk
 audit:

@@ -3772,9 +3772,9 @@ karma-jasmine-html-reporter@^1.7.0:
   version "1.7.0"
   resolved "https://registry.npmjs.org/karma-jasmine-html-reporter/-/karma-jasmine-html-reporter-1.7.0.tgz"
 
-karma-jasmine@~4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/karma-jasmine/-/karma-jasmine-4.0.1.tgz"
+karma-jasmine@~4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-4.0.2.tgz#386db2a3e1acc0af5265c711f673f78f1e4938de"
   dependencies:
     jasmine-core "^3.6.0"
 

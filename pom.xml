@@ -29,7 +29,7 @@
         <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
 
         <!-- Do not change to RC2! -->
-        <kotlinx-coroutines.version>1.6.0-native-mt</kotlinx-coroutines.version>
+        <kotlinx-coroutines.version>1.6.1-native-mt</kotlinx-coroutines.version>
         <kotlin-logging.version>2.1.21</kotlin-logging.version>
 
         <springmockk.version>3.1.1</springmockk.version>

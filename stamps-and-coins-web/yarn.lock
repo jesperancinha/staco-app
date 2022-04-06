@@ -198,9 +198,9 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/language-service@^14.0.0-next.10":
-  version "14.0.0-next.10"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-14.0.0-next.10.tgz#1f76f47bee9a8b4bce106324ac047ffb1e3a39e3"
+"@angular/language-service@^14.0.0-next.11":
+  version "14.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-14.0.0-next.11.tgz#9ee9e5f968eb03c4a97bc42584f2b32ac39c54f4"
 
 "@angular/material@^14.0.0-next.3":
   version "14.0.0-next.7"

@@ -8,13 +8,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@angular-devkit/architect@0.1400.0-next.8":
-  version "0.1400.0-next.8"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.0-next.8.tgz#12035f1f852adf149a1a3b95e01b9a1c7ec695d0"
-  dependencies:
-    "@angular-devkit/core" "14.0.0-next.8"
-    rxjs "6.6.7"
-
 "@angular-devkit/architect@0.1400.0-next.9":
   version "0.1400.0-next.9"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.0-next.9.tgz#97b68b08c4babdfd0467366f5fe761c68198bb44"
@@ -98,17 +91,6 @@
     "@angular-devkit/architect" "0.1400.0-next.9"
     rxjs "6.6.7"
 
-"@angular-devkit/core@14.0.0-next.8":
-  version "14.0.0-next.8"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-14.0.0-next.8.tgz#aae911c4d7786c03da5c7c7b0b2fbc83f2328908"
-  dependencies:
-    ajv "8.11.0"
-    ajv-formats "2.1.1"
-    fast-json-stable-stringify "2.1.0"
-    magic-string "0.26.1"
-    rxjs "6.6.7"
-    source-map "0.7.3"
-
 "@angular-devkit/core@14.0.0-next.9":
   version "14.0.0-next.9"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-14.0.0-next.9.tgz#64e14c132babe43368b50ea0711eba2c950ced5f"
@@ -120,11 +102,11 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@14.0.0-next.8":
-  version "14.0.0-next.8"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-14.0.0-next.8.tgz#57395c20b9d1ae076d008c389a88a91725340b00"
+"@angular-devkit/schematics@14.0.0-next.9":
+  version "14.0.0-next.9"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-14.0.0-next.9.tgz#258d82931e0e5ecff2905910eb7701d7992a36ea"
   dependencies:
-    "@angular-devkit/core" "14.0.0-next.8"
+    "@angular-devkit/core" "14.0.0-next.9"
     jsonc-parser "3.0.0"
     magic-string "0.26.1"
     ora "5.4.1"
@@ -144,30 +126,30 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@^14.0.0-next.8":
-  version "14.0.0-next.8"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-14.0.0-next.8.tgz#ef3c2c6a561dc83785f219ef6902e6f90363faf7"
+"@angular/cli@^14.0.0-next.9":
+  version "14.0.0-next.9"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-14.0.0-next.9.tgz#bca542488948a872a0b5282e591de2ce623e7ec6"
   dependencies:
-    "@angular-devkit/architect" "0.1400.0-next.8"
-    "@angular-devkit/core" "14.0.0-next.8"
-    "@angular-devkit/schematics" "14.0.0-next.8"
-    "@schematics/angular" "14.0.0-next.8"
+    "@angular-devkit/architect" "0.1400.0-next.9"
+    "@angular-devkit/core" "14.0.0-next.9"
+    "@angular-devkit/schematics" "14.0.0-next.9"
+    "@schematics/angular" "14.0.0-next.9"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.1"
     debug "4.3.4"
-    ini "2.0.0"
+    ini "3.0.0"
     inquirer "8.2.2"
     jsonc-parser "3.0.0"
     npm-package-arg "9.0.2"
     npm-pick-manifest "7.0.1"
     open "8.4.0"
     ora "5.4.1"
-    pacote "13.1.0"
+    pacote "13.1.1"
     resolve "1.22.0"
-    semver "7.3.5"
+    semver "7.3.6"
     symbol-observable "4.0.0"
     uuid "8.3.2"
-    yargs "17.4.0"
+    yargs "17.4.1"
 
 "@angular/common@~14.0.0-next.3":
   version "14.0.0-next.7"
@@ -1259,12 +1241,12 @@
     node-gyp "^9.0.0"
     read-package-json-fast "^2.0.3"
 
-"@schematics/angular@14.0.0-next.8":
-  version "14.0.0-next.8"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-14.0.0-next.8.tgz#046e1f624e24487f836ed8713ad198f61da695ef"
+"@schematics/angular@14.0.0-next.9":
+  version "14.0.0-next.9"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-14.0.0-next.9.tgz#b0b981f54f9d0f94ddefb2ce7a12583113fdcd83"
   dependencies:
-    "@angular-devkit/core" "14.0.0-next.8"
-    "@angular-devkit/schematics" "14.0.0-next.8"
+    "@angular-devkit/core" "14.0.0-next.9"
+    "@angular-devkit/schematics" "14.0.0-next.9"
     jsonc-parser "3.0.0"
 
 "@socket.io/base64-arraybuffer@~1.0.2":
@@ -3341,11 +3323,11 @@ ieee754@^1.1.13:
   version "1.2.1"
   resolved "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
 
-ignore-walk@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/ignore-walk/-/ignore-walk-4.0.1.tgz"
+ignore-walk@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/ignore-walk/-/ignore-walk-5.0.1.tgz#5f199e23e1288f518d90358d461387788a154776"
   dependencies:
-    minimatch "^3.0.4"
+    minimatch "^5.0.1"
 
 ignore@^5.1.9:
   version "5.2.0"
@@ -3397,9 +3379,9 @@ inherits@2.0.3:
   version "2.0.3"
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz"
 
-ini@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/ini/-/ini-2.0.0.tgz"
+ini@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-3.0.0.tgz#2f6de95006923aa75feed8894f5686165adc08f1"
 
 ini@^1.3.4:
   version "1.3.8"
@@ -3866,12 +3848,6 @@ log4js@^6.4.1:
     rfdc "^1.3.0"
     streamroller "^3.0.5"
 
-lru-cache@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-6.0.0.tgz"
-  dependencies:
-    yallist "^4.0.0"
-
 lru-cache@^7.3.1, lru-cache@^7.5.1:
   version "7.7.1"
   resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-7.7.1.tgz"
@@ -3993,7 +3969,7 @@ minimalistic-assert@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz"
 
-minimatch@5.0.1:
+minimatch@5.0.1, minimatch@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/minimatch/-/minimatch-5.0.1.tgz"
   dependencies:
@@ -4205,12 +4181,12 @@ npm-package-arg@9.0.2, npm-package-arg@^9.0.0:
     semver "^7.3.5"
     validate-npm-package-name "^4.0.0"
 
-npm-packlist@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/npm-packlist/-/npm-packlist-4.0.0.tgz"
+npm-packlist@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/npm-packlist/-/npm-packlist-5.0.0.tgz#74795ebbbf91bd5a2db6ecff4d6fe1f1c1a07e11"
   dependencies:
     glob "^7.2.0"
-    ignore-walk "^4.0.1"
+    ignore-walk "^5.0.1"
     npm-bundled "^1.1.2"
     npm-normalize-package-bin "^1.0.1"
 
@@ -4358,9 +4334,9 @@ p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/p-try/-/p-try-2.2.0.tgz"
 
-pacote@13.1.0:
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/pacote/-/pacote-13.1.0.tgz#a834921c8d6d27841b1027b6a8376351d155a671"
+pacote@13.1.1:
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/pacote/-/pacote-13.1.1.tgz#d3e6e27ffc5137d2a07233ed6fba2a209ecb2b7b"
   dependencies:
     "@npmcli/git" "^3.0.0"
     "@npmcli/installed-package-contents" "^1.0.7"
@@ -4373,7 +4349,7 @@ pacote@13.1.0:
     minipass "^3.1.6"
     mkdirp "^1.0.4"
     npm-package-arg "^9.0.0"
-    npm-packlist "^4.0.0"
+    npm-packlist "^5.0.0"
     npm-pick-manifest "^7.0.0"
     npm-registry-fetch "^13.0.1"
     proc-log "^2.0.0"
@@ -5189,12 +5165,6 @@ semver-dsl@^1.0.1:
 semver@7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/semver/-/semver-7.0.0.tgz"
-
-semver@7.3.5:
-  version "7.3.5"
-  resolved "https://registry.npmjs.org/semver/-/semver-7.3.5.tgz"
-  dependencies:
-    lru-cache "^6.0.0"
 
 semver@7.3.6, semver@^7.0.0, semver@^7.1.1, semver@^7.3.5:
   version "7.3.6"
@@ -6081,9 +6051,9 @@ yargs-parser@^21.0.0:
   version "21.0.1"
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.0.1.tgz"
 
-yargs@17.4.0, yargs@^17.2.1:
-  version "17.4.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.4.0.tgz#9fc9efc96bd3aa2c1240446af28499f0e7593d00"
+yargs@17.4.1, yargs@^17.2.1:
+  version "17.4.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.4.1.tgz#ebe23284207bb75cee7c408c33e722bfb27b5284"
   dependencies:
     cliui "^7.0.2"
     escalade "^3.1.1"

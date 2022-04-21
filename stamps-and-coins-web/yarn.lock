@@ -8,6 +8,13 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
+"@angular-devkit/architect@0.1400.0-next.11":
+  version "0.1400.0-next.11"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.0-next.11.tgz#0c265e7425ee70658f4d56f832d4b7bdcfe0824c"
+  dependencies:
+    "@angular-devkit/core" "14.0.0-next.11"
+    rxjs "6.6.7"
+
 "@angular-devkit/architect@0.1400.0-next.9":
   version "0.1400.0-next.9"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.0-next.9.tgz#97b68b08c4babdfd0467366f5fe761c68198bb44"
@@ -15,14 +22,14 @@
     "@angular-devkit/core" "14.0.0-next.9"
     rxjs "6.6.7"
 
-"@angular-devkit/build-angular@^14.0.0-next.9":
-  version "14.0.0-next.9"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-14.0.0-next.9.tgz#d6b274bf635047ec38c863c8af1dfb3c432106ed"
+"@angular-devkit/build-angular@^14.0.0-next.11":
+  version "14.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-14.0.0-next.11.tgz#e7e6438d72dcd17f0ad6ef11a8827c921c339ea4"
   dependencies:
     "@ampproject/remapping" "2.1.2"
-    "@angular-devkit/architect" "0.1400.0-next.9"
-    "@angular-devkit/build-webpack" "0.1400.0-next.9"
-    "@angular-devkit/core" "14.0.0-next.9"
+    "@angular-devkit/architect" "0.1400.0-next.11"
+    "@angular-devkit/build-webpack" "0.1400.0-next.11"
+    "@angular-devkit/core" "14.0.0-next.11"
     "@babel/core" "7.17.9"
     "@babel/generator" "7.17.9"
     "@babel/helper-annotate-as-pure" "7.16.7"
@@ -33,7 +40,7 @@
     "@babel/runtime" "7.17.9"
     "@babel/template" "7.16.7"
     "@discoveryjs/json-ext" "0.5.7"
-    "@ngtools/webpack" "14.0.0-next.9"
+    "@ngtools/webpack" "14.0.0-next.11"
     ansi-colors "4.1.1"
     babel-loader "8.2.4"
     babel-plugin-istanbul "6.1.1"
@@ -43,8 +50,8 @@
     critters "0.0.16"
     css-loader "6.7.1"
     esbuild-wasm "0.14.36"
-    glob "7.2.0"
-    https-proxy-agent "5.0.0"
+    glob "8.0.1"
+    https-proxy-agent "5.0.1"
     inquirer "8.2.2"
     jsonc-parser "3.0.0"
     karma-source-map-support "1.4.0"
@@ -65,9 +72,9 @@
     regenerator-runtime "0.13.9"
     resolve-url-loader "5.0.0"
     rxjs "6.6.7"
-    sass "1.50.0"
+    sass "1.50.1"
     sass-loader "12.6.0"
-    semver "7.3.6"
+    semver "7.3.7"
     source-map-loader "3.0.1"
     source-map-support "0.5.21"
     stylus "0.57.0"
@@ -84,12 +91,22 @@
   optionalDependencies:
     esbuild "0.14.36"
 
-"@angular-devkit/build-webpack@0.1400.0-next.9":
-  version "0.1400.0-next.9"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.1400.0-next.9.tgz#5a65347a00aa9dd4d7b60ac6a3855ef5e0de9f1e"
+"@angular-devkit/build-webpack@0.1400.0-next.11":
+  version "0.1400.0-next.11"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.1400.0-next.11.tgz#8cbdd0140749e19f4eb28f005ef841e3eb4f5e3d"
   dependencies:
-    "@angular-devkit/architect" "0.1400.0-next.9"
+    "@angular-devkit/architect" "0.1400.0-next.11"
     rxjs "6.6.7"
+
+"@angular-devkit/core@14.0.0-next.11":
+  version "14.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-14.0.0-next.11.tgz#29a10e3a7dc15affbdc26a246ec6f30ed826486f"
+  dependencies:
+    ajv "8.11.0"
+    ajv-formats "2.1.1"
+    jsonc-parser "3.0.0"
+    rxjs "6.6.7"
+    source-map "0.7.3"
 
 "@angular-devkit/core@14.0.0-next.9":
   version "14.0.0-next.9"
@@ -1159,9 +1176,9 @@
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.3.tgz#0300943770e04231041a51bd39f0439b5c7ab4f0"
 
-"@ngtools/webpack@14.0.0-next.9":
-  version "14.0.0-next.9"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-14.0.0-next.9.tgz#3806bdf6ff0944e289cdcf74995cd592fa3e086b"
+"@ngtools/webpack@14.0.0-next.11":
+  version "14.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-14.0.0-next.11.tgz#f5be27ab37b6d7097693a59c1f0a6be66f3a37f3"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3095,7 +3112,18 @@ glob-to-regexp@^0.4.1:
   version "0.4.1"
   resolved "https://registry.npmjs.org/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz"
 
-glob@7.2.0, glob@^7.0.3, glob@^7.0.6, glob@^7.1.1, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7, glob@^7.2.0:
+glob@8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-8.0.1.tgz#00308f5c035aa0b2a447cd37ead267ddff1577d3"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^5.0.1"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
+glob@^7.0.3, glob@^7.0.6, glob@^7.1.1, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7, glob@^7.2.0:
   version "7.2.0"
   resolved "https://registry.npmjs.org/glob/-/glob-7.2.0.tgz"
   dependencies:
@@ -3279,9 +3307,9 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-https-proxy-agent@5.0.0, https-proxy-agent@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-5.0.0.tgz"
+https-proxy-agent@5.0.1, https-proxy-agent@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-5.0.1.tgz#c59ef224a04fe8b754f3db0063a25ea30d0005d6"
   dependencies:
     agent-base "6"
     debug "4"
@@ -3847,6 +3875,12 @@ log4js@^6.4.1:
     flatted "^3.2.5"
     rfdc "^1.3.0"
     streamroller "^3.0.5"
+
+lru-cache@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
+  dependencies:
+    yallist "^4.0.0"
 
 lru-cache@^7.3.1, lru-cache@^7.5.1:
   version "7.7.1"
@@ -5094,9 +5128,9 @@ sass-loader@12.6.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass@1.50.0:
-  version "1.50.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.50.0.tgz#3e407e2ebc53b12f1e35ce45efb226ea6063c7c8"
+sass@1.50.1:
+  version "1.50.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.50.1.tgz#e9b078a1748863013c4712d2466ce8ca4e4ed292"
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
@@ -5166,11 +5200,17 @@ semver@7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/semver/-/semver-7.0.0.tgz"
 
-semver@7.3.6, semver@^7.0.0, semver@^7.1.1, semver@^7.3.5:
+semver@7.3.6:
   version "7.3.6"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.6.tgz#5d73886fb9c0c6602e79440b97165c29581cbb2b"
   dependencies:
     lru-cache "^7.4.0"
+
+semver@7.3.7, semver@^7.0.0, semver@^7.1.1, semver@^7.3.5:
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.7.tgz#12c5b649afdbf9049707796e22a4028814ce523f"
+  dependencies:
+    lru-cache "^6.0.0"
 
 semver@^5.3.0, semver@^5.6.0:
   version "5.7.1"

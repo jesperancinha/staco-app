@@ -15,6 +15,13 @@
     "@angular-devkit/core" "14.0.0-next.11"
     rxjs "6.6.7"
 
+"@angular-devkit/architect@0.1400.0-next.12":
+  version "0.1400.0-next.12"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.0-next.12.tgz#3ed6123a99b8b0197876cddf643672a633ac95a7"
+  dependencies:
+    "@angular-devkit/core" "14.0.0-next.12"
+    rxjs "6.6.7"
+
 "@angular-devkit/build-angular@^14.0.0-next.11":
   version "14.0.0-next.11"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-14.0.0-next.11.tgz#e7e6438d72dcd17f0ad6ef11a8827c921c339ea4"
@@ -101,11 +108,21 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@14.0.0-next.11":
-  version "14.0.0-next.11"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-14.0.0-next.11.tgz#8acdb26a51697ab580feba94342286d51c481e17"
+"@angular-devkit/core@14.0.0-next.12":
+  version "14.0.0-next.12"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-14.0.0-next.12.tgz#3e6a8c565b69d1324f8f0a4d35e49221aca348b8"
   dependencies:
-    "@angular-devkit/core" "14.0.0-next.11"
+    ajv "8.11.0"
+    ajv-formats "2.1.1"
+    jsonc-parser "3.0.0"
+    rxjs "6.6.7"
+    source-map "0.7.3"
+
+"@angular-devkit/schematics@14.0.0-next.12":
+  version "14.0.0-next.12"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-14.0.0-next.12.tgz#25ad4e0875e6bcafeb30b3ec5d74551a4fa93511"
+  dependencies:
+    "@angular-devkit/core" "14.0.0-next.12"
     jsonc-parser "3.0.0"
     magic-string "0.26.1"
     ora "5.4.1"
@@ -125,14 +142,14 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@^14.0.0-next.11":
-  version "14.0.0-next.11"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-14.0.0-next.11.tgz#93f2205b2fd9f82a43fb646d7ebe7da83377cc9e"
+"@angular/cli@^14.0.0-next.12":
+  version "14.0.0-next.12"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-14.0.0-next.12.tgz#c16286e826628f3f6a89b5e1d57a2a282389c689"
   dependencies:
-    "@angular-devkit/architect" "0.1400.0-next.11"
-    "@angular-devkit/core" "14.0.0-next.11"
-    "@angular-devkit/schematics" "14.0.0-next.11"
-    "@schematics/angular" "14.0.0-next.11"
+    "@angular-devkit/architect" "0.1400.0-next.12"
+    "@angular-devkit/core" "14.0.0-next.12"
+    "@angular-devkit/schematics" "14.0.0-next.12"
+    "@schematics/angular" "14.0.0-next.12"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.1"
     debug "4.3.4"
@@ -1240,12 +1257,12 @@
     node-gyp "^9.0.0"
     read-package-json-fast "^2.0.3"
 
-"@schematics/angular@14.0.0-next.11":
-  version "14.0.0-next.11"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-14.0.0-next.11.tgz#e707c19a389c5621444b7f0fdf9f98699c4d033c"
+"@schematics/angular@14.0.0-next.12":
+  version "14.0.0-next.12"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-14.0.0-next.12.tgz#bc53e55ffd5d4bf8ca378dde691b4472d485003c"
   dependencies:
-    "@angular-devkit/core" "14.0.0-next.11"
-    "@angular-devkit/schematics" "14.0.0-next.11"
+    "@angular-devkit/core" "14.0.0-next.12"
+    "@angular-devkit/schematics" "14.0.0-next.12"
     jsonc-parser "3.0.0"
 
 "@socket.io/base64-arraybuffer@~1.0.2":

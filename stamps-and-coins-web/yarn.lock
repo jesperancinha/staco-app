@@ -5725,9 +5725,9 @@ typed-assert@^1.0.8:
   version "1.0.9"
   resolved "https://registry.npmjs.org/typed-assert/-/typed-assert-1.0.9.tgz"
 
-typescript@>=4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
+typescript@>=4.6.4:
+  version "4.6.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
 
 ua-parser-js@^0.7.30:
   version "0.7.31"

@@ -29,7 +29,7 @@ jobs:
       with:
         node-version: '16'
 
-    - run: cd stamps-and-coins-web && npm install && npm run test-headless
+    - run: cd stamps-and-coins-web && yarn && yarn run test-headless
 
     - name: Coverage Reports
       run: mvn omni-coveragereporter:report

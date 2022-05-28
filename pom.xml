@@ -46,6 +46,8 @@
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
         <dynamodb.version>2.17.198</dynamodb.version>
         <aws-json-protocol.version>2.17.189</aws-json-protocol.version>
+        <aws-core.version>2.17.199</aws-core.version>
+        <regions.version>2.17.198</regions.version>
     </properties>
 
     <modules>
@@ -98,6 +100,14 @@
                     <exclusion>
                         <groupId>software.amazon.awssdk</groupId>
                         <artifactId>aws-json-protocol</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>software.amazon.awssdk</groupId>
+                        <artifactId>aws-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>software.amazon.awssdk</groupId>
+                        <artifactId>regions</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -197,6 +207,16 @@
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>aws-json-protocol</artifactId>
                 <version>${aws-json-protocol.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>aws-core</artifactId>
+                <version>${aws-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>regions</artifactId>
+                <version>${regions.version}</version>
             </dependency>
 
             <dependency>

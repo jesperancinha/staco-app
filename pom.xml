@@ -45,6 +45,7 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
         <dynamodb.version>2.17.198</dynamodb.version>
+        <aws-json-protocol.version>2.17.189</aws-json-protocol.version>
     </properties>
 
     <modules>
@@ -75,12 +76,6 @@
                 <version>${aws-java-sdk.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId></groupId>
-                        <artifactId>dynamodb</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -99,6 +94,10 @@
                     <exclusion>
                         <groupId>software.amazon.awssdk</groupId>
                         <artifactId>dynamobdb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>software.amazon.awssdk</groupId>
+                        <artifactId>aws-json-protocol</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -193,6 +192,11 @@
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>dynamodb</artifactId>
                 <version>${dynamodb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>aws-json-protocol</artifactId>
+                <version>${aws-json-protocol.version}</version>
             </dependency>
 
             <dependency>

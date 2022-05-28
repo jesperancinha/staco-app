@@ -109,6 +109,10 @@
                         <groupId>software.amazon.awssdk</groupId>
                         <artifactId>regions</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>software.amazon.awssdk</groupId>
+                        <artifactId>utils</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -216,6 +220,11 @@
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>regions</artifactId>
+                <version>${regions.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>utils</artifactId>
                 <version>${regions.version}</version>
             </dependency>
 

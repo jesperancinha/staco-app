@@ -48,6 +48,7 @@
         <aws-json-protocol.version>2.17.189</aws-json-protocol.version>
         <aws-core.version>2.17.199</aws-core.version>
         <regions.version>2.17.198</regions.version>
+        <utils.version>2.17.198</utils.version>
     </properties>
 
     <modules>
@@ -108,6 +109,10 @@
                     <exclusion>
                         <groupId>software.amazon.awssdk</groupId>
                         <artifactId>regions</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>software.amazon.awssdk</groupId>
+                        <artifactId>utils</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -217,6 +222,11 @@
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>regions</artifactId>
                 <version>${regions.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>utils</artifactId>
+                <version>${utils.version}</version>
             </dependency>
 
             <dependency>

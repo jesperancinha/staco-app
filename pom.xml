@@ -15,13 +15,13 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M6</maven-surefire-plugin.version>
         <kotlin.version>1.6.21</kotlin.version>
-        <aws-java-sdk.version>1.12.228</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.229</aws-java-sdk.version>
 
         <h2.version>2.1.212</h2.version>
         <postgresql.version>42.3.6</postgresql.version>
 
         <okta-spring-boot-starter.version>2.1.5</okta-spring-boot-starter.version>
-        <sofware.amazon.version>2.17.199</sofware.amazon.version>
+        <sofware.amazon.version>2.17.200</sofware.amazon.version>
 
         <spring-boot.version>2.7.0</spring-boot.version>
         <spring-cloud-dependencies.version>2022.0.0-SNAPSHOT</spring-cloud-dependencies.version>
@@ -44,6 +44,13 @@
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
+        <dynamodb.version>2.17.198</dynamodb.version>
+        <aws-json-protocol.version>2.17.189</aws-json-protocol.version>
+        <aws-core.version>2.17.199</aws-core.version>
+        <regions.version>2.17.198</regions.version>
+        <utils.version>2.17.198</utils.version>
+        <sdk-core.version>2.17.198</sdk-core.version>
+        <s3.version>2.17.201</s3.version>
     </properties>
 
     <modules>
@@ -79,13 +86,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>software.amazon.awssdk</groupId>
-                <artifactId>bom</artifactId>
-                <version>${sofware.amazon.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -175,6 +175,46 @@
                 <groupId>io.r2dbc</groupId>
                 <artifactId>r2dbc-postgresql</artifactId>
                 <version>${r2dbc-postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>dynamodb</artifactId>
+                <version>${dynamodb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>aws-json-protocol</artifactId>
+                <version>${aws-json-protocol.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>aws-core</artifactId>
+                <version>${aws-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>regions</artifactId>
+                <version>${regions.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>utils</artifactId>
+                <version>${utils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>sdk-core</artifactId>
+                <version>${sdk-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>s3</artifactId>
+                <version>${s3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>ssm</artifactId>
+                <version>${s3.version}</version>
             </dependency>
 
             <dependency>

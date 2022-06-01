@@ -16,14 +16,21 @@
     "@angular-devkit/core" "14.0.0-rc.2"
     rxjs "6.6.7"
 
-"@angular-devkit/build-angular@^14.0.0-rc.2":
-  version "14.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@angular-devkit/build-angular/-/build-angular-14.0.0-rc.2.tgz"
+"@angular-devkit/architect@0.1400.0-rc.3":
+  version "0.1400.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.0-rc.3.tgz#54e328a203f98f243298b014bf4ce2abfde32a06"
+  dependencies:
+    "@angular-devkit/core" "14.0.0-rc.3"
+    rxjs "6.6.7"
+
+"@angular-devkit/build-angular@^14.0.0-rc.3":
+  version "14.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-14.0.0-rc.3.tgz#c168049a4e78b9ef6bed58521979aa5344983547"
   dependencies:
     "@ampproject/remapping" "2.2.0"
-    "@angular-devkit/architect" "0.1400.0-rc.2"
-    "@angular-devkit/build-webpack" "0.1400.0-rc.2"
-    "@angular-devkit/core" "14.0.0-rc.2"
+    "@angular-devkit/architect" "0.1400.0-rc.3"
+    "@angular-devkit/build-webpack" "0.1400.0-rc.3"
+    "@angular-devkit/core" "14.0.0-rc.3"
     "@babel/core" "7.17.10"
     "@babel/generator" "7.17.10"
     "@babel/helper-annotate-as-pure" "7.16.7"
@@ -34,7 +41,7 @@
     "@babel/runtime" "7.17.9"
     "@babel/template" "7.16.7"
     "@discoveryjs/json-ext" "0.5.7"
-    "@ngtools/webpack" "14.0.0-rc.2"
+    "@ngtools/webpack" "14.0.0-rc.3"
     ansi-colors "4.1.1"
     babel-loader "8.2.5"
     babel-plugin-istanbul "6.1.1"
@@ -85,16 +92,26 @@
   optionalDependencies:
     esbuild "0.14.38"
 
-"@angular-devkit/build-webpack@0.1400.0-rc.2":
-  version "0.1400.0-rc.2"
-  resolved "https://registry.npmjs.org/@angular-devkit/build-webpack/-/build-webpack-0.1400.0-rc.2.tgz"
+"@angular-devkit/build-webpack@0.1400.0-rc.3":
+  version "0.1400.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.1400.0-rc.3.tgz#b862775a13b12eb0334afaa837f63d22aceaf909"
   dependencies:
-    "@angular-devkit/architect" "0.1400.0-rc.2"
+    "@angular-devkit/architect" "0.1400.0-rc.3"
     rxjs "6.6.7"
 
 "@angular-devkit/core@14.0.0-rc.2":
   version "14.0.0-rc.2"
   resolved "https://registry.npmjs.org/@angular-devkit/core/-/core-14.0.0-rc.2.tgz"
+  dependencies:
+    ajv "8.11.0"
+    ajv-formats "2.1.1"
+    jsonc-parser "3.0.0"
+    rxjs "6.6.7"
+    source-map "0.7.3"
+
+"@angular-devkit/core@14.0.0-rc.3":
+  version "14.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-14.0.0-rc.3.tgz#65e3083451f859032942c4e037daf67095319bf0"
   dependencies:
     ajv "8.11.0"
     ajv-formats "2.1.1"
@@ -1213,9 +1230,9 @@
   version "2.0.4"
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
 
-"@ngtools/webpack@14.0.0-rc.2":
-  version "14.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@ngtools/webpack/-/webpack-14.0.0-rc.2.tgz"
+"@ngtools/webpack@14.0.0-rc.3":
+  version "14.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-14.0.0-rc.3.tgz#2ba0e2b3b5b75ef91e87fd3024840c3745ad44a0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

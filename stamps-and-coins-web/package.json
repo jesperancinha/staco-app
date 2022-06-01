@@ -26,8 +26,8 @@
     "ngx-pagination": "^6.0.1",
     "rxjs": "^7.5.5",
     "tslib": "^2.4.0",
-    "zone.js": "~0.11.5",
-    "typescript": ">=4.7.2"
+    "typescript": ">=4.7.2",
+    "zone.js": "~0.11.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.0-rc.2",

@@ -40,7 +40,7 @@
         <test.containers.version>1.17.2</test.containers.version>
         <commons-compress.version>1.21</commons-compress.version>
         <commons-csv.version>1.9.0</commons-csv.version>
-        <jakarta.validation-api.version>3.0.1</jakarta.validation-api.version>
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>

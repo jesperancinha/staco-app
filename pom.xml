@@ -50,7 +50,7 @@
         <regions.version>2.17.207</regions.version>
         <utils.version>2.17.206</utils.version>
         <sdk-core.version>2.17.207</sdk-core.version>
-        <s3.version>2.17.206</s3.version>
+        <s3.version>2.17.207</s3.version>
     </properties>
 
     <modules>

@@ -76,3 +76,5 @@ install-update: update
 	npm i -g snyk
 audit:
 	cd stamps-and-coins-web && npm audit fix && yarn
+dcup-light:
+	docker-compose up -d postgres

@@ -13,12 +13,12 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven-surefire-plugin.version>3.0.0-M6</maven-surefire-plugin.version>
-        <kotlin.version>1.6.21</kotlin.version>
-        <aws-java-sdk.version>1.12.233</aws-java-sdk.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <kotlin.version>1.7.0</kotlin.version>
+        <aws-java-sdk.version>1.12.236</aws-java-sdk.version>
 
         <h2.version>2.1.212</h2.version>
-        <postgresql.version>42.3.6</postgresql.version>
+        <postgresql.version>42.4.0</postgresql.version>
 
         <okta-spring-boot-starter.version>2.1.5</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.200</sofware.amazon.version>
@@ -40,17 +40,17 @@
         <test.containers.version>1.17.2</test.containers.version>
         <commons-compress.version>1.21</commons-compress.version>
         <commons-csv.version>1.9.0</commons-csv.version>
-        <jakarta.validation-api.version>3.0.1</jakarta.validation-api.version>
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
-        <dynamodb.version>2.17.204</dynamodb.version>
-        <aws-json-protocol.version>2.17.204</aws-json-protocol.version>
-        <aws-core.version>2.17.204</aws-core.version>
-        <regions.version>2.17.204</regions.version>
-        <utils.version>2.17.204</utils.version>
-        <sdk-core.version>2.17.204</sdk-core.version>
-        <s3.version>2.17.204</s3.version>
+        <dynamodb.version>2.17.207</dynamodb.version>
+        <aws-json-protocol.version>2.17.207</aws-json-protocol.version>
+        <aws-core.version>2.17.207</aws-core.version>
+        <regions.version>2.17.207</regions.version>
+        <utils.version>2.17.207</utils.version>
+        <sdk-core.version>2.17.207</sdk-core.version>
+        <s3.version>2.17.207</s3.version>
     </properties>
 
     <modules>

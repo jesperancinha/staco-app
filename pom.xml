@@ -45,7 +45,7 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
         <dynamodb.version>2.17.208</dynamodb.version>
-        <aws-json-protocol.version>2.17.208</aws-json-protocol.version>
+        <aws-json-protocol.version>2.17.209</aws-json-protocol.version>
         <aws-core.version>2.17.209</aws-core.version>
         <regions.version>2.17.208</regions.version>
         <utils.version>2.17.209</utils.version>

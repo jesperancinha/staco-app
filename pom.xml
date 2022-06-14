@@ -35,7 +35,7 @@
         <springmockk.version>3.1.1</springmockk.version>
         <mockk.version>1.12.4</mockk.version>
         <kotest.version>5.3.1</kotest.version>
-        <reactor-test.version>3.4.18</reactor-test.version>
+        <reactor-test.version>3.4.19</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.17.2</test.containers.version>
         <commons-compress.version>1.21</commons-compress.version>
@@ -46,11 +46,11 @@
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
         <dynamodb.version>2.17.210</dynamodb.version>
         <aws-json-protocol.version>2.17.210</aws-json-protocol.version>
-        <aws-core.version>2.17.209</aws-core.version>
-        <regions.version>2.17.209</regions.version>
-        <utils.version>2.17.209</utils.version>
+        <aws-core.version>2.17.210</aws-core.version>
+        <regions.version>2.17.210</regions.version>
+        <utils.version>2.17.210</utils.version>
         <sdk-core.version>2.17.210</sdk-core.version>
-        <s3.version>2.17.209</s3.version>
+        <s3.version>2.17.210</s3.version>
     </properties>
 
     <modules>

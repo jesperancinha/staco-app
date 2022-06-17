@@ -26,7 +26,7 @@
     "ngx-pagination": "^6.0.1",
     "rxjs": "^7.5.5",
     "tslib": "^2.4.0",
-    "typescript": ">=4.7.3",
+    "typescript": ">=4.7.4",
     "zone.js": "~0.11.6"
   },
   "devDependencies": {
@@ -48,6 +48,6 @@
     "protractor": "^7.0.0",
     "ts-node": "~10.8.1",
     "tslint": "~6.1.3",
-    "typescript": ">=4.7.3"
+    "typescript": ">=4.7.4"
   }
 }

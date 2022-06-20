@@ -49,7 +49,7 @@
         <aws-core.version>2.17.214</aws-core.version>
         <regions.version>2.17.213</regions.version>
         <utils.version>2.17.214</utils.version>
-        <sdk-core.version>2.17.213</sdk-core.version>
+        <sdk-core.version>2.17.214</sdk-core.version>
         <s3.version>2.17.213</s3.version>
     </properties>
 

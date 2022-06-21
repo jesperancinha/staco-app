@@ -48,7 +48,7 @@
         <aws-json-protocol.version>2.17.215</aws-json-protocol.version>
         <aws-core.version>2.17.215</aws-core.version>
         <regions.version>2.17.215</regions.version>
-        <utils.version>2.17.214</utils.version>
+        <utils.version>2.17.215</utils.version>
         <sdk-core.version>2.17.214</sdk-core.version>
         <s3.version>2.17.215</s3.version>
     </properties>

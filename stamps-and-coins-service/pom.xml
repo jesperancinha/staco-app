@@ -221,4 +221,11 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>maven-central</id>
+            <name>Maven central</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
 </project>

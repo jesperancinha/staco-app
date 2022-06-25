@@ -44,11 +44,11 @@
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
-        <dynamodb.version>2.17.217</dynamodb.version>
+        <dynamodb.version>2.17.219</dynamodb.version>
         <aws-json-protocol.version>2.17.217</aws-json-protocol.version>
         <aws-core.version>2.17.217</aws-core.version>
         <regions.version>2.17.217</regions.version>
-        <utils.version>2.17.217</utils.version>
+        <utils.version>2.17.219</utils.version>
         <sdk-core.version>2.17.217</sdk-core.version>
         <s3.version>2.17.217</s3.version>
     </properties>

@@ -48,7 +48,7 @@
         <aws-json-protocol.version>2.17.217</aws-json-protocol.version>
         <aws-core.version>2.17.217</aws-core.version>
         <regions.version>2.17.217</regions.version>
-        <utils.version>2.17.217</utils.version>
+        <utils.version>2.17.219</utils.version>
         <sdk-core.version>2.17.217</sdk-core.version>
         <s3.version>2.17.217</s3.version>
     </properties>
@@ -374,4 +374,26 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>maven-central</id>
+            <name>Maven central</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-libs-snapshot</id>
+            <name>Spring Snapshot Repository</name>
+            <url>https://repo.spring.io/libs-snapshot</url>
+        </repository>
+    </repositories>
+
 </project>

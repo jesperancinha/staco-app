@@ -4981,10 +4981,10 @@ neo-async@^2.6.2:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngx-pagination@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/ngx-pagination/-/ngx-pagination-6.0.1.tgz"
-  integrity sha512-zsWKA/i3l85/mpnsyaJ1SO3xvjgaaPSVAttPVRKbDSs32Oq+b0HB5ybS3F9xxNwBRMMjlPxxWsM2VN+MrBPa5w==
+ngx-pagination@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-6.0.2.tgz#8a633a254c093ff0b058f94192447d6c788b6d0b"
+  integrity sha512-7N4FA244ls7h/977EqvcDXuyB/U5rPJI+FD0Zj9orrXb+kX2SOX0WP+yQw50Gm/Dy9aPOE91FkgoYzGyRSPY0A==
   dependencies:
     tslib "^2.3.0"
 

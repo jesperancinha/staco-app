@@ -23,7 +23,7 @@
         <okta-spring-boot-starter.version>2.1.5</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.200</sofware.amazon.version>
 
-        <spring-boot.version>2.7.0</spring-boot.version>
+        <spring-boot.version>2.7.1</spring-boot.version>
         <spring-cloud-dependencies.version>2022.0.0-SNAPSHOT</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>2.4.1</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
@@ -51,6 +51,7 @@
         <utils.version>2.17.221</utils.version>
         <sdk-core.version>2.17.221</sdk-core.version>
         <s3.version>2.17.221</s3.version>
+        <kotlinx-coroutines-debug.version>1.6.3</kotlinx-coroutines-debug.version>
     </properties>
 
     <modules>
@@ -288,6 +289,20 @@
                 <artifactId>junit-jupiter</artifactId>
                 <version>${test.containers.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <!-- This Dependency is added as a workaround for the following issue -->
+            <!--- https://github.com/Kotlin/kotlinx.coroutines/issues/3334 -->
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-debug</artifactId>
+                <version>${kotlinx-coroutines-debug.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlinx</groupId>
+                        <artifactId>kotlinx-coroutines-bom</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>

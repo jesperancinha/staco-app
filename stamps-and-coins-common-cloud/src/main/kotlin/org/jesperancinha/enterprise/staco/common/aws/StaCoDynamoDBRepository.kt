@@ -1,5 +1,6 @@
 package org.jesperancinha.enterprise.staco.common.aws
 
+import jakarta.annotation.PostConstruct
 import mu.KotlinLogging
 import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.ID
 import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.STACOS_TABLE
@@ -7,20 +8,8 @@ import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
-import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
-import software.amazon.awssdk.services.dynamodb.model.AttributeValue
-import software.amazon.awssdk.services.dynamodb.model.BillingMode
-import software.amazon.awssdk.services.dynamodb.model.CreateTableRequest
-import software.amazon.awssdk.services.dynamodb.model.CreateTableResponse
-import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
-import software.amazon.awssdk.services.dynamodb.model.KeyType
-import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
-import software.amazon.awssdk.services.dynamodb.model.PutItemRequest
-import software.amazon.awssdk.services.dynamodb.model.PutItemResponse
-import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
-import software.amazon.awssdk.services.dynamodb.model.ScanRequest
+import software.amazon.awssdk.services.dynamodb.model.*
 import java.util.concurrent.CompletableFuture
-import javax.annotation.PostConstruct
 
 
 @Repository
@@ -30,14 +19,14 @@ class StaCoDynamoDBRepository(
 
     private val logger = KotlinLogging.logger {}
 
-    fun save(staCoEvent: Map<String, AttributeValue>): Mono<PutItemResponse> {
-        val putItemRequest = PutItemRequest.builder()
+    fun save(staCoEvent: Map<String, AttributeValue>): Mono<PutItemResponse> =
+        PutItemRequest.builder()
             .tableName(STACOS_TABLE)
             .item(staCoEvent)
-            .build()
-        dynamoDbAsyncClient.putItem(putItemRequest)
-        return Mono.fromFuture { dynamoDbAsyncClient.putItem(putItemRequest) }
-    }
+            .build().let {
+                dynamoDbAsyncClient.putItem(it)
+                Mono.fromFuture { dynamoDbAsyncClient.putItem(it) }
+            }
 
     /**
      * We take advantage of the fromFuture function provided by Mono.
@@ -71,8 +60,7 @@ class StaCoDynamoDBRepository(
     fun findByPageNumberAndPageSize(
         pageSize: Int,
         pageNumber: Int
-    ): Flux<MutableMap<String, AttributeValue>> {
-        return Mono.fromFuture(
+    ): Flux<MutableMap<String, AttributeValue>> = Mono.fromFuture(
             dynamoDbAsyncClient.scan(
                 ScanRequest
                     .builder()
@@ -94,9 +82,6 @@ class StaCoDynamoDBRepository(
         }.map {
             it.items()
         }.flatMapIterable { it }
-
-    }
-
 
     @PostConstruct
     fun createTableIfNotExists() {

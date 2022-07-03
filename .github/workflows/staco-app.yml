@@ -37,3 +37,9 @@ jobs:
          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+#
+#  e2e:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Start Docker
+#        run: make dcup

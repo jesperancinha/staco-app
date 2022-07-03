@@ -43,3 +43,6 @@ node_modules
 
 # Batch jobs
 .csv
+
+# Cypress
+videos

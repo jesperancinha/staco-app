@@ -78,3 +78,6 @@ audit:
 	cd stamps-and-coins-web && npm audit fix && yarn
 dcup-light:
 	docker-compose up -d postgres
+dcd:
+	docker-compose down
+dcup: dcd docker-clean docker

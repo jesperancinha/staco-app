@@ -12,3 +12,6 @@ jobs:
 
       - name: Start Docker
         run: make dcup-full
+
+      - name: Start Docker
+        run: make cypress

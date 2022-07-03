@@ -80,5 +80,10 @@ dcup-light:
 	docker-compose up -d postgres
 dcd:
 	docker-compose down
-dcup: dcd docker-clean docker
-dcup-full: docker-clean-build-start
+staco-wait:
+	bash staco_wait.sh
+dcup: dcd docker-clean docker staco-wait
+dcup-full: docker-clean-build-start staco-wait
+cypress:
+	cd e2e && npm run cypress:run
+demo: dcup cypress

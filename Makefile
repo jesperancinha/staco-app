@@ -84,6 +84,12 @@ staco-wait:
 	bash staco_wait.sh
 dcup: dcd docker-clean docker staco-wait
 dcup-full: docker-clean-build-start staco-wait
+cypress-open:
+	cd e2e && yarn && npm run cypress
 cypress:
 	cd e2e && yarn && npm run cypress:run
+cypress-chrome:
+	cd e2e && yarn && npm run cypress:run:chrome
+cypress-firefox:
+	cd e2e && yarn && npm run cypress:run:firefox
 demo: dcup cypress

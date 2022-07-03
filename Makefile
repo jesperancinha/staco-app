@@ -81,3 +81,4 @@ dcup-light:
 dcd:
 	docker-compose down
 dcup: dcd docker-clean docker
+dcup-full: docker-clean-build-start

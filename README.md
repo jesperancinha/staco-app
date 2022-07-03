@@ -8,6 +8,7 @@
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/staco-app/tree/main.svg?style=svg)](https://circleci.com/gh/jesperancinha/staco-app/tree/main)
 [![staco-app](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml/badge.svg)](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app.yml)
+[![e2e-staco-app](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app-e2e.yml/badge.svg)](https://github.com/jesperancinha/staco-app/actions/workflows/staco-app-e2e.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8d9267cddf834bff8f27cf8419253243)](https://www.codacy.com/gh/jesperancinha/staco-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/staco-app&amp;utm_campaign=Badge_Grade)
 
@@ -219,6 +220,20 @@ sequenceDiagram
           style="width:50%;">
       </a>
 </div>
+
+#### Demo
+
+To make it easy for you, I've created a few scripts to run this demo in a seamless way.
+
+The most important script however, is the `demo-full-manual`.
+
+If you run:
+
+```shell
+make demo-full-manual:
+```
+
+Then just wait until it completes. The cypress pop-up will appear. You can then start the tests manually and see how this application works!
 
 ## References
 

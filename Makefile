@@ -93,3 +93,5 @@ cypress-chrome:
 cypress-firefox:
 	cd e2e && yarn && npm run cypress:run:firefox
 demo: dcup cypress
+demo-full: dcup-full cypress
+demo-full-manual: dcup-full cypress-open

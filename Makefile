@@ -85,5 +85,5 @@ staco-wait:
 dcup: dcd docker-clean docker staco-wait
 dcup-full: docker-clean-build-start staco-wait
 cypress:
-	cd e2e && npm run cypress:run
+	cd e2e && yarn &&  npm run cypress:run
 demo: dcup cypress

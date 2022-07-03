@@ -230,7 +230,7 @@ The most important script however, is the `demo-full-manual`.
 If you run:
 
 ```shell
-make demo-full-manual:
+make demo-full-manual
 ```
 
 Then just wait until it completes. The cypress pop-up will appear. You can then start the tests manually and see how this application works!

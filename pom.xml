@@ -51,7 +51,7 @@
         <regions.version>2.17.225</regions.version>
         <utils.version>2.17.224</utils.version>
         <sdk-core.version>2.17.225</sdk-core.version>
-        <s3.version>2.17.224</s3.version>
+        <s3.version>2.17.225</s3.version>
         <kotlinx-coroutines-debug.version>1.6.3</kotlinx-coroutines-debug.version>
     </properties>
 

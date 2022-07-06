@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Locust
+        run: sudo apt install locust
+
       - name: Start Docker
         run: make dcup-full
 
@@ -21,6 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Locust
+        run: sudo apt install locust
+
       - name: Start Docker
         run: make dcup-full
 
@@ -31,6 +37,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Locust
+        run: sudo apt install locust
 
       - name: Start Docker
         run: make dcup-full

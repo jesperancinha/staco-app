@@ -18,6 +18,7 @@ describe('DynamoDB listings', () => {
 
   it('clicks through pages 1 to 10', () => {
     login();
+    cy.wait(2000);
     cy.get('p').contains('1').click();
     cy.get('p').contains('2').click();
     cy.get('p').contains('3').click();

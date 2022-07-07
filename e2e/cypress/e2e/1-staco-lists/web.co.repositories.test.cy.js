@@ -6,7 +6,7 @@ describe('Coroutines Repositories', () => {
   function login() {
     cy.get('#username').type('admin');
     cy.get('#password').type('admin');
-    cy.get('button.btn.btn-primary').contains('Login').click();
+      cy.get('button.btn.btn-primary').contains('Login').click();
   }
 
   it('logs into page with user admin', () => {
@@ -15,6 +15,7 @@ describe('Coroutines Repositories', () => {
 
   it('clicks through pages 1 to 10', () => {
     login();
+    cy.wait(2000);
     cy.get('p').contains('1').click();
     cy.get('p').contains('2').click();
     cy.get('p').contains('3').click();

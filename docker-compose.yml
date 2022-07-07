@@ -11,8 +11,6 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_MULTIPLE_DATABASES=staco
-    ports:
-      - "5432:5432"
     expose:
       - "5432"
     networks:
@@ -23,10 +21,6 @@ services:
     image: localstack/localstack:0.13.0
     hostname: localstack
     container_name: localstack
-    ports:
-      - "4566:4566"
-      - "4571:4571"
-      - "8090:8090"
     environment:
       - SERVICES=${SERVICES}
       - DOCKER_HOST=unix:///var/run/docker.sock
@@ -156,8 +150,6 @@ services:
     container_name: staco_app_service_reactive
     build:
       context: stamps-and-coins-service/.
-    ports:
-      - "8081:8081"
     expose:
       - 8081
     environment:
@@ -183,8 +175,6 @@ services:
     container_name: staco_app_service_localstack
     build:
       context: stamps-and-coins-ls-service/.
-    ports:
-      - "8082:8082"
     expose:
       - 8082
     environment:
@@ -209,8 +199,6 @@ services:
     container_name: staco_app_batch
     build:
       context: stamps-and-coins-batch/.
-    ports:
-      - "8083:8083"
     expose:
       - 8083
     environment:

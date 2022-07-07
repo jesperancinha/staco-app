@@ -11,10 +11,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Start Docker
-        run: make dcup-full
-
-      - name: Start Docker
-        run: make dcup-full
+        run: make dcup-full-action
 
       - name: Run Cypress
         run: make cypress
@@ -25,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Start Docker
-        run: make dcup-full
+        run: make dcup-full-action
 
       - name: Run Cypress
         run: make cypress-chrome
@@ -36,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Start Docker
-        run: make dcup-full
+        run: make dcup-full-action
 
       - name: Run Cypress
         run: make cypress-firefox

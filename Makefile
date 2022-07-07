@@ -16,6 +16,8 @@ no-test:
 docker:
 	docker-compose rm -svf
 	docker-compose up -d --build --remove-orphans
+docker-action:
+	docker-compose -f docker-compose.yml up -d --build --remove-orphans
 docker-databases: stop local
 build-images:
 build-docker: stop no-test build-npm
@@ -84,6 +86,7 @@ staco-wait:
 	bash staco_wait.sh
 dcup: dcd docker-clean docker staco-wait
 dcup-full: docker-clean-build-start staco-wait
+dcup-full-action: docker-clean b docker-action staco-wait
 cypress-open:
 	cd e2e && yarn && npm run cypress
 cypress:

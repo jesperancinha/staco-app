@@ -49,12 +49,15 @@ class SecurityConfiguration(
     @Bean
     fun springSecurityFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain? {
         http
-            .authorizeExchange()
-            .pathMatchers("/webjars/**")
-            .permitAll()
-            .pathMatchers("/swagger-ui/**")
-            .permitAll()
-            .and()
+            .authorizeExchange { exchanges: AuthorizeExchangeSpec ->
+                exchanges
+                    .pathMatchers("/webjars/**")
+                    .permitAll()
+                    .pathMatchers("/swagger-ui/**")
+                    .permitAll()
+                    .anyExchange()
+                    .authenticated()
+            }
             .httpBasic(withDefaults())
             .formLogin(withDefaults())
             .csrf().disable()

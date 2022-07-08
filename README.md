@@ -36,6 +36,8 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/docker-50.png "Docker")](https://www.docker.com/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/docker-compose-50.png "Docker Compose")](https://docs.docker.com/compose/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/testcontainers-50.png "Test containers")](https://www.testcontainers.org/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/swagger-50.png "Swagger")](https://www.testcontainers.org/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/cypress-50.png "Cypress  ")](https://www.testcontainers.org/)
 
 ---
 
@@ -226,15 +228,15 @@ Then just wait until it completes. The cypress pop-up will appear. You can then 
 
 You can make tests for this application using the Swagger UI at:
 
-###### Stamps and Coins LocalStack Service:
+###### Stamps and Coins LocalStack Service
 
-- [Stamps and Coins LocalStack Service stamps-and-coins-ls-service 8080](http://localhost:8080/api/staco/ls/webjars/swagger-ui/index.html)
-- [Stamps and Coins LocalStack Service stamps-and-coins-ls-service 8082 (local)](http://localhost:8082/api/staco/ls/webjars/swagger-ui/index.html)
+-   [Stamps and Coins LocalStack Service stamps-and-coins-ls-service 8080](http://localhost:8080/api/staco/ls/webjars/swagger-ui/index.html)
+-   [Stamps and Coins LocalStack Service stamps-and-coins-ls-service 8082 (local)](http://localhost:8082/api/staco/ls/webjars/swagger-ui/index.html)
 
 ###### Stamps and Coins Reactive Service
 
-- [Stamps and Coins Reactive Service stamps-and-coins-ls-service 8080](http://localhost:8080/api/staco/service/webjars/swagger-ui/index.html)
-- [Stamps and Coins Reactive Service stamps-and-coins-ls-service 8081 (local)](http://localhost:8081/api/staco/service/webjars/swagger-ui/index.html)
+-   [Stamps and Coins Reactive Service stamps-and-coins-ls-service 8080](http://localhost:8080/api/staco/service/webjars/swagger-ui/index.html)
+-   [Stamps and Coins Reactive Service stamps-and-coins-ls-service 8081 (local)](http://localhost:8081/api/staco/service/webjars/swagger-ui/index.html)
 
 ## References
 

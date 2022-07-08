@@ -1,6 +1,6 @@
 cypress-open:
 	yarn && npm run cypress
-cypress:
+cypress-electron:
 	yarn && npm run cypress:run
 cypress-chrome:
 	yarn && npm run cypress:run:chrome

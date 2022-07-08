@@ -12,6 +12,13 @@ describe('DynamoDB listings', () => {
     cy.get('button.btn.btn-primary').contains('Login').click();
   }
 
+
+  it('shows swagger', () => {
+    cy.visit('http://localhost:8080/api/staco/ls/webjars/swagger-ui/index.html');
+    cy.get('h2').contains('OpenAPI definition').should('not.be.null');
+    cy.wait(1000);
+  });
+
   it('logs into page with user admin', () => {
     login();
   })

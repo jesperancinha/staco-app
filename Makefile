@@ -5,6 +5,8 @@ build-npm:
 	cd stamps-and-coins-web && yarn install && npm run build
 build-maven:
 	mvn clean install package -DskipTests
+build-nginx:
+	docker-compose build nginx
 test:
 	mvn test
 test-maven:

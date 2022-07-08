@@ -120,19 +120,6 @@ make docker-clean-build-start
 
 > These containers take a while to start, so depending on your machine, the containers can start in anywhere between 10 seconds up to 5 minutes. Keep checking the logs with `docker logs` or `docker-compose logs`.
 
-## Troubleshooting
-
-1.  If you are running the integration tests on your local machine and realize that the containers remain still and don't respond for a while, this could be a sign of a problem with Docker machine. Please restart your docker desktop/docker-machine and try again. 
-2.  If for some reason you cannot start docker-compose and Docker gives this response:
-
-```shell
-Creating network "staco-app_staco_net" with driver "bridge"
-ERROR: Pool overlaps with other one on this address space
-make: *** [docker] Error 1
-```
-
-then this just means that you may still have docker containers running with a network bridge driver. You need to stop them and then remove the network with `docker network prune`.
-
 ## Sequence diagram
 
 To visualize these diagrams you may need
@@ -234,6 +221,20 @@ make demo-full-manual
 ```
 
 Then just wait until it completes. The cypress pop-up will appear. You can then start the tests manually and see how this application works!
+
+#### Swagger tests
+
+You can make tests for this application using the Swagger UI at:
+
+###### Stamps and Coins LocalStack Service:
+
+- [Stamps and Coins LocalStack Service stamps-and-coins-ls-service 8080](http://localhost:8080/api/staco/ls/webjars/swagger-ui/index.html)
+- [Stamps and Coins LocalStack Service stamps-and-coins-ls-service 8082 (local)](http://localhost:8082/api/staco/ls/webjars/swagger-ui/index.html)
+
+###### Stamps and Coins Reactive Service
+
+- [Stamps and Coins Reactive Service stamps-and-coins-ls-service 8080](http://localhost:8080/api/staco/service/webjars/swagger-ui/index.html)
+- [Stamps and Coins Reactive Service stamps-and-coins-ls-service 8081 (local)](http://localhost:8081/api/staco/service/webjars/swagger-ui/index.html)
 
 ## References
 

@@ -54,6 +54,8 @@
         <s3.version>2.17.226</s3.version>
         <kotlinx-coroutines-debug.version>1.6.3</kotlinx-coroutines-debug.version>
         <springdoc-openapi-webflux-ui.version>1.6.9</springdoc-openapi-webflux-ui.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
 
     <modules>
@@ -228,6 +230,16 @@
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>ssm</artifactId>
                 <version>${s3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
             </dependency>
 
             <dependency>

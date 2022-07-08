@@ -48,7 +48,7 @@ internal class StaCoController(
         pageEntity: Int,
         @PathVariable
         sizeEntities: Int,
-    ) = stacoDao.getAllByPageNumberAndSize(
+    ): Flux<StaCoDto> = stacoDao.getAllByPageNumberAndSize(
         pageNumber = pageEntity,
         pageSize = sizeEntities
     )

@@ -79,7 +79,7 @@ install-update: update
 audit:
 	cd stamps-and-coins-web && npm audit fix && yarn
 dcup-light:
-	docker-compose up -d postgres
+	docker-compose up -d postgres localstack
 dcd:
 	docker-compose down
 staco-wait:

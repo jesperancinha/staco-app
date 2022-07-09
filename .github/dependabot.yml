@@ -16,3 +16,7 @@ updates:
     directory: "/stamps-and-coins-web"
     schedule:
       interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/e2e"
+    schedule:
+      interval: "daily"

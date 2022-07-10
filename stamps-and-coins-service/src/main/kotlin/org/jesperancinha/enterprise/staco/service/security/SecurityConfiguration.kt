@@ -55,6 +55,8 @@ class SecurityConfiguration(
                     .permitAll()
                     .pathMatchers("/swagger-ui/**")
                     .permitAll()
+                    .pathMatchers("/v3/api-docs/**")
+                    .permitAll()
                     .anyExchange()
                     .authenticated()
             }

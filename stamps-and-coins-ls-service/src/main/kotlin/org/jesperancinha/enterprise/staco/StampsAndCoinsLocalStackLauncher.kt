@@ -1,5 +1,8 @@
 package org.jesperancinha.enterprise.staco
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition
+import io.swagger.v3.oas.annotations.info.Info
+import io.swagger.v3.oas.annotations.servers.Server
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.ApplicationArguments
@@ -10,6 +13,10 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.s3.S3AsyncClient
 
 @SpringBootApplication
+@OpenAPIDefinition(
+    info = Info(title = "OpenAPI definition"),
+    servers = [Server(url = "\${staco.server.url}/api/staco/ls", description = "Server URL")]
+)
 class StampsAndCoinsLocalStackLauncher(
     val s3AsyncClient: S3AsyncClient,
     val dynamoDbAsyncClient: DynamoDbAsyncClient

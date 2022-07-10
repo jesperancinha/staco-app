@@ -1,6 +1,9 @@
 package org.jesperancinha.enterprise.staco
 
 import io.r2dbc.spi.ConnectionFactory
+import io.swagger.v3.oas.annotations.OpenAPIDefinition
+import io.swagger.v3.oas.annotations.info.Info
+import io.swagger.v3.oas.annotations.servers.Server
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.factory.annotation.Value
@@ -19,6 +22,10 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 @EnableCaching
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
+@OpenAPIDefinition(
+    info = Info(title = "OpenAPI definition"),
+    servers = [Server(url = "\${staco.server.url}/api/staco/service", description = "Server URL")]
+)
 class StaCoSearchApplication(
     @Value("\${spring.r2dbc.username}")
     private val postgresUsername: String

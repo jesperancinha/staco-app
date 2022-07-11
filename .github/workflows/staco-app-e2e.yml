@@ -38,3 +38,13 @@ jobs:
       - name: Run Cypress
         run: make cypress-firefox
 
+  e2e-edge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Start Docker
+        run: make dcup-full-action
+
+      - name: Run Cypress
+        run: make cypress-edge

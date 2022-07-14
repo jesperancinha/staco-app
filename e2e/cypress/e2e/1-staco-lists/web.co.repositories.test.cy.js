@@ -1,6 +1,6 @@
 describe('Coroutines Repositories', () => {
 
-    let host = Cypress.env('host') ? Cypress.env('host') : 'localhost';
+    const host = Cypress.env('host') ? Cypress.env('host') : 'localhost';
 
     beforeEach(() => {
         cy.visit(`http://${host}:8080/login`)

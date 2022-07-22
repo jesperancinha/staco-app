@@ -51,7 +51,7 @@
         <regions.version>2.17.236</regions.version>
         <utils.version>2.17.236</utils.version>
         <sdk-core.version>2.17.237</sdk-core.version>
-        <s3.version>2.17.236</s3.version>
+        <s3.version>2.17.237</s3.version>
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
         <springdoc-openapi-webflux-ui.version>1.6.9</springdoc-openapi-webflux-ui.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

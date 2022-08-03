@@ -46,12 +46,12 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
         <dynamodb.version>2.17.244</dynamodb.version>
-        <aws-json-protocol.version>2.17.244</aws-json-protocol.version>
+        <aws-json-protocol.version>2.17.245</aws-json-protocol.version>
         <aws-core.version>2.17.245</aws-core.version>
         <regions.version>2.17.244</regions.version>
         <utils.version>2.17.244</utils.version>
         <sdk-core.version>2.17.245</sdk-core.version>
-        <s3.version>2.17.244</s3.version>
+        <s3.version>2.17.245</s3.version>
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
         <springdoc-openapi-webflux-ui.version>1.6.9</springdoc-openapi-webflux-ui.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

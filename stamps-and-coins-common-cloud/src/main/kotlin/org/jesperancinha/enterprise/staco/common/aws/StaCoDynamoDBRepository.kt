@@ -1,6 +1,5 @@
 package org.jesperancinha.enterprise.staco.common.aws
 
-import jakarta.annotation.PostConstruct
 import mu.KotlinLogging
 import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.ID
 import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.STACOS_TABLE
@@ -10,6 +9,7 @@ import reactor.core.publisher.Mono
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.model.*
 import java.util.concurrent.CompletableFuture
+import javax.annotation.PostConstruct
 
 
 @Repository

@@ -48,7 +48,7 @@
         <dynamodb.version>2.17.257</dynamodb.version>
         <aws-json-protocol.version>2.17.257</aws-json-protocol.version>
         <aws-core.version>2.17.256</aws-core.version>
-        <regions.version>2.17.256</regions.version>
+        <regions.version>2.17.257</regions.version>
         <utils.version>2.17.257</utils.version>
         <sdk-core.version>2.17.256</sdk-core.version>
         <s3.version>2.17.256</s3.version>

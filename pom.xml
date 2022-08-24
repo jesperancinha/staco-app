@@ -49,9 +49,9 @@
         <aws-json-protocol.version>2.17.259</aws-json-protocol.version>
         <aws-core.version>2.17.258</aws-core.version>
         <regions.version>2.17.258</regions.version>
-        <utils.version>2.17.258</utils.version>
+        <utils.version>2.17.259</utils.version>
         <sdk-core.version>2.17.258</sdk-core.version>
-        <s3.version>2.17.258</s3.version>
+        <s3.version>2.17.259</s3.version>
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
         <springdoc-openapi-webflux-ui.version>1.6.11</springdoc-openapi-webflux-ui.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

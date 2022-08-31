@@ -49,7 +49,7 @@
         <aws-json-protocol.version>2.17.263</aws-json-protocol.version>
         <aws-core.version>2.17.264</aws-core.version>
         <regions.version>2.17.263</regions.version>
-        <utils.version>2.17.263</utils.version>
+        <utils.version>2.17.264</utils.version>
         <sdk-core.version>2.17.263</sdk-core.version>
         <s3.version>2.17.264</s3.version>
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>

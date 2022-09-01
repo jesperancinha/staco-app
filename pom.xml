@@ -44,7 +44,7 @@
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
-        <r2dbc-postgresql.version>0.8.12.RELEASE</r2dbc-postgresql.version>
+        <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
         <dynamodb.version>2.17.264</dynamodb.version>
         <aws-json-protocol.version>2.17.265</aws-json-protocol.version>
         <aws-core.version>2.17.265</aws-core.version>

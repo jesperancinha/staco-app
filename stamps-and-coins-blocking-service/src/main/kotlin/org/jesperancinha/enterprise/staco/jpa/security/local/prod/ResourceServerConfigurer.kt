@@ -17,7 +17,6 @@ class ResourceServerConfigurer : ResourceServerConfigurerAdapter() {
             .stateless(false)
     }
 
-    @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
             .antMatchers("/**").hasRole("ADMIN")

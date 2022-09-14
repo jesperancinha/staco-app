@@ -15,9 +15,7 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager
 class ConfigurationAdapter(
     private val jdbcUserDetailsManager: JdbcUserDetailsManager,
     private val passwordEncoder: PasswordEncoder
-) :
-    WebSecurityConfigurerAdapter() {
-    @Throws(Exception::class)
+) : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
             .antMatchers("/**")
@@ -27,7 +25,6 @@ class ConfigurationAdapter(
             .and().csrf().disable()
     }
 
-    @Throws(Exception::class)
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.userDetailsService(jdbcUserDetailsManager).passwordEncoder(passwordEncoder)
     }

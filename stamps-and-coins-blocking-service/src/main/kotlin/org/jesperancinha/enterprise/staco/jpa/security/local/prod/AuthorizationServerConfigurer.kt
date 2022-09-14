@@ -61,17 +61,15 @@ class AuthorizationServerConfigurer(
 
 
     @Bean
-    fun runner(): CommandLineRunner? {
-        return CommandLineRunner { args: Array<String?>? ->
-            run {
-                val user = ApplicationUser()
-                user.name = "admin"
-                user.role = "ROLE_ADMIN"
-                user.password = passwordEncoder.encode("admin")
-                user.date = Timestamp.valueOf(LocalDateTime.now())
-                user.email = "thismail@thatmail.thatscope"
-                userRepository.save(user)
-            }
+    fun runner(): CommandLineRunner = CommandLineRunner {
+        run {
+            val user = ApplicationUser()
+            user.name = "admin"
+            user.role = "ROLE_ADMIN"
+            user.password = passwordEncoder.encode("admin")
+            user.date = Timestamp.valueOf(LocalDateTime.now())
+            user.email = "thismail@thatmail.thatscope"
+            userRepository.save(user)
         }
     }
 }

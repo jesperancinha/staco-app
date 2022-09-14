@@ -14,10 +14,11 @@ import java.util.Objects
 @Component
 @Primary
 @Profile("localprod && !test")
-class AuthenticationProvider(userRepository: UserRepository, passwordEncoder: PasswordEncoder) :
-    AuthenticationProvider {
-    private val userRepository: UserRepository
+class AuthenticationProvider(
+    private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
+) :
+    AuthenticationProvider {
 
     override fun authenticate(authentication: Authentication): Authentication {
         if (authentication.name == null || authentication.credentials == null) {
@@ -53,8 +54,4 @@ class AuthenticationProvider(userRepository: UserRepository, passwordEncoder: Pa
         return authentication == UsernamePasswordAuthenticationToken::class.java
     }
 
-    init {
-        this.userRepository = userRepository
-        this.passwordEncoder = passwordEncoder
-    }
 }

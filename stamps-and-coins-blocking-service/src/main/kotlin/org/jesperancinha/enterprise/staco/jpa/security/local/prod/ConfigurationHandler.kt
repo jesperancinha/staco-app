@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse
 @Configuration
 @Profile("localprod && !test")
 class ConfigurationHandler : AuthenticationSuccessHandler {
-    @Throws(IOException::class, ServletException::class)
     override fun onAuthenticationSuccess(
         httpServletRequest: HttpServletRequest?,
         httpServletResponse: HttpServletResponse,

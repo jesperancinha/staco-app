@@ -14,20 +14,14 @@ import javax.sql.DataSource
 @Profile("localprod && !test")
 class TokenStoreConfig(private val dataSource: DataSource) {
     @Bean
-    fun tokenStore(): TokenStore {
-        return JdbcTokenStore(dataSource)
+    fun tokenStore(): TokenStore = JdbcTokenStore(dataSource)
+
+    @Bean
+    fun tokenServices(): DefaultTokenServices = DefaultTokenServices().apply {
+        setTokenStore(tokenStore())
+        setSupportRefreshToken(true)
     }
 
     @Bean
-    fun tokenServices(): DefaultTokenServices {
-        val defaultTokenServices = DefaultTokenServices()
-        defaultTokenServices.setTokenStore(tokenStore())
-        defaultTokenServices.setSupportRefreshToken(true)
-        return defaultTokenServices
-    }
-
-    @Bean
-    fun passwordEncoder(): PasswordEncoder {
-        return BCryptPasswordEncoder()
-    }
+    fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 }

@@ -20,11 +20,9 @@ class UserDetailsService(private val userRepository: UserRepository) : UserDetai
         throw RuntimeException("Credentials failure!")
     }
 
-    private fun createUserDetails(applicationUser: ApplicationUser): User {
-        return User(
-            applicationUser.email,
-            applicationUser.password,
-            listOf(SimpleGrantedAuthority(applicationUser.role))
-        )
-    }
+    private fun createUserDetails(applicationUser: ApplicationUser) = User(
+        applicationUser.email,
+        applicationUser.password,
+        listOf(SimpleGrantedAuthority(applicationUser.role))
+    )
 }

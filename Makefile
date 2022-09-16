@@ -31,6 +31,8 @@ docker-delete-idle:
 docker-delete: stop
 	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs -I {}  docker stop {}
 	docker ps -a --format '{{.ID}}' -q --filter="name=staco_" | xargs -I {}  docker rm {}
+docker-stop-all:
+	docker ps -a --format '{{.ID}}' | xargs -I {}  docker stop {}
 docker-cleanup: docker-delete
 	docker network prune
 	docker images -q | xargs docker rmi

@@ -16,6 +16,11 @@ services:
     networks:
       staco_net:
         ipv4_address: ${STACO_AWS_POSTGRESQL_IP}
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${DB_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   localstack:
     image: localstack/localstack:0.13.0
@@ -159,7 +164,7 @@ services:
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
       - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
       - STACO_AWS_POSTGRESQL_IP=${STACO_AWS_POSTGRESQL_IP}
-    restart: on-failure
+#    restart: on-failure
     deploy:
       resources:
         limits:
@@ -169,6 +174,11 @@ services:
     networks:
       staco_net:
         ipv4_address: ${STACO_APP_SERVICE_REACTIVE_IP}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
 
   staco_app_service_localstack:
     hostname: staco_app_service_localstack
@@ -183,7 +193,7 @@ services:
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
       - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
-    restart: on-failure
+#    restart: on-failure
     deploy:
       resources:
         limits:
@@ -193,6 +203,11 @@ services:
     networks:
       staco_net:
         ipv4_address: ${STACO_APP_SERVICE_LOCALSTACK_IP}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
 
   staco_app_batch:
     hostname: staco_app_batch
@@ -208,7 +223,7 @@ services:
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
       - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
       - STACO_AWS_POSTGRESQL_IP=${STACO_AWS_POSTGRESQL_IP}
-    restart: on-failure
+#    restart: on-failure
     deploy:
       resources:
         limits:
@@ -218,6 +233,11 @@ services:
     networks:
       staco_net:
         ipv4_address: ${STACO_APP_BATCH_IP}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
 
   nginx:
     hostname: nginx
@@ -226,7 +246,7 @@ services:
       context: ./stamps-and-coins-web/.
     ports:
       - "8080:8080"
-    restart: on-failure
+#    restart: on-failure
     deploy:
       resources:
         limits:

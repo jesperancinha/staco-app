@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <kotlin.version>1.7.10</kotlin.version>
-        <aws-java-sdk.version>1.12.307</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.308</aws-java-sdk.version>
 
         <h2.version>2.1.214</h2.version>
         <postgresql.version>42.5.0</postgresql.version>
@@ -23,7 +23,7 @@
         <okta-spring-boot-starter.version>2.1.6</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.200</sofware.amazon.version>
 
-        <spring-boot.version>2.7.3</spring-boot.version>
+        <spring-boot.version>2.7.4</spring-boot.version>
         <spring-cloud-dependencies.version>2021.0.4</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>2.4.2</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>

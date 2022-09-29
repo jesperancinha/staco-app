@@ -168,9 +168,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 400M
-        reservations:
-          memory: 400M
+          memory: 600M
     networks:
       staco_net:
         ipv4_address: ${STACO_APP_SERVICE_REACTIVE_IP}
@@ -197,9 +195,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 400M
-        reservations:
-          memory: 400M
+          memory: 600M
     networks:
       staco_net:
         ipv4_address: ${STACO_APP_SERVICE_LOCALSTACK_IP}
@@ -227,9 +223,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 400M
-        reservations:
-          memory: 400M
+          memory: 600M
     networks:
       staco_net:
         ipv4_address: ${STACO_APP_BATCH_IP}
@@ -250,9 +244,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 300M
-        reservations:
-          memory: 300M
+          memory: 400M
     env_file:
       - .env
     networks:

@@ -23,8 +23,8 @@ function checkServiceByNameAndMessage() {
 }
 
 checkServiceByNameAndMessage postgres 'database system is ready to accept connections'
-checkServiceByNameAndMessage localstack 'Initializing DynamoDB'
 checkServiceByNameAndMessage nginx 'test is successful'
-checkServiceByNameAndMessage staco_app_service_localstack 'Bucket(Name=stacos'
 checkServiceByNameAndMessage staco_app_batch 'Started StampsAndCoinsBatchLauncher'
 checkServiceByNameAndMessage staco_app_service_reactive 'Started StaCoSearchApplication'
+checkServiceByNameAndMessage staco_app_service_localstack 'Bucket(Name=stacos'
+checkServiceByNameAndMessage localstack 'Initializing DynamoDB'

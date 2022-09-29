@@ -22,4 +22,9 @@ function checkServiceByNameAndMessage() {
     echo "Succeeded $name Service after $counter tries!"
 }
 
+checkServiceByNameAndMessage postgres 'database system is ready to accept connections'
+checkServiceByNameAndMessage localstack 'Initializing DynamoDB'
+checkServiceByNameAndMessage nginx 'test is successful'
 checkServiceByNameAndMessage staco_app_service_localstack 'Bucket(Name=stacos'
+checkServiceByNameAndMessage staco_app_batch 'Started StampsAndCoinsBatchLauncher'
+checkServiceByNameAndMessage staco_app_service_reactive 'Started StaCoSearchApplication'

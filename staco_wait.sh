@@ -1,4 +1,5 @@
 #!/bin/bash
+GITHUB_RUN_ID=${GITHUB_RUN_ID:-123}
 
 function checkServiceByNameAndMessage() {
     name=$1
@@ -6,6 +7,7 @@ function checkServiceByNameAndMessage() {
     docker-compose -p "${GITHUB_RUN_ID}" logs "$name" > "logs"
     string=$(cat logs)
     counter=0
+    echo "Project $GITHUB_RUN_ID"
     echo -n "Starting service $name "
     while [[ "$string" != *"$message"* ]]
     do

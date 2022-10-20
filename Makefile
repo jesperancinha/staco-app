@@ -19,7 +19,7 @@ docker:
 	docker-compose rm -svf
 	docker-compose up -d --build --remove-orphans
 docker-action:
-	docker-compose -f docker-compose.yml up -d --build --remove-orphans
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml up -d --build --remove-orphans
 docker-databases: stop local
 build-images:
 build-docker: stop no-test build-npm

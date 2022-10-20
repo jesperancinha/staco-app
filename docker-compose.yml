@@ -246,8 +246,6 @@ services:
     container_name: nginx
     build:
       context: ./stamps-and-coins-web/.
-    ports:
-      - "8080:8080"
 #    restart: on-failure
     deploy:
       resources:

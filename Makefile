@@ -1,3 +1,6 @@
+SHELL := /bin/bash
+GITHUB_RUN_ID ?=123
+
 b: build-npm build-maven
 build: build-npm
 	mvn clean install

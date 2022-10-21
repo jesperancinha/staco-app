@@ -1,3 +1,6 @@
+SHELL := /bin/bash
+GITHUB_RUN_ID ?=123
+
 cypress-open:
 	yarn && npm run cypress
 cypress-electron:

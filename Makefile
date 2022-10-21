@@ -40,7 +40,8 @@ docker-cleanup: docker-delete
 	docker network prune
 	docker images -q | xargs docker rmi
 docker-clean:
-	docker-compose rm -svf
+	docker-compose rm -svf -a
+	docker network prune -f
 docker-clean-build-start: docker-clean b docker
 docker-delete-apps: stop
 docker-localstack:

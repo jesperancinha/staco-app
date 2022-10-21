@@ -1,3 +1,6 @@
+SHELL := /bin/bash
+GITHUB_RUN_ID ?=123
+
 b: build-npm build-maven
 build: build-npm
 	mvn clean install
@@ -16,14 +19,14 @@ local: no-test
 no-test:
 	mvn clean install -DskipTests
 docker:
-	docker-compose rm -svf
-	docker-compose up -d --build --remove-orphans
+	docker-compose -p ${GITHUB_RUN_ID} rm -svf
+	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans
 docker-action:
-	docker-compose -f docker-compose.yml up -d --build --remove-orphans
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml up -d --build --remove-orphans
 docker-databases: stop local
 build-images:
 build-docker: stop no-test build-npm
-	docker-compose up -d --build --remove-orphans
+	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans
 show:
 	docker ps -a  --format '{{.ID}} - {{.Names}} - {{.Status}}'
 docker-delete-idle:
@@ -37,7 +40,8 @@ docker-cleanup: docker-delete
 	docker network prune
 	docker images -q | xargs docker rmi
 docker-clean:
-	docker-compose rm -svf
+	docker-compose -p ${GITHUB_RUN_ID} rm -svf -a
+	docker network prune -f
 docker-clean-build-start: docker-clean b docker
 docker-delete-apps: stop
 docker-localstack:
@@ -83,9 +87,9 @@ install-update: update
 audit:
 	cd stamps-and-coins-web && npm audit fix && yarn
 dcup-light:
-	docker-compose up -d postgres localstack
+	docker-compose -p ${GITHUB_RUN_ID} up -d postgres localstack
 dcd:
-	docker-compose down
+	docker-compose -p ${GITHUB_RUN_ID} down
 staco-wait:
 	bash staco_wait.sh
 dcup: dcd docker-clean docker staco-wait

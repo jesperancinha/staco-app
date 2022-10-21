@@ -212,6 +212,18 @@ services:
         condition: service_healthy
       localstack:
         condition: service_healthy
+      aws-cli-1:
+        condition: service_completed_successfully
+      aws-cli-2:
+        condition: service_completed_successfully
+      aws-cli-3:
+        condition: service_completed_successfully
+      aws-cli-4:
+        condition: service_completed_successfully
+      aws-cli-5:
+        condition: service_completed_successfully
+      aws-cli-6:
+        condition: service_completed_successfully
 
   staco_app_batch:
     hostname: staco_app_batch
@@ -240,14 +252,24 @@ services:
         condition: service_healthy
       localstack:
         condition: service_healthy
+      aws-cli-1:
+        condition: service_completed_successfully
+      aws-cli-2:
+        condition: service_completed_successfully
+      aws-cli-3:
+        condition: service_completed_successfully
+      aws-cli-4:
+        condition: service_completed_successfully
+      aws-cli-5:
+        condition: service_completed_successfully
+      aws-cli-6:
+        condition: service_completed_successfully
 
   nginx:
     hostname: nginx
     container_name: nginx
     build:
       context: ./stamps-and-coins-web/.
-    ports:
-      - "8080:8080"
 #    restart: on-failure
     deploy:
       resources:

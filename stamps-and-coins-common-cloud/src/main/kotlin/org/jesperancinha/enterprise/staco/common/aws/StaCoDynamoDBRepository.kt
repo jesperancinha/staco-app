@@ -103,7 +103,7 @@ class StaCoDynamoDBRepository(
         try {
             createTableRequest.get()
         } catch (ex: ExecutionException) {
-            logger.info { "Table $STACOS_TABLE seems to already exist. Error  message is ${ex.toString()} " }
+            logger.info { "Table $STACOS_TABLE seems to already exist. Error message is ${ex.toString()} " }
         }
     }
 

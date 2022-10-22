@@ -9,6 +9,7 @@ import reactor.core.publisher.Mono
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.model.*
 import java.util.concurrent.CompletableFuture
+import java.util.concurrent.ExecutionException
 import javax.annotation.PostConstruct
 
 
@@ -99,7 +100,11 @@ class StaCoDynamoDBRepository(
                     return@thenCompose CompletableFuture.completedFuture<CreateTableResponse>(null)
                 }
             }
-        createTableRequest.get()
+        try {
+            createTableRequest.get()
+        } catch (ex: ExecutionException) {
+            logger.info { "Table $STACOS_TABLE seems to already exist. Error message is ${ex.toString()} " }
+        }
     }
 
     private fun createStaCosTable(): CompletableFuture<CreateTableResponse> {

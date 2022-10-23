@@ -45,13 +45,9 @@
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
-        <dynamodb.version>2.17.295</dynamodb.version>
-        <aws-json-protocol.version>2.17.294</aws-json-protocol.version>
-        <aws-core.version>2.18.0</aws-core.version>
-        <regions.version>2.18.0</regions.version>
-        <utils.version>2.17.295</utils.version>
-        <sdk-core.version>2.18.0</sdk-core.version>
-        <s3.version>2.17.295</s3.version>
+
+        <awssdk.version>2.18.0</awssdk.version>
+
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
         <springdoc-openapi-webflux-ui.version>1.6.12</springdoc-openapi-webflux-ui.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
@@ -194,42 +190,42 @@
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>dynamodb</artifactId>
-                <version>${dynamodb.version}</version>
+                <version>${awssdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>aws-json-protocol</artifactId>
-                <version>${aws-json-protocol.version}</version>
+                <version>${awssdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>aws-core</artifactId>
-                <version>${aws-core.version}</version>
+                <version>${awssdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>regions</artifactId>
-                <version>${regions.version}</version>
+                <version>${awssdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>utils</artifactId>
-                <version>${utils.version}</version>
+                <version>${awssdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>sdk-core</artifactId>
-                <version>${sdk-core.version}</version>
+                <version>${awssdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>s3</artifactId>
-                <version>${s3.version}</version>
+                <version>${awssdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>ssm</artifactId>
-                <version>${s3.version}</version>
+                <version>${awssdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.xml.bind</groupId>

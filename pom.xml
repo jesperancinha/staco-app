@@ -31,7 +31,7 @@
 
         <!-- Do not change to RC2! -->
         <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>
-        <kotlin-logging.version>3.0.2</kotlin-logging.version>
+        <kotlin-logging.version>3.0.3</kotlin-logging.version>
 
         <springmockk.version>3.1.1</springmockk.version>
         <mockk.version>1.13.2</mockk.version>

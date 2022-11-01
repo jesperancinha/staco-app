@@ -39,7 +39,7 @@
         <reactor-test.version>3.4.24</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.17.5</test.containers.version>
-        <commons-compress.version>1.21</commons-compress.version>
+        <commons-compress.version>1.22</commons-compress.version>
         <commons-csv.version>1.9.0</commons-csv.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>

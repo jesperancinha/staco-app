@@ -20,6 +20,13 @@
     "@angular-devkit/core" "14.2.9"
     rxjs "6.6.7"
 
+"@angular-devkit/architect@0.1500.0":
+  version "0.1500.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1500.0.tgz#50e0037268b5848bef3cb9d4766b0648dba67a87"
+  dependencies:
+    "@angular-devkit/core" "15.0.0"
+    rxjs "6.6.7"
+
 "@angular-devkit/build-angular@^14.2.9":
   version "14.2.9"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-14.2.9.tgz#ccba7ff191bae5d9deec22672f67f737aa7a178a"
@@ -106,13 +113,23 @@
     rxjs "6.6.7"
     source-map "0.7.4"
 
-"@angular-devkit/schematics@14.2.9":
-  version "14.2.9"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-14.2.9.tgz#d91447a1568047f86cb166a1af0d76b0c58ae0cb"
+"@angular-devkit/core@15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-15.0.0.tgz#6b6db4ca7998167f1fb58086e9b4349c7774ddc9"
   dependencies:
-    "@angular-devkit/core" "14.2.9"
-    jsonc-parser "3.1.0"
-    magic-string "0.26.2"
+    ajv "8.11.0"
+    ajv-formats "2.1.1"
+    jsonc-parser "3.2.0"
+    rxjs "6.6.7"
+    source-map "0.7.4"
+
+"@angular-devkit/schematics@15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-15.0.0.tgz#87b8fe1ecbb54f22594b3fcab4c5ee5626f7a7cf"
+  dependencies:
+    "@angular-devkit/core" "15.0.0"
+    jsonc-parser "3.2.0"
+    magic-string "0.26.7"
     ora "5.4.1"
     rxjs "6.6.7"
 
@@ -130,30 +147,28 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@^14.2.9":
-  version "14.2.9"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-14.2.9.tgz#9e03259470eb3502cbbd0e463d5473ccb44f7444"
+"@angular/cli@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-15.0.0.tgz#65f39ab6a25288855e8495499406fe623fa69dbc"
   dependencies:
-    "@angular-devkit/architect" "0.1402.9"
-    "@angular-devkit/core" "14.2.9"
-    "@angular-devkit/schematics" "14.2.9"
-    "@schematics/angular" "14.2.9"
+    "@angular-devkit/architect" "0.1500.0"
+    "@angular-devkit/core" "15.0.0"
+    "@angular-devkit/schematics" "15.0.0"
+    "@schematics/angular" "15.0.0"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.3"
-    debug "4.3.4"
-    ini "3.0.0"
+    ini "3.0.1"
     inquirer "8.2.4"
-    jsonc-parser "3.1.0"
-    npm-package-arg "9.1.0"
-    npm-pick-manifest "7.0.1"
+    jsonc-parser "3.2.0"
+    npm-package-arg "9.1.2"
+    npm-pick-manifest "8.0.1"
     open "8.4.0"
     ora "5.4.1"
-    pacote "13.6.2"
+    pacote "15.0.6"
     resolve "1.22.1"
-    semver "7.3.7"
+    semver "7.3.8"
     symbol-observable "4.0.0"
-    uuid "8.3.2"
-    yargs "17.5.1"
+    yargs "17.6.2"
 
 "@angular/common@~14.0.4":
   version "14.0.4"
@@ -1282,26 +1297,32 @@
     "@gar/promisify" "^1.1.3"
     semver "^7.3.5"
 
-"@npmcli/git@^3.0.0":
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/@npmcli/git/-/git-3.0.2.tgz"
+"@npmcli/fs@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@npmcli/fs/-/fs-3.1.0.tgz#233d43a25a91d68c3a863ba0da6a3f00924a173e"
   dependencies:
-    "@npmcli/promise-spawn" "^3.0.0"
+    semver "^7.3.5"
+
+"@npmcli/git@^4.0.0":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@npmcli/git/-/git-4.0.3.tgz#354db5fe1f29696303638e191d8538ee9b01b4bb"
+  dependencies:
+    "@npmcli/promise-spawn" "^6.0.0"
     lru-cache "^7.4.4"
     mkdirp "^1.0.4"
-    npm-pick-manifest "^7.0.0"
-    proc-log "^2.0.0"
+    npm-pick-manifest "^8.0.0"
+    proc-log "^3.0.0"
     promise-inflight "^1.0.1"
     promise-retry "^2.0.1"
     semver "^7.3.5"
-    which "^2.0.2"
+    which "^3.0.0"
 
-"@npmcli/installed-package-contents@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/@npmcli/installed-package-contents/-/installed-package-contents-1.0.7.tgz"
+"@npmcli/installed-package-contents@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@npmcli/installed-package-contents/-/installed-package-contents-2.0.1.tgz#3cad3141c95613426820128757a3549bef1b346b"
   dependencies:
-    npm-bundled "^1.1.1"
-    npm-normalize-package-bin "^1.0.1"
+    npm-bundled "^3.0.0"
+    npm-normalize-package-bin "^3.0.0"
 
 "@npmcli/move-file@^2.0.0":
   version "2.0.0"
@@ -1310,33 +1331,33 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@npmcli/node-gyp@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@npmcli/node-gyp/-/node-gyp-2.0.0.tgz"
-
-"@npmcli/promise-spawn@^3.0.0":
+"@npmcli/node-gyp@^3.0.0":
   version "3.0.0"
-  resolved "https://registry.npmjs.org/@npmcli/promise-spawn/-/promise-spawn-3.0.0.tgz"
-  dependencies:
-    infer-owner "^1.0.4"
+  resolved "https://registry.yarnpkg.com/@npmcli/node-gyp/-/node-gyp-3.0.0.tgz#101b2d0490ef1aa20ed460e4c0813f0db560545a"
 
-"@npmcli/run-script@^4.1.0":
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/@npmcli/run-script/-/run-script-4.2.1.tgz"
+"@npmcli/promise-spawn@^6.0.0", "@npmcli/promise-spawn@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@npmcli/promise-spawn/-/promise-spawn-6.0.1.tgz#2bf718579ad0ca2c5bd364c6a9de3e2fa6be2b00"
   dependencies:
-    "@npmcli/node-gyp" "^2.0.0"
-    "@npmcli/promise-spawn" "^3.0.0"
+    which "^3.0.0"
+
+"@npmcli/run-script@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@npmcli/run-script/-/run-script-6.0.0.tgz#f89e322c729e26ae29db6cc8cc76559074aac208"
+  dependencies:
+    "@npmcli/node-gyp" "^3.0.0"
+    "@npmcli/promise-spawn" "^6.0.0"
     node-gyp "^9.0.0"
-    read-package-json-fast "^2.0.3"
-    which "^2.0.2"
+    read-package-json-fast "^3.0.0"
+    which "^3.0.0"
 
-"@schematics/angular@14.2.9":
-  version "14.2.9"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-14.2.9.tgz#33bcf76e4ad36e4138f8f048a3db2bb0da6eaf16"
+"@schematics/angular@15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-15.0.0.tgz#99d7803a0d565c955a5357783d476fe401f8e7fa"
   dependencies:
-    "@angular-devkit/core" "14.2.9"
-    "@angular-devkit/schematics" "14.2.9"
-    jsonc-parser "3.1.0"
+    "@angular-devkit/core" "15.0.0"
+    "@angular-devkit/schematics" "15.0.0"
+    jsonc-parser "3.2.0"
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -2096,7 +2117,7 @@ bytes@3.1.2:
   version "3.1.2"
   resolved "https://registry.npmjs.org/bytes/-/bytes-3.1.2.tgz"
 
-cacache@16.1.2, cacache@^16.0.0, cacache@^16.1.0:
+cacache@16.1.2, cacache@^16.1.0:
   version "16.1.2"
   resolved "https://registry.npmjs.org/cacache/-/cacache-16.1.2.tgz"
   dependencies:
@@ -2118,6 +2139,24 @@ cacache@16.1.2, cacache@^16.0.0, cacache@^16.1.0:
     ssri "^9.0.0"
     tar "^6.1.11"
     unique-filename "^1.1.1"
+
+cacache@^17.0.0:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/cacache/-/cacache-17.0.2.tgz#ff2bd029bf45099b3fe711f56fbf138b846c8d6d"
+  dependencies:
+    "@npmcli/fs" "^3.1.0"
+    fs-minipass "^2.1.0"
+    glob "^8.0.1"
+    lru-cache "^7.7.1"
+    minipass "^3.1.6"
+    minipass-collect "^1.0.2"
+    minipass-flush "^1.0.5"
+    minipass-pipeline "^1.2.4"
+    p-map "^4.0.0"
+    promise-inflight "^1.0.1"
+    ssri "^10.0.0"
+    tar "^6.1.11"
+    unique-filename "^3.0.0"
 
 cachedir@^2.3.0:
   version "2.3.0"
@@ -2252,6 +2291,14 @@ cliui@^7.0.2:
   dependencies:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
+    wrap-ansi "^7.0.0"
+
+cliui@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/cliui/-/cliui-8.0.1.tgz#0c04b075db02cbfe60dc8e6cf2f5486b1a3608aa"
+  dependencies:
+    string-width "^4.2.0"
+    strip-ansi "^6.0.1"
     wrap-ansi "^7.0.0"
 
 clone-deep@^4.0.1:
@@ -2617,7 +2664,7 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@4.3.4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.3, debug@^4.3.4, debug@~4.3.1, debug@~4.3.2:
+debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.3, debug@^4.3.4, debug@~4.3.1, debug@~4.3.2:
   version "4.3.4"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
   dependencies:
@@ -3495,6 +3542,12 @@ hosted-git-info@^5.0.0:
   dependencies:
     lru-cache "^7.5.1"
 
+hosted-git-info@^6.0.0:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-6.1.1.tgz#629442c7889a69c05de604d52996b74fe6f26d58"
+  dependencies:
+    lru-cache "^7.5.1"
+
 hpack.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.npmjs.org/hpack.js/-/hpack.js-2.1.6.tgz"
@@ -3633,9 +3686,9 @@ ieee754@^1.1.13:
   version "1.2.1"
   resolved "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
 
-ignore-walk@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/ignore-walk/-/ignore-walk-5.0.1.tgz"
+ignore-walk@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ignore-walk/-/ignore-walk-6.0.0.tgz#1dd41c6eb4f661a49750a510a10c2cd934583fd8"
   dependencies:
     minimatch "^5.0.1"
 
@@ -3693,9 +3746,9 @@ ini@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/ini/-/ini-2.0.0.tgz"
 
-ini@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/ini/-/ini-3.0.0.tgz"
+ini@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-3.0.1.tgz#c76ec81007875bc44d544ff7a11a55d12294102d"
 
 ini@^1.3.4:
   version "1.3.8"
@@ -3968,6 +4021,10 @@ json-parse-even-better-errors@^2.3.0, json-parse-even-better-errors@^2.3.1:
   version "2.3.1"
   resolved "https://registry.npmjs.org/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz"
 
+json-parse-even-better-errors@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/json-parse-even-better-errors/-/json-parse-even-better-errors-3.0.0.tgz#2cb2ee33069a78870a0c7e3da560026b89669cf7"
+
 json-schema-traverse@^0.4.1:
   version "0.4.1"
   resolved "https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz"
@@ -3991,6 +4048,10 @@ json5@^2.1.2, json5@^2.2.1:
 jsonc-parser@3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/jsonc-parser/-/jsonc-parser-3.1.0.tgz"
+
+jsonc-parser@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.2.0.tgz#31ff3f4c2b9793f89c67212627c51c6394f88e76"
 
 jsonfile@^6.0.1:
   version "6.1.0"
@@ -4225,7 +4286,13 @@ lru-cache@^7.4.4, lru-cache@^7.5.1, lru-cache@^7.7.1:
   version "7.12.0"
   resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-7.12.0.tgz"
 
-magic-string@0.26.2, magic-string@^0.26.0:
+magic-string@0.26.7:
+  version "0.26.7"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.26.7.tgz#caf7daf61b34e9982f8228c4527474dac8981d6f"
+  dependencies:
+    sourcemap-codec "^1.4.8"
+
+magic-string@^0.26.0:
   version "0.26.2"
   resolved "https://registry.npmjs.org/magic-string/-/magic-string-0.26.2.tgz"
   dependencies:
@@ -4248,7 +4315,7 @@ make-error@^1.1.1:
   version "1.3.6"
   resolved "https://registry.npmjs.org/make-error/-/make-error-1.3.6.tgz"
 
-make-fetch-happen@^10.0.3, make-fetch-happen@^10.0.6:
+make-fetch-happen@^10.0.3:
   version "10.2.1"
   resolved "https://registry.npmjs.org/make-fetch-happen/-/make-fetch-happen-10.2.1.tgz"
   dependencies:
@@ -4268,6 +4335,27 @@ make-fetch-happen@^10.0.3, make-fetch-happen@^10.0.6:
     promise-retry "^2.0.1"
     socks-proxy-agent "^7.0.0"
     ssri "^9.0.0"
+
+make-fetch-happen@^11.0.0:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/make-fetch-happen/-/make-fetch-happen-11.0.1.tgz#b3c51663d018d9e11d57fdd4393a4c5a1a7d56eb"
+  dependencies:
+    agentkeepalive "^4.2.1"
+    cacache "^17.0.0"
+    http-cache-semantics "^4.1.0"
+    http-proxy-agent "^5.0.0"
+    https-proxy-agent "^5.0.0"
+    is-lambda "^1.0.1"
+    lru-cache "^7.7.1"
+    minipass "^3.1.6"
+    minipass-collect "^1.0.2"
+    minipass-fetch "^3.0.0"
+    minipass-flush "^1.0.5"
+    minipass-pipeline "^1.2.4"
+    negotiator "^0.6.3"
+    promise-retry "^2.0.1"
+    socks-proxy-agent "^7.0.0"
+    ssri "^10.0.0"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -4359,6 +4447,16 @@ minipass-collect@^1.0.2:
 minipass-fetch@^2.0.3:
   version "2.1.2"
   resolved "https://registry.npmjs.org/minipass-fetch/-/minipass-fetch-2.1.2.tgz"
+  dependencies:
+    minipass "^3.1.6"
+    minipass-sized "^1.0.3"
+    minizlib "^2.1.2"
+  optionalDependencies:
+    encoding "^0.1.13"
+
+minipass-fetch@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/minipass-fetch/-/minipass-fetch-3.0.0.tgz#02481219ddbd3d30eb0e354016f680b10c6f2bcb"
   dependencies:
     minipass "^3.1.6"
     minipass-sized "^1.0.3"
@@ -4507,11 +4605,11 @@ nopt@^5.0.0:
   dependencies:
     abbrev "1"
 
-normalize-package-data@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/normalize-package-data/-/normalize-package-data-4.0.1.tgz"
+normalize-package-data@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-5.0.0.tgz#abcb8d7e724c40d88462b84982f7cbf6859b4588"
   dependencies:
-    hosted-git-info "^5.0.0"
+    hosted-git-info "^6.0.0"
     is-core-module "^2.8.1"
     semver "^7.3.5"
     validate-npm-package-license "^3.0.4"
@@ -4524,70 +4622,66 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.npmjs.org/normalize-range/-/normalize-range-0.1.2.tgz"
 
-npm-bundled@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/npm-bundled/-/npm-bundled-1.1.2.tgz"
+npm-bundled@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-3.0.0.tgz#7e8e2f8bb26b794265028491be60321a25a39db7"
   dependencies:
-    npm-normalize-package-bin "^1.0.1"
+    npm-normalize-package-bin "^3.0.0"
 
-npm-bundled@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/npm-bundled/-/npm-bundled-2.0.1.tgz"
-  dependencies:
-    npm-normalize-package-bin "^2.0.0"
-
-npm-install-checks@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/npm-install-checks/-/npm-install-checks-5.0.0.tgz"
+npm-install-checks@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/npm-install-checks/-/npm-install-checks-6.0.0.tgz#9a021d8e8b3956d61fd265c2eda4735bcd3d9b83"
   dependencies:
     semver "^7.1.1"
 
-npm-normalize-package-bin@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/npm-normalize-package-bin/-/npm-normalize-package-bin-1.0.1.tgz"
+npm-normalize-package-bin@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/npm-normalize-package-bin/-/npm-normalize-package-bin-3.0.0.tgz#6097436adb4ef09e2628b59a7882576fe53ce485"
 
-npm-normalize-package-bin@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/npm-normalize-package-bin/-/npm-normalize-package-bin-2.0.0.tgz"
-
-npm-package-arg@9.1.0, npm-package-arg@^9.0.0, npm-package-arg@^9.0.1:
-  version "9.1.0"
-  resolved "https://registry.npmjs.org/npm-package-arg/-/npm-package-arg-9.1.0.tgz"
+npm-package-arg@9.1.2:
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/npm-package-arg/-/npm-package-arg-9.1.2.tgz#fc8acecb00235f42270dda446f36926ddd9ac2bc"
   dependencies:
     hosted-git-info "^5.0.0"
     proc-log "^2.0.1"
     semver "^7.3.5"
     validate-npm-package-name "^4.0.0"
 
-npm-packlist@^5.1.0:
-  version "5.1.3"
-  resolved "https://registry.npmjs.org/npm-packlist/-/npm-packlist-5.1.3.tgz"
+npm-package-arg@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/npm-package-arg/-/npm-package-arg-10.0.0.tgz#a34f4a4208a937074b1fff0943a684fbacc83977"
   dependencies:
-    glob "^8.0.1"
-    ignore-walk "^5.0.1"
-    npm-bundled "^2.0.0"
-    npm-normalize-package-bin "^2.0.0"
+    hosted-git-info "^6.0.0"
+    proc-log "^3.0.0"
+    semver "^7.3.5"
+    validate-npm-package-name "^5.0.0"
 
-npm-pick-manifest@7.0.1, npm-pick-manifest@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.npmjs.org/npm-pick-manifest/-/npm-pick-manifest-7.0.1.tgz"
+npm-packlist@^7.0.0:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/npm-packlist/-/npm-packlist-7.0.2.tgz#f24177ce5b3593223348157bcc3eff1db8fae7d6"
   dependencies:
-    npm-install-checks "^5.0.0"
-    npm-normalize-package-bin "^1.0.1"
-    npm-package-arg "^9.0.0"
+    ignore-walk "^6.0.0"
+
+npm-pick-manifest@8.0.1, npm-pick-manifest@^8.0.0:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/npm-pick-manifest/-/npm-pick-manifest-8.0.1.tgz#c6acd97d1ad4c5dbb80eac7b386b03ffeb289e5f"
+  dependencies:
+    npm-install-checks "^6.0.0"
+    npm-normalize-package-bin "^3.0.0"
+    npm-package-arg "^10.0.0"
     semver "^7.3.5"
 
-npm-registry-fetch@^13.0.1:
-  version "13.3.1"
-  resolved "https://registry.npmjs.org/npm-registry-fetch/-/npm-registry-fetch-13.3.1.tgz"
+npm-registry-fetch@^14.0.0:
+  version "14.0.2"
+  resolved "https://registry.yarnpkg.com/npm-registry-fetch/-/npm-registry-fetch-14.0.2.tgz#f637630d9005aeebe4d7411226fb11fa1628c5e8"
   dependencies:
-    make-fetch-happen "^10.0.6"
+    make-fetch-happen "^11.0.0"
     minipass "^3.1.6"
-    minipass-fetch "^2.0.3"
+    minipass-fetch "^3.0.0"
     minipass-json-stream "^1.0.1"
     minizlib "^2.1.2"
-    npm-package-arg "^9.0.1"
-    proc-log "^2.0.0"
+    npm-package-arg "^10.0.0"
+    proc-log "^3.0.0"
 
 npm-run-path@^4.0.0, npm-run-path@^4.0.1:
   version "4.0.1"
@@ -4726,30 +4820,26 @@ p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/p-try/-/p-try-2.2.0.tgz"
 
-pacote@13.6.2:
-  version "13.6.2"
-  resolved "https://registry.npmjs.org/pacote/-/pacote-13.6.2.tgz"
+pacote@15.0.6:
+  version "15.0.6"
+  resolved "https://registry.yarnpkg.com/pacote/-/pacote-15.0.6.tgz#8c498b5c23270da4f4c87f7eeba0248a3ae61342"
   dependencies:
-    "@npmcli/git" "^3.0.0"
-    "@npmcli/installed-package-contents" "^1.0.7"
-    "@npmcli/promise-spawn" "^3.0.0"
-    "@npmcli/run-script" "^4.1.0"
-    cacache "^16.0.0"
-    chownr "^2.0.0"
+    "@npmcli/git" "^4.0.0"
+    "@npmcli/installed-package-contents" "^2.0.1"
+    "@npmcli/promise-spawn" "^6.0.1"
+    "@npmcli/run-script" "^6.0.0"
+    cacache "^17.0.0"
     fs-minipass "^2.1.0"
-    infer-owner "^1.0.4"
     minipass "^3.1.6"
-    mkdirp "^1.0.4"
-    npm-package-arg "^9.0.0"
-    npm-packlist "^5.1.0"
-    npm-pick-manifest "^7.0.0"
-    npm-registry-fetch "^13.0.1"
-    proc-log "^2.0.0"
+    npm-package-arg "^10.0.0"
+    npm-packlist "^7.0.0"
+    npm-pick-manifest "^8.0.0"
+    npm-registry-fetch "^14.0.0"
+    proc-log "^3.0.0"
     promise-retry "^2.0.1"
-    read-package-json "^5.0.0"
-    read-package-json-fast "^2.0.3"
-    rimraf "^3.0.2"
-    ssri "^9.0.0"
+    read-package-json "^6.0.0"
+    read-package-json-fast "^3.0.0"
+    ssri "^10.0.0"
     tar "^6.1.11"
 
 pako@^1.0.3, pako@~1.0.2:
@@ -5156,9 +5246,13 @@ pretty-bytes@^5.3.0, pretty-bytes@^5.6.0:
   version "5.6.0"
   resolved "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz"
 
-proc-log@^2.0.0, proc-log@^2.0.1:
+proc-log@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/proc-log/-/proc-log-2.0.1.tgz"
+
+proc-log@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/proc-log/-/proc-log-3.0.0.tgz#fb05ef83ccd64fd7b20bbe9c8c1070fc08338dd8"
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
@@ -5272,21 +5366,21 @@ read-cache@^1.0.0:
   dependencies:
     pify "^2.3.0"
 
-read-package-json-fast@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/read-package-json-fast/-/read-package-json-fast-2.0.3.tgz"
+read-package-json-fast@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/read-package-json-fast/-/read-package-json-fast-3.0.1.tgz#de13ae1c591850534daf77e083e851f94af67733"
   dependencies:
-    json-parse-even-better-errors "^2.3.0"
-    npm-normalize-package-bin "^1.0.1"
+    json-parse-even-better-errors "^3.0.0"
+    npm-normalize-package-bin "^3.0.0"
 
-read-package-json@^5.0.0:
-  version "5.0.2"
-  resolved "https://registry.npmjs.org/read-package-json/-/read-package-json-5.0.2.tgz"
+read-package-json@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/read-package-json/-/read-package-json-6.0.0.tgz#6a741841ad72a40e77a82b9c3c8c10e865bbc519"
   dependencies:
     glob "^8.0.1"
-    json-parse-even-better-errors "^2.3.1"
-    normalize-package-data "^4.0.0"
-    npm-normalize-package-bin "^2.0.0"
+    json-parse-even-better-errors "^3.0.0"
+    normalize-package-data "^5.0.0"
+    npm-normalize-package-bin "^3.0.0"
 
 readable-stream@^2.0.1, readable-stream@~2.3.6:
   version "2.3.7"
@@ -5584,9 +5678,15 @@ semver@7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/semver/-/semver-7.0.0.tgz"
 
-semver@7.3.7, semver@^7.0.0, semver@^7.1.1, semver@^7.3.2, semver@^7.3.5, semver@^7.3.7:
+semver@7.3.7:
   version "7.3.7"
   resolved "https://registry.npmjs.org/semver/-/semver-7.3.7.tgz"
+  dependencies:
+    lru-cache "^6.0.0"
+
+semver@7.3.8, semver@^7.0.0, semver@^7.1.1, semver@^7.3.2, semver@^7.3.5, semver@^7.3.7:
+  version "7.3.8"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.8.tgz#07a78feafb3f7b32347d725e33de7e2a2df67798"
   dependencies:
     lru-cache "^6.0.0"
 
@@ -5862,6 +5962,12 @@ sshpk@^1.14.1, sshpk@^1.7.0:
     jsbn "~0.1.0"
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
+
+ssri@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-10.0.0.tgz#1e34554cbbc4728f5290674264e21b64aaf27ca7"
+  dependencies:
+    minipass "^3.1.1"
 
 ssri@^9.0.0:
   version "9.0.1"
@@ -6182,9 +6288,21 @@ unique-filename@^1.1.1:
   dependencies:
     unique-slug "^2.0.0"
 
+unique-filename@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/unique-filename/-/unique-filename-3.0.0.tgz#48ba7a5a16849f5080d26c760c86cf5cf05770ea"
+  dependencies:
+    unique-slug "^4.0.0"
+
 unique-slug@^2.0.0:
   version "2.0.2"
   resolved "https://registry.npmjs.org/unique-slug/-/unique-slug-2.0.2.tgz"
+  dependencies:
+    imurmurhash "^0.1.4"
+
+unique-slug@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/unique-slug/-/unique-slug-4.0.0.tgz#6bae6bb16be91351badd24cdce741f892a6532e3"
   dependencies:
     imurmurhash "^0.1.4"
 
@@ -6221,13 +6339,13 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/utils-merge/-/utils-merge-1.0.1.tgz"
 
-uuid@8.3.2, uuid@^8.3.2:
-  version "8.3.2"
-  resolved "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
-
 uuid@^3.3.2:
   version "3.4.0"
   resolved "https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz"
+
+uuid@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
 
 v8-compile-cache-lib@^3.0.1:
   version "3.0.1"
@@ -6243,6 +6361,12 @@ validate-npm-package-license@^3.0.4:
 validate-npm-package-name@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/validate-npm-package-name/-/validate-npm-package-name-4.0.0.tgz"
+  dependencies:
+    builtins "^5.0.0"
+
+validate-npm-package-name@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/validate-npm-package-name/-/validate-npm-package-name-5.0.0.tgz#f16afd48318e6f90a1ec101377fa0384cfc8c713"
   dependencies:
     builtins "^5.0.0"
 
@@ -6422,6 +6546,12 @@ which@^2.0.1, which@^2.0.2:
   dependencies:
     isexe "^2.0.0"
 
+which@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/which/-/which-3.0.0.tgz#a9efd016db59728758a390d23f1687b6e8f59f8e"
+  dependencies:
+    isexe "^2.0.0"
+
 wide-align@^1.1.5:
   version "1.1.5"
   resolved "https://registry.npmjs.org/wide-align/-/wide-align-1.1.5.tgz"
@@ -6498,21 +6628,21 @@ yargs-parser@^20.2.2:
   version "20.2.9"
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-20.2.9.tgz"
 
-yargs-parser@^21.0.0:
-  version "21.0.1"
-  resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.0.1.tgz"
+yargs-parser@^21.1.1:
+  version "21.1.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
 
-yargs@17.5.1, yargs@^17.2.1:
-  version "17.5.1"
-  resolved "https://registry.npmjs.org/yargs/-/yargs-17.5.1.tgz"
+yargs@17.6.2, yargs@^17.2.1:
+  version "17.6.2"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.6.2.tgz#2e23f2944e976339a1ee00f18c77fedee8332541"
   dependencies:
-    cliui "^7.0.2"
+    cliui "^8.0.1"
     escalade "^3.1.1"
     get-caller-file "^2.0.5"
     require-directory "^2.1.1"
     string-width "^4.2.3"
     y18n "^5.0.5"
-    yargs-parser "^21.0.0"
+    yargs-parser "^21.1.1"
 
 yargs@^15.3.1:
   version "15.4.1"

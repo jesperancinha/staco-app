@@ -4555,9 +4555,9 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
 
-ngx-pagination@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/ngx-pagination/-/ngx-pagination-6.0.2.tgz"
+ngx-pagination@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-6.0.3.tgz#083f77a5c9c3ebf5800fb57a280da71aacc10a18"
   dependencies:
     tslib "^2.3.0"
 

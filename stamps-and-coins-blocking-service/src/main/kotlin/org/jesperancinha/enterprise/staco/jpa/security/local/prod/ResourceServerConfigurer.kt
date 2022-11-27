@@ -19,7 +19,7 @@ class ResourceServerConfigurer : ResourceServerConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
-            .antMatchers("/**").hasRole("ADMIN")
+            .requestMatchers("/**").hasRole("ADMIN")
             .anyRequest()
             .authenticated()
             .and()

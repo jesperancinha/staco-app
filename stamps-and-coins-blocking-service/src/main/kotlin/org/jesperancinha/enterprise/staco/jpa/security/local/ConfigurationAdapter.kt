@@ -18,7 +18,7 @@ class ConfigurationAdapter(
 ) : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
-            .antMatchers("/**")
+            .requestMatchers("/**")
             .authenticated()
             .and()
             .formLogin()

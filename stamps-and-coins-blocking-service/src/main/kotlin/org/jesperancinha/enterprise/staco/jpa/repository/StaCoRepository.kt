@@ -4,9 +4,10 @@ import org.jesperancinha.enterprise.staco.common.domain.CurrencyType
 import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.data.repository.CrudRepository
 import org.springframework.data.repository.PagingAndSortingRepository
 
-interface StaCoRepository : PagingAndSortingRepository<StaCo, Long> {
+interface StaCoRepository : PagingAndSortingRepository<StaCo, Long>, CrudRepository<StaCo, Long> {
 
     fun findStaCosByDescriptionLikeOrYearLikeOrValueLikeOrCurrencyLikeOrDiameterMMLikeOrInternalDiameterMMLikeOrHeightMMLikeOrWidthMMLike(
         description: String,

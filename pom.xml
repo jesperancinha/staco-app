@@ -14,8 +14,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-        <kotlin.version>1.7.21</kotlin.version>
-        <aws-java-sdk.version>1.12.349</aws-java-sdk.version>
+        <kotlin.version>1.7.22</kotlin.version>
+        <aws-java-sdk.version>1.12.351</aws-java-sdk.version>
 
         <h2.version>2.1.214</h2.version>
         <postgresql.version>42.5.1</postgresql.version>
@@ -33,8 +33,8 @@
         <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>
         <kotlin-logging.version>3.0.4</kotlin-logging.version>
 
-        <springmockk.version>3.1.1</springmockk.version>
-        <mockk.version>1.13.2</mockk.version>
+        <springmockk.version>3.1.2</springmockk.version>
+        <mockk.version>1.13.3</mockk.version>
         <kotest.version>5.5.4</kotest.version>
         <reactor-test.version>3.5.0</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
@@ -46,7 +46,7 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
 
-        <awssdk.version>2.18.24</awssdk.version>
+        <awssdk.version>2.18.26</awssdk.version>
 
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
         <springdoc-openapi-webflux-ui.version>1.6.13</springdoc-openapi-webflux-ui.version>

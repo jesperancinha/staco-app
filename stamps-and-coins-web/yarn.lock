@@ -232,10 +232,9 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/language-service@^15.0.1":
-  "integrity" "sha512-V+bnr3jJzRyixwY94D0E2q9T8Qs2snyObHkB8h/RWxEWuph/kwYvpRjOZ96Vh1cv2j0YcpWx5HuDvqbc9d8uFg=="
-  "resolved" "https://registry.npmjs.org/@angular/language-service/-/language-service-15.0.1.tgz"
-  "version" "15.0.1"
+"@angular/language-service@^15.0.2":
+  version "15.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-15.0.2.tgz#ebb32f5d90c13a357a38dd59004e5d55cd4b7bcc"
 
 "@angular/material@^14.0.4":
   "integrity" "sha512-Ysz6oPbpLH7CvRR6oxQwpUImSbFqxL4+eiH0LPc7vkaOSrvGdZ/7cWhAfT6hVnw3bEY+eq5qBSMgyVUB44z4eg=="
@@ -1671,10 +1670,9 @@
   "resolved" "https://registry.npmjs.org/@types/mime/-/mime-3.0.1.tgz"
   "version" "3.0.1"
 
-"@types/node@*", "@types/node@>=10.0.0", "@types/node@~18.11.9":
-  "integrity" "sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg=="
-  "resolved" "https://registry.npmjs.org/@types/node/-/node-18.11.9.tgz"
-  "version" "18.11.9"
+"@types/node@*", "@types/node@>=10.0.0", "@types/node@~18.11.10":
+  version "18.11.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.10.tgz#4c64759f3c2343b7e6c4b9caf761c7a3a05cee34"
 
 "@types/node@^14.14.31":
   "integrity" "sha512-x5W9s+8P4XteaxT/jKF0PSb7XEvo5VmqEWgsMlyeY4ZlLK8I6aH6g5TPPyDlLAep+GYf4kefb7HFyc7PAO3m+Q=="

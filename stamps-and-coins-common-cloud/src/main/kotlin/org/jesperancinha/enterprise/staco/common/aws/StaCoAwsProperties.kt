@@ -60,7 +60,7 @@ val Map<String, AttributeValue>.toDto: StaCoDto
         description = Description(this["description"]?.s()),
         year = this["year"]?.s(),
         value = this["value"]?.s(),
-        currency = this["currency"]?.let { CurrencyType.valueOf(it.s()) },
+        currency = this["currency"]?.let { CurrencyType.valueOf(it.s()) } ?: CurrencyType.EUR,
         type = this["type"]?.let { ObjectType.valueOf(it.s()) } ?: throw StaCoTypeNotSupportedException(),
         diameterMM = this["diameterMM"]?.s(),
         internalDiameterMM = this["internalDiameterMM"]?.s(),

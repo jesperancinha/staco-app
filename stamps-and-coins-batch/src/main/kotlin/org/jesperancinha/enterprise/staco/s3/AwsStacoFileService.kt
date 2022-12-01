@@ -7,7 +7,7 @@ import org.apache.commons.csv.CSVPrinter
 import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.STACOS_BUCKET
 import org.jesperancinha.enterprise.staco.common.aws.StaCoDynamoDBRepository
 import org.jesperancinha.enterprise.staco.common.aws.toEvent
-import org.jesperancinha.enterprise.staco.jpa.domain.StaCo
+import org.jesperancinha.enterprise.staco.blocking.domain.StaCo
 import org.springframework.stereotype.Component
 import software.amazon.awssdk.core.async.AsyncRequestBody
 import software.amazon.awssdk.core.async.AsyncResponseTransformer

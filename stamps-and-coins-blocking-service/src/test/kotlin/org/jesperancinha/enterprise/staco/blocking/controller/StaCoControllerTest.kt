@@ -1,22 +1,23 @@
-package org.jesperancinha.enterprise.staco.service.controller
+package org.jesperancinha.enterprise.staco.blocking.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.ninjasquad.springmockk.MockkBean
-import io.mockk.every
+import jakarta.servlet.ServletException
 import jakarta.validation.ConstraintViolationException
 import org.assertj.core.api.Assertions.assertThat
+import org.jesperancinha.enterprise.staco.blocking.service.LoginService
+import org.jesperancinha.enterprise.staco.blocking.service.StaCoService
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.jesperancinha.enterprise.staco.common.dto.Description
+import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
-import org.jesperancinha.enterprise.staco.service.service.StaCoService
-import org.jesperancinha.enterprise.staco.service.utils.AbstractStaCoTest
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -24,47 +25,50 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
-import reactor.core.publisher.Flux
 import javax.sql.DataSource
 
 
 @WebMvcTest(controllers = [StaCoController::class])
 @ActiveProfiles("test")
-@MockkBean(classes = [DataSource::class])
-@Disabled
-internal class StaCoControllerTest : AbstractStaCoTest() {
+@MockBean(classes = [DataSource::class, LoginService::class])
+internal class StaCoControllerTest {
 
     private lateinit var mockMvc: MockMvc
 
-    private val testdata = arrayListOf(
-        StaCoDto(
-            description = Description(value = "Queen of Power"),
-            year = "1900",
-            value = "10",
-            currency = EUR,
-            type = ObjectType.COIN,
-            diameterMM = "10",
-            internalDiameterMM = "0",
-            heightMM = null,
-            widthMM = null
+    private val testdata = ResponseDto(
+        staCoDtos = arrayListOf(
+            StaCoDto(
+                description = Description(value = "Queen of Power"),
+                year = "1900",
+                value = "10",
+                currency = EUR,
+                type = ObjectType.COIN,
+                diameterMM = "10",
+                internalDiameterMM = "0",
+                heightMM = null,
+                widthMM = null
+            ),
+            StaCoDto(
+                description = Description(value = "Queen Stammp"),
+                year = "1900",
+                value = "10",
+                currency = EUR,
+                type = ObjectType.STAMP,
+                diameterMM = null,
+                internalDiameterMM = null,
+                heightMM = "0",
+                widthMM = "10"
+            )
         ),
-        StaCoDto(
-            description = Description(value = "Queen Stammp"),
-            year = "1900",
-            value = "10",
-            currency = EUR,
-            type = ObjectType.STAMP,
-            diameterMM = null,
-            internalDiameterMM = null,
-            heightMM = "0",
-            widthMM = "10"
-        )
+        currentPage = 0,
+        totalPages = 0,
+        totalRecords = 0,
     )
 
     @Autowired
     lateinit var context: WebApplicationContext
 
-    @MockkBean(relaxed = true)
+    @MockBean
     lateinit var staCoService: StaCoService
 
     @BeforeEach
@@ -72,16 +76,16 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
         this.mockMvc = MockMvcBuilders
             .webAppContextSetup(context)
             .build()
-
-        every {
-                staCoService.getAllBySearchItem(
-                    searchItemValue = "%searchItem%",
-                    pageEntities = 0,
-                    pageSizeEntities = 10,
-                    sortColumn = "description",
-                    order = "asc"
-                )
-        } returns Flux.fromIterable(testdata)
+        `when`(
+            staCoService.getAllInAllBySearchItem(
+                searchItemValue = "%searchItem%",
+                pageEntities = 0,
+                pageSizeEntities = 10,
+                sortColumn = "description",
+                order = "asc"
+            )
+        )
+            .thenReturn(testdata)
     }
 
     @Test
@@ -103,7 +107,7 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
 
     @Test
     fun testGetAllBySearchItem_whenCallingWithTooLongSearchItem_thenFail() {
-        val exception = assertThrows<org.springframework.web.util.NestedServletException> {
+        val exception = assertThrows<ServletException> {
             this.mockMvc
                 .perform(get("/api/staco/all/aaaaaaaaaaaaaaaaaaa/0/10/description/asc"))
 
@@ -117,7 +121,7 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
 
     @Test
     fun testGetAllBySearchItem_whenCallingWithInvalidSearchItem_thenFail() {
-        val exception = assertThrows<org.springframework.web.util.NestedServletException> {
+        val exception = assertThrows<ServletException> {
             this.mockMvc
                 .perform(get("/api/staco/all/%23%24%40/0/10/description/asc"))
 

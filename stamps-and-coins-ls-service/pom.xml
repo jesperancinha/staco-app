@@ -44,7 +44,7 @@
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-webflux-ui</artifactId>
+            <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
         </dependency>
         <dependency>
             <groupId>io.github.microutils</groupId>
@@ -202,6 +202,10 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <configuration>
+                    <jvmTarget>${java.version}</jvmTarget>
+                </configuration>
                 <executions>
                     <execution>
                         <id>compile</id>

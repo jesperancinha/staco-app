@@ -5,7 +5,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
-import org.jesperancinha.enterprise.staco.jpa.domain.StaCoRepository
+import org.jesperancinha.enterprise.staco.blocking.domain.StaCoRepository
 import org.jesperancinha.enterprise.staco.s3.AwsStacoFileService
 import org.quartz.DisallowConcurrentExecution
 import org.quartz.Job

@@ -10,17 +10,18 @@ import org.springframework.data.annotation.Version
 import org.springframework.data.domain.Persistable
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
+import java.util.UUID
 
 
 @Table
 data class StaCo(
     @field: Id
     @field: Column("id")
-    override val stacoId: String?,
+    override val stacoId: UUID?,
     override val description: String?,
     override var year: String?,
     override var value: String?,
-    override var currency: CurrencyType?,
+    override var currency: CurrencyType,
     override var type: ObjectType,
     override val diameterMM: String? = "",
     override val internalDiameterMM: String? = "",

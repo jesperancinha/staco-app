@@ -95,7 +95,7 @@ class StaCoController(
         sortColumn: String,
         @PathVariable
         order: String,
-    ) = staCoService.getUnfiltered(
+    ): Flux<StaCoDto> = staCoService.getUnfiltered(
         pageEntities = pageEntity,
         pageSizeEntities = sizeEntities,
         sortColumn = sortColumn,

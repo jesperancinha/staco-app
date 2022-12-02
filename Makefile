@@ -92,9 +92,11 @@ dcd:
 	docker-compose -p ${GITHUB_RUN_ID} down
 staco-wait:
 	bash staco_wait.sh
+dynamo-wait:
+	bash staco_dynamowait.sh
 dcup: dcd docker-clean docker staco-wait
 dcup-full: docker-clean-build-start staco-wait
-dcup-full-action: docker-clean b docker-action staco-wait
+dcup-full-action: docker-clean b docker-action staco-wait dynamo-wait
 cypress-open:
 	cd e2e && yarn && npm run cypress
 cypress-electron:

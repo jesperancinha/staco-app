@@ -2,9 +2,7 @@ drop table if exists sta_co;
 
 create table if not exists sta_co
 (
-    id                  varchar(255) not null
-        constraint staco_pkey
-            primary key,
+    id uuid DEFAULT gen_random_uuid(),
     description         varchar(255),
     year                varchar(255),
     value               varchar(255),

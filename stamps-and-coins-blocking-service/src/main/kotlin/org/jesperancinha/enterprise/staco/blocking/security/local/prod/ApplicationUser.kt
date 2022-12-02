@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import java.util.UUID
 
 @Entity
 @Table(name = "users")
@@ -16,8 +17,8 @@ import jakarta.persistence.Table
 class ApplicationUser {
     @Id
     @Column(unique = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long? = null
+    @GeneratedValue(strategy = GenerationType.UUID)
+    var uuid: UUID? = null
 
     @Column
     var email: String? = null

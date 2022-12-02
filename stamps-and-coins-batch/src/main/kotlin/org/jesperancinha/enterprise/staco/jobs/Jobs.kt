@@ -5,12 +5,13 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
-import org.jesperancinha.enterprise.staco.jpa.domain.StaCoRepository
+import org.jesperancinha.enterprise.staco.blocking.domain.StaCoRepository
 import org.jesperancinha.enterprise.staco.s3.AwsStacoFileService
 import org.quartz.DisallowConcurrentExecution
 import org.quartz.Job
 import org.quartz.JobExecutionContext
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Component
 
 @Component
@@ -28,7 +29,7 @@ class StaCoS3LoaderJob : Job {
     override fun execute(context: JobExecutionContext) {
         logger.info { "Creating S3 file has started..." }
         CoroutineScope(IO).launch {
-            awsStacoFileService.createCompressAndUploadToS3(staCoRepository.findAll().toList())
+            awsStacoFileService.createCompressAndUploadToS3(staCoRepository.findAll(Sort.unsorted()).toList())
         }
     }
 }

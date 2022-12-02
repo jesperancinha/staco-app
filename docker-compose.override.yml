@@ -21,3 +21,7 @@ services:
   staco_app_batch:
     ports:
       - "8083:8083"
+
+  nginx:
+    ports:
+      - "8080:8080"

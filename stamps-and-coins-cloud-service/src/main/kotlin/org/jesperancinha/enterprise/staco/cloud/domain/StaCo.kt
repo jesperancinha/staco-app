@@ -10,6 +10,7 @@ import org.jesperancinha.enterprise.staco.common.domain.IStaCo
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
+import java.util.UUID
 
 @DynamoDBTable(tableName = "staco")
 data class StaCo(
@@ -18,7 +19,7 @@ data class StaCo(
     val dynId: String? = null,
 
     @DynamoDBAttribute(attributeName = "id")
-    override val stacoId: String? = null,
+    override val stacoId: UUID? = null,
 
     @DynamoDBAttribute
     override val description: String?,
@@ -31,7 +32,7 @@ data class StaCo(
 
     @DynamoDBTypeConvertedEnum
     @DynamoDBAttribute
-    override var currency: CurrencyType?,
+    override var currency: CurrencyType,
 
     @DynamoDBTypeConvertedEnum
     @DynamoDBAttribute

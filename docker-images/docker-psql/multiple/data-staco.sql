@@ -19,10 +19,8 @@ with sta_co_json (doc) as (
 )
 
 insert
-into sta_co (id, description, year, value, currency, type, diameter_mm, internal_diameter_mm, height_mm, width_mm)
-select ROW_NUMBER() OVER (
-    ORDER BY description
-    ),
+into sta_co(description, year, value, currency, type, diameter_mm, internal_diameter_mm, height_mm, width_mm)
+select
        description,
        "year",
        "value",

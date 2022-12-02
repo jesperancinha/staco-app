@@ -22,7 +22,7 @@ data class StaCoDto(
     val description: Description? = null,
     val year: String? = null,
     val value: String? = null,
-    val currency: CurrencyType? = null,
+    val currency: CurrencyType,
     val type: ObjectType,
     val diameterMM: String? = "",
     val internalDiameterMM: String? = "",

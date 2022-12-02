@@ -2,7 +2,6 @@ package org.jesperancinha.enterprise.staco.service.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.ninjasquad.springmockk.MockkBean
-import io.kotest.common.runBlocking
 import io.mockk.every
 import jakarta.validation.ConstraintViolationException
 import org.assertj.core.api.Assertions.assertThat
@@ -39,7 +38,7 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
 
     private val testdata = arrayListOf(
         StaCoDto(
-            description = Description(value = "Queen Coinny"),
+            description = Description(value = "Queen of Power"),
             year = "1900",
             value = "10",
             currency = EUR,

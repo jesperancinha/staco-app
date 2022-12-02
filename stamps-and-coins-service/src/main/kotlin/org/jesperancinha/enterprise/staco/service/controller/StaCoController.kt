@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import javax.validation.constraints.Pattern
-import javax.validation.constraints.Size
+import jakarta.validation.constraints.Pattern
+import jakarta.validation.constraints.Size
 
 @RestController
 class RedirectController {

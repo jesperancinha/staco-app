@@ -2,7 +2,6 @@ services:
 
   postgres:
     hostname: postgres
-    container_name: postgres
     image: postgres:14.1
     volumes:
       - ./docker-images/docker-psql:/docker-entrypoint-initdb.d
@@ -18,8 +17,8 @@ services:
         limits:
           memory: 600M
     networks:
-      staco_net:
-        ipv4_address: ${STACO_AWS_POSTGRESQL_IP}
+      - staco-net
+
     healthcheck:
       test: [ "CMD", "pg_isready", "-U", "${DB_USER}" ]
       interval: 10s
@@ -29,7 +28,8 @@ services:
   localstack:
     image: localstack/localstack:0.13.0
     hostname: localstack
-    container_name: localstack
+    expose:
+      - 4566
     environment:
       - SERVICES=${SERVICES}
       - DOCKER_HOST=unix:///var/run/docker.sock
@@ -39,7 +39,7 @@ services:
       - LAMBDA_EXECUTOR=local
       - START_WEB=1
     healthcheck:
-      test: ["CMD", "/usr/bin/curl", "http://localhost:4566/health"]
+      test: [ "CMD", "/usr/bin/curl", "http://localhost:4566/health" ]
     volumes:
       - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
     deploy:
@@ -47,120 +47,107 @@ services:
         limits:
           memory: 600M
     networks:
-      staco_net:
-        ipv4_address: ${STACO_AWS_LOCALSTACK_IP}
+      - staco-net
 
   aws-cli-1:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-1
-    container_name: aws-cli-1
-    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/username --value postgres --type text
+    command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/username --value postgres --type text
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
         condition: service_healthy
     networks:
-      staco_net:
-        ipv4_address: ${STACO_AWS_CLI_1_IP}
+      - staco-net
 
   aws-cli-2:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-2
-    container_name: aws-cli-2
-    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/password --value admin --type text
+    command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/password --value admin --type text
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
         condition: service_healthy
     networks:
-      staco_net:
-        ipv4_address: ${STACO_AWS_CLI_2_IP}
+      - staco-net
+
   aws-cli-3:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-3
-    container_name: aws-cli-3
-    command: s3api --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket stacos
+    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket stacos
 
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
         condition: service_healthy
     networks:
-      staco_net:
-        ipv4_address: ${STACO_AWS_CLI_3_IP}
+      - staco-net
 
   aws-cli-4:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-4
-    container_name: aws-cli-4
-    command: s3api --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket images
+    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket images
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
         condition: service_healthy
     networks:
-      staco_net:
-        ipv4_address: ${STACO_AWS_CLI_4_IP}
+      - staco-net
 
   aws-cli-5:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-5
-    container_name: aws-cli-5
-    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/staco/app/user/name --value admin --type text
+    command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/staco/app/user/name --value admin --type text
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
         condition: service_healthy
     networks:
-      staco_net:
-        ipv4_address: ${STACO_AWS_CLI_5_IP}
+      - staco-net
 
   aws-cli-6:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-6
-    container_name: aws-cli-6
-    command: ssm --endpoint-url http://${STACO_AWS_LOCALSTACK_IP}:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/staco/app/user/password --value admin --type text
+    command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/staco/app/user/password --value admin --type text
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
         condition: service_healthy
     networks:
-      staco_net:
-        ipv4_address: ${STACO_AWS_CLI_6_IP}
+      - staco-net
 
-  staco_app_service_reactive:
-    hostname: staco_app_service_reactive
-    container_name: staco_app_service_reactive
+  staco-app-service-reactive:
+    hostname: staco-app-service-reactive
     build:
       context: stamps-and-coins-service/.
     expose:
@@ -170,25 +157,28 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
-      - STACO_AWS_POSTGRESQL_IP=${STACO_AWS_POSTGRESQL_IP}
-#    restart: on-failure
+      - STACO_AWS_LOCALSTACK_IP=localstack
+      - STACO_AWS_POSTGRESQL_IP=postgres
+    #    restart: on-failure
     deploy:
       resources:
         limits:
           memory: 600M
     networks:
-      staco_net:
-        ipv4_address: ${STACO_APP_SERVICE_REACTIVE_IP}
+      - staco-net
     depends_on:
       postgres:
         condition: service_healthy
       localstack:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "http://127.0.0.1:8081"]
+      interval: 5s
+      timeout: 240s
+      retries: 60
 
-  staco_app_service_localstack:
-    hostname: staco_app_service_localstack
-    container_name: staco_app_service_localstack
+  staco-app-service-localstack:
+    hostname: staco-app-service-localstack
     build:
       context: stamps-and-coins-ls-service/.
     expose:
@@ -198,15 +188,14 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
-#    restart: on-failure
+      - STACO_AWS_LOCALSTACK_IP=localstack
+    #    restart: on-failure
     deploy:
       resources:
         limits:
           memory: 600M
     networks:
-      staco_net:
-        ipv4_address: ${STACO_APP_SERVICE_LOCALSTACK_IP}
+      - staco-net
     depends_on:
       postgres:
         condition: service_healthy
@@ -225,9 +214,8 @@ services:
       aws-cli-6:
         condition: service_completed_successfully
 
-  staco_app_batch:
-    hostname: staco_app_batch
-    container_name: staco_app_batch
+  staco-app-batch:
+    hostname: staco-app-batch
     build:
       context: stamps-and-coins-batch/.
     expose:
@@ -237,16 +225,15 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
-      - STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
-      - STACO_AWS_POSTGRESQL_IP=${STACO_AWS_POSTGRESQL_IP}
-#    restart: on-failure
+      - STACO_AWS_LOCALSTACK_IP=localstack
+      - STACO_AWS_POSTGRESQL_IP=postgres
+    #    restart: on-failure
     deploy:
       resources:
         limits:
           memory: 600M
     networks:
-      staco_net:
-        ipv4_address: ${STACO_APP_BATCH_IP}
+      - staco-net
     depends_on:
       postgres:
         condition: service_healthy
@@ -267,10 +254,9 @@ services:
 
   nginx:
     hostname: nginx
-    container_name: nginx
     build:
       context: ./stamps-and-coins-web/.
-#    restart: on-failure
+    #    restart: on-failure
     deploy:
       resources:
         limits:
@@ -278,13 +264,10 @@ services:
     env_file:
       - .env
     networks:
-      staco_net:
-        ipv4_address: ${STACO_NGINX_IP}
+      - staco-net
+    depends_on:
+      staco-app-service-reactive:
+        condition: service_healthy
 
 networks:
-  staco_net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: ${NETWORK_SUBNET}
+  staco-net:

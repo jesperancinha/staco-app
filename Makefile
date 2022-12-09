@@ -9,7 +9,7 @@ build-npm:
 build-maven:
 	mvn clean install package -DskipTests
 build-nginx:
-	docker-compose build nginx
+	docker-compose -p ${GITHUB_RUN_ID} build nginx
 test:
 	mvn test
 test-maven:
@@ -22,6 +22,7 @@ docker:
 	docker-compose -p ${GITHUB_RUN_ID} rm -svf
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans
 docker-action:
+	docker-compose -p ${GITHUB_RUN_ID} rm -svf
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml up -d --build --remove-orphans
 docker-databases: stop local
 build-images:
@@ -45,12 +46,16 @@ docker-clean:
 docker-clean-build-start: docker-clean b docker
 docker-delete-apps: stop
 docker-localstack:
-	docker-compose rm -svf
-	docker-compose rm localstack
-	docker-compose up -d --build --remove-orphans localstack
-	make docker-cli
+	docker-compose -p ${GITHUB_RUN_ID} rm -svf
+	docker-compose -p ${GITHUB_RUN_ID} rm localstack
+	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans localstack
+docker-stamps-and-coins-service:
+	cd stamps-and-coins-service && mvn clean install -DskipTests
+	docker-compose -p ${GITHUB_RUN_ID} rm staco-app-service-reactive
+	docker-compose -p ${GITHUB_RUN_ID} build staco-app-service-reactive
+	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans staco-app-service-reactive
 docker-cli:
-	docker-compose up -d --build --remove-orphans aws-cli-1 aws-cli-2 aws-cli-3 aws-cli-4 aws-cli-5 aws-cli-6
+	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans aws-cli-1 aws-cli-2 aws-cli-3 aws-cli-4 aws-cli-5 aws-cli-6
 localstack-config:
 	sleep 1
 	aws ssm --endpoint-url http://localhost:4566 put-parameter --name /config/StaCoLsService/dev/username --value "postgres"
@@ -61,7 +66,7 @@ prune-all: docker-delete
 	docker builder prune
 	docker system prune --all --volumes
 stop:
-	docker-compose down --remove-orphans
+	docker-compose -p ${GITHUB_RUN_ID} down --remove-orphans
 delete-all:
 	docker ps -a --format '{{.ID}}' | xargs -I {}  docker stop {}
 	docker ps -a --format '{{.ID}}' | xargs -I {}  docker rm {}

@@ -8,6 +8,6 @@ RUN apk add curl
 
 COPY entrypoint.sh /root
 
-COPY target/stamps-and-coins-service-*.jar /root/stamps-and-coins-service.jar
+COPY target/stamps-and-coins-service.jar /root/stamps-and-coins-service.jar
 
 ENTRYPOINT ["/root/entrypoint.sh"]

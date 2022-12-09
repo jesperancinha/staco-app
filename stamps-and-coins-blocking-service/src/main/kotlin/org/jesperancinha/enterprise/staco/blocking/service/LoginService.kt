@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 class LoginService(
     val jdbcTemplate: JdbcTemplate,
     @Autowired(required = false)
-    val tokenStore: TokenStore
+    val tokenStore: TokenStore?
 ) {
     fun logout(request: HttpServletRequest) {
         SecurityContextLogoutHandler().logout(request, null, null)
@@ -20,11 +20,14 @@ class LoginService(
         jdbcTemplate.update("delete from oauth_access_token where token_id = ?", token)
         jdbcTemplate.update("delete from oauth_refresh_token where token_id = ?", token)
         val tokenValue: String = authorization.replace("Bearer", "").trim()
-        val accessToken: org.springframework.security.oauth2.common.OAuth2AccessToken? =
-            tokenStore.readAccessToken(tokenValue)
-        tokenStore.removeAccessToken(accessToken)
-        val refreshToken: org.springframework.security.oauth2.common.OAuth2RefreshToken? =
-            accessToken?.refreshToken
-        tokenStore.removeRefreshToken(refreshToken)
+        tokenStore?.let {
+            val accessToken: org.springframework.security.oauth2.common.OAuth2AccessToken? =
+                it.readAccessToken(tokenValue)
+            it.removeAccessToken(accessToken)
+            val refreshToken: org.springframework.security.oauth2.common.OAuth2RefreshToken? =
+                accessToken?.refreshToken
+            it.removeRefreshToken(refreshToken)
+        }
+
     }
 }

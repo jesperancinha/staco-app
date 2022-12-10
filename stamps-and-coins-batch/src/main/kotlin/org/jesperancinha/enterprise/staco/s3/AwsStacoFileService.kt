@@ -26,13 +26,13 @@ import java.time.Instant
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
+private val logger = KotlinLogging.logger {}
 
 @Component
 class AwsStacoFileService(
     private val s3AsyncClient: S3AsyncClient,
     private val staCoDynamoDBRepository: StaCoDynamoDBRepository
 ) {
-    private val logger = KotlinLogging.logger {}
 
     fun createCompressAndUploadToS3(stacos: List<StaCo>) {
         val fileName = "stacos-${Instant.now().toEpochMilli()}"
@@ -74,12 +74,7 @@ class AwsStacoFileService(
                 ).build(),
             AsyncRequestBody.fromBytes(fileIn.readBytes())
         )
-        s3AsyncClient.listBuckets().thenApply {
-            logger.info { "Checking current buckets available" }
-            it.buckets().forEach {
-                logger.info { "${it.name()} created on ${it.creationDate()}" }
-            }
-        }
+        s3AsyncClient.logAllBuckets()
         logger.info { "File $path was created!" }
         logger.info { "File $output is being uploaded!" }
         logger.info { "Upload underway!" }
@@ -87,9 +82,12 @@ class AwsStacoFileService(
     }
 
     fun downloadFileFromS3UpdateDynamoDBAndDelete() {
+        logger.info { "Downloading files from S3" }
         s3AsyncClient.listObjects(
             ListObjectsRequest.builder().bucket(STACOS_BUCKET).build()
         ).thenApplyAsync { listObjectResponse ->
+            s3AsyncClient.logAllBuckets()
+            logger.info { "Found ${listObjectResponse.contents().size} files!" }
             listObjectResponse.contents().map { s3Object ->
                 logger.info { "Processing object file ${s3Object.key()}" }
                 val targetFileKey = s3Object.key()
@@ -170,3 +168,10 @@ class AwsStacoFileService(
             )
     }
 }
+
+private fun S3AsyncClient.logAllBuckets() = listBuckets().thenApply {
+        logger.info { "Checking current buckets available" }
+        it.buckets().forEach {
+            logger.info { "${it.name()} created on ${it.creationDate()}" }
+        }
+    }

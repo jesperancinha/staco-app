@@ -7,7 +7,7 @@ import org.jesperancinha.enterprise.staco.common.domain.StaCoTypeNotSupportedExc
 import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.boot.context.properties.ConstructorBinding
+import org.springframework.boot.context.properties.bind.ConstructorBinding
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import java.net.URI
 import java.util.UUID

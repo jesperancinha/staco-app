@@ -1,6 +1,7 @@
 package org.jesperancinha.enterprise.staco.jobs
 
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
@@ -45,7 +46,7 @@ class StaCoDynamoDBLoaderJob : Job {
 
     override fun execute(context: JobExecutionContext) {
         logger.info { "Downloading from S3 file has started..." }
-        CoroutineScope(IO).launch {
+        CoroutineScope(Default).launch {
             awsStacoFileService.downloadFileFromS3UpdateDynamoDBAndDelete()
         }
 

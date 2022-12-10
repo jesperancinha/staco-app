@@ -26,7 +26,7 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
     info = Info(title = "OpenAPI definition"),
     servers = [Server(url = "\${staco.server.url}/api/staco/service", description = "Server URL")]
 )
-class StaCoSearchApplication(
+class StaCoSearchReactApplication(
     @Value("\${spring.r2dbc.username}")
     private val postgresUsername: String
 ) {
@@ -43,9 +43,8 @@ class StaCoSearchApplication(
         initializer.setDatabasePopulator(resource)
         return initializer
     }
-
 }
 
 fun main(args: Array<String>) {
-    runApplication<StaCoSearchApplication>(*args)
+    runApplication<StaCoSearchReactApplication>(*args)
 }

@@ -22,17 +22,17 @@ describe('Coroutines Repositories', () => {
         cy.get('div[class="servers"] > label > select > option').should('have.value', 'http://localhost:8080/api/staco/service')
     });
 
-    it('logs into page with user admin', () => {
+    it('logs into coroutines page with user admin', () => {
         login();
     });
 
-    it('clicks through pages 1 to 10', () => {
+    it('clicks through pages 1 to 10 in coroutines page', () => {
         login();
         cy.wait(2000);
-        cy.get('p').contains('1').click();
-        cy.get('p').contains('2').click();
-        cy.get('p').contains('3').click();
-        cy.get('p').contains('4').click();
-        cy.get('p').contains('5').click();
+        cy.get('p').contains(/^1$/).click();
+        cy.get('p').contains(/^2$/).click();
+        cy.get('p').contains(/^3$/).click();
+        cy.get('p').contains(/^4$/).click();
+        cy.get('p').contains(/^5$/).click();
     });
 })

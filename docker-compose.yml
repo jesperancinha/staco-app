@@ -26,7 +26,7 @@ services:
       retries: 5
 
   localstack:
-    image: localstack/localstack:latest
+    image: localstack/localstack:1.3.0
     hostname: localstack
     env_file:
       - .env
@@ -52,7 +52,7 @@ services:
       - staco-net
 
   aws-cli-1:
-    image: amazon/aws-cli:2.4.0
+    image: amazon/aws-cli:2.9.6
     hostname: aws-cli-1
     command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/username --value postgres --type text
     env_file:
@@ -70,7 +70,7 @@ services:
       - staco-net
 
   aws-cli-2:
-    image: amazon/aws-cli:2.4.0
+    image: amazon/aws-cli:2.9.6
     hostname: aws-cli-2
     command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/password --value admin --type text
     env_file:
@@ -88,7 +88,7 @@ services:
       - staco-net
 
   aws-cli-3:
-    image: amazon/aws-cli:2.4.0
+    image: amazon/aws-cli:2.9.6
     hostname: aws-cli-3
     command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket stacos --create-bucket-configuration LocationConstraint=${AWS_DEFAULT_REGION}
     env_file:
@@ -106,7 +106,7 @@ services:
       - staco-net
 
   aws-cli-4:
-    image: amazon/aws-cli:2.4.0
+    image: amazon/aws-cli:2.9.6
     hostname: aws-cli-4
     command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket images --create-bucket-configuration LocationConstraint=${AWS_DEFAULT_REGION}
     env_file:
@@ -124,7 +124,7 @@ services:
       - staco-net
 
   aws-cli-5:
-    image: amazon/aws-cli:2.4.0
+    image: amazon/aws-cli:2.9.6
     hostname: aws-cli-5
     command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/staco/app/user/name --value admin --type text
     env_file:
@@ -142,7 +142,7 @@ services:
       - staco-net
 
   aws-cli-6:
-    image: amazon/aws-cli:2.4.0
+    image: amazon/aws-cli:2.9.6
     hostname: aws-cli-6
     command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/staco/app/user/password --value admin --type text
     env_file:

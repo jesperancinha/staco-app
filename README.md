@@ -57,7 +57,7 @@ This repo is the official support repo to my article on medium:
 
 #### Stable releases
 
-[1.0.0](https://github.com/jesperancinha/staco-app/tree/1.0.0)
+- [1.0.0](https://github.com/jesperancinha/staco-app/tree/1.0.0) - [58e5cd42080a7950423020a64fa08515299d406a](https://github.com/jesperancinha/staco-app/tree/1.0.0)
 
 ### Project Layout
 

@@ -26,8 +26,10 @@ services:
       retries: 5
 
   localstack:
-    image: localstack/localstack:0.13.0
+    image: localstack/localstack:latest
     hostname: localstack
+    env_file:
+      - .env
     expose:
       - 4566
     environment:
@@ -35,13 +37,13 @@ services:
       - DOCKER_HOST=unix:///var/run/docker.sock
       - PORT_WEB_UI=8090
       - DEFAULT_REGION=eu-central-1
-      - DATA_DIR=/tmp/localstack/data
+      - DATA_DIR=/var/lib/localstack/data
       - LAMBDA_EXECUTOR=local
       - START_WEB=1
+      - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - HOSTNAME_EXTERNAL=localstack
     healthcheck:
-      test: [ "CMD", "/usr/bin/curl", "http://localhost:4566/health" ]
-    volumes:
-      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      test: [ "CMD", "/usr/bin/curl", "http://localhost:4566/_localstack/health" ]
     deploy:
       resources:
         limits:
@@ -53,10 +55,13 @@ services:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-1
     command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/username --value postgres --type text
+    env_file:
+      - .env
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
@@ -68,10 +73,13 @@ services:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-2
     command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/postgres/password --value admin --type text
+    env_file:
+      - .env
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
@@ -82,12 +90,14 @@ services:
   aws-cli-3:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-3
-    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket stacos
-
+    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket stacos --create-bucket-configuration LocationConstraint=${AWS_DEFAULT_REGION}
+    env_file:
+      - .env
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
@@ -98,11 +108,14 @@ services:
   aws-cli-4:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-4
-    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket images
+    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket images --create-bucket-configuration LocationConstraint=${AWS_DEFAULT_REGION}
+    env_file:
+      - .env
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
@@ -114,10 +127,13 @@ services:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-5
     command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/staco/app/user/name --value admin --type text
+    env_file:
+      - .env
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
@@ -129,10 +145,13 @@ services:
     image: amazon/aws-cli:2.4.0
     hostname: aws-cli-6
     command: ssm --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} put-parameter --name /config/StaCoLsService/dev/staco/app/user/password --value admin --type text
+    env_file:
+      - .env
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
+      - STACO_AWS_LOCALSTACK_IP=localstack
       - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     depends_on:
       localstack:
@@ -151,6 +170,8 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
+      - STACO_AWS_LOCALSTACK_IP=localstack
+      - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     #    restart: on-failure
     deploy:
       resources:
@@ -180,6 +201,8 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
+      - STACO_AWS_LOCALSTACK_IP=localstack
+      - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     #    restart: on-failure
     deploy:
       resources:
@@ -207,6 +230,8 @@ services:
 
   staco-app-batch:
     hostname: staco-app-batch
+    env_file:
+      - .env
     build:
       context: stamps-and-coins-batch/.
     expose:
@@ -216,6 +241,8 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - STACO_APP_BACKEND_PROFILE=${STACO_APP_BACKEND_PROFILE}
+      - STACO_AWS_LOCALSTACK_IP=localstack
+      - STACO_AWS_LOCALSTACK_PORT=${STACO_AWS_LOCALSTACK_PORT}
     #    restart: on-failure
     deploy:
       resources:

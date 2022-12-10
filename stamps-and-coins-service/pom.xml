@@ -197,7 +197,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>org.jesperancinha.enterprise.staco.StaCoSearchApplicationKt</mainClass>
+                    <mainClass>org.jesperancinha.enterprise.staco.StaCoSearchReactApplicationKt</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -1,6 +1,8 @@
 package org.jesperancinha.enterprise.staco.common.aws
 
 import org.jesperancinha.enterprise.staco.common.aws.StaCosAwsClientsConfiguration.Companion.config
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.env.EnvironmentPostProcessor
@@ -36,27 +38,26 @@ class StaCosAwsClientsConfiguration {
         fun <B : AwsClientBuilder<B, C>, C> config(
             staCoAwsProperties: StaCoAwsProperties,
             awsClientBuilder: AwsClientBuilder<B, C>
-        ): C {
-            return awsClientBuilder.region(Region.of(staCoAwsProperties.region))
-                .endpointOverride(staCoAwsProperties.endpoint)
-                .credentialsProvider(DefaultCredentialsProvider.create())
-                .build()
-        }
+        ): C = awsClientBuilder.region(Region.of(staCoAwsProperties.region))
+            .endpointOverride(staCoAwsProperties.endpoint)
+            .credentialsProvider(DefaultCredentialsProvider.create())
+            .build()
     }
 }
+
 
 internal class ParameterStorePropertySource(name: String, ssmAsyncClient: SsmAsyncClient) :
     PropertySource<SsmAsyncClient>(name, ssmAsyncClient) {
     override fun getProperty(propertyName: String): Any? {
         logger.debug("Property $propertyName is not yet configured")
         if (propertyName.startsWith("/")) {
+            logger.info("Fetching property ${propertyName.toPathPropertyName()}")
             val localstackValue = source.getParameter(
-                GetParameterRequest.builder().name("/config/StaCoLsService/$propertyName")
+                GetParameterRequest.builder().name(propertyName.toPathPropertyName())
                     .build()
             )?.get()?.parameter()?.value()
-            logger.info("Localstack param /config/StaCoLsService$propertyName created with value $localstackValue")
+            logger.info("Localstack param ${propertyName.toPathPropertyName()} created with value $localstackValue")
             return localstackValue
-
         }
         return null
     }
@@ -77,11 +78,17 @@ internal class ParameterStorePropertySourceEnvironmentPostProcessor : Environmen
                             "eu-central-1",
                             "test",
                             "test"
-                        ),
+                        ).apply {
+                            logger.info("Configured parameter properties: $this")
+                        },
                         SsmAsyncClient.builder()
                     )
                 )
             )
     }
+    companion object {
+        val logger:Logger = LoggerFactory.getLogger(ParameterStorePropertySource::class.java)
+    }
 }
 
+private fun String.toPathPropertyName(): String = "/config/StaCoLsService$this"

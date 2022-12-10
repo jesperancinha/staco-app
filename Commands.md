@@ -75,7 +75,7 @@ export AWS_DEFAULT_REGION=eu-central-1
 ```
 
 ## AWS commands
-    João
+
 ```shell
 alias aws="aws --endpoint-url $LOCAL_STACK"
 aws s3api list-buckets

@@ -4,10 +4,10 @@ import mu.KotlinLogging
 import org.apache.commons.csv.CSVFormat.DEFAULT
 import org.apache.commons.csv.CSVParser
 import org.apache.commons.csv.CSVPrinter
+import org.jesperancinha.enterprise.staco.blocking.domain.StaCo
 import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties.Companion.STACOS_BUCKET
 import org.jesperancinha.enterprise.staco.common.aws.StaCoDynamoDBRepository
 import org.jesperancinha.enterprise.staco.common.aws.toEvent
-import org.jesperancinha.enterprise.staco.blocking.domain.StaCo
 import org.springframework.stereotype.Component
 import software.amazon.awssdk.core.async.AsyncRequestBody
 import software.amazon.awssdk.core.async.AsyncResponseTransformer
@@ -26,13 +26,13 @@ import java.time.Instant
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
+private val logger = KotlinLogging.logger {}
 
 @Component
 class AwsStacoFileService(
     private val s3AsyncClient: S3AsyncClient,
     private val staCoDynamoDBRepository: StaCoDynamoDBRepository
 ) {
-    private val logger = KotlinLogging.logger {}
 
     fun createCompressAndUploadToS3(stacos: List<StaCo>) {
         val fileName = "stacos-${Instant.now().toEpochMilli()}"
@@ -43,18 +43,20 @@ class AwsStacoFileService(
             writer, CSV_HEADER
         )
         stacos.forEach {
-            csvPrinter.printRecord(
-                it.stacoId,
-                it.description,
-                it.year,
-                it.value,
-                it.currency,
-                it.type,
-                it.diameterMM,
-                it.internalDiameterMM,
-                it.heightMM,
-                it.widthMM
-            )
+            it.apply {
+                csvPrinter.printRecord(
+                    stacoId,
+                    description,
+                    year,
+                    value,
+                    currency,
+                    type,
+                    diameterMM,
+                    internalDiameterMM,
+                    heightMM,
+                    widthMM
+                )
+            }
         }
         writer.flush()
         writer.close()
@@ -64,8 +66,12 @@ class AwsStacoFileService(
         val fileIn: InputStream = Files.newInputStream(output)
         val size: Long = Files.size(output)
 
+        logger.info { "Sending object to host localstack on $s3AsyncClient" }
         s3AsyncClient.putObject(
-            PutObjectRequest.builder().bucket(STACOS_BUCKET).key(fileName)
+            PutObjectRequest
+                .builder()
+                .bucket(STACOS_BUCKET)
+                .key(fileName)
                 .metadata(
                     mapOf(
                         "Content-Type" to "application/x-gzip",
@@ -73,17 +79,26 @@ class AwsStacoFileService(
                     )
                 ).build(),
             AsyncRequestBody.fromBytes(fileIn.readBytes())
-        )
-        logger.info { "Upload underway!" }
+        ).thenApplyAsync {
+            logger.info { "File $output is uploaded!" }
+        }
+        s3AsyncClient.logAllBuckets()
         logger.info { "File $path was created!" }
-        logger.info { "File $output was uploaded!" }
+        logger.info { "File $output is being uploaded!" }
+        logger.info { "Upload underway!" }
 
     }
 
     fun downloadFileFromS3UpdateDynamoDBAndDelete() {
+        logger.info { "Downloading files from S3" }
         s3AsyncClient.listObjects(
-            ListObjectsRequest.builder().bucket(STACOS_BUCKET).build()
+            ListObjectsRequest
+                .builder()
+                .bucket(STACOS_BUCKET)
+                .build()
         ).thenApplyAsync { listObjectResponse ->
+            s3AsyncClient.logAllBuckets()
+            logger.info { "Found ${listObjectResponse.contents().size} files!" }
             listObjectResponse.contents().map { s3Object ->
                 logger.info { "Processing object file ${s3Object.key()}" }
                 val targetFileKey = s3Object.key()
@@ -162,5 +177,12 @@ class AwsStacoFileService(
                 "heightMM",
                 "widthMM"
             )
+    }
+}
+
+private fun S3AsyncClient.logAllBuckets() = listBuckets().thenApply {
+    logger.info { "Checking current buckets available" }
+    it.buckets().forEach {
+        logger.info { "${it.name()} created on ${it.creationDate()}" }
     }
 }

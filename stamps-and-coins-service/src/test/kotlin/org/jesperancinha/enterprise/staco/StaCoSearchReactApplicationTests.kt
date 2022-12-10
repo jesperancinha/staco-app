@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDO
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @MockkBean(StaCoDynamoDBRepository::class)
-class StaCoSearchApplicationTests : AbstractStaCoTest() {
+class StaCoSearchReactApplicationTests : AbstractStaCoTest() {
 
     @Test
     fun contextLoads() {

@@ -1,8 +1,6 @@
 package org.jesperancinha.enterprise.staco.common.aws
 
 import org.jesperancinha.enterprise.staco.common.aws.StaCosAwsClientsConfiguration.Companion.config
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.env.EnvironmentPostProcessor
@@ -17,7 +15,13 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.s3.S3AsyncClient
 import software.amazon.awssdk.services.ssm.SsmAsyncClient
 import software.amazon.awssdk.services.ssm.model.GetParameterRequest
+import java.lang.System.getenv
+import java.net.InetAddress
 import java.net.URI
+
+private val logger = object {
+    fun info(text: String) = println(text)
+}
 
 @Configuration
 @EnableConfigurationProperties(StaCoAwsProperties::class)
@@ -38,10 +42,13 @@ class StaCosAwsClientsConfiguration {
         fun <B : AwsClientBuilder<B, C>, C> config(
             staCoAwsProperties: StaCoAwsProperties,
             awsClientBuilder: AwsClientBuilder<B, C>
-        ): C = awsClientBuilder.region(Region.of(staCoAwsProperties.region))
-            .endpointOverride(staCoAwsProperties.endpoint)
-            .credentialsProvider(DefaultCredentialsProvider.create())
-            .build()
+        ): C = staCoAwsProperties.run {
+            logger.info("${AwsClientBuilder::class.simpleName} configured on endpoint $endpoint")
+            awsClientBuilder.region(Region.of(region))
+                .endpointOverride(endpoint)
+                .credentialsProvider(DefaultCredentialsProvider.create())
+                .build()
+        }
     }
 }
 
@@ -65,9 +72,13 @@ internal class ParameterStorePropertySource(name: String, ssmAsyncClient: SsmAsy
 
 internal class ParameterStorePropertySourceEnvironmentPostProcessor : EnvironmentPostProcessor {
     override fun postProcessEnvironment(environment: ConfigurableEnvironment, application: SpringApplication) {
-        val host = System.getenv("STACO_AWS_LOCALSTACK_IP") ?: "localhost"
-        val port = System.getenv("STACO_AWS_LOCALSTACK_PORT") ?: "4566"
-        val protocol = System.getenv("STACO_AWS_LOCALSTACK_PROTOCOL") ?: "http"
+        val host = (getenv("STACO_AWS_LOCALSTACK_IP") ?: "localhost")
+            .let { dns ->
+                logger.info("Local stack DNS is $dns")
+                InetAddress.getAllByName(dns)[0].hostAddress
+            }
+        val port = (getenv("STACO_AWS_LOCALSTACK_PORT") ?: "4566").apply { logger.info("Port is $this") }
+        val protocol = (getenv("STACO_AWS_LOCALSTACK_PROTOCOL") ?: "http").apply { logger.info("Protocol is $this") }
         environment.propertySources
             .addLast(
                 ParameterStorePropertySource(
@@ -86,9 +97,7 @@ internal class ParameterStorePropertySourceEnvironmentPostProcessor : Environmen
                 )
             )
     }
-    companion object {
-        val logger:Logger = LoggerFactory.getLogger(ParameterStorePropertySource::class.java)
-    }
+
 }
 
 private fun String.toPathPropertyName(): String = "/config/StaCoLsService$this"

@@ -54,6 +54,11 @@ docker-stamps-and-coins-service:
 	docker-compose -p ${GITHUB_RUN_ID} rm staco-app-service-reactive
 	docker-compose -p ${GITHUB_RUN_ID} build staco-app-service-reactive
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans staco-app-service-reactive
+docker-staco-app-batch:
+	cd stamps-and-coins-batch && mvn clean install -DskipTests
+	docker-compose -p ${GITHUB_RUN_ID} rm staco-app-batch
+	docker-compose -p ${GITHUB_RUN_ID} build staco-app-batch
+	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans staco-app-batch
 docker-cli:
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans aws-cli-1 aws-cli-2 aws-cli-3 aws-cli-4 aws-cli-5 aws-cli-6
 localstack-config:

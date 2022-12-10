@@ -1,3 +1,2 @@
-#!/usr/bin/env bash
-export STACO_AWS_LOCALSTACK_IP=${STACO_AWS_LOCALSTACK_IP}
-java -jar -Daws.endpoint=http://${STACO_AWS_LOCALSTACK_IP}:4566 -Dspring.profiles.active=docker stamps-and-coins-ls-service.jar
+#!/usr/bin/env sh
+java -jar -Daws.endpoint=http://localstack:4566 -Dspring.profiles.active=docker stamps-and-coins-ls-service.jar

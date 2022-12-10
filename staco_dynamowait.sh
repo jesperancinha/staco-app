@@ -26,4 +26,4 @@ function checkServiceByNameAndMessage() {
     echo -e "\e[92m Succeeded starting $name Service after $counter tries!\e[39m"
 }
 
-checkServiceByNameAndMessage staco_app_batch 'Download and parsing'
+checkServiceByNameAndMessage staco-app-batch 'Download and parsing'

@@ -8,7 +8,9 @@ import org.springframework.data.annotation.Version
 import org.springframework.data.domain.Persistable
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
-import java.util.UUID
+import org.springframework.data.repository.kotlin.CoroutineSortingRepository
+import org.springframework.stereotype.Repository
+import java.util.*
 
 @Table
 data class StaCo(
@@ -32,3 +34,6 @@ data class StaCo(
 
     override fun isNew(): Boolean = (version ?: 0) <= 0
 }
+
+@Repository
+interface StaCoRepository : CoroutineSortingRepository<StaCo, Long>

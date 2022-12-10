@@ -4,7 +4,7 @@
 2.  If for some reason you cannot start docker-compose and Docker gives this response:
 
 ```shell
-Creating network "staco-app_staco_net" with driver "bridge"
+Creating network "staco-app_staco-net" with driver "bridge"
 ERROR: Pool overlaps with other one on this address space
 make: *** [docker] Error 1
 ```

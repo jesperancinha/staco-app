@@ -67,6 +67,7 @@ echo $TMPDIR
 ## Locally
 
 ```shell
+export NODE_PORT=4566
 export NODE_IP=127.0.0.1
 export LOCAL_STACK_BACKEND=http://$NODE_IP:$NODE_PORT
 export AWS_ACCESS_KEY_ID=test
@@ -75,7 +76,7 @@ export AWS_DEFAULT_REGION=eu-central-1
 ```
 
 ## AWS commands
-    João
+
 ```shell
 alias aws="aws --endpoint-url $LOCAL_STACK"
 aws s3api list-buckets

@@ -188,6 +188,7 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
         <plugins>
@@ -196,7 +197,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>org.jesperancinha.enterprise.staco.StaCoSearchApplicationKt</mainClass>
+                    <mainClass>org.jesperancinha.enterprise.staco.StaCoSearchReactApplicationKt</mainClass>
                 </configuration>
                 <executions>
                     <execution>

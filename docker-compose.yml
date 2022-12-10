@@ -90,7 +90,7 @@ services:
   aws-cli-3:
     image: amazon/aws-cli:2.9.6
     hostname: aws-cli-3
-    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket stacos --create-bucket-configuration LocationConstraint=${AWS_DEFAULT_REGION}
+    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket stacos --create-bucket-configuration LocationConstraint=eu-central-1
     env_file:
       - .env
     environment:
@@ -108,7 +108,7 @@ services:
   aws-cli-4:
     image: amazon/aws-cli:2.9.6
     hostname: aws-cli-4
-    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket images --create-bucket-configuration LocationConstraint=${AWS_DEFAULT_REGION}
+    command: s3api --endpoint-url http://localstack:${STACO_AWS_LOCALSTACK_PORT} create-bucket --bucket images --create-bucket-configuration LocationConstraint=eu-central-1
     env_file:
       - .env
     environment:

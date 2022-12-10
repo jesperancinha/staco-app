@@ -115,3 +115,10 @@ cypress-edge:
 demo: dcup cypress
 demo-full: dcup-full cypress
 demo-full-manual: dcup-full cypress-open
+aws-client-logs:
+	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-1" | xargs docker logs
+	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-2" | xargs docker logs
+	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-3" | xargs docker logs
+	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-4" | xargs docker logs
+	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-5" | xargs docker logs
+	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-6" | xargs docker logs

@@ -81,7 +81,7 @@ class AwsStacoFileService(
             AsyncRequestBody.fromBytes(fileIn.readBytes())
         ).thenApplyAsync {
             logger.info { "File $output is uploaded!" }
-        }.get()
+        }
         s3AsyncClient.logAllBuckets()
         logger.info { "File $path was created!" }
         logger.info { "File $output is being uploaded!" }
@@ -132,7 +132,7 @@ class AwsStacoFileService(
                         }
                     }
             }
-        }.get()
+        }
     }
 
     private fun removeResource(targetFileKey: String?) = s3AsyncClient.deleteObject(

@@ -18,6 +18,7 @@ import software.amazon.awssdk.services.ssm.model.GetParameterRequest
 import java.lang.System.getenv
 import java.net.InetAddress
 import java.net.URI
+import java.net.URL
 
 private val logger = object {
     fun info(text: String) = println(text)
@@ -43,9 +44,12 @@ class StaCosAwsClientsConfiguration {
             staCoAwsProperties: StaCoAwsProperties,
             awsClientBuilder: AwsClientBuilder<B, C>
         ): C = staCoAwsProperties.run {
-            logger.info("${AwsClientBuilder::class.simpleName} configured on endpoint $endpoint")
+            logger.info("${AwsClientBuilder::class.simpleName} initially configured on endpoint $endpoint")
+            val newEndpoint =
+                endpoint.run { URI.create("http://${InetAddress.getAllByName(host)[0].hostAddress}:${endpoint.port}") }
+            logger.info("${AwsClientBuilder::class.simpleName} finally configured on endpoint $newEndpoint")
             awsClientBuilder.region(Region.of(region))
-                .endpointOverride(endpoint)
+                .endpointOverride(newEndpoint)
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build()
         }

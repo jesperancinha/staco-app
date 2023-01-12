@@ -96,14 +96,14 @@ install-update: update
 	npm i -g snyk
 audit:
 	cd stamps-and-coins-web && npm audit fix && yarn
-dcup-light:
-	docker-compose -p ${GITHUB_RUN_ID} up -d postgres localstack
-dcd:
-	docker-compose -p ${GITHUB_RUN_ID} down
 staco-wait:
 	bash staco_wait.sh
 dynamo-wait:
 	bash staco_dynamowait.sh
+dcup-light:
+	docker-compose -p ${GITHUB_RUN_ID} up -d postgres localstack
+dcd:
+	docker-compose -p ${GITHUB_RUN_ID} down
 dcup: dcd docker-clean docker staco-wait
 dcup-full: docker-clean-build-start staco-wait
 dcup-full-action: docker-clean b docker-action staco-wait dynamo-wait

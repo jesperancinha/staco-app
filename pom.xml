@@ -27,7 +27,7 @@
         <spring-cloud-dependencies.version>2022.0.1</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>2.4.2</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
-        <spring-cloud-starter-bootstrap.version>4.0.0</spring-cloud-starter-bootstrap.version>
+        <spring-cloud-starter-bootstrap.version>4.0.1</spring-cloud-starter-bootstrap.version>
 
         <!-- Do not change to RC2! -->
         <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>

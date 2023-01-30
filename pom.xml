@@ -34,7 +34,7 @@
         <kotlin-logging.version>3.0.4</kotlin-logging.version>
 
         <springmockk.version>4.0.0</springmockk.version>
-        <mockk.version>1.13.3</mockk.version>
+        <mockk.version>1.13.4</mockk.version>
         <kotest.version>5.5.4</kotest.version>
         <reactor-test.version>3.5.2</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>

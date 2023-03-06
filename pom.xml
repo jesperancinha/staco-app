@@ -33,7 +33,7 @@
         <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
 
-        <springmockk.version>4.0.0</springmockk.version>
+        <springmockk.version>4.0.1</springmockk.version>
         <mockk.version>1.13.4</mockk.version>
         <kotest.version>5.5.5</kotest.version>
         <reactor-test.version>3.5.3</reactor-test.version>

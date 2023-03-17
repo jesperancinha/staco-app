@@ -23,12 +23,12 @@
     "@angular-devkit/core" "14.2.9"
     rxjs "6.6.7"
 
-"@angular-devkit/architect@0.1502.3":
-  version "0.1502.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1502.3.tgz#7bc4fb6c7aa5fb5f4555ab78de85ce66198c0548"
-  integrity sha512-vWwkMmXHT3D3ZDz2HRS/LYBSO8i/XqkC1hG5TWWgsDZvwSLfDJSX0mvsYglpdF81Ene/mnjau+Waj0HJMuQVHQ==
+"@angular-devkit/architect@0.1502.4":
+  version "0.1502.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1502.4.tgz#a2ceef215f75b03ec275f5ff68e87fc43e44b113"
+  integrity sha512-bDBcaRMBfXFfK9MpvfNO926F1rL0PEw+mveXxq3/SSql+1XP/hrc5TVGwnoim4g6DqsGmu9upS5DyJ6PnL/hHA==
   dependencies:
-    "@angular-devkit/core" "15.2.3"
+    "@angular-devkit/core" "15.2.4"
     rxjs "6.6.7"
 
 "@angular-devkit/build-angular@^14.2.9":
@@ -120,10 +120,10 @@
     rxjs "6.6.7"
     source-map "0.7.4"
 
-"@angular-devkit/core@15.2.3":
-  version "15.2.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-15.2.3.tgz#d7c96631f6d1ebe0a6f2d55c7d7ea3119090f84c"
-  integrity sha512-/x6rnIc2nbosg9zsneBCdlW+qPJCnbItrzok6Pf5n+3YEY3DFNt8cEgvNymW/u8uiehLYFoAoCq4HIwEXhzoYQ==
+"@angular-devkit/core@15.2.4":
+  version "15.2.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-15.2.4.tgz#f7696f09c66d01568a07f0e71672e887fdf57280"
+  integrity sha512-yl+0j1bMwJLKShsyCXw77tbJG8Sd21+itisPLL2MgEpLNAO252kr9zG4TLlFRJyKVftm2l1h78KjqvM5nbOXNg==
   dependencies:
     ajv "8.12.0"
     ajv-formats "2.1.1"
@@ -131,12 +131,12 @@
     rxjs "6.6.7"
     source-map "0.7.4"
 
-"@angular-devkit/schematics@15.2.3":
-  version "15.2.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-15.2.3.tgz#5ecd4a0701593aeaed1eb42f352deac1ab787165"
-  integrity sha512-d7sUsh8Ts/01k0jEr9d4rG8Cyo6wpq2/s2CJEh1nFk5oeyxyduvuSb4WPWP1O9Qa/0pyqQOSLnz/Cgm8athvGA==
+"@angular-devkit/schematics@15.2.4":
+  version "15.2.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-15.2.4.tgz#85129ebabcdb362f4b65a6e290bb2ae846f3d64c"
+  integrity sha512-/W7/vvn59PAVLzhcvD4/N/E8RDhub8ny1A7I96LTRjC5o+yvVV16YJ4YJzolrRrIEN01KmLVQJ9A58VCaweMgw==
   dependencies:
-    "@angular-devkit/core" "15.2.3"
+    "@angular-devkit/core" "15.2.4"
     jsonc-parser "3.2.0"
     magic-string "0.29.0"
     ora "5.4.1"
@@ -158,15 +158,15 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@^15.2.3":
-  version "15.2.3"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-15.2.3.tgz#0648e98cdbf65e4b3ff2bd5dfd1fdc91ea5a73ef"
-  integrity sha512-6WZYR4vLDl3ZrTXrRZ5bia69lLxwCDlMHuktz4dxTNBDqeFsXbU/aMEUjfEwNaKpB6mQIRGVoXqz3lw4W0ra0g==
+"@angular/cli@^15.2.4":
+  version "15.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-15.2.4.tgz#5163efb3f3e5b2a8ab0598d46d4dc200a51e7197"
+  integrity sha512-nQFnrt9aWwqkyhJMaZvjHXXuxeR1pZNcpZEzTA5nXtpVeNs8U7EBFCyJ+cYecFX0LHe36SoxXcbfnNEKHt3NVQ==
   dependencies:
-    "@angular-devkit/architect" "0.1502.3"
-    "@angular-devkit/core" "15.2.3"
-    "@angular-devkit/schematics" "15.2.3"
-    "@schematics/angular" "15.2.3"
+    "@angular-devkit/architect" "0.1502.4"
+    "@angular-devkit/core" "15.2.4"
+    "@angular-devkit/schematics" "15.2.4"
+    "@schematics/angular" "15.2.4"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.3"
     ini "3.0.1"
@@ -236,10 +236,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/language-service@^15.2.2":
-  version "15.2.2"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-15.2.2.tgz#a9ab34c95cf1082fceb764f9004f66f8d8755f57"
-  integrity sha512-U91MPkBULdvzYXeuuah+n6AUEJ335C0MRUrDGHS1XfD3QQd/+nvC2lgGz9g1qhW9iYO4SNKOtIFSsUAavHQdVQ==
+"@angular/language-service@^15.2.3":
+  version "15.2.3"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-15.2.3.tgz#7e2eed75c5dce1c59c0e62f8e717fd973076398e"
+  integrity sha512-tveGFaPNp3UHoXtemQPiWfyHTwQyEQY+vuOJaht9lfzlZGLZw5KfAqkuC0b7hEIpuKBb4EWhkXi8HwQY2ErzGQ==
 
 "@angular/material@^14.0.4":
   version "14.0.4"
@@ -1524,13 +1524,13 @@
     read-package-json-fast "^3.0.0"
     which "^3.0.0"
 
-"@schematics/angular@15.2.3":
-  version "15.2.3"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-15.2.3.tgz#cde0f388504ed36075da0c02c3dc0df467633dc1"
-  integrity sha512-LX20te4QlCtD2T6ZZvmFA9YmjL4jiPfLFUUSrMcoWS+kqZaZkv1yGT+DtFe4KIKocfRSUjyQsOMUJFoDJNKMaA==
+"@schematics/angular@15.2.4":
+  version "15.2.4"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-15.2.4.tgz#b61b9cb3becf601e904f60490846c1d95bd63700"
+  integrity sha512-P9axwKDXEDrGXYcoCuhwv4guhvtIjDCvyZMsQw8IMpfAacTYajka+T3mZrzyTe96Uhu0JwcAW5iUlOZAJhPEdQ==
   dependencies:
-    "@angular-devkit/core" "15.2.3"
-    "@angular-devkit/schematics" "15.2.3"
+    "@angular-devkit/core" "15.2.4"
+    "@angular-devkit/schematics" "15.2.4"
     jsonc-parser "3.2.0"
 
 "@tootallnate/once@2":
@@ -2987,10 +2987,10 @@ custom-event@~1.0.0:
   resolved "https://registry.npmjs.org/custom-event/-/custom-event-1.0.1.tgz"
   integrity sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==
 
-cypress@^12.8.0:
-  version "12.8.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.8.0.tgz#d31b86ad7b39678b4fa20892f60a8ed58b271729"
-  integrity sha512-+zblUeRIesOwpZ/E0HT0YE19STwbZy/ySJZIW6BHxX/eVX258gs4t9hP3sE4Opw9y0RfhJeoE8oa1wF/WhIb0A==
+cypress@^12.8.1:
+  version "12.8.1"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.8.1.tgz#0c6e67f34554d553138697aaf349b637d80004eb"
+  integrity sha512-lIFbKdaSYAOarNLHNFa2aPZu6YSF+8UY4VRXMxJrFUnk6RvfG0AWsZ7/qle/aIz30TNUD4aOihz2ZgS4vuQVSA==
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
@@ -4591,10 +4591,10 @@ istanbul-reports@^3.0.2:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
 
-jasmine-core@^4.1.0, jasmine-core@~4.5.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/jasmine-core/-/jasmine-core-4.5.0.tgz"
-  integrity sha512-9PMzyvhtocxb3aXJVOPqBDswdgyAeSB81QnLop4npOpbqnheaTEwPc9ZloQeVswugPManznQBjD8kWDTjlnHuw==
+jasmine-core@^4.1.0, jasmine-core@~4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.6.0.tgz#6884fc3d5b66bf293e422751eed6d6da217c38f5"
+  integrity sha512-O236+gd0ZXS8YAjFx8xKaJ94/erqUliEkJTDedyE7iHvv4ZVqi+q+8acJxu05/WJDKm512EUNn809In37nWlAQ==
 
 jasmine-core@~2.8.0:
   version "2.8.0"

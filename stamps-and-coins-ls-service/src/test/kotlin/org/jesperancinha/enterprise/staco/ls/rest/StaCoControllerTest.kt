@@ -81,8 +81,8 @@ internal class StaCoControllerTest(
             localStackContainer.start()
             val testPropertyValues = TestPropertyValues.of(
                 "aws.endpoint="
-                        + localStackContainer.getEndpointConfiguration(LocalStackContainer.Service.DYNAMODB)
-                    .serviceEndpoint
+                        + localStackContainer.getEndpointOverride(LocalStackContainer.Service.DYNAMODB)
+                    .toURL()
             )
             testPropertyValues.applyTo(applicationContext)
         }

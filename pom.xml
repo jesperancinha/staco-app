@@ -36,7 +36,7 @@
         <springmockk.version>4.0.2</springmockk.version>
         <mockk.version>1.13.4</mockk.version>
         <kotest.version>5.5.5</kotest.version>
-        <reactor-test.version>3.5.4</reactor-test.version>
+        <reactor-test.version>3.5.5</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.18.0</test.containers.version>
         <commons-compress.version>1.23.0</commons-compress.version>

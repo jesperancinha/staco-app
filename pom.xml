@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
         <kotlin.version>1.8.21</kotlin.version>
-        <aws-java-sdk.version>1.12.464</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.465</aws-java-sdk.version>
 
         <h2.version>2.1.214</h2.version>
         <postgresql.version>42.6.0</postgresql.version>
@@ -36,7 +36,7 @@
         <springmockk.version>4.0.2</springmockk.version>
         <mockk.version>1.13.5</mockk.version>
         <kotest.version>5.6.1</kotest.version>
-        <reactor-test.version>3.5.5</reactor-test.version>
+        <reactor-test.version>3.5.6</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.18.0</test.containers.version>
         <commons-compress.version>1.23.0</commons-compress.version>
@@ -46,7 +46,7 @@
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
 
-        <awssdk.version>2.20.61</awssdk.version>
+        <awssdk.version>2.20.62</awssdk.version>
 
         <kotlinx-coroutines-debug.version>1.7.0</kotlinx-coroutines-debug.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

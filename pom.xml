@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
         <kotlin.version>1.8.21</kotlin.version>
-        <aws-java-sdk.version>1.12.466</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.467</aws-java-sdk.version>
 
         <h2.version>2.1.214</h2.version>
         <postgresql.version>42.6.0</postgresql.version>
@@ -25,7 +25,7 @@
 
         <spring-boot.version>3.0.6</spring-boot.version>
         <spring-cloud-dependencies.version>2022.0.2</spring-cloud-dependencies.version>
-        <spring-cloud-aws-dependencies.version>3.0.0</spring-cloud-aws-dependencies.version>
+        <spring-cloud-aws-dependencies.version>3.0.1</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
         <spring-cloud-starter-bootstrap.version>4.0.2</spring-cloud-starter-bootstrap.version>
 
@@ -46,7 +46,7 @@
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
 
-        <awssdk.version>2.20.63</awssdk.version>
+        <awssdk.version>2.20.64</awssdk.version>
 
         <kotlinx-coroutines-debug.version>1.7.0</kotlinx-coroutines-debug.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

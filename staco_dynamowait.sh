@@ -19,6 +19,7 @@ function checkServiceByNameAndMessage() {
       if [ $counter -eq 200 ]; then
           echo -e "\e[91mFailed after $counter tries! Cypress tests may fail!!\e[39m"
           echo "$string"
+          docker-compose logs
           exit 1
       fi
     done

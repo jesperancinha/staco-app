@@ -18,6 +18,8 @@ local: no-test
 	mkdir -p bin
 no-test:
 	mvn clean install -DskipTests
+clean:
+	 if [[ -d ${HOME}/.m2/repository/org/jetbrains/kotlin/kotlin-reflect ]]; then rm -rf ${HOME}/.m2/repository/org/jetbrains/kotlin/kotlin-reflect; fi
 docker:
 	docker-compose -p ${GITHUB_RUN_ID} rm -svf
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans

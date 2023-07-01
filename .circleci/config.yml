@@ -29,7 +29,7 @@ jobs:
           name: Test
           command: export JAVA_HOME=/opt/jdk20; \
               export PATH=$PATH:$JAVA_HOME/bin; \
-              java --version; \
+              java -version; \
               mvn test;
 
 workflows:

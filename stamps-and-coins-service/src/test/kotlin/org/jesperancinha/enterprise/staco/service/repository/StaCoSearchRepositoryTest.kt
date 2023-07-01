@@ -6,7 +6,7 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.reactive.asFlow
-import org.jesperancinha.enterprise.staco.blocking.containers.AbstractTestContainersIT.DockerPostgresDataInitializer
+import org.jesperancinha.enterprise.staco.service.containers.AbstractTestContainersIT.DockerPostgresDataInitializer
 import org.jesperancinha.enterprise.staco.common.aws.StaCoDynamoDBRepository
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType.COIN

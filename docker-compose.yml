@@ -2,7 +2,7 @@ services:
 
   postgres:
     hostname: postgres
-    image: postgres:14.1
+    image: postgres:15
     volumes:
       - ./docker-images/docker-psql:/docker-entrypoint-initdb.d
       - ./docker-images/docker-psql/multiple:/docker-entrypoint-initdb.d/multiple
@@ -15,6 +15,8 @@ services:
     deploy:
       resources:
         limits:
+          memory: 600M
+        reservations:
           memory: 600M
     networks:
       - staco-net

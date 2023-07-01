@@ -1,4 +1,4 @@
-package org.jesperancinha.enterprise.staco.blocking.containers
+package org.jesperancinha.enterprise.staco.service.containers
 
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext

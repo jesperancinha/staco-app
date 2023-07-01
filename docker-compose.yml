@@ -16,6 +16,8 @@ services:
       resources:
         limits:
           memory: 600M
+        reservations:
+          memory: 600M
     networks:
       - staco-net
 

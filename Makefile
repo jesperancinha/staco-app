@@ -110,7 +110,7 @@ dcup: dcd docker-clean docker staco-wait
 dcup-full: docker-clean-build-start staco-wait
 dcup-full-action: docker-clean b docker-action staco-wait dynamo-wait
 cypress-open:
-	cd e2e && yarn && npm run cypress
+	cd e2e && yarn && npm run cypress:open:electron
 cypress-electron:
 	cd e2e && make cypress-electron
 cypress-chrome:

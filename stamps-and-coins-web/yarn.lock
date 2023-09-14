@@ -237,10 +237,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/language-service@^16.2.4":
-  version "16.2.4"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-16.2.4.tgz#9bac1b9a28425894b6ad24ff8bf9d660c3ff09d6"
-  integrity sha512-YvI6osqGInRkak1uitDBVJjUyttr+eApGUqvAwBAH8pBgKVQuwjaN4enj+/+vFYE5k+L7c4VOulvqsD5A8FbBA==
+"@angular/language-service@^16.2.5":
+  version "16.2.5"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-16.2.5.tgz#2c7854c37e9b8483d8ca4d192a238145c9d71770"
+  integrity sha512-lYNRN4+iavDuAs86lRHuiTUxtVtsarCZPeoG6K1TEvrXrvmIbTtAbvONNMMnteO9ltCTduyREF9/sefE2Qw/Rg==
 
 "@angular/material@^14.0.4":
   version "14.0.4"
@@ -249,10 +249,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser-dynamic@^16.2.4":
-  version "16.2.4"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-16.2.4.tgz#9168a7ec4efeb2f188c28c92c8ae73c4a70bfe3a"
-  integrity sha512-/xSRRX+lKj+7cIQIkdKWfbfAYNNOQoC1Qq3dehLeld9si0gxrL6N03y8UaSd7CTo96JlNxdpzI+LoE44bRQs8A==
+"@angular/platform-browser-dynamic@^16.2.5":
+  version "16.2.5"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-16.2.5.tgz#79c19e871e414bccdf69db68fcf88482e2d04734"
+  integrity sha512-kzC4z/KmLss8Du9uM1Q16r+3EqDExKKHnrb3G3tuEQ1jTvYCysdWoooVSBmtIlQUw13znpBm1B7XLoyviFvnwA==
   dependencies:
     tslib "^2.3.0"
 

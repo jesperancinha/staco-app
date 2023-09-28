@@ -237,10 +237,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/language-service@^16.2.6":
-  version "16.2.6"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-16.2.6.tgz#c03875ae3b5f58146f2230a5278c029ee32f52e9"
-  integrity sha512-CfGAPLTfYluyMdmYGIK/9hvHDZffLbKc+YZYVE5obgdVszeAJhjC60corbzNu30oTx5a994Q2OtdiKBgAJJ+Kg==
+"@angular/language-service@^16.2.7":
+  version "16.2.7"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-16.2.7.tgz#95138f90ec14cd185be34c55b9ab1928dd66a016"
+  integrity sha512-J5Y5tdiHTyRzVb4rEQDUBvFzaPSZyj+tsq463UlbJECwIfDmPb2G+6y1WasQaH+UOWEanBxOZ2supk10KNS3+A==
 
 "@angular/material@^14.0.4":
   version "14.0.4"
@@ -249,10 +249,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser-dynamic@^16.2.6":
-  version "16.2.6"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-16.2.6.tgz#a3a361fd07321a26fceca42a9813a42e24df4f99"
-  integrity sha512-i3prfdjnOMMemQMLk7vywGueDsjRIcug+jNf4ZdSb4AEaAhv86mzt5z3iNNSSA3bec7oJfrxOayMz3o6zq3QXA==
+"@angular/platform-browser-dynamic@^16.2.7":
+  version "16.2.7"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-16.2.7.tgz#ae06057c98bb6be716993f53d0de1f8b38db7591"
+  integrity sha512-raeuYEQfByHByLnA5YRR7fYD/5u6hMjONH77p08IjmtdmLb0XYP18l/C4YqsIOQG6kZLNCVWknEHZu3kuvAwtQ==
   dependencies:
     tslib "^2.3.0"
 
@@ -1696,10 +1696,10 @@
   resolved "https://registry.npmjs.org/@types/mime/-/mime-3.0.1.tgz"
   integrity sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==
 
-"@types/node@*", "@types/node@>=10.0.0", "@types/node@~20.7.0":
-  version "20.7.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.7.0.tgz#c03de4572f114a940bc2ca909a33ddb2b925e470"
-  integrity sha512-zI22/pJW2wUZOVyguFaUL1HABdmSVxpXrzIqkjsHmyUjNhPoWM1CKfvVuXfetHhIok4RY573cqS0mZ1SJEnoTg==
+"@types/node@*", "@types/node@>=10.0.0", "@types/node@~20.7.1":
+  version "20.7.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.7.1.tgz#06d732ead0bd5ad978ef0ea9cbdeb24dc8717514"
+  integrity sha512-LT+OIXpp2kj4E2S/p91BMe+VgGX2+lfO+XTpfXhh+bCk2LkQtHZSub8ewFBMGP5ClysPjTDFa4sMI8Q3n4T0wg==
 
 "@types/node@^18.17.5":
   version "18.17.15"

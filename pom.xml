@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <kotlin.version>1.9.10</kotlin.version>
-        <aws-java-sdk.version>1.12.566</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.574</aws-java-sdk.version>
 
         <h2.version>2.2.224</h2.version>
         <postgresql.version>42.6.0</postgresql.version>
@@ -23,7 +23,7 @@
         <okta-spring-boot-starter.version>3.0.5</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.200</sofware.amazon.version>
 
-        <spring-boot.version>3.1.4</spring-boot.version>
+        <spring-boot.version>3.1.5</spring-boot.version>
         <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
         <spring-cloud-aws-dependencies.version>3.0.2</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
@@ -44,7 +44,7 @@
         <commons-csv.version>1.10.0</commons-csv.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
 
         <awssdk.version>2.21.0</awssdk.version>

@@ -91,9 +91,16 @@ minikube-vmware:
 install-mac-os:
 	xcode-select --install
 update:
+	find . -name "package-lock.json" | xargs rm; \
+	find . -name "yarn.lock" | xargs rm; \
 	git pull
+	npm install caniuse-lite
 	npm install -g npm-check-updates
-	cd stamps-and-coins-web && npx browserslist --update-db && ncu -u && yarn
+	cd stamps-and-coins-web; \
+ 		yarn; \
+ 		npx browserslist --update-db; \
+ 		ncu -u; \
+ 		yarn
 install-update: update
 	npm i -g snyk
 audit:

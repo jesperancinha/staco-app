@@ -1,4 +1,4 @@
-FROM openjdk:19-alpine
+FROM azul/zulu-openjdk:21.0.1-jre-headless
 
 WORKDIR /root
 

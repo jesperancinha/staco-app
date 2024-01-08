@@ -1,4 +1,4 @@
-FROM openjdk:19-alpine
+FROM 21.0.1-jre-headless
 
 WORKDIR /root
 

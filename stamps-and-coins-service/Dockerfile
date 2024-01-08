@@ -1,10 +1,8 @@
-FROM openjdk:19-alpine
+FROM azul/zulu-openjdk:21.0.1-jre-headless
 
 WORKDIR /root
 
 ENV LANG=C.UTF-8
-
-RUN apk add curl
 
 COPY entrypoint.sh /root
 

@@ -20,7 +20,6 @@ services:
           memory: 600M
     networks:
       - staco-net
-
     healthcheck:
       test: [ "CMD", "pg_isready", "-U", "${DB_USER}" ]
       interval: 10s

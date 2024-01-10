@@ -18,7 +18,7 @@
         <aws-java-sdk.version>1.12.633</aws-java-sdk.version>
 
         <h2.version>2.2.224</h2.version>
-        <postgresql.version>42.6.0</postgresql.version>
+        <postgresql.version>42.7.1</postgresql.version>
 
         <okta-spring-boot-starter.version>3.0.6</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.200</sofware.amazon.version>
@@ -40,7 +40,7 @@
         <reactor-test.version>3.6.2</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.19.3</test.containers.version>
-        <commons-compress.version>1.24.0</commons-compress.version>
+        <commons-compress.version>1.25.0</commons-compress.version>
         <commons-csv.version>1.10.0</commons-csv.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>

@@ -49,3 +49,6 @@ videos
 
 # Logs
 logs
+
+# Node
+package-lock.json

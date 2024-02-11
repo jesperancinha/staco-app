@@ -136,3 +136,10 @@ aws-client-logs:
 	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-4" | xargs docker logs
 	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-5" | xargs docker logs
 	docker ps -a --format '{{.ID}}' -q --filter="name=aws-cli-6" | xargs docker logs
+hotkey-fix:
+	sudo add-apt-repository ppa:nrbrtx/xorg-hotkeys
+	sudo apt-get update
+	sudo apt-get dist-upgrade
+	sudo apt install --reinstall xserver-xorg-input-all
+	sudo dpkg-reconfigure keyboard-configuration
+	sudo apt-get install kwin-addons

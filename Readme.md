@@ -30,15 +30,7 @@ Please check the [TechStack.md](TechStack.md) file for details.
 
 This repo is the official support repo to my article on medium:
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://itnext.io/learning-aws-with-localstack-and-reactive-kotlin-a-stamps-and-coins-implementation-d10278f98587) [Learning AWS with Localstack and Reactive Kotlin - A stamps and coins implementation](https://itnext.io/learning-aws-with-localstack-and-reactive-kotlin-a-stamps-and-coins-implementation-d10278f98587)
-
-<div align="center">
-      <a title="Learning AWS with Localstack and Reactive Kotlin - A stamps and coins implementation" href="https://itnext.io/learning-aws-with-localstack-and-reactive-kotlin-a-stamps-and-coins-implementation-d10278f98587">
-     <img 
-          src="./docs/images/article.staco.banner.jpg" 
-          style="width:100%;">
-      </a>
-</div>
+[![](https://img.shields.io/badge/Learning%20AWS%20with%20Localstack%20and%20Reactive%20Kotlin%20-%20A%20stamps%20and%20coins%20implementation-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://itnext.io/learning-aws-with-localstack-and-reactive-kotlin-a-stamps-and-coins-implementation-d10278f98587)
 
 #### Stable releases
 

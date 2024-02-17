@@ -16,6 +16,10 @@ jobs:
           java-version: '20'
           distribution: 'adopt'
           cache: maven
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
       - name: Start Docker
         uses: nick-fields/retry@v2
@@ -39,6 +43,10 @@ jobs:
           java-version: '20'
           distribution: 'adopt'
           cache: maven
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
       - name: Start Docker
         uses: nick-fields/retry@v2
@@ -62,6 +70,10 @@ jobs:
           java-version: '20'
           distribution: 'adopt'
           cache: maven
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
       - name: Start Docker
         uses: nick-fields/retry@v2
@@ -85,6 +97,10 @@ jobs:
           java-version: '20'
           distribution: 'adopt'
           cache: maven
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
       - name: Start Docker
         uses: nick-fields/retry@v2

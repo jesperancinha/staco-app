@@ -31,7 +31,7 @@
         <spring-cloud-commons.version>4.1.1</spring-cloud-commons.version>
 
         <!-- Do not change to RC2! -->
-        <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>
+        <kotlinx-coroutines.version>1.8.0</kotlinx-coroutines.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
 
         <springmockk.version>4.0.2</springmockk.version>

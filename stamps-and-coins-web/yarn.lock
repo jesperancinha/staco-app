@@ -10,14 +10,6 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@angular-devkit/architect@0.1702.0":
-  version "0.1702.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1702.0.tgz#f70df7b518f433212f1d4f9835663343b1d21ee4"
-  integrity sha512-+HkOYhdq8ez2+yqpxaQ6XtQevOYJNaDpM4oDmZ2lIpiIusFNsmpY2b9iL5PZGb4EfUgN8KsY3n9Q9fmRlRB9eA==
-  dependencies:
-    "@angular-devkit/core" "17.2.0"
-    rxjs "7.8.1"
-
 "@angular-devkit/architect@0.1702.1":
   version "0.1702.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1702.1.tgz#242916367392bc79bde6ca2352aef88d33419b59"
@@ -105,35 +97,10 @@
     "@angular-devkit/architect" "0.1702.1"
     rxjs "7.8.1"
 
-"@angular-devkit/core@17.2.0":
-  version "17.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-17.2.0.tgz#f7fb2425ce44269bd8f14c3f24ead34a1a4aeb17"
-  integrity sha512-GIOYHChtDqSOvSiEefJ6hAledEl55J5Pxw8JuKXrM4IJBbviI3c40FAc0Lu5NCj2lYoELOhrLy/UP36sLy+DGA==
-  dependencies:
-    ajv "8.12.0"
-    ajv-formats "2.1.1"
-    jsonc-parser "3.2.1"
-    picomatch "4.0.1"
-    rxjs "7.8.1"
-    source-map "0.7.4"
-
 "@angular-devkit/core@17.2.1":
   version "17.2.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-17.2.1.tgz#f35f4a534de9a86b01f0c44f6488cc1a68642daf"
   integrity sha512-4jWG7akd5wVxjKkLKDT1zUTyLJeBP5mDmGUPooZ6zVHy39X6htYC+BV3uu/T6gVrD4FyONMDezedpBOrQPtZ6A==
-  dependencies:
-    ajv "8.12.0"
-    ajv-formats "2.1.1"
-    jsonc-parser "3.2.1"
-    picomatch "4.0.1"
-    rxjs "7.8.1"
-    source-map "0.7.4"
-
-"@angular-devkit/schematics@17.2.0":
-  version "17.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-17.2.0.tgz#b0557d09ac33188afd75baf777296697e21ea0e0"
-  integrity sha512-gGyUVYRKTeRODW9S0MohfBlryoUHrbxqN27olhktrM/fZavyUVnZpyfb8okp6tTUz9HWmGac8ULE6IU+YW16gw==
-
   dependencies:
     ajv "8.12.0"
     ajv-formats "2.1.1"
@@ -245,10 +212,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/language-service@^17.2.2":
-  version "17.2.2"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-17.2.2.tgz#17e3f09d8fd29fc777c99b04eb58990ac496a995"
-  integrity sha512-nIOuXcrVipPZD4YoAkJAx20R9yf9vfEd+OTAGp/1iu4/as55sHOl0uc+jBqEMMjwdT6xeWCMj4BS85lm5kVwdg==
+"@angular/language-service@^17.2.3":
+  version "17.2.3"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-17.2.3.tgz#78a80ebd6d0835ba953cf004664d55db31b89260"
+  integrity sha512-H4LUs2Ftdlk1iqHqC7jRcbHmnNRy53OUlBYNkjRkTsthOI4WqsiSqAp5Frrni3erBqpZ2ik86cbMEyEXcfjRhw==
 
 "@angular/material@^17.2.0":
   version "17.2.0"

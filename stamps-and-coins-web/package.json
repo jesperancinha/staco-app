@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^17.2.1",
+    "@angular/animations": "^17.2.4",
     "@angular/cdk": "^17.2.0",
     "@angular/common": "~17.2.1",
     "@angular/compiler": "~17.2.3",
@@ -36,7 +36,7 @@
     "@angular/language-service": "^17.2.4",
     "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.13",
-    "@types/node": "~20.11.26",
+    "@types/node": "~20.11.27",
     "codelyzer": "^6.0.2",
     "cypress": "^13.6.6",
     "jasmine-core": "~5.1.2",

@@ -15,10 +15,10 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <kotlin.version>1.9.23</kotlin.version>
-        <aws-java-sdk.version>1.12.673</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.680</aws-java-sdk.version>
 
         <h2.version>2.2.224</h2.version>
-        <postgresql.version>42.7.2</postgresql.version>
+        <postgresql.version>42.7.3</postgresql.version>
 
         <okta-spring-boot-starter.version>3.0.6</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.200</sofware.amazon.version>
@@ -36,24 +36,24 @@
 
         <springmockk.version>4.0.2</springmockk.version>
         <mockk.version>1.13.10</mockk.version>
-        <kotest.version>5.8.0</kotest.version>
-        <reactor-test.version>3.6.2</reactor-test.version>
+        <kotest.version>5.8.1</kotest.version>
+        <reactor-test.version>3.6.4</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.19.7</test.containers.version>
-        <commons-compress.version>1.26.0</commons-compress.version>
+        <commons-compress.version>1.26.1</commons-compress.version>
         <commons-csv.version>1.10.0</commons-csv.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
 
-        <awssdk.version>2.25.3</awssdk.version>
+        <awssdk.version>2.25.10</awssdk.version>
 
         <kotlinx-coroutines-debug.version>1.8.0</kotlinx-coroutines-debug.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
-        <springdoc-openapi-starter.version>2.3.0</springdoc-openapi-starter.version>
-        <jackson-module-kotlin.version>2.16.1</jackson-module-kotlin.version>
+        <springdoc-openapi-starter.version>2.4.0</springdoc-openapi-starter.version>
+        <jackson-module-kotlin.version>2.17.0</jackson-module-kotlin.version>
     </properties>
 
     <modules>

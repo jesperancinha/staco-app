@@ -47,7 +47,7 @@
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
 
-        <awssdk.version>2.25.27</awssdk.version>
+        <awssdk.version>2.25.28</awssdk.version>
 
         <kotlinx-coroutines-debug.version>1.8.0</kotlinx-coroutines-debug.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

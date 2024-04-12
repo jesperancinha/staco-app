@@ -90,9 +90,10 @@ minikube-vmware:
 #MAC-OS
 install-mac-os:
 	xcode-select --install
-update:
-	find . -name "package-lock.json" | xargs rm; \
-	find . -name "yarn.lock" | xargs rm; \
+remove-lock-files:
+	find . -name "package-lock.json" | xargs -I {} rm {}; \
+	find . -name "yarn.lock" | xargs -I {} rm {};
+update: remove-lock-files
 	git pull
 	npm install caniuse-lite
 	npm install -g npm-check-updates

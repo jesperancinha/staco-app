@@ -15,8 +15,8 @@
   "dependencies": {
     "@angular/animations": "^17.3.4",
     "@angular/cdk": "^17.2.0",
-    "@angular/common": "~17.2.1",
-    "@angular/compiler": "~17.2.3",
+    "@angular/common": "~17.3.4",
+    "@angular/compiler": "~17.3.4",
     "@angular/core": "^17.2.1",
     "@angular/forms": "^17.2.1",
     "@angular/material": "^17.2.0",
@@ -26,7 +26,7 @@
     "ngx-pagination": "^6.0.3",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
-    "typescript": "<5.4.0",
+    "typescript": "<5.5.0",
     "zone.js": "~0.14.4"
   },
   "devDependencies": {

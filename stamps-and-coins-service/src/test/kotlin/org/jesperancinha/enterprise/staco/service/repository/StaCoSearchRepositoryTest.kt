@@ -32,7 +32,10 @@ import java.util.*
 @ActiveProfiles("test")
 @MockkBean(CacheManager::class, StaCoDynamoDBRepository::class)
 @ContextConfiguration(initializers = [DockerPostgresDataInitializer::class])
-internal class StaCoSearchRepositoryTest {
+internal class StaCoSearchRepositoryTest @Autowired constructor(
+    val staCoRepository: StaCoRepository,
+    val staCoSearchRepository: StaCoSearchRepository
+) {
 
     private val staCo1: StaCo = StaCoDto(
         description = Description(value = "Queen of Power"),
@@ -53,12 +56,6 @@ internal class StaCoSearchRepositoryTest {
         heightMM = "0",
         widthMM = "10"
     ).toData.copy(stacoId = UUID.randomUUID())
-
-    @Autowired
-    lateinit var staCoRepository: StaCoRepository
-
-    @Autowired
-    lateinit var staCoSearchRepository: StaCoSearchRepository
 
     @BeforeEach
     fun setUp(): Unit = runBlocking {

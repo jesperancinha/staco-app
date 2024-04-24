@@ -50,5 +50,6 @@ videos
 # Logs
 logs
 
-# Node
+# NPM
 package-lock.json
+yarn.lock

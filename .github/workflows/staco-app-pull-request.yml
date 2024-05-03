@@ -3,6 +3,9 @@ name: staco-app-pull-request
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches:
+      - '!master'
 
 jobs:
   build:

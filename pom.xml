@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <kotlin.version>1.9.24</kotlin.version>
-        <aws-java-sdk.version>1.12.718</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.719</aws-java-sdk.version>
 
         <h2.version>2.2.224</h2.version>
         <postgresql.version>42.7.3</postgresql.version>
@@ -31,12 +31,12 @@
         <spring-cloud-commons.version>4.1.2</spring-cloud-commons.version>
 
         <!-- Do not change to RC2! -->
-        <kotlinx-coroutines.version>1.8.0</kotlinx-coroutines.version>
+        <kotlinx-coroutines.version>1.8.1</kotlinx-coroutines.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
 
         <springmockk.version>4.0.2</springmockk.version>
         <mockk.version>1.13.10</mockk.version>
-        <kotest.version>5.8.1</kotest.version>
+        <kotest.version>5.9.0</kotest.version>
         <reactor-test.version>3.6.5</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.19.8</test.containers.version>

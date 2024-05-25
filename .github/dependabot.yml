@@ -16,6 +16,12 @@ updates:
     directory: "/stamps-and-coins-web"
     schedule:
       interval: "daily"
+    groups:
+      angular:
+        patterns:
+          - "@angular*"
+          - "angular*"
+
   - package-ecosystem: "npm"
     directory: "/e2e"
     schedule:

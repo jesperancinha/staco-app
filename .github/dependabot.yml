@@ -11,6 +11,12 @@ updates:
         versions: ["1.6.0-RC2", "1.6.0-RC3", "1.6.0"]
       - dependency-name: "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"
         versions: ["1.6.0-RC2", "1.6.0-RC3", "1.6.0"]
+    groups:
+      amazon:
+        patterns:
+          - "*amazon*"
+          - "*amazonaws*"
+          - "*aws*"
 
   - package-ecosystem: "npm"
     directory: "/stamps-and-coins-web"
@@ -21,6 +27,9 @@ updates:
         patterns:
           - "@angular*"
           - "angular*"
+          - "*angular*"
+          - "@types*"
+          - "*types*"
 
   - package-ecosystem: "npm"
     directory: "/e2e"

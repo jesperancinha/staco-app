@@ -21,6 +21,9 @@ updates:
         patterns:
           - "@angular*"
           - "angular*"
+          - "*angular*"
+          - "@types*"
+          - "*types*"
 
   - package-ecosystem: "npm"
     directory: "/e2e"

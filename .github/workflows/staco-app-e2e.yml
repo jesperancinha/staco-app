@@ -8,6 +8,7 @@ on:
 jobs:
   e2e-electron:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 20
@@ -35,6 +36,7 @@ jobs:
 
   e2e-chrome:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 20
@@ -62,6 +64,7 @@ jobs:
 
   e2e-firefox:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 20
@@ -89,6 +92,7 @@ jobs:
 
   e2e-edge:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 20

@@ -5,7 +5,9 @@ b: build-npm build-maven
 build: build-npm
 	mvn clean install
 build-npm:
-	cd stamps-and-coins-web && yarn install && npm run build
+	cd stamps-and-coins-web; \
+	yarn install; \
+	npm run build
 build-maven:
 	mvn clean install package -DskipTests
 build-nginx:
@@ -52,12 +54,14 @@ docker-localstack:
 	docker-compose -p ${GITHUB_RUN_ID} rm localstack
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans localstack
 docker-stamps-and-coins-service:
-	cd stamps-and-coins-service && mvn clean install -DskipTests
+	cd stamps-and-coins-service; \
+	mvn clean install -DskipTests
 	docker-compose -p ${GITHUB_RUN_ID} rm staco-app-service-reactive
 	docker-compose -p ${GITHUB_RUN_ID} build staco-app-service-reactive
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans staco-app-service-reactive
 docker-staco-app-batch:
-	cd stamps-and-coins-batch && mvn clean install -DskipTests
+	cd stamps-and-coins-batch; \
+	mvn clean install -DskipTests
 	docker-compose -p ${GITHUB_RUN_ID} rm staco-app-batch
 	docker-compose -p ${GITHUB_RUN_ID} build staco-app-batch
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans staco-app-batch
@@ -107,7 +111,9 @@ update: remove-lock-files
 install-update: update
 	npm i -g snyk
 audit:
-	cd stamps-and-coins-web && npm audit fix && yarn
+	cd stamps-and-coins-web; \
+	npm audit fix; \
+	yarn
 staco-wait:
 	bash staco_wait.sh
 dynamo-wait:
@@ -120,15 +126,21 @@ dcup: dcd docker-clean docker staco-wait
 dcup-full: docker-clean-build-start staco-wait
 dcup-full-action: docker-clean b docker-action staco-wait dynamo-wait
 cypress-open:
-	cd e2e && yarn && npm run cypress:open:electron
+	cd e2e; \
+	yarn; \
+	npm run cypress:open:electron
 cypress-electron:
-	cd e2e && make cypress-electron
+	cd e2e; \
+	make cypress-electron
 cypress-chrome:
-	cd e2e && make cypress-chrome
+	cd e2e; \
+	make cypress-chrome
 cypress-firefox:
-	cd e2e && make cypress-firefox
+	cd e2e; \
+	make cypress-firefox
 cypress-edge:
-	cd e2e && make cypress-edge
+	cd e2e; \
+	make cypress-edge
 demo: dcup cypress
 demo-full: dcup-full cypress
 demo-full-manual: dcup-full cypress-open

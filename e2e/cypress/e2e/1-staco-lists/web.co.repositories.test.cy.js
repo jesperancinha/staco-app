@@ -3,7 +3,9 @@ describe('Coroutines Repositories', () => {
     const host = Cypress.env('host') ? Cypress.env('host') : 'localhost';
 
     beforeEach(() => {
-        cy.visit(`http://${host}:8080/login`)
+        let loginPageUrl = `http://${host}:8080/login`;
+        cy.log(`Login page URL = ${loginPageUrl}`);
+        cy.visit(loginPageUrl);
     });
 
     function login() {
@@ -15,7 +17,9 @@ describe('Coroutines Repositories', () => {
 
 
     it('shows swagger', () => {
-        cy.visit(`http://${host}:8080/api/staco/service/webjars/swagger-ui/index.html`);
+        let swaggerUIUrl = `http://${host}:8080/api/staco/service/webjars/swagger-ui/index.html`;
+        cy.log(`Swagger UI URL = ${swaggerUIUrl}`)
+        cy.visit(swaggerUIUrl);
         cy.get('h2').contains('OpenAPI definition').should('not.be.null');
         cy.wait(1000);
 

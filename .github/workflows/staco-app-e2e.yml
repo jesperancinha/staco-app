@@ -34,6 +34,11 @@ jobs:
       - name: Run Cypress
         run: make cypress-electron
 
+      - name: Cypress Fail!
+        if: failure()
+        run: |
+          make docker-logs
+
   e2e-chrome:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -61,6 +66,11 @@ jobs:
 
       - name: Run Cypress
         run: make cypress-chrome
+
+      - name: Cypress Fail!
+        if: failure()
+        run: |
+          make docker-logs
 
   e2e-firefox:
     runs-on: ubuntu-latest
@@ -90,6 +100,11 @@ jobs:
       - name: Run Cypress
         run: make cypress-firefox
 
+      - name: Cypress Fail!
+        if: failure()
+        run: |
+          make docker-logs
+
   e2e-edge:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -117,3 +132,8 @@ jobs:
 
       - name: Run Cypress
         run: make cypress-edge
+
+      - name: Cypress Fail!
+        if: failure()
+        run: |
+          make docker-logs

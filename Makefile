@@ -141,6 +141,9 @@ cypress-firefox:
 cypress-edge:
 	cd e2e; \
 	make cypress-edge
+docker-logs:
+	cd e2e; \
+	make docker-logs
 demo: dcup cypress
 demo-full: dcup-full cypress
 demo-full-manual: dcup-full cypress-open

@@ -28,6 +28,8 @@ updates:
           - "@angular*"
           - "angular*"
           - "*angular*"
+      types:
+        patterns:
           - "@types*"
           - "*types*"
 

@@ -17,6 +17,15 @@ updates:
           - "*amazon*"
           - "*amazonaws*"
           - "*aws*"
+      postgresql:
+        patterns:
+          - "*postgresql*"
+      maven:
+        patterns:
+          - "*maven*"
+      kotlin:
+        patterns:
+          - "*kotlin*"
 
   - package-ecosystem: "npm"
     directory: "/stamps-and-coins-web"

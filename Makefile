@@ -161,3 +161,5 @@ hotkey-fix:
 	sudo apt install --reinstall xserver-xorg-input-all
 	sudo dpkg-reconfigure keyboard-configuration
 	sudo apt-get install kwin-addons
+deps-update: update
+

@@ -12,7 +12,6 @@ import {MatListModule} from "@angular/material/list";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
-import {NgxPaginationModule} from "ngx-pagination";
 import {LoginComponent} from "./components/login/login.component";
 import {AppService} from "./services/app.service";
 import {MatGridListModule} from "@angular/material/grid-list";
@@ -49,7 +48,6 @@ export class XhrInterceptor implements HttpInterceptor {
     BrowserAnimationsModule,
     MatTableModule,
     FormsModule,
-    NgxPaginationModule,
     MatGridListModule,
   ],
   providers: [

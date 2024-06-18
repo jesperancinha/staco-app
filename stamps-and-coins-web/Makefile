@@ -10,5 +10,10 @@ update-force: update
 	npm audit fix --force
 	npm audit fix --force
 build:
+	if [ -d node_modules ]; then rm -r node_modules; fi
 	yarn install && npm run build
+checkup: build
+	npm run test-headless
+	npm start
+
 

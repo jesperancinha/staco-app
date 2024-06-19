@@ -1,4 +1,4 @@
-name: Updates plugins dependencies and containers
+name: Updates plugins
 
 on:
   schedule:

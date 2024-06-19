@@ -29,5 +29,5 @@ jobs:
           title: 'Update plugins'
           body: |
             This pull request updates the following dependencies:
-            - Current pluginsupdates
+            - Current plugin updates
           labels: dependencies

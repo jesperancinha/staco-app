@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-dependencies:
+  update-npm-dependencies:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,10 +24,10 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
-          commit-message: Update sbt dependencies
+          commit-message: Update npm dependencies
           branch: update-npm-dependencies
           title: 'Update npm dependencies'
           body: |
             This pull request updates the following dependencies:
-            - Current NPM dependency updates
+            - Current npm dependency updates
           labels: dependencies

@@ -44,7 +44,7 @@ services:
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - HOSTNAME_EXTERNAL=localstack
     healthcheck:
-      test: [ "CMD", "/usr/bin/curl", "http://localhost:4566/_localstack/health" ]
+      test: [ "CMD", "/usr/bin/curl", "http://0.0.0.0:4566" ]
     deploy:
       resources:
         limits:

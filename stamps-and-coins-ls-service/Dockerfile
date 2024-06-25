@@ -1,5 +1,7 @@
 FROM eclipse-temurin:21-alpine
 
+RUN apk add curl
+
 WORKDIR /root
 
 ENV LANG=C.UTF-8

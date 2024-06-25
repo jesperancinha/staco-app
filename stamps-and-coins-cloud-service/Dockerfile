@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk:21.0.1-jre-headless
+FROM eclipse-temurin:21-alpine
 
 WORKDIR /root
 

@@ -44,7 +44,7 @@ services:
       - AWS_DEFAULT_REGION=${DEFAULT_REGION}
       - HOSTNAME_EXTERNAL=localstack
     healthcheck:
-      test: [ "CMD", "/usr/bin/curl", "http://localhost:4566/_localstack/health" ]
+      test: [ "CMD", "/usr/bin/curl", "http://0.0.0.0:4566" ]
     deploy:
       resources:
         limits:
@@ -186,7 +186,7 @@ services:
       localstack:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8081'"]
+      test: [ "CMD", "/usr/bin/curl", "http://0.0.0.0:8081" ]
       interval: 5s
       timeout: 240s
       retries: 60
@@ -229,7 +229,7 @@ services:
       aws-cli-6:
         condition: service_completed_successfully
     healthcheck:
-      test: ["CMD-SHELL", "timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8082'"]
+      test: [ "CMD", "/usr/bin/curl", "http://0.0.0.0:8082" ]
       interval: 5s
       timeout: 240s
       retries: 60

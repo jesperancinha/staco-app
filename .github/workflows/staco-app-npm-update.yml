@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: Run dependency update script
-        run: make deps-update
+        run: make deps-npm-update
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6

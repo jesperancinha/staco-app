@@ -161,7 +161,7 @@ hotkey-fix:
 	sudo apt install --reinstall xserver-xorg-input-all
 	sudo dpkg-reconfigure keyboard-configuration
 	sudo apt-get install kwin-addons
-deps-update: update
+deps-npm-update: update
 revert-deps-cypress-update:
 	if [ -f  e2e/docker-composetmp.yml ]; then rm e2e/docker-composetmp.yml; fi
 	if [ -f  e2e/packagetmp.json ]; then rm e2e/packagetmp.json; fi

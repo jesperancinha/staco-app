@@ -17,7 +17,7 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
           cache: maven
-      - name: Use Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -55,7 +55,7 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
           cache: maven
-      - name: Use Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -93,7 +93,7 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
           cache: maven
-      - name: Use Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -131,7 +131,7 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
           cache: maven
-      - name: Use Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'

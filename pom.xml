@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
         <kotlin.version>2.0.0</kotlin.version>
-        <aws-java-sdk.version>1.12.750</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.751</aws-java-sdk.version>
 
         <h2.version>2.2.224</h2.version>
         <postgresql.version>42.7.3</postgresql.version>
@@ -47,7 +47,7 @@
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
 
-        <awssdk.version>2.26.9</awssdk.version>
+        <awssdk.version>2.26.10</awssdk.version>
 
         <kotlinx-coroutines-debug.version>1.8.1</kotlinx-coroutines-debug.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

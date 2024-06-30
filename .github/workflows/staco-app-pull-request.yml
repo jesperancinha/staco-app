@@ -1,8 +1,15 @@
 name: staco-app-pull-request
 
 on:
+  pull_request_target:
+    branches:
+      - '**'
+  create:
+    branches:
+      - '**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - '**'
   push:
     branches:
       - '**'

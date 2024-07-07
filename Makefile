@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+SHELL := /bin/sh
 GITHUB_RUN_ID ?=123
 
 b: build-npm build-maven
@@ -176,3 +176,5 @@ deps-java-update:
 deps-node-update:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/nodeUpdatesOne.sh | bash
 deps-quick-update: deps-cypress-update deps-plugins-update deps-java-update deps-node-update
+accept-prs:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash

@@ -39,7 +39,7 @@
         <kotest.version>5.9.1</kotest.version>
         <reactor-test.version>3.6.8</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
-        <test.containers.version>1.20.0</test.containers.version>
+        <test.containers.version>1.20.1</test.containers.version>
         <commons-compress.version>1.26.2</commons-compress.version>
         <commons-csv.version>1.11.0</commons-csv.version>
         <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>

@@ -123,8 +123,8 @@ dcup-light:
 dcd: dc-migration
 	docker-compose -p ${GITHUB_RUN_ID} down
 dcup: dcd docker-clean docker staco-wait
-dcup-full: docker-clean-build-start staco-wait
-dcup-full-action: docker-clean b docker-action staco-wait dynamo-wait
+dcup-full: dcd docker-clean-build-start staco-wait
+dcup-full-action: dcd docker-clean b docker-action staco-wait dynamo-wait
 cypress-open:
 	cd e2e; \
 	yarn; \

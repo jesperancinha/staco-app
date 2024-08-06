@@ -120,7 +120,7 @@ dynamo-wait:
 	bash staco_dynamowait.sh
 dcup-light:
 	docker-compose -p ${GITHUB_RUN_ID} up -d postgres localstack
-dcd:
+dcd: dc-migration
 	docker-compose -p ${GITHUB_RUN_ID} down
 dcup: dcd docker-clean docker staco-wait
 dcup-full: docker-clean-build-start staco-wait
@@ -178,3 +178,5 @@ deps-node-update:
 deps-quick-update: deps-cypress-update deps-plugins-update deps-java-update deps-node-update
 accept-prs:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash
+dc-migration:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/setupDockerCompose.sh | bash

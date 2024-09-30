@@ -4,12 +4,13 @@ GITHUB_RUN_ID=${GITHUB_RUN_ID:-123}
 function checkServiceByNameAndMessage() {
     name=$1
     message=$2
+    message2=$3
     docker-compose -p "${GITHUB_RUN_ID}" logs "$name" > "logs"
     string=$(cat logs)
     counter=0
     echo "Project $GITHUB_RUN_ID"
     echo -n "Starting service $name "
-    while [[ "$string" != *"$message"* ]]
+    while [[ "$string" != *"$message"* || "$string" != *"$message2"* ]]
     do
       echo -e -n "\e[93m-\e[39m"
       docker-compose -p "${GITHUB_RUN_ID}" logs "$name" > "logs"
@@ -29,7 +30,7 @@ function checkServiceByNameAndMessage() {
 
 checkServiceByNameAndMessage postgres 'database system is ready to accept connections'
 checkServiceByNameAndMessage nginx 'test is successful'
-checkServiceByNameAndMessage staco-app-batch 'Started StampsAndCoinsBatchLauncher'
+checkServiceByNameAndMessage staco-app-batch 'Started StampsAndCoinsBatchLauncher' 'Started StampsAndCoinsBatchLauncherKt'
 checkServiceByNameAndMessage staco-app-service-reactive 'Started StaCoSearchReactApplicationKt'
 checkServiceByNameAndMessage staco-app-service-localstack 'Bucket(Name=stacos'
 checkServiceByNameAndMessage localstack 'Initializing DynamoDB'

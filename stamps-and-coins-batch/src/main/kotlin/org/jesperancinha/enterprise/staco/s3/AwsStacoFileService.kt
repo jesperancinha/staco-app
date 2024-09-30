@@ -112,16 +112,21 @@ class AwsStacoFileService(
                             Files.write(path, it.asByteArray())
                             logger.info { "Downloaded file $path" }
                             val output = Files.createTempFile(targetFileKey, ".csv")
-                            decompressGzip(path, output)
-                            val reader = Files.newBufferedReader(output)
-                            val csvParser = CSVParser(reader, CSV_HEADER)
-                            val records = csvParser.records
-                            for (csvRecord in records.takeLast(records.size - 1)) {
-                                try {
-                                    staCoDynamoDBRepository.save(csvRecord.toEvent)
-                                } catch (ex: IllegalArgumentException) {
-                                    logger.info { "Record $csvRecord was rejected!. Reason: $ex" }
+                            runCatching {
+                                decompressGzip(path, output)
+                                val reader = Files.newBufferedReader(output)
+                                val csvParser = CSVParser(reader, CSV_HEADER)
+                                val records = csvParser.records
+                                for (csvRecord in records.takeLast(records.size - 1)) {
+                                    try {
+                                        staCoDynamoDBRepository.save(csvRecord.toEvent)
+                                            .subscribe { logger.info { "Saved $csvRecord to DynamoDB!" } }
+                                    } catch (ex: IllegalArgumentException) {
+                                        logger.info { "Record $csvRecord was rejected!. Reason: $ex" }
+                                    }
                                 }
+                            }.onFailure { exception ->
+                                logger.error("Something failed!", exception)
                             }
                             logger.info { "Download and parsing of file $output complete!" }
                             removeResource(targetFileKey)

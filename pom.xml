@@ -53,6 +53,7 @@
         <validation-api.version>2.0.1.Final</validation-api.version>
         <springdoc-openapi-starter.version>2.6.0</springdoc-openapi-starter.version>
         <jackson-module-kotlin.version>2.18.0</jackson-module-kotlin.version>
+        <commons-io.version>2.17.0</commons-io.version>
     </properties>
 
     <modules>
@@ -181,6 +182,12 @@
                 <artifactId>commons-csv</artifactId>
                 <version>${commons-csv.version}</version>
             </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>

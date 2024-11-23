@@ -8,7 +8,7 @@
     ]
   },
   "files": [
-    "src/test.ts",
+    "test.ts",
     "src/polyfills.ts"
   ],
   "include": [
@@ -16,6 +16,6 @@
     "src/**/*.d.ts"
   ],
   "exclude": [
-    "src/test.ts"
+    "test.ts"
   ]
 }

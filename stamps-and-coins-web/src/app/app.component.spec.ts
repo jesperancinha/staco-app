@@ -13,9 +13,9 @@ describe('AppComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         HttpClientModule,
+        AppComponent
       ],
       declarations: [
-        AppComponent
       ],
       providers: [
         AppService, {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}],

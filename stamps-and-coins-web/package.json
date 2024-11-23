@@ -6,7 +6,7 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "jest --verbose --no-cache",
-    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
+    "test-headless": "jest --verbose --no-cache",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prod": "ng build --prod"

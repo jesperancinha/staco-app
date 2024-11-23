@@ -13,7 +13,7 @@ build:
 	if [ -d node_modules ]; then rm -r node_modules; fi
 	yarn install && npm run build
 checkup: build
-	npm run test-headless
+	npm test
 	npm start
 
 

@@ -12,6 +12,9 @@ updates:
       - dependency-name: "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"
         versions: ["1.6.0-RC2", "1.6.0-RC3", "1.6.0"]
     groups:
+      spring:
+        patterns:
+          - "*spring*"
       amazon:
         patterns:
           - "*amazon*"

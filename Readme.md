@@ -26,12 +26,6 @@
 
 Please check the [TechStack.md](TechStack.md) file for details.
 
-## Introduction
-
-This repo is the official support repo to my article on medium:
-
-[![](https://img.shields.io/badge/Learning%20AWS%20with%20Localstack%20and%20Reactive%20Kotlin%20-%20A%20stamps%20and%20coins%20implementation-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://itnext.io/learning-aws-with-localstack-and-reactive-kotlin-a-stamps-and-coins-implementation-d10278f98587)
-
 #### Stable releases
 
 -   [1.0.0](https://github.com/jesperancinha/staco-app/tree/1.0.0) - [58e5cd42080a7950423020a64fa08515299d406a](https://github.com/jesperancinha/staco-app/tree/1.0.0)

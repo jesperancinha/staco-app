@@ -18,6 +18,9 @@ jobs:
         distribution: 'adopt'
         cache: maven
 
+    - name: Install Docker Compose
+      run: make dc-migration
+
     - name: Build and Test
       run:  mvn clean install jacoco:prepare-agent package jacoco:report
 

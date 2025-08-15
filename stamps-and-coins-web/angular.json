@@ -92,8 +92,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "buildTarget": "stamps-and-coins-manager:build"
+            "scripts": []
           }
         },
         "lint": {

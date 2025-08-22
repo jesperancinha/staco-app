@@ -11,13 +11,14 @@ import org.springframework.security.web.SecurityFilterChain
 @EnableWebSecurity
 class SecurityConfig {
     @Bean
-    fun filterChain(http: HttpSecurity): SecurityFilterChain = http.authorizeRequests()
-        .anyRequest().authenticated()
-        .and()
-        .oauth2Login()
-        .and()
-        .logout()
-        .and()
-        .csrf()
-        .disable().build()
+    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+        http
+            .authorizeHttpRequests { auth ->
+                auth.anyRequest().authenticated()
+            }
+            .oauth2Login {}
+            .logout {}
+            .csrf { csrf -> csrf.disable() }
+        return http.build()
+    }
 }

@@ -1,12 +1,20 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AppService} from "./services/app.service";
 import {catchError, Observable, of, retry} from "rxjs";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: './app.component.html',
+  imports: [
+    RouterOutlet,
+    RouterLinkActive,
+    RouterLink,
+    NgIf
+  ],
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {

@@ -2,10 +2,22 @@ import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
 import {StaCoService} from "../../services/sta.co.service";
 import {AppService} from "../../services/app.service";
+import {MatCard, MatCardTitle} from "@angular/material/card";
+import {FormsModule} from "@angular/forms";
+import {MatInput} from "@angular/material/input";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'search-component',
+  standalone: true,
   templateUrl: './search.component.html',
+  imports: [
+    MatCard,
+    MatCardTitle,
+    FormsModule,
+    MatInput,
+    NgIf
+  ],
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {

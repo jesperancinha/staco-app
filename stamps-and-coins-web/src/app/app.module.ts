@@ -34,7 +34,7 @@ export class XhrInterceptor implements HttpInterceptor {
 
 @NgModule({
   declarations: [
-    AppComponent, SearchComponent, LoginComponent, SearchDynamoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -49,6 +49,10 @@ export class XhrInterceptor implements HttpInterceptor {
     MatTableModule,
     FormsModule,
     MatGridListModule,
+    AppComponent,
+    SearchComponent,
+    LoginComponent,
+    SearchDynamoComponent,
   ],
   providers: [
     AppService, {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}],

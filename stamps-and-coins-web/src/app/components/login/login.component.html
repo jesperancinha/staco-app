@@ -1,4 +1,4 @@
-<mat-grid-list cols="1" rows="1" rowHeight="2:1">
+<mat-grid-list cols="1" rowHeight="2:1">
   <mat-grid-tile>
     <mat-card style="text-align: center">
       <div class="alert alert-danger" [hidden]="!error">
@@ -21,9 +21,11 @@
             <input type="password"
                    class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
           </div>
-          <div class="form_group" *ngIf="appService.failedLogin">
-            <p style="color: red">{{appService.failedLogin}}</p>
-          </div>
+          @if (appService.failedLogin) {
+            <div class="form_group">
+              <p style="color: red">{{appService.failedLogin}}</p>
+            </div>
+          }
           <button type="submit" class="btn btn-primary">Login</button>
         </form>
       </mat-card>

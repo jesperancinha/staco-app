@@ -2,10 +2,19 @@ import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
 import {AppService} from "../../services/app.service";
 import {StaCoDynamodbService} from "../../services/sta.co.dynamodb.service";
+import {MatCard, MatCardTitle} from "@angular/material/card";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'search-dynamo-component',
+  standalone: true,
   templateUrl: './search.dynamo.component.html',
+  imports: [
+    MatCardTitle,
+    MatCard,
+    NgIf,
+    NgForOf
+  ],
   styleUrls: ['./search.dynamo.component.scss']
 })
 export class SearchDynamoComponent implements OnInit {

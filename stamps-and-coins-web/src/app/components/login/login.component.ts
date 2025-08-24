@@ -2,11 +2,22 @@ import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {AppService} from "../../services/app.service";
+import {MatGridList, MatGridTile} from "@angular/material/grid-list";
+import {MatCard, MatCardTitle} from "@angular/material/card";
+import {FormsModule} from "@angular/forms";
 
 @Component({
-    selector: 'login-component',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+  selector: 'login-component',
+  standalone: true,
+  templateUrl: './login.component.html',
+  imports: [
+    MatGridList,
+    MatGridTile,
+    MatCard,
+    MatCardTitle,
+    FormsModule
+  ],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
 

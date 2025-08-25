@@ -9,8 +9,8 @@ export const routes: Routes = [
   {path: 'search/dynamo', component: SearchDynamoComponent},
   {path: 'service', component: SearchComponent},
   {path: 'login', component: LoginComponent},
-  {path: '/', component: LoginComponent},
-  {path: ':anything', component: LoginComponent},
+  {path: '', component: LoginComponent},
+  {path: '**', component: LoginComponent},
 ];
 
 @NgModule({

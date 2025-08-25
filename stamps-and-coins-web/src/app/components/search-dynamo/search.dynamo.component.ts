@@ -3,7 +3,7 @@ import {StaCo} from "../../model/staCo";
 import {AppService} from "../../services/app.service";
 import {StaCoDynamodbService} from "../../services/sta.co.dynamodb.service";
 import {MatCard, MatCardTitle} from "@angular/material/card";
-import {NgForOf, NgIf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'search-dynamo-component',
@@ -12,8 +12,7 @@ import {NgForOf, NgIf} from "@angular/common";
   imports: [
     MatCardTitle,
     MatCard,
-    NgIf,
-    NgForOf
+    FormsModule
   ],
   styleUrls: ['./search.dynamo.component.scss']
 })

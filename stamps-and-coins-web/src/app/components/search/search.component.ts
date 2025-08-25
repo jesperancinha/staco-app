@@ -5,7 +5,7 @@ import {AppService} from "../../services/app.service";
 import {MatCard, MatCardTitle} from "@angular/material/card";
 import {FormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
-import {NgIf} from "@angular/common";
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'search-component',
@@ -16,7 +16,7 @@ import {NgIf} from "@angular/common";
     MatCardTitle,
     FormsModule,
     MatInput,
-    NgIf
+    MatFormFieldModule
   ],
   styleUrls: ['./search.component.scss']
 })

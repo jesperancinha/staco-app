@@ -1,7 +1,7 @@
 package org.jesperancinha.enterprise.staco.service.repository
 
 import com.ninjasquad.springmockk.MockkBean
-import io.kotest.common.runBlocking
+import io.kotest.engine.runBlocking
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.toList

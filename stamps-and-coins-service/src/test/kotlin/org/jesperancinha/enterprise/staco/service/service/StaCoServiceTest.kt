@@ -1,12 +1,11 @@
 package org.jesperancinha.enterprise.staco.service.service
 
-import io.kotest.common.runBlocking
-import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.verify
+import kotlinx.coroutines.runBlocking
 import org.jesperancinha.enterprise.staco.service.repository.StaCoRepository
 import org.jesperancinha.enterprise.staco.service.repository.StaCoSearchRepository
 import org.junit.jupiter.api.BeforeEach

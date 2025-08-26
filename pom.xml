@@ -14,7 +14,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
-        <kotlin.version>2.2.0</kotlin.version>
+        <kotlin.version>2.2.10</kotlin.version>
         <aws-java-sdk.version>1.12.785</aws-java-sdk.version>
 
         <h2.version>2.3.232</h2.version>
@@ -37,11 +37,11 @@
         <springmockk.version>4.0.2</springmockk.version>
         <mockk.version>1.14.5</mockk.version>
         <kotest.version>6.0.1</kotest.version>
-        <reactor-test.version>3.7.7</reactor-test.version>
+        <reactor-test.version>3.7.8</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.21.3</test.containers.version>
         <commons-compress.version>1.27.1</commons-compress.version>
-        <commons-csv.version>1.14.0</commons-csv.version>
+        <commons-csv.version>1.14.1</commons-csv.version>
         <jakarta.validation-api.version>3.1.1</jakarta.validation-api.version>
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
@@ -52,7 +52,7 @@
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <springdoc-openapi-starter.version>2.8.8</springdoc-openapi-starter.version>
-        <jackson-module-kotlin.version>2.19.1</jackson-module-kotlin.version>
+        <jackson-module-kotlin.version>2.19.2</jackson-module-kotlin.version>
         <commons-io.version>2.19.0</commons-io.version>
     </properties>
 

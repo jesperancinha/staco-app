@@ -17,9 +17,6 @@
         <kotlin.version>2.2.10</kotlin.version>
         <aws-java-sdk.version>1.12.785</aws-java-sdk.version>
 
-        <h2.version>2.3.232</h2.version>
-        <postgresql.version>42.7.7</postgresql.version>
-
         <okta-spring-boot-starter.version>3.0.7</okta-spring-boot-starter.version>
         <sofware.amazon.version>2.17.200</sofware.amazon.version>
 
@@ -30,7 +27,6 @@
         <spring-cloud-starter-bootstrap.version>4.3.0</spring-cloud-starter-bootstrap.version>
         <spring-cloud-commons.version>4.3.0</spring-cloud-commons.version>
 
-        <!-- Do not change to RC2! -->
         <kotlinx-coroutines.version>1.10.2</kotlinx-coroutines.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
 
@@ -52,7 +48,6 @@
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <springdoc-openapi-starter.version>2.8.10</springdoc-openapi-starter.version>
-        <jackson-module-kotlin.version>2.20.0</jackson-module-kotlin.version>
         <commons-io.version>2.20.0</commons-io.version>
     </properties>
 
@@ -143,11 +138,6 @@
                 <version>${okta-spring-boot-starter.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgresql.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.security.oauth</groupId>
                 <artifactId>spring-security-oauth2</artifactId>
                 <version>${spring-security-oauth2.version}</version>
@@ -213,18 +203,7 @@
                 <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
                 <version>${springdoc-openapi-starter.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-kotlin</artifactId>
-                <version>${jackson-module-kotlin.version}</version>
-            </dependency>
 
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>${h2.version}</version>
-                <scope>test</scope>
-            </dependency>
             <dependency>
                 <groupId>io.projectreactor</groupId>
                 <artifactId>reactor-test</artifactId>

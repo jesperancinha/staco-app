@@ -27,7 +27,6 @@
         <spring-cloud-starter-bootstrap.version>4.3.0</spring-cloud-starter-bootstrap.version>
         <spring-cloud-commons.version>4.3.0</spring-cloud-commons.version>
 
-        <!-- Do not change to RC2! -->
         <kotlinx-coroutines.version>1.10.2</kotlinx-coroutines.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
 

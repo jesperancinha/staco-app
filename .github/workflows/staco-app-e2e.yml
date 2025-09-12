@@ -32,7 +32,7 @@ jobs:
             make dcup-full-action
 
       - name: Docker Startup Fail!
-        if: failure()
+        if: failure() || cancelled()
         run: |
           make docker-logs
 
@@ -40,7 +40,7 @@ jobs:
         run: make cypress-electron
 
       - name: Cypress Fail!
-        if: failure()
+        if: failure() || cancelled()
         run: |
           make docker-logs
 
@@ -70,7 +70,7 @@ jobs:
             make dcup-full-action
 
       - name: Docker Startup Fail!
-        if: failure()
+        if: failure() || cancelled()
         run: |
           make docker-logs
 
@@ -78,7 +78,7 @@ jobs:
         run: make cypress-chrome
 
       - name: Cypress Fail!
-        if: failure()
+        if: failure() || cancelled()
         run: |
           make docker-logs
 
@@ -108,7 +108,7 @@ jobs:
             make dcup-full-action
 
       - name: Docker Startup Fail!
-        if: failure()
+        if: failure() || cancelled()
         run: |
           make docker-logs
 
@@ -116,7 +116,7 @@ jobs:
         run: make cypress-firefox
 
       - name: Cypress Fail!
-        if: failure()
+        if: failure() || cancelled()
         run: |
           make docker-logs
 
@@ -146,7 +146,7 @@ jobs:
             make dcup-full-action
 
       - name: Docker Startup Fail!
-        if: failure()
+        if: failure() || cancelled()
         run: |
           make docker-logs
 
@@ -154,6 +154,6 @@ jobs:
         run: make cypress-edge
 
       - name: Cypress Fail!
-        if: failure()
+        if: failure() || cancelled()
         run: |
           make docker-logs

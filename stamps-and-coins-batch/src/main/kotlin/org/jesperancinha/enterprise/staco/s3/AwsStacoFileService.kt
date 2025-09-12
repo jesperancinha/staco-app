@@ -67,26 +67,22 @@ class AwsStacoFileService(
         val size: Long = Files.size(output)
 
         logger.info { "Sending object to host localstack on $s3AsyncClient" }
-        s3AsyncClient.putObject(
+        val uploadFuture = s3AsyncClient.putObject(
             PutObjectRequest
                 .builder()
                 .bucket(STACOS_BUCKET)
                 .key(fileName)
-                .metadata(
-                    mapOf(
-                        "Content-Type" to "application/x-gzip",
-                        "Content-Length" to size.toString()
-                    )
-                ).build(),
+                .contentType("application/x-gzip")
+                .contentLength(size)
+                .build(),
             AsyncRequestBody.fromBytes(fileIn.readBytes())
-        ).thenApplyAsync {
-            logger.info { "File $output is uploaded!" }
-        }
+        )
+        uploadFuture.join() // Wait for upload to complete
+        logger.info { "File $output is uploaded and uploadFuture completed!" }
         s3AsyncClient.logAllBuckets()
         logger.info { "File $path was created!" }
         logger.info { "File $output is being uploaded!" }
         logger.info { "Upload underway!" }
-
     }
 
     fun downloadFileFromS3UpdateDynamoDBAndDelete() {

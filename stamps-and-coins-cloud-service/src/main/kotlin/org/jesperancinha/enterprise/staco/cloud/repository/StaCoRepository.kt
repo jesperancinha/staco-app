@@ -10,19 +10,7 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable
 class StaCoRepository(
     private val enhancedClient: DynamoDbEnhancedClient
 ) {
-    private val table: DynamoDbTable<StaCo> =
-        enhancedClient.table("staco", TableSchema.builder(StaCo::class.java)
-            .newItemSupplier { StaCo() }
-            .addAttribute(
-                String::class.java,
-                Attribute.builder<String>()
-                    .name("dynId") // DynamoDB attribute name
-                    .getter { it.dynId }
-                    .setter { obj, value -> obj.dynId = value }
-                    .tags(StaticAttributeTags.primaryPartitionKey())
-                    .build()
-            )
-            .build())
+    private val table: DynamoDbTable<StaCo> = enhancedClient.table("staco", TableSchema.fromBean(StaCo::class.java))
 
     fun save(staCo: StaCo) {
         table.putItem(staCo)

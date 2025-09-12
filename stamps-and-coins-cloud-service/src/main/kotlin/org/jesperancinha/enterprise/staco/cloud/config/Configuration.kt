@@ -1,37 +1,37 @@
 package org.jesperancinha.enterprise.staco.cloud.config
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider
-import com.amazonaws.auth.BasicAWSCredentials
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClientBuilder
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
 import org.jesperancinha.enterprise.staco.common.aws.StaCoAwsProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-
+import software.amazon.awssdk.auth.credentials.AwsBasicCredentials
+import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider
+import software.amazon.awssdk.regions.Region
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient
+import java.net.URI
 
 @Configuration
 internal class StacoConfiguration {
 
     @Bean
-    fun dynamoDbMapperAsync(staCoAwsProperties: StaCoAwsProperties): DynamoDBMapper {
-        return DynamoDBMapper(
-            AmazonDynamoDBAsyncClientBuilder.standard()
-                .withEndpointConfiguration(
-                    com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration(
-                        staCoAwsProperties.endpoint.toString(),
-                        staCoAwsProperties.region
+    fun dynamoDbClient(staCoAwsProperties: StaCoAwsProperties): DynamoDbClient =
+        DynamoDbClient.builder()
+            .endpointOverride(URI.create(staCoAwsProperties.endpoint.toString()))
+            .region(Region.of(staCoAwsProperties.region))
+            .credentialsProvider(
+                StaticCredentialsProvider.create(
+                    AwsBasicCredentials.create(
+                        staCoAwsProperties.accessKey,
+                        staCoAwsProperties.secretKey
                     )
                 )
-                .withCredentials(
-                    AWSStaticCredentialsProvider(
-                        BasicAWSCredentials(
-                            staCoAwsProperties.accessKey,
-                            staCoAwsProperties.secretKey
-                        )
-                    )
-                )
-                .build()
-        )
-    }
+            )
+            .build()
 
+    @Bean
+    fun dynamoDbEnhancedClient(dynamoDbClient: DynamoDbClient): DynamoDbEnhancedClient =
+        DynamoDbEnhancedClient.builder()
+            .dynamoDbClient(dynamoDbClient)
+            .build()
 }

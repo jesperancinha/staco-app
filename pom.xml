@@ -22,7 +22,7 @@
 
         <spring-boot.version>3.5.5</spring-boot.version>
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
-        <spring-cloud-aws-dependencies.version>3.3.1</spring-cloud-aws-dependencies.version>
+        <spring-cloud-aws-dependencies.version>3.4.0</spring-cloud-aws-dependencies.version>
         <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
         <spring-cloud-starter-bootstrap.version>4.3.0</spring-cloud-starter-bootstrap.version>
         <spring-cloud-commons.version>4.3.0</spring-cloud-commons.version>
@@ -73,13 +73,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
+            <!-- <dependency>
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-bom</artifactId>
                 <version>${aws-java-sdk.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
+            </dependency> -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

@@ -10,7 +10,7 @@
 
     <name>Stamps and Coins Root</name>
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>

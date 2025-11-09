@@ -120,6 +120,7 @@ dynamo-wait:
 	bash staco_dynamowait.sh
 dcup-light:
 	docker-compose -p ${GITHUB_RUN_ID} up -d postgres localstack
+dcup-dbs: dcup-light
 dcd: dc-migration
 	docker-compose -p ${GITHUB_RUN_ID} down
 dcup: dcd docker-clean docker staco-wait

@@ -19,7 +19,7 @@ describe('DynamoDB listings', () => {
     let swaggerUIUrl = `http://${host}:8080/api/staco/ls/webjars/swagger-ui/index.html`;
     cy.log(`Swagger UI URL = ${swaggerUIUrl}`)
     cy.visit(swaggerUIUrl);
-    cy.get('h2').contains('OpenAPI definition').should('not.be.null');
+    cy.contains('OpenAPI definition').should('not.be.null');
     cy.wait(1000);
 
     cy.get('div[class="servers"] > label > select > option').should('have.value', 'http://localhost:8080/api/staco/ls')

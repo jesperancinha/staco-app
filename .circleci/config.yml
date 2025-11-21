@@ -20,6 +20,12 @@ jobs:
             export PATH=$PATH:$JAVA_HOME/bin
 
       - run:
+          name: Docker Compose Install
+          command: export JAVA_HOME=/opt/jdk21 &&
+              export PATH=$PATH:$JAVA_HOME/bin &&
+              make dc-migration
+
+      - run:
           name: Build
           command: export JAVA_HOME=/opt/jdk21 &&
               export PATH=$PATH:$JAVA_HOME/bin &&

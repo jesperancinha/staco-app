@@ -1,18 +1,18 @@
 package org.jesperancinha.enterprise.staco.service.repository
 
 import com.ninjasquad.springmockk.MockkBean
-import io.kotest.engine.runBlocking
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.reactive.asFlow
-import org.jesperancinha.enterprise.staco.service.containers.AbstractTestContainersIT.DockerPostgresDataInitializer
+import kotlinx.coroutines.test.runTest
 import org.jesperancinha.enterprise.staco.common.aws.StaCoDynamoDBRepository
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType.COIN
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType.STAMP
 import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
+import org.jesperancinha.enterprise.staco.service.containers.AbstractTestContainersIT.DockerPostgresDataInitializer
 import org.jesperancinha.enterprise.staco.service.domain.StaCo
 import org.jesperancinha.enterprise.staco.service.domain.toData
 import org.junit.jupiter.api.BeforeEach
@@ -58,13 +58,13 @@ internal class StaCoSearchRepositoryTest @Autowired constructor(
     ).toData.copy(stacoId = UUID.randomUUID())
 
     @BeforeEach
-    fun setUp(): Unit = runBlocking {
+    fun setUp(): Unit = runTest {
         staCoRepository.save(staCo1)
         staCoRepository.save(staCo2)
     }
 
     @Test
-    fun testStaCoLike_whenSearchName_thenCallSearchName(): Unit = runBlocking {
+    fun testStaCoLike_whenSearchName_thenCallSearchName(): Unit = runTest {
         val searchItem = "%Wealth%"
         val entityRecords =
             staCoSearchRepository.findStaCosByDescriptionLike(

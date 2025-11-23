@@ -32,7 +32,7 @@
 
         <springmockk.version>4.0.2</springmockk.version>
         <mockk.version>1.14.6</mockk.version>
-        <kotest.version>6.0.5</kotest.version>
+        <kotest.version>5.9.1</kotest.version>
         <reactor-test.version>3.8.0</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
         <test.containers.version>1.21.3</test.containers.version>
@@ -101,6 +101,23 @@
                 <version>${awssdk.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-bom</artifactId>
+                <version>${kotest.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions-api-jvm</artifactId>
+                <version>${kotest.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions-core-jvm</artifactId>
+                <version>${kotest.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -225,24 +242,6 @@
                 <groupId>io.mockk</groupId>
                 <artifactId>mockk-jvm</artifactId>
                 <version>${mockk.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-runner-junit5-jvm</artifactId>
-                <version>${kotest.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-assertions-core-jvm</artifactId>
-                <version>${kotest.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-assertions-core</artifactId>
-                <version>${kotest.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

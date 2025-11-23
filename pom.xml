@@ -49,6 +49,7 @@
         <validation-api.version>2.0.1.Final</validation-api.version>
         <springdoc-openapi-starter.version>2.8.14</springdoc-openapi-starter.version>
         <commons-io.version>2.21.0</commons-io.version>
+        <playwright.version>1.55.0</playwright.version>
     </properties>
 
     <modules>
@@ -106,7 +107,11 @@
                 <artifactId>spring-cloud-starter-bootstrap</artifactId>
                 <version>${spring-cloud-starter-bootstrap.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.microsoft.playwright</groupId>
+                <artifactId>playwright</artifactId>
+                <version>${playwright.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.jesperancinha.enterprise</groupId>
                 <artifactId>stamps-and-coins-common</artifactId>

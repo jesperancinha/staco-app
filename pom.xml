@@ -35,7 +35,7 @@
         <kotest.version>5.9.1</kotest.version>
         <reactor-test.version>3.8.0</reactor-test.version>
         <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
-        <test.containers.version>1.21.3</test.containers.version>
+        <test.containers.version>2.0.2</test.containers.version>
         <commons-compress.version>1.28.0</commons-compress.version>
         <commons-csv.version>1.14.1</commons-csv.version>
         <jakarta.validation-api.version>3.1.1</jakarta.validation-api.version>
@@ -67,6 +67,13 @@
     <dependencyManagement>
 
         <dependencies>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${test.containers.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>io.awspring.cloud</groupId>
                 <artifactId>spring-cloud-aws-dependencies</artifactId>
@@ -250,32 +257,6 @@
                 <version>${springmockk.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>localstack</artifactId>
-                <version>${test.containers.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${test.containers.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>testcontainers</artifactId>
-                <version>${test.containers.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>${test.containers.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- This Dependency is added as a workaround for the following issue -->
-            <!--- https://github.com/Kotlin/kotlinx.coroutines/issues/3334 -->
             <dependency>
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kotlinx-coroutines-debug</artifactId>

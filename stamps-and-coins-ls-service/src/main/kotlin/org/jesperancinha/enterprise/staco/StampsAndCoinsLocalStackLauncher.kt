@@ -29,7 +29,7 @@ class StampsAndCoinsLocalStackLauncher(
 
     private val logger = KotlinLogging.logger {}
 
-    override fun run(args: ApplicationArguments?) {
+    override fun run(args: ApplicationArguments) {
         s3AsyncClient.listBuckets().thenApply { response ->
             response.buckets().forEach {
                 logger.info { it }

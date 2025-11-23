@@ -25,18 +25,10 @@ class ConfigurationHandler(
     val passwordEncoder: PasswordEncoder,
     val dataSource: DataSource
 ) : AuthenticationSuccessHandler {
-    @Throws(IOException::class, ServletException::class)
-    override fun onAuthenticationSuccess(
-        httpServletRequest: HttpServletRequest?,
-        httpServletResponse: HttpServletResponse,
-        authentication: Authentication
-    ) {
-        httpServletResponse.sendRedirect("/search")
-    }
 
     @Bean
     fun runner(): CommandLineRunner? {
-        return CommandLineRunner { args: Array<String?>? ->
+        return CommandLineRunner { args: Array<String>? ->
             run {
                 val resource = applicationContext.getResource("classpath:schema.sql")
                 ScriptUtils.executeSqlScript(dataSource.connection, resource)
@@ -45,5 +37,13 @@ class ConfigurationHandler(
                 )
             }
         }
+    }
+
+    override fun onAuthenticationSuccess(
+        request: HttpServletRequest,
+        response: HttpServletResponse,
+        authentication: Authentication
+    ) {
+        response.sendRedirect("/search")
     }
 }

@@ -21,7 +21,7 @@ class ApplicationUser {
     var uuid: UUID? = null
 
     @Column
-    var email: String? = null
+    var email: String = ""
 
     @Column
     var name: String? = null
@@ -30,7 +30,7 @@ class ApplicationUser {
     var password: String? = null
 
     @Column
-    var role: String? = null
+    var role: String = "ROLE_USER"
 
     @get:Nullable
     @Column

@@ -9,6 +9,7 @@ import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
 import org.jesperancinha.enterprise.staco.common.domain.ObjectType
 import org.jesperancinha.enterprise.staco.common.dto.Description
 import org.jesperancinha.enterprise.staco.common.dto.StaCoDto
+import org.jesperancinha.enterprise.staco.service.containers.AbstractTestContainersIT.DockerPostgresDataInitializer
 import org.jesperancinha.enterprise.staco.service.service.StaCoService
 import org.jesperancinha.enterprise.staco.service.utils.AbstractStaCoTest
 import org.junit.jupiter.api.BeforeEach
@@ -16,8 +17,9 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
@@ -28,10 +30,11 @@ import reactor.core.publisher.Flux
 import javax.sql.DataSource
 
 
-@WebMvcTest(controllers = [StaCoController::class])
 @ActiveProfiles("test")
 @MockkBean(classes = [DataSource::class])
 @Disabled
+@SpringBootTest
+@ContextConfiguration(initializers = [DockerPostgresDataInitializer::class])
 internal class StaCoControllerTest : AbstractStaCoTest() {
 
     private lateinit var mockMvc: MockMvc
@@ -103,10 +106,9 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
 
     @Test
     fun testGetAllBySearchItem_whenCallingWithTooLongSearchItem_thenFail() {
-        val exception = assertThrows<org.springframework.web.util.NestedServletException> {
+        val exception = assertThrows<Exception> {
             this.mockMvc
                 .perform(get("/api/staco/all/aaaaaaaaaaaaaaaaaaa/0/10/description/asc"))
-
         }
 
         assertThat(exception).hasCauseExactlyInstanceOf(ConstraintViolationException::class.java)
@@ -117,7 +119,7 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
 
     @Test
     fun testGetAllBySearchItem_whenCallingWithInvalidSearchItem_thenFail() {
-        val exception = assertThrows<org.springframework.web.util.NestedServletException> {
+        val exception = assertThrows<Exception> {
             this.mockMvc
                 .perform(get("/api/staco/all/%23%24%40/0/10/description/asc"))
 

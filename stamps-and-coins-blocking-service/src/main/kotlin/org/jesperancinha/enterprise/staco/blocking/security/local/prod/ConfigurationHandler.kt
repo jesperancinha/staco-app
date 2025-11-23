@@ -10,11 +10,12 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 @Profile("localprod && !test")
 class ConfigurationHandler : AuthenticationSuccessHandler {
+
     override fun onAuthenticationSuccess(
-        httpServletRequest: HttpServletRequest?,
-        httpServletResponse: HttpServletResponse,
+        request: HttpServletRequest,
+        response: HttpServletResponse,
         authentication: Authentication
     ) {
-        httpServletResponse.sendRedirect("/search")
+        response.sendRedirect("/search")
     }
 }

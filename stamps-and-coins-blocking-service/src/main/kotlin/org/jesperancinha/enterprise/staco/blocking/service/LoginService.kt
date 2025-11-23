@@ -1,6 +1,7 @@
 package org.jesperancinha.enterprise.staco.blocking.service
 
 import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.security.oauth2.provider.token.TokenStore
@@ -10,11 +11,11 @@ import org.springframework.stereotype.Service
 @Service
 class LoginService(
     val jdbcTemplate: JdbcTemplate,
-    @Autowired(required = false)
+    @param:Autowired(required = false)
     val tokenStore: TokenStore?
 ) {
-    fun logout(request: HttpServletRequest) {
-        SecurityContextLogoutHandler().logout(request, null, null)
+    fun logout(request: HttpServletRequest, response: HttpServletResponse) {
+        SecurityContextLogoutHandler().logout(request, response, null)
         val authorization = request.getHeader("Authorization")
         val token = authorization.split(" ")[1]
         jdbcTemplate.update("delete from oauth_access_token where token_id = ?", token)

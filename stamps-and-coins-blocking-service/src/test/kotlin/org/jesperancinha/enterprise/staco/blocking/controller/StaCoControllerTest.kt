@@ -1,6 +1,7 @@
 package org.jesperancinha.enterprise.staco.blocking.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.ninjasquad.springmockk.MockkBean
 import jakarta.servlet.ServletException
 import jakarta.validation.ConstraintViolationException
 import org.assertj.core.api.Assertions.assertThat
@@ -16,8 +17,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.boot.test.mock.mockito.MockBean
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -28,9 +28,9 @@ import org.springframework.web.context.WebApplicationContext
 import javax.sql.DataSource
 
 
-@WebMvcTest(controllers = [StaCoController::class])
+@SpringBootTest
 @ActiveProfiles("test")
-@MockBean(classes = [DataSource::class, LoginService::class])
+@MockkBean(classes = [DataSource::class, LoginService::class])
 internal class StaCoControllerTest {
 
     private lateinit var mockMvc: MockMvc
@@ -68,7 +68,7 @@ internal class StaCoControllerTest {
     @Autowired
     lateinit var context: WebApplicationContext
 
-    @MockBean
+    @MockkBean
     lateinit var staCoService: StaCoService
 
     @BeforeEach

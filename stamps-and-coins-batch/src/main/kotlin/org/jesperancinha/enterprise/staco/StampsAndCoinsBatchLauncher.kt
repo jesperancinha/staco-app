@@ -14,14 +14,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 
 
 @SpringBootApplication
-class StampsAndCoinsBatchLauncher(
-    val scheduler: Scheduler
-) :ApplicationRunner {
-    override fun run(args: ApplicationArguments?) {
-        val job: JobDetail = newJob(StaCoS3LoaderJob::class.java)
+class StampsAndCoinsBatchLauncher() : ApplicationRunner {
+    override fun run(args: ApplicationArguments) {
+        newJob(StaCoS3LoaderJob::class.java)
             .withIdentity("StacoJob1", "StacoGroup1")
             .build()
-        val trigger: Trigger = newTrigger()
+        newTrigger()
             .withIdentity("StacoTrigger1", "StacoGroup1")
             .startNow()
             .withSchedule(

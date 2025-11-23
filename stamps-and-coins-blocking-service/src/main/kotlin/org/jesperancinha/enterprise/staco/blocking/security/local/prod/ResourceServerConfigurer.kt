@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler
+import org.springframework.security.web.SecurityFilterChain
 
 @Configuration
 @EnableResourceServer
@@ -18,19 +19,22 @@ class ResourceServerConfigurer : ResourceServerConfigurerAdapter() {
     }
 
     override fun configure(http: HttpSecurity) {
-        http.authorizeRequests()
-            .requestMatchers("/**").hasRole("ADMIN")
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .and()
-            .exceptionHandling()
-            .accessDeniedHandler(OAuth2AccessDeniedHandler())
-            .and().logout().logoutSuccessUrl("/").permitAll()
-            .and()
-            .csrf()
-            .disable()
+        http
+            .authorizeHttpRequests { auth ->
+                auth
+                    .requestMatchers("/**").hasRole("ADMIN")
+                    .anyRequest().authenticated()
+            }
+            .formLogin { }   // replaces .formLogin()
+            .exceptionHandling { exceptions ->
+                exceptions.accessDeniedHandler(OAuth2AccessDeniedHandler())
+            }
+            .logout { logout ->
+                logout
+                    .logoutSuccessUrl("/")
+                    .permitAll()
+            }
+            .csrf { it.disable() }
     }
 
     companion object {

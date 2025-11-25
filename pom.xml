@@ -49,7 +49,7 @@
         <validation-api.version>2.0.1.Final</validation-api.version>
         <springdoc-openapi-starter.version>2.8.14</springdoc-openapi-starter.version>
         <commons-io.version>2.21.0</commons-io.version>
-        <playwright.version>1.55.0</playwright.version>
+        <playwright.version>1.56.0</playwright.version>
     </properties>
 
     <modules>

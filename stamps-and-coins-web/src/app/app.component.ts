@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from "@angular/common/types/http";
 import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AppService} from "./services/app.service";
 import {catchError, Observable, of, retry} from "rxjs";
-import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -12,8 +11,7 @@ import {NgIf} from "@angular/common";
   imports: [
     RouterOutlet,
     RouterLinkActive,
-    RouterLink,
-    NgIf
+    RouterLink
   ],
   styleUrls: ['./app.component.scss']
 })

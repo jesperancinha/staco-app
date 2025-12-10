@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient} from '@angular/common/types/http';
 import {catchError, Observable, of, retry} from "rxjs";
 import {Router} from "@angular/router";
 import {StaCo} from "../model/staCo";

@@ -1,28 +1,27 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {Injectable, NgModule} from '@angular/core';
+import {bootstrapApplication} from '@angular/platform-browser';
+import {importProvidersFrom, Injectable} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {SearchComponent} from "./components/search/search.component";
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {MatInputModule} from "@angular/material/input";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatSelectModule} from "@angular/material/select";
-import {MatCardModule} from "@angular/material/card";
-import {MatListModule} from "@angular/material/list";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {FormsModule} from "@angular/forms";
-import {MatTableModule} from "@angular/material/table";
-import {LoginComponent} from "./components/login/login.component";
+import {
+  HTTP_INTERCEPTORS,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  provideHttpClient,
+  withInterceptorsFromDi
+} from "@angular/common/types/http";
+import {MatInputModule} from "@angular/material/types/input";
+import {MatFormFieldModule} from "@angular/material/types/_form-field-module-chunk";
+import {MatSelectModule} from "@angular/material/types/select";
+import {MatCardModule} from "@angular/material/types/card";
+import {MatListModule} from "@angular/material/types/list";
+import {provideAnimations} from "@angular/platform-browser/types/animations";
+import {MatTableModule} from "@angular/material/types/table";
 import {AppService} from "./services/app.service";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {SearchDynamoComponent} from "./components/search-dynamo/search.dynamo.component";
+import {MatGridListModule} from "@angular/material/types/grid-list";
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
-
-  constructor(private appService: AppService) {
-
-  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const xhr = req.clone({
@@ -31,32 +30,27 @@ export class XhrInterceptor implements HttpInterceptor {
     return next.handle(xhr);
   }
 }
-
-@NgModule({
-  declarations: [
-
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatCardModule,
-    MatListModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    FormsModule,
-    MatGridListModule,
-    AppComponent,
-    SearchComponent,
-    LoginComponent,
-    SearchDynamoComponent,
-  ],
+bootstrapApplication(AppComponent, {
   providers: [
-    AppService, {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}],
-  bootstrap: [AppComponent]
-})
-export class AppModule {
-}
+    importProvidersFrom(
+      AppRoutingModule,
+      MatInputModule,
+      MatFormFieldModule,
+      MatSelectModule,
+      MatCardModule,
+      MatListModule,
+      MatTableModule,
+      MatGridListModule
+    ),
+    provideHttpClient(
+      withInterceptorsFromDi()
+    ),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: XhrInterceptor,
+      multi: true
+    },
+    provideAnimations(),
+    AppService
+  ]
+});

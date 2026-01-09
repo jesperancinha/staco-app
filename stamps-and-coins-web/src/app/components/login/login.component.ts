@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient} from '@angular/common/types/http';
 import {Router} from '@angular/router';
 import {AppService} from "../../services/app.service";
-import {MatGridList, MatGridTile} from "@angular/material/grid-list";
-import {MatCard, MatCardTitle} from "@angular/material/card";
+import {MatGridList, MatGridTile} from "@angular/material/types/grid-list";
+import {MatCard, MatCardTitle} from "@angular/material/types/card";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -23,9 +23,9 @@ export class LoginComponent {
 
     credentials = {username: '', password: ''};
 
-    error: number;
-    private submitted: boolean;
-    private loading: boolean;
+    error: number | undefined;
+    private submitted: boolean | undefined;
+    private loading: boolean | undefined;
 
     constructor(public appService: AppService, private http: HttpClient, private router: Router) {
       if(!router.url.endsWith("login")){

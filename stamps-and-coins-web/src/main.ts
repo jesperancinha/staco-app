@@ -1,14 +1,14 @@
 import {enableProdMode} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter} from '@angular/router';
-import {provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS} from '@angular/common/types/http';
 
 import {environment} from './environments/environment';
 import {AppComponent} from './app/app.component';
 import {routes} from './app/app-routing.module';
 import {AppService} from './app/services/app.service';
 import {XhrInterceptor} from './app/app.module';
+import {provideAnimations} from "@angular/platform-browser/types/animations";
 
 if (environment.production) {
   enableProdMode();

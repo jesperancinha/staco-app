@@ -2,10 +2,10 @@ import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
 import {StaCoService} from "../../services/sta.co.service";
 import {AppService} from "../../services/app.service";
-import {MatCard, MatCardTitle} from "@angular/material/card";
+import {MatCard, MatCardTitle} from "@angular/material/types/card";
 import {FormsModule} from "@angular/forms";
-import {MatInput} from "@angular/material/input";
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInput} from "@angular/material/types/input";
+import {MatFormFieldModule} from '@angular/material/types/_form-field-module-chunk';
 
 @Component({
   selector: 'search-component',
@@ -23,10 +23,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 export class SearchComponent implements OnInit {
   title = 'stamps-and-coins-manager';
   term: string = "";
-  allStaCos: StaCo[];
+  allStaCos: StaCo[] | undefined;
   tableSizeEntities = 5;
   tableSizes = [5, 10, 15, 20];
-  selectedRecord: StaCo;
+  selectedRecord: StaCo | undefined;
   validationSize: boolean = true;
   validationContent: boolean = true;
   currentPageStaCo: number = 0;
@@ -95,9 +95,9 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  onTableSizeChange(event): void {
+  onTableSizeChange($event: Event): void {
     this.currentPageStaCo = 0;
-    this.currentPageStaCoSize = event.target.value;
+    this.currentPageStaCoSize = $event.target.value;
     this.fetchData();
   }
 

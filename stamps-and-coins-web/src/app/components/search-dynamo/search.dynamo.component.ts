@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {StaCo} from "../../model/staCo";
 import {AppService} from "../../services/app.service";
 import {StaCoDynamodbService} from "../../services/sta.co.dynamodb.service";
-import {MatCard, MatCardTitle} from "@angular/material/card";
+import {MatCard, MatCardTitle} from "@angular/material/types/card";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -18,10 +18,10 @@ import {FormsModule} from "@angular/forms";
 })
 export class SearchDynamoComponent implements OnInit {
   title = 'stamps-and-coins-manager';
-  allStaCos: StaCo[];
+  allStaCos: StaCo[] | undefined;
   tableSizeEntities = 5;
   tableSizes = [5, 10, 15, 20];
-  selectedRecord: StaCo;
+  selectedRecord: StaCo | undefined;
   validationSize: boolean = true;
   validationContent: boolean = true;
   currentPageStaCo: number = 0;
@@ -29,7 +29,7 @@ export class SearchDynamoComponent implements OnInit {
   pagesStaCos: number[] = [];
   sortColumn: string = 'description';
   order: string = 'asc';
-  private totalPages: number;
+  private totalPages: number | undefined;
 
   constructor(private staCoDynamodbService: StaCoDynamodbService, public appService: AppService) {
   }

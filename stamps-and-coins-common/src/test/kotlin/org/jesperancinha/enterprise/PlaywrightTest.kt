@@ -1,27 +1,39 @@
 package org.jesperancinha.enterprise
 
-import com.microsoft.playwright.Browser
 import com.microsoft.playwright.BrowserContext
+import com.microsoft.playwright.BrowserType
 import com.microsoft.playwright.Page
 import com.microsoft.playwright.Playwright
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import java.nio.file.Paths
 
 class PlaywrightTest {
     lateinit var context: BrowserContext
     lateinit var page: Page
+    val playwright = Playwright.create()
+    val browser = playwright.chromium().launch(
+        BrowserType.LaunchOptions()
+            .setExecutablePath(Paths.get("/usr/bin/google-chrome"))
+    )
 
     @BeforeEach
     fun createContextAndPage() {
+
         context = browser.newContext()
         page = context.newPage()
     }
 
     @AfterEach
     fun closeContext() {
-        context.close()
+        if (::context.isInitialized) {
+            context.close()
+            playwright.close()
+        }
     }
 
     @Test
@@ -52,25 +64,4 @@ class PlaywrightTest {
         page.url() shouldBe "https://en.wikipedia.org/wiki/Playwright"
     }
 
-    companion object {
-        // Shared between all tests in this class.
-        lateinit var playwright: Playwright
-        lateinit var browser: Browser
-
-        @JvmStatic
-        @BeforeAll
-        fun launchBrowser() {
-            playwright = Playwright.create()
-//            browser = playwright!!.chromium().launch(
-//                LaunchOptions().setHeadless(false)
-//            )
-            browser = playwright.chromium().launch()
-        }
-
-        @JvmStatic
-        @AfterAll
-        fun closeBrowser() {
-            playwright.close()
-        }
-    }
 }

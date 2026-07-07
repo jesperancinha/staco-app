@@ -18,19 +18,15 @@ class ResourceServerConfigurer : ResourceServerConfigurerAdapter() {
     }
 
     override fun configure(http: HttpSecurity) {
-        http.authorizeRequests()
-            .requestMatchers("/**").hasRole("ADMIN")
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .and()
-            .exceptionHandling()
-            .accessDeniedHandler(OAuth2AccessDeniedHandler())
-            .and().logout().logoutSuccessUrl("/").permitAll()
-            .and()
-            .csrf()
-            .disable()
+        http
+            .authorizeHttpRequests { auth ->
+                auth.requestMatchers("/**").hasRole("ADMIN")
+                    .anyRequest().authenticated()
+            }
+            .formLogin { }
+            .exceptionHandling { it.accessDeniedHandler(OAuth2AccessDeniedHandler()) }
+            .logout { it.logoutSuccessUrl("/").permitAll() }
+            .csrf { it.disable() }
     }
 
     companion object {

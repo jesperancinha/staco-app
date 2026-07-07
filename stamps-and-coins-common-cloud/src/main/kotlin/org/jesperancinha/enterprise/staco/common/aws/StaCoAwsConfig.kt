@@ -30,9 +30,9 @@ private val logger = object {
 @Configuration
 @EnableConfigurationProperties(StaCoAwsProperties::class)
 class StaCosAwsClientsConfiguration(
-    @Value("\${aws.accessKeyId}")
+    @param:Value($$"${aws.accessKeyId}")
     val accessKeyId: String,
-    @Value("\${aws.secretKey}")
+    @param:Value($$"${aws.secretKey}")
     val secretKey: String
 ) {
 

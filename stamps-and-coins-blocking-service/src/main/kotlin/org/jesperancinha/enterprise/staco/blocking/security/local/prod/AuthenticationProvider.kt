@@ -9,7 +9,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
-import java.util.Objects
 
 @Component
 @Primary
@@ -32,10 +31,10 @@ class AuthenticationProvider(
             throw RuntimeException("Credentials failure!")
         }
         val user: ApplicationUser? = userRepository.findUserByName(authentication.name)
-        if (Objects.nonNull(user)) {
+        if (user != null) {
             val providedUser = authentication.name
             val providedUserPassword = authentication.credentials as String
-            if (providedUser.equals(user!!.name, ignoreCase = true) && passwordEncoder.matches(
+            if (providedUser.equals(user.name, ignoreCase = true) && passwordEncoder.matches(
                     providedUserPassword,
                     user.password
                 )

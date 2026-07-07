@@ -32,7 +32,9 @@ import javax.sql.DataSource
 @ActiveProfiles("test")
 @MockkBean(classes = [DataSource::class])
 @Disabled
-internal class StaCoControllerTest : AbstractStaCoTest() {
+internal class StaCoControllerTest @Autowired constructor(
+    private val context: WebApplicationContext
+) : AbstractStaCoTest() {
 
     private lateinit var mockMvc: MockMvc
 
@@ -60,9 +62,6 @@ internal class StaCoControllerTest : AbstractStaCoTest() {
             widthMM = "10"
         )
     )
-
-    @Autowired
-    lateinit var context: WebApplicationContext
 
     @MockkBean(relaxed = true)
     lateinit var staCoService: StaCoService

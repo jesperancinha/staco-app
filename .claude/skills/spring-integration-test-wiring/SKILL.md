@@ -177,6 +177,8 @@ replace with:
 ## 6. Migrate `@MockBean` annotations
 
 The annotation `@MockBean` is deprecated and its usage needs to be replaced by `@MockitoBean`
+The annotation `@SpyBean` is deprecated and its usage needs to be replaced by `@MockitoSpyBean`
+The above annotations should be updated in the same way following the examples bellow.
 
 ### Example 1
 
@@ -196,7 +198,6 @@ private MyService myService;
 ### Example 2
 
 Replace also the usages of `import org.springframework.boot.test.mock.mockito.MockBean;` with `import org.springframework.test.context.bean.override.mockito.MockitoBean;`
-
 
 ### Example 3
 The beans that are declared are like this:
@@ -222,3 +223,4 @@ Before submitting/reviewing an integration test class, confirm:
 - [ ] No `@Autowired` on fields
 - [ ] Use the new Spring configuration for security
 - [ ] New Spring versions don't use `AntPathRequestMatcher` anymore. Make sure none is used
+- [ ] No `@MockBean` or `@SpyBean` annotations are used. Use `@MockitoBean` or `@MockitoSpyBean` instead.

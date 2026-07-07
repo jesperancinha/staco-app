@@ -22,9 +22,9 @@ object AbstractTestContainersIT {
     }
 
     class DockerPostgresDataInitializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
-        var jdbcUrl = "spring.r2dbc.url=r2dbc:postgresql://postgres@${postgreSQLContainer.host}:${postgreSQLContainer.firstMappedPort}/staco"
-        var username = "spring.r2dbc.username=" + postgreSQLContainer.username
-        var password = "spring.r2dbc.password=" + postgreSQLContainer.password
+        val jdbcUrl = "spring.r2dbc.url=r2dbc:postgresql://postgres@${postgreSQLContainer.host}:${postgreSQLContainer.firstMappedPort}/staco"
+        val username = "spring.r2dbc.username=" + postgreSQLContainer.username
+        val password = "spring.r2dbc.password=" + postgreSQLContainer.password
         override fun initialize(applicationContext: ConfigurableApplicationContext) {
             TestPropertySourceUtils
                 .addInlinedPropertiesToEnvironment(applicationContext, jdbcUrl, username, password)

@@ -20,7 +20,9 @@ import org.springframework.test.context.ContextConfiguration
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ContextConfiguration(initializers = [DockerPostgresDataInitializer::class])
-internal class StaCoRepositoryTest {
+internal class StaCoRepositoryTest @Autowired constructor(
+    private val staCoRepository: StaCoRepository
+) {
 
     val staCo1: StaCo = StaCoDto(
         description = Description(value = "Queen of Power"),
@@ -45,9 +47,6 @@ internal class StaCoRepositoryTest {
         heightMM = "0",
         widthMM = "10"
     ).toData
-
-    @Autowired
-    lateinit var staCoRepository: StaCoRepository
 
     @BeforeEach
     fun setUp() {

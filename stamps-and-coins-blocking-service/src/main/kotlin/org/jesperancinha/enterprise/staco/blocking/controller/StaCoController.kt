@@ -5,7 +5,6 @@ import jakarta.servlet.http.HttpServletResponse
 import org.jesperancinha.enterprise.staco.common.dto.ResponseDto
 import org.jesperancinha.enterprise.staco.blocking.service.LoginService
 import org.jesperancinha.enterprise.staco.blocking.service.StaCoService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import jakarta.validation.constraints.Pattern
@@ -17,8 +16,7 @@ import jakarta.validation.constraints.Size
 @Validated
 class StaCoController(
     val staCoService: StaCoService,
-    @Autowired(required = false)
-    var loginService: LoginService
+    val loginService: LoginService
 ) {
     @GetMapping("staco/login")
     fun login(httpServletResponse: HttpServletResponse) {

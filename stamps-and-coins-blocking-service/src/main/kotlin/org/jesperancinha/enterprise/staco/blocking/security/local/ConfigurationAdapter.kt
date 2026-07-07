@@ -17,10 +17,10 @@ class ConfigurationAdapter(
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain = http
         .userDetailsService(jdbcUserDetailsManager)
-        .authorizeRequests()
-        .requestMatchers("/**")
-        .authenticated()
-        .and()
-        .formLogin()
-        .and().csrf().disable().build()
+        .authorizeHttpRequests { auth ->
+            auth.requestMatchers("/**").authenticated()
+        }
+        .formLogin { }
+        .csrf { csrf -> csrf.disable() }
+        .build()
 }

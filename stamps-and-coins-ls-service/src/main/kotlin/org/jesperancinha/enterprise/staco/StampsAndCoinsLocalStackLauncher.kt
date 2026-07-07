@@ -21,10 +21,10 @@ class StampsAndCoinsLocalStackLauncher(
     val s3AsyncClient: S3AsyncClient,
     val dynamoDbAsyncClient: DynamoDbAsyncClient
 ) : ApplicationRunner {
-    @Value("\${org.jesperancinha.enterprise.staco.root.name}")
+    @field:Value($$"${org.jesperancinha.enterprise.staco.root.name}")
     lateinit var username: String
 
-    @Value("\${org.jesperancinha.enterprise.staco.root.password}")
+    @field:Value($$"${org.jesperancinha.enterprise.staco.root.password}")
     lateinit var password: String
 
     private val logger = KotlinLogging.logger {}

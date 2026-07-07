@@ -17,12 +17,12 @@ import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 import javax.sql.DataSource
@@ -30,8 +30,10 @@ import javax.sql.DataSource
 
 @WebMvcTest(controllers = [StaCoController::class])
 @ActiveProfiles("test")
-@MockBean(classes = [DataSource::class, LoginService::class])
-internal class StaCoControllerTest {
+@MockitoBean(types = [DataSource::class, LoginService::class])
+internal class StaCoControllerTest @Autowired constructor(
+    private val context: WebApplicationContext
+) {
 
     private lateinit var mockMvc: MockMvc
 
@@ -65,10 +67,7 @@ internal class StaCoControllerTest {
         totalRecords = 0,
     )
 
-    @Autowired
-    lateinit var context: WebApplicationContext
-
-    @MockBean
+    @MockitoBean
     lateinit var staCoService: StaCoService
 
     @BeforeEach

@@ -213,6 +213,19 @@ You can make tests for this application using the Swagger UI at:
 -   [Stamps and Coins Reactive Service stamps-and-coins-ls-service 8080](http://localhost:8080/api/staco/service/webjars/swagger-ui/index.html)
 -   [Stamps and Coins Reactive Service stamps-and-coins-ls-service 8081 (local)](http://localhost:8081/api/staco/service/webjars/swagger-ui/index.html)
 
+---
+
+## Claude
+
+Prompt claude with the following:
+
+### Run all skills
+```text
+please run skills annotations, kotlin, angular, parallel, docker, and spring-integration-test-wiring on this project
+```
+
+---
+
 ## References
 
 ### Videos

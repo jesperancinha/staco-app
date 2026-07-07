@@ -27,7 +27,7 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
     servers = [Server(url = "\${staco.server.url}/api/staco/service", description = "Server URL")]
 )
 class StaCoSearchReactApplication(
-    @Value("\${spring.r2dbc.username}")
+    @param:Value($$"${spring.r2dbc.username}")
     private val postgresUsername: String
 ) {
 

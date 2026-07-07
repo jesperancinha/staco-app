@@ -19,10 +19,12 @@ import org.springframework.stereotype.Component
 @DisallowConcurrentExecution
 class StaCoS3LoaderJob : Job {
 
-    @Autowired
+    // Quartz instantiates jobs via a no-arg constructor; AutowiringSpringBeanJobFactory
+    // then populates @Autowired fields, so constructor injection isn't possible here.
+    @field:Autowired
     lateinit var awsStacoFileService: AwsStacoFileService
 
-    @Autowired
+    @field:Autowired
     lateinit var staCoRepository: StaCoRepository
 
     private val logger = KotlinLogging.logger {}
@@ -41,7 +43,7 @@ class StaCoDynamoDBLoaderJob : Job {
 
     private val logger = KotlinLogging.logger {}
 
-    @Autowired
+    @field:Autowired
     lateinit var awsStacoFileService: AwsStacoFileService
 
     override fun execute(context: JobExecutionContext) {

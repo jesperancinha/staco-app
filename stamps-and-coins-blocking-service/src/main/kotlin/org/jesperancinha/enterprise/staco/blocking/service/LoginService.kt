@@ -1,7 +1,6 @@
 package org.jesperancinha.enterprise.staco.blocking.service
 
 import jakarta.servlet.http.HttpServletRequest
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.security.oauth2.provider.token.TokenStore
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service
 @Service
 class LoginService(
     val jdbcTemplate: JdbcTemplate,
-    @Autowired(required = false)
     val tokenStore: TokenStore?
 ) {
     fun logout(request: HttpServletRequest) {

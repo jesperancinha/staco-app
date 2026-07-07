@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Set up JDK 25
       uses: actions/setup-java@v5
       with:
@@ -24,10 +24,10 @@ jobs:
     - name: Build and Test
       run:  mvn clean install jacoco:prepare-agent package jacoco:report
 
-    - name: Set up Node.js 20
+    - name: Set up Node.js 24
       uses: actions/setup-node@v6
       with:
-        node-version: '20'
+        node-version: '24'
 
     - run: cd stamps-and-coins-web && yarn && yarn run test-headless
 

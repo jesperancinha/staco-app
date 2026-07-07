@@ -17,9 +17,9 @@ import org.springframework.security.web.server.SecurityWebFilterChain
 
 @Configuration
 class SecurityConfiguration(
-    @Value("\${org.jesperancinha.enterprise.staco.root.name}")
+    @param:Value($$"${org.jesperancinha.enterprise.staco.root.name}")
     private val username: String,
-    @Value("\${org.jesperancinha.enterprise.staco.root.password}")
+    @param:Value($$"${org.jesperancinha.enterprise.staco.root.password}")
     private val password: String
 ) {
 

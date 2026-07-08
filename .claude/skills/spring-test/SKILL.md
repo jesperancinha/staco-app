@@ -58,92 +58,7 @@ Notes:
 - For all beans using any of the annotations `@MockitoBean`, `@MockBean`, `@SpyBean`, `@MockkBean`, `@MockkSpyBean`, or
   others, and injected with `lateinit`, please put them with the correct annotation in the constructor as well
 
-## 2. Spring Configuration improvements
-
-All old security configurations need to be updated
-
-For java this means that we should migrate as en example from something like this:
-
-### Example 1
-
-```java
-public class Flash16ConfigurationAdapter {
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authenticationProvider(new Flash16AuthenticationProvider())
-                .authorizeRequests()
-                .requestMatchers(new AntPathRequestMatcher("/**")).hasRole("ADMIN")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin().and().build();
-    }
-}
-```
-
-to this
-
-```java
-public class Flash16ConfigurationAdapter {
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                .authenticationProvider(new Flash16AuthenticationProvider())
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().hasRole("ADMIN")
-                )
-                .formLogin(Customizer.withDefaults())
-                .build();
-    }
-}
-```
-
-### Example 2
-
-Migrate from this:
-
-```java
-public class Flash17ConfigurationAdapter {
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                .userDetailsService(jdbcUserDetailsManager)
-                .authorizeRequests()
-                .requestMatchers(new AntPathRequestMatcher("/open/**"))
-                .permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/**")).hasRole("ADMIN")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .and().csrf().disable().build();
-    }
-}
-```
-
-to this
-
-```shell
-public class Flash17ConfigurationAdapter {
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.userDetailsService(jdbcUserDetailsManager)
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/open/**").permitAll()
-                        .requestMatchers("/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
-                .formLogin(Customizer.withDefaults())
-                .csrf(AbstractHttpConfigurer::disable)
-                .build();
-}
-```
-
-## 3. Remove all unused imports
-
-If you find unused imports, please remove them. This is a good practice to keep the code clean and maintainable.
-
-## 4. Replace initMocks with OpenMocks
+## 2. Replace initMocks with OpenMocks
 
 ### Example 1
 
@@ -161,20 +76,7 @@ openMocks(testRestTemplate)
 
 Also replace imports from `import org.mockito.MockitoAnnotations.initMocks` to `import org.mockito.MockitoAnnotations.openMocks`
 
-## 5 When using Kotlin code make sure to use the kotlin extensions for parsing
-
-### Example 1
-
-When finding this:
-
-```kotlin
-    .getForEntity("/tulips", String::class.java)
-```
-replace with:
-```kotlin
-    .getForEntity<String>("/tulips")
-```
-## 6. Migrate `@MockBean` annotations
+## 3. Migrate `@MockBean` annotations
 
 The annotation `@MockBean` is deprecated and its usage needs to be replaced by `@MockitoBean`
 The annotation `@SpyBean` is deprecated and its usage needs to be replaced by `@MockitoSpyBean`
@@ -214,7 +116,7 @@ should be replaced to something like:
 private BankCompanyBankRepository bankCompanyBankRepository;
 ```
 
-## 7. Test class checklist
+## 4. Test class checklist
 
 Before submitting/reviewing an integration test class, confirm:
 

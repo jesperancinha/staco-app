@@ -17,6 +17,7 @@ import reactor.core.publisher.Mono
 import software.amazon.awssdk.core.async.AsyncRequestBody
 import software.amazon.awssdk.services.s3.S3AsyncClient
 import software.amazon.awssdk.services.s3.model.PutObjectRequest
+import java.nio.ByteBuffer
 import java.security.Principal
 import java.util.UUID
 
@@ -69,9 +70,12 @@ internal class StaCoImageController(
         }.map {
             val putObjectRequest =
                 PutObjectRequest.builder().bucket(IMAGES_BUCKET).key("staco-image-$uuid.png").build()
+            val buffer = ByteBuffer.allocate(it.readableByteCount())
+            it.toByteBuffer(buffer)
+            buffer.flip()
             s3AsyncClient.putObject(
                 putObjectRequest,
-                AsyncRequestBody.fromBytes(it.asByteBuffer().array())
+                AsyncRequestBody.fromBytes(buffer.array())
             )
         }.then()
     }

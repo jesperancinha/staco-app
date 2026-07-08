@@ -3,6 +3,7 @@ package org.jesperancinha.enterprise.staco.service.controller
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
+import jakarta.servlet.ServletException
 import jakarta.validation.ConstraintViolationException
 import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.enterprise.staco.common.domain.CurrencyType.EUR
@@ -102,7 +103,7 @@ internal class StaCoControllerTest @Autowired constructor(
 
     @Test
     fun testGetAllBySearchItem_whenCallingWithTooLongSearchItem_thenFail() {
-        val exception = assertThrows<org.springframework.web.util.NestedServletException> {
+        val exception = assertThrows<ServletException> {
             this.mockMvc
                 .perform(get("/api/staco/all/aaaaaaaaaaaaaaaaaaa/0/10/description/asc"))
 
@@ -116,7 +117,7 @@ internal class StaCoControllerTest @Autowired constructor(
 
     @Test
     fun testGetAllBySearchItem_whenCallingWithInvalidSearchItem_thenFail() {
-        val exception = assertThrows<org.springframework.web.util.NestedServletException> {
+        val exception = assertThrows<ServletException> {
             this.mockMvc
                 .perform(get("/api/staco/all/%23%24%40/0/10/description/asc"))
 

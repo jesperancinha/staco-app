@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.Customizer.withDefaults
 import org.springframework.security.config.web.server.ServerHttpSecurity
 import org.springframework.security.config.web.server.ServerHttpSecurity.AuthorizeExchangeSpec
+import org.springframework.security.config.web.server.ServerHttpSecurity.CsrfSpec
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
@@ -62,7 +63,7 @@ class SecurityConfiguration(
             }
             .httpBasic(withDefaults())
             .formLogin(withDefaults())
-            .csrf().disable()
+            .csrf(CsrfSpec::disable)
         return http.build()
     }
 }

@@ -15,3 +15,24 @@ It makes no sense to use this operator when the value is guaranteed to be non-nu
 ## 3. Avoid using `var` when possible
 
 In Kotlin, it is recommended to use `val` instead of `var` whenever possible. This helps to make the code more readable and maintainable, as it makes it clear that the value of a variable is not expected to change.
+
+## 4. When using Kotlin code make sure to use the kotlin extensions for parsing
+
+### Example 1
+
+When finding this:
+
+```kotlin
+    .getForEntity("/tulips", String::class.java)
+```
+replace with:
+```kotlin
+    .getForEntity<String>("/tulips")
+```
+
+## 4. Checklist
+
+[ ] The code does not use the `!!` operator.
+[ ] The code does not use the safe call operator (`?.`) when the value is guaranteed to be non-null.
+[ ] The code uses `val` instead of `var` whenever possible.
+[ ] The code uses the kotlin extensions for parsing when using Kotlin code.

@@ -33,8 +33,8 @@ import java.util.*
 @MockkBean(CacheManager::class, StaCoDynamoDBRepository::class)
 @ContextConfiguration(initializers = [DockerPostgresDataInitializer::class])
 internal class StaCoSearchRepositoryTest @Autowired constructor(
-    val staCoRepository: StaCoRepository,
-    val staCoSearchRepository: StaCoSearchRepository
+    private val staCoRepository: StaCoRepository,
+    private val staCoSearchRepository: StaCoSearchRepository
 ) {
 
     private val staCo1: StaCo = StaCoDto(

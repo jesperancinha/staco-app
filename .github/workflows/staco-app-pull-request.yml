@@ -33,4 +33,4 @@ jobs:
       with:
         node-version: '24'
 
-    - run: cd stamps-and-coins-web && yarn && npm run test-headless
+    - run: cd stamps-and-coins-web && yarn && npm run test

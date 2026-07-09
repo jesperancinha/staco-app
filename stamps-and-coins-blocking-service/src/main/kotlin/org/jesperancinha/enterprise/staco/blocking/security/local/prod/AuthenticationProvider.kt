@@ -40,9 +40,9 @@ class AuthenticationProvider(
                 )
             ) {
                 return UsernamePasswordAuthenticationToken(
-                    user.email,
+                    user.email!!,
                     user.password,
-                    setOf(SimpleGrantedAuthority(user.role))
+                    setOf(SimpleGrantedAuthority(user.role!!))
                 )
             }
         }

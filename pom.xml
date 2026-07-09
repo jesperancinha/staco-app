@@ -326,6 +326,7 @@
                         <arg>-Xcontext-parameters</arg>
                     </args>
                     <compilerPlugins>
+                        <plugin>no-arg</plugin>
                         <plugin>spring</plugin>
                         <plugin>jpa</plugin>
                     </compilerPlugins>

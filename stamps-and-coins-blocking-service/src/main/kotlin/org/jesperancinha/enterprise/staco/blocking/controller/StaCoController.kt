@@ -26,7 +26,7 @@ class StaCoController(
 
     @PostMapping("staco/logout")
     fun logout(request: HttpServletRequest, response: HttpServletResponse) {
-        loginService.logout(request)
+        loginService.logout(request, response)
     }
 
     @GetMapping("staco/all/{search}/{pageEntity}/{sizeEntities}/{sortColumn}/{order}")

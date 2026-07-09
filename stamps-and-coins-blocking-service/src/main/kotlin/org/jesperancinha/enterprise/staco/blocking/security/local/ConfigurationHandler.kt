@@ -27,7 +27,7 @@ class ConfigurationHandler(
 ) : AuthenticationSuccessHandler {
     @Throws(IOException::class, ServletException::class)
     override fun onAuthenticationSuccess(
-        httpServletRequest: HttpServletRequest?,
+        httpServletRequest: HttpServletRequest,
         httpServletResponse: HttpServletResponse,
         authentication: Authentication
     ) {

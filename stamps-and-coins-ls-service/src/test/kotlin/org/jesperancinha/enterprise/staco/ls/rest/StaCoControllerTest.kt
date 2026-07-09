@@ -32,9 +32,8 @@ val localStackContainer: LocalStackContainer =
     classes = [StaCosAwsClientsConfiguration::class],
 )
 @TestPropertySource(locations = ["classpath:application.properties"])
-internal class StaCoControllerTest(
-    @Autowired
-    val dynamoDbClient: DynamoDbAsyncClient
+internal class StaCoControllerTest @Autowired constructor(
+    private val dynamoDbClient: DynamoDbAsyncClient
 ) {
 
     @Test

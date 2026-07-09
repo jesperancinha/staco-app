@@ -32,7 +32,8 @@ import javax.sql.DataSource
 @ActiveProfiles("test")
 @MockitoBean(types = [DataSource::class, LoginService::class])
 internal class StaCoControllerTest @Autowired constructor(
-    private val context: WebApplicationContext
+    private val context: WebApplicationContext,
+    @MockitoBean private val staCoService: StaCoService
 ) {
 
     private lateinit var mockMvc: MockMvc
@@ -66,9 +67,6 @@ internal class StaCoControllerTest @Autowired constructor(
         totalPages = 0,
         totalRecords = 0,
     )
-
-    @MockitoBean
-    lateinit var staCoService: StaCoService
 
     @BeforeEach
     fun setup() {

@@ -82,6 +82,44 @@ val csvParser = CSVParser.builder()
     .setFormat(CSV_HEADER).get()
 ```
 
+### Example 2
+
+Replace this
+
+```kotlin
+private val CSV_HEADER = DEFAULT
+    .withHeader(
+        "id",
+        "description",
+        "year",
+        "value",
+        "currency",
+        "type",
+        "diameterMM",
+        "internalDiameterMM",
+        "heightMM",
+        "widthMM"
+    )
+```
+
+with:
+
+```kotlin
+private val CSV_HEADER = CSVFormat.DEFAULT.builder()
+    .setHeader(
+        "id",
+        "description",
+        "year",
+        "value",
+        "currency",
+        "type",
+        "diameterMM",
+        "internalDiameterMM",
+        "heightMM",
+        "widthMM"
+    ).get()
+```
+
 ## 8. Checklist
 
 [ ] The code does not use the `!!` operator.

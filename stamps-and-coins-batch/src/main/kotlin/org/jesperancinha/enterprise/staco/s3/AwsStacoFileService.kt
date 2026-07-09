@@ -1,7 +1,7 @@
 package org.jesperancinha.enterprise.staco.s3
 
 import mu.KotlinLogging
-import org.apache.commons.csv.CSVFormat.DEFAULT
+import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import org.apache.commons.csv.CSVPrinter
 import org.jesperancinha.enterprise.staco.blocking.domain.StaCo
@@ -167,8 +167,8 @@ class AwsStacoFileService(
     }
 
     companion object {
-        private val CSV_HEADER = DEFAULT
-            .withHeader(
+        private val CSV_HEADER = CSVFormat.DEFAULT.builder()
+            .setHeader(
                 "id",
                 "description",
                 "year",
@@ -179,7 +179,7 @@ class AwsStacoFileService(
                 "internalDiameterMM",
                 "heightMM",
                 "widthMM"
-            )
+            ).get()
     }
 }
 

@@ -33,7 +33,7 @@ with
 }
 ```
 
-## 2. Make sure that the code strictly follows all angular standars
+## 2. Make sure that the code strictly follows all angular standards
 
 Please find the list of alle angular standards on the following page: https://angular.dev/style-guide.
 It is of the utmost importance that all configuration, HTML, TypeScript, JavaScript, and everything that consists of an angular project, to follow these standards.
@@ -44,6 +44,7 @@ Modernize the build tooling too
 
 With the inception of signals, reactive programming for the front-end has been made easy. Make sure that, whenever possible, that the code uses signals instead of the typical subscriber model.
 Find information on how to do this with good practices over at: https://angular.dev/guide/signals
+Refactor subscribe() to resource()/rxResource()
 
 ## 4. Make sure to use new methods for deprecated classes
 

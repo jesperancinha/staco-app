@@ -27,7 +27,7 @@ class ConfigurationHandler(
 ) : AuthenticationSuccessHandler {
     @Throws(IOException::class, ServletException::class)
     override fun onAuthenticationSuccess(
-        httpServletRequest: HttpServletRequest?,
+        httpServletRequest: HttpServletRequest,
         httpServletResponse: HttpServletResponse,
         authentication: Authentication
     ) {
@@ -36,7 +36,7 @@ class ConfigurationHandler(
 
     @Bean
     fun runner(): CommandLineRunner? {
-        return CommandLineRunner { args: Array<String?>? ->
+        return CommandLineRunner { args: Array<String> ->
             run {
                 val resource = applicationContext.getResource("classpath:schema.sql")
                 ScriptUtils.executeSqlScript(dataSource.connection, resource)

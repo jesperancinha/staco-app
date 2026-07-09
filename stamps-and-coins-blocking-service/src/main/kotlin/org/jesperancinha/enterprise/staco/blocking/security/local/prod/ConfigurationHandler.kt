@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Profile("localprod && !test")
 class ConfigurationHandler : AuthenticationSuccessHandler {
     override fun onAuthenticationSuccess(
-        httpServletRequest: HttpServletRequest?,
+        httpServletRequest: HttpServletRequest,
         httpServletResponse: HttpServletResponse,
         authentication: Authentication
     ) {

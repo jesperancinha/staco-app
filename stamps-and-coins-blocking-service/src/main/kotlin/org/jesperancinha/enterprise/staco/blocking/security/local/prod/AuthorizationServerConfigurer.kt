@@ -21,7 +21,7 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository
-import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings
@@ -46,7 +46,7 @@ class AuthorizationServerConfigurer(
     @Bean
     @Order(1)
     fun authorizationServerSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
-        val authorizationServerConfigurer = OAuth2AuthorizationServerConfigurer.authorizationServer()
+        val authorizationServerConfigurer = OAuth2AuthorizationServerConfigurer()
         http
             .securityMatcher(authorizationServerConfigurer.endpointsMatcher)
             .with(authorizationServerConfigurer) { it.oidc(Customizer.withDefaults()) }
@@ -101,12 +101,13 @@ class AuthorizationServerConfigurer(
     @Bean
     fun runner(): CommandLineRunner = CommandLineRunner {
         run {
-            val user = ApplicationUser().apply {
-                name = "admin"
+            val user = ApplicationUser(
+                email = "thismail@thatmail.thatscope",
                 role = "ROLE_ADMIN"
+            ).apply {
+                name = "admin"
                 password = passwordEncoder.encode("admin")
                 date = Timestamp.valueOf(LocalDateTime.now())
-                email = "thismail@thatmail.thatscope"
             }
             userRepository.save(user)
         }

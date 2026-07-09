@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>stamps-and-coins-blocking-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>Stamps and Coins Blocking Service</name>
     <description>Provides a service for a collector's archive. The interface is being developed to provide registration
         and visualization possibilities
@@ -117,6 +116,21 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-data-jpa-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-jdbc-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

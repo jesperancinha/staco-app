@@ -30,7 +30,7 @@ import java.util.*
 @SpringBootTest
 @Testcontainers
 @ActiveProfiles("test")
-@MockkBean(CacheManager::class, StaCoDynamoDBRepository::class)
+@MockkBean(types = [CacheManager::class, StaCoDynamoDBRepository::class])
 @ContextConfiguration(initializers = [DockerPostgresDataInitializer::class])
 internal class StaCoSearchRepositoryTest @Autowired constructor(
     private val staCoRepository: StaCoRepository,

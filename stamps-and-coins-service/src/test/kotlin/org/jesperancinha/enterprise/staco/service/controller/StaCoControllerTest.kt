@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -31,7 +31,7 @@ import javax.sql.DataSource
 
 @WebMvcTest(controllers = [StaCoController::class])
 @ActiveProfiles("test")
-@MockkBean(classes = [DataSource::class])
+@MockkBean(types = [DataSource::class])
 @Disabled
 internal class StaCoControllerTest @Autowired constructor(
     private val context: WebApplicationContext,

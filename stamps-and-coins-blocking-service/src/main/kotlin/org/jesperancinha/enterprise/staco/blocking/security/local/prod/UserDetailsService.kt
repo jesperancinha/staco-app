@@ -21,8 +21,8 @@ class UserDetailsService(private val userRepository: UserRepository) : UserDetai
     }
 
     private fun createUserDetails(applicationUser: ApplicationUser) = User(
-        applicationUser.email,
+        applicationUser.email!!,
         applicationUser.password,
-        listOf(SimpleGrantedAuthority(applicationUser.role))
+        listOf(SimpleGrantedAuthority(applicationUser.role!!))
     )
 }

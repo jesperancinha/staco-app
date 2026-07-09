@@ -10,7 +10,7 @@ import org.springframework.test.context.ActiveProfiles
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-@MockkBean(StaCoDynamoDBRepository::class)
+@MockkBean(types = [StaCoDynamoDBRepository::class])
 class StaCoSearchReactApplicationTests : AbstractStaCoTest() {
 
     @Test

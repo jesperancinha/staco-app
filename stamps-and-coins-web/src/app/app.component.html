@@ -1,7 +1,7 @@
 <h1>Welcome to stamps-and-coins-manager!</h1>
 <div style="align-content: center; width: 100%; text-align: center; vertical-align: center">
   <router-outlet style="width: 100%; align-items: center"></router-outlet>
-  @if (appService.token) {
+  @if (appService.token()) {
     <div>
       <div style="width: 100%;">
         <button (click)="logout()">Logout</button>

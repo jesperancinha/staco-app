@@ -38,6 +38,7 @@ with
 Please find the list of alle angular standards on the following page: https://angular.dev/style-guide.
 It is of the utmost importance that all configuration, HTML, TypeScript, JavaScript, and everything that consists of an angular project, to follow these standards.
 Changes should be made accordingly.
+Modernize the build tooling too
 
 ## 3. Make sure that Angular projects are completely reactive with the usage of signals.
 

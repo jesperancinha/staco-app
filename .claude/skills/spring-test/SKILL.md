@@ -116,7 +116,34 @@ should be replaced to something like:
 private BankCompanyBankRepository bankCompanyBankRepository;
 ```
 
-## 4. Test class checklist
+## 4. MockMvc test upgrade for Sprin Boot 4.0.0
+
+Please add:
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-webmvc-test</artifactId>
+    <scope>test</scope>
+</dependency>
+```
+
+as a dependency for projects that use `WebMvcTest`
+
+Replace the import: `import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest` to `org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest`
+
+
+## 5. MockKBean uses different syntax in recent MockK versions
+
+The syntax is slightly changed in the latest Spring MocK versions.
+
+### Example 1
+
+Changes in `MockKBean`
+
+Replace `@MockkBean(classes = [DataSource::class])` with `@MockkBean(types = [DataSource::class])`
+
+## 6. Test class checklist
 
 Before submitting/reviewing an integration test class, confirm:
 
@@ -126,3 +153,5 @@ Before submitting/reviewing an integration test class, confirm:
 - [ ] Use the new Spring configuration for security
 - [ ] New Spring versions don't use `AntPathRequestMatcher` anymore. Make sure none is used
 - [ ] No `@MockBean` or `@SpyBean` annotations are used. Use `@MockitoBean` or `@MockitoSpyBean` instead.
+- [ ] No `@MockkBean(classes = ` type of declarations left
+- [ ] No more usages of `import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest`

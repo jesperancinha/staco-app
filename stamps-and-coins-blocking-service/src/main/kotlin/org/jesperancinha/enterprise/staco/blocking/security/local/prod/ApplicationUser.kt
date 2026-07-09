@@ -14,26 +14,26 @@ import java.util.UUID
 @Entity
 @Table(name = "users")
 @Profile("localprod && !test")
-class ApplicationUser {
+class ApplicationUser(
     @Id
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.UUID)
-    var uuid: UUID? = null
+    var uuid: UUID? = null,
 
     @Column
-    var email: String? = null
+    val email: String,
 
     @Column
-    var name: String? = null
+    val name: String,
 
     @Column
-    var password: String? = null
+    var password: String? = null,
 
     @Column
-    var role: String? = null
+    val role: String,
 
     @get:Nullable
     @Column
     @Nullable
     var date: Timestamp? = null
-}
+)

@@ -17,7 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 class StampsAndCoinsBatchLauncher(
     val scheduler: Scheduler
 ) :ApplicationRunner {
-    override fun run(args: ApplicationArguments?) {
+    override fun run(args: ApplicationArguments) {
         val job: JobDetail = newJob(StaCoS3LoaderJob::class.java)
             .withIdentity("StacoJob1", "StacoGroup1")
             .build()

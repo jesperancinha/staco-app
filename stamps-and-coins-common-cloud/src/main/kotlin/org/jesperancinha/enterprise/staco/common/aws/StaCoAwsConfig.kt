@@ -5,7 +5,7 @@ import org.jesperancinha.enterprise.staco.common.aws.StaCosAwsClientsConfigurati
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
-import org.springframework.boot.env.EnvironmentPostProcessor
+import org.springframework.boot.EnvironmentPostProcessor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.env.ConfigurableEnvironment

@@ -321,12 +321,14 @@
                 </executions>
                 <configuration>
                     <jvmTarget>${java.version}</jvmTarget>
+                    <args>
+                        <arg>-Xjsr305=strict</arg>
+                        <arg>-Xcontext-parameters</arg>
+                    </args>
                     <compilerPlugins>
-                        <plugin>no-arg</plugin>
-                        <plugin>jpa</plugin>
                         <plugin>spring</plugin>
+                        <plugin>jpa</plugin>
                     </compilerPlugins>
-
                     <pluginOptions>
                         <option>no-arg:invokeInitializers=true</option>
                     </pluginOptions>

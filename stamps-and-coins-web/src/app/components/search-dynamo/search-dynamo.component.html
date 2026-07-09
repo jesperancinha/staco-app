@@ -1,23 +1,9 @@
 @if (appService.token()) {
   <mat-card style="width: 100%; text-align: center; align-items: center">
-    <mat-card style="width: 90%; height: 100px">
-      <mat-card-title>Stamps and Coins Service</mat-card-title>
-      <mat-card-title>stamps-and-coins-service</mat-card-title>
-      <mat-card-title>This is the reactive application using WebFlux and Coroutines repositories</mat-card-title>
-      <mat-form-field appearance="fill"
-                      style="border-radius:10px; background: darkgreen; border-style: solid;width: 90%; height: 80%">
-        <mat-card-title style="width: 90%">Search here</mat-card-title>
-        <input style="border-style: solid;background: darkseagreen" width="90%" height="100px" matInput [(ngModel)]="term"
-               (keyup)="refresh()">
-        @if (!validationSize()) {
-          <p style="color: red">Only 10 characters allowed!!</p>
-        }
-        @if (!validationContent()) {
-          <p style="color: red">Only alphanumeric characters allowed!</p>
-        }
-      </mat-form-field>
-    </mat-card>
-    <mat-card style="width: 90%; margin-top: 50px">
+    <mat-card style="width: 90%">
+      <mat-card-title>Stamps and Coins LocalStack Service</mat-card-title>
+      <mat-card-title>stamps-and-coins-ls-service</mat-card-title>
+      <mat-card-title>This is the reactive application using Localstack's Dynamo DB and Parameter Store</mat-card-title>
       <mat-card-title>Define Page Size</mat-card-title>
       <div class="d-flex flex-row-reverse bd-highlight mb-2">
         <div class="p-2 bd-highlight">

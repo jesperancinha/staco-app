@@ -1,7 +1,7 @@
 <mat-grid-list cols="1" rowHeight="2:1">
   <mat-grid-tile>
     <mat-card style="text-align: center">
-      <div class="alert alert-danger" [hidden]="!error">
+      <div class="alert alert-danger" [hidden]="!error()">
         There was a problem logging in. Please try again.
       </div>
 
@@ -21,9 +21,9 @@
             <input type="password"
                    class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
           </div>
-          @if (appService.failedLogin) {
+          @if (appService.failedLogin()) {
             <div class="form_group">
-              <p style="color: red">{{appService.failedLogin}}</p>
+              <p style="color: red">{{appService.failedLogin()}}</p>
             </div>
           }
           <button type="submit" class="btn btn-primary">Login</button>

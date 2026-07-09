@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/types/http';
-import {catchError, Observable, of, retry} from "rxjs";
-import {Router} from "@angular/router";
-import {StaCo} from "../model/staCo";
+import {inject, Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {catchError, Observable, of, retry} from 'rxjs';
+import {Router} from '@angular/router';
+import {StaCo} from '../model/sta-co';
 
 const searchDynamoUrl = '/api/staco/ls/stacos';
 
@@ -10,24 +10,23 @@ const searchDynamoUrl = '/api/staco/ls/stacos';
   providedIn: 'root'
 })
 export class StaCoDynamodbService {
-
-  constructor(private http: HttpClient, public router: Router) {
-  }
+  private readonly http = inject(HttpClient);
+  private readonly router = inject(Router);
 
   searchUnfilteredDynamoDb(page: number, sizePage: number): Observable<StaCo[]> {
-    let url = searchDynamoUrl + '/search/' + page + '/' + sizePage;
+    const url = searchDynamoUrl + '/search/' + page + '/' + sizePage;
     return this.http.get<StaCo[]>(url).pipe(
       retry(3), catchError(this.handleError<StaCo[]>()));
   }
 
   countRecordsDynamoDb(): Observable<number> {
-    let url = searchDynamoUrl + '/count';
+    const url = searchDynamoUrl + '/count';
     return this.http.get<number>(url).pipe(
       retry(3), catchError(this.handleError<number>()));
   }
 
   handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+    return (error: HttpErrorResponse): Observable<T> => {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);
       this.router.navigateByUrl("/dynamo/login");
@@ -35,4 +34,3 @@ export class StaCoDynamodbService {
     };
   }
 }
-

@@ -1,6 +1,4 @@
 module.exports = {
-  setupFilesAfterEnv: [
-    "jest-preset-angular/setup-jest.js",
-  ],
-  preset: 'jest-preset-angular'
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
 };

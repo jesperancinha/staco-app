@@ -101,12 +101,13 @@ class AuthorizationServerConfigurer(
     @Bean
     fun runner(): CommandLineRunner = CommandLineRunner {
         run {
-            val user = ApplicationUser().apply {
-                name = "admin"
+            val user = ApplicationUser(
+                email = "thismail@thatmail.thatscope",
                 role = "ROLE_ADMIN"
+            ).apply {
+                name = "admin"
                 password = passwordEncoder.encode("admin")
                 date = Timestamp.valueOf(LocalDateTime.now())
-                email = "thismail@thatmail.thatscope"
             }
             userRepository.save(user)
         }

@@ -160,15 +160,88 @@ Essentially, this means replacing calls to it.asByteBuffer().array() with a more
 `OAuth2` from dependencies `org.springframework.security.oauth2` has been deprecated. There is a guideline manual located at: https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide
 Please make sure that the new code follows the guidelines. Make the eventual necessary changes to the `pom.xml` files, code, en what may be necessary.
 
-## 5. `ApplicationArguments` cannot be null anymore
+## 5. `ApplicationArguments` cannot be null anymore and `args` has to be a list of non-null Strings
 
-please replase `override fun run(args: ApplicationArguments?)` with `override fun run(args: ApplicationArguments?)`
+please replace `override fun run(args: ApplicationArguments?)` with `override fun run(args: ApplicationArguments?)`
+please replace `return CommandLineRunner { args: Array<String?>?` with `return CommandLineRunner { args: Array<String>`
 
 ## 6. `import org.springframework.boot.env.EnvironmentPostProcessor` needs to be replaced by `import org.springframework.boot.EnvironmentPostProcessor`
 
 The `EnvironmentPostProcessor` is now part of the `import org.springframework.boot` package.
 
-## 7. Checklist
+## 7. Make sure to use classes for `@Entity` with primary constructor
+
+Good practices mean that classes for entities should be created by declaring a primary constructor with all of the properties.
+
+### Example 1
+
+Replace this:
+
+```kotlin
+@Entity
+@Table(name = "users")
+@Profile("localprod && !test")
+class ApplicationUser {
+    @Id
+    @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    var uuid: UUID? = null
+
+    @Column
+    var email: String? = null
+
+    @Column
+    var name: String? = null
+
+    @Column
+    var password: String? = null
+
+    @Column
+    var role: String? = null
+
+    @get:Nullable
+    @Column
+    @Nullable
+    var date: Timestamp? = null
+}
+```
+
+with this:
+
+```kotlin
+@Entity
+@Table(name = "users")
+@Profile("localprod && !test")
+class ApplicationUser(
+    @Id
+    @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    var uuid: UUID? = null,
+
+    @Column
+    val email: String? = null,
+
+    @Column
+    var name: String? = null,
+
+    @Column
+    var password: String? = null,
+
+    @Column
+    val role: String? = null,
+
+    @get:Nullable
+    @Column
+    @Nullable
+    var date: Timestamp? = null
+)
+```
+
+## 8. `@Nullable` needs to be used from another package
+
+The `org.springframework.lang.Nullable` is deprecated, please use `org.jspecify.annotations.Nullable` instead.
+
+## 9. Checklist
 
 [ ] All old security configurations have been updated to the new style. 
 [ ] All usages of `NestedServletException` have been replaced with `ServletException`.

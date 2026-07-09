@@ -1,15 +1,9 @@
 package org.jesperancinha.enterprise.staco.blocking.security.local.prod
 
+import jakarta.persistence.*
 import org.springframework.context.annotation.Profile
-import org.springframework.lang.Nullable
 import java.sql.Timestamp
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.Table
-import java.util.UUID
+import java.util.*
 
 @Entity
 @Table(name = "users")
@@ -21,19 +15,17 @@ class ApplicationUser(
     var uuid: UUID? = null,
 
     @Column
-    val email: String,
+    val email: String? = null,
 
     @Column
-    val name: String,
+    var name: String? = null,
 
     @Column
     var password: String? = null,
 
     @Column
-    val role: String,
+    val role: String? = null,
 
-    @get:Nullable
     @Column
-    @Nullable
     var date: Timestamp? = null
 )

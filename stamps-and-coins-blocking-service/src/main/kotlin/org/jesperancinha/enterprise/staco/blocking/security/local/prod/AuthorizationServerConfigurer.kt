@@ -1,64 +1,102 @@
 package org.jesperancinha.enterprise.staco.blocking.security.local.prod
 
+import com.nimbusds.jose.jwk.JWKSet
+import com.nimbusds.jose.jwk.RSAKey
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet
+import com.nimbusds.jose.jwk.source.JWKSource
+import com.nimbusds.jose.proc.SecurityContext
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
-import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.core.annotation.Order
+import org.springframework.http.MediaType
+import org.springframework.security.config.Customizer
+import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer
-import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer
-import org.springframework.security.oauth2.provider.token.TokenStore
+import org.springframework.security.oauth2.core.AuthorizationGrantType
+import org.springframework.security.oauth2.core.ClientAuthenticationMethod
+import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationService
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService
+import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClient
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository
+import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer
+import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings
+import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint
+import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher
+import java.security.KeyPairGenerator
+import java.security.interfaces.RSAPrivateKey
+import java.security.interfaces.RSAPublicKey
 import java.sql.Timestamp
+import java.time.Duration
 import java.time.LocalDateTime
+import java.util.UUID
 
 @Configuration
-@EnableAuthorizationServer
 @Profile("localprod && !test")
 class AuthorizationServerConfigurer(
-    val authenticationManager: AuthenticationManager,
-    val tokenStore: TokenStore,
     val passwordEncoder: PasswordEncoder,
     val userRepository: UserRepository
-) :
-    AuthorizationServerConfigurerAdapter() {
+) {
 
-    override fun configure(clients: ClientDetailsServiceConfigurer) {
-        clients.inMemory()
-            .withClient(CLIENT_ID)
-            .secret(passwordEncoder.encode(CLIENT_SECRET))
-            .authorizedGrantTypes(GRANT_TYPE_PASSWORD, AUTHORIZATION_CODE, REFRESH_TOKEN)
-            .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
-            .accessTokenValiditySeconds(VALID_FOREVER)
-            .refreshTokenValiditySeconds(VALID_FOREVER)
+    @Bean
+    @Order(1)
+    fun authorizationServerSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
+        val authorizationServerConfigurer = OAuth2AuthorizationServerConfigurer.authorizationServer()
+        http
+            .securityMatcher(authorizationServerConfigurer.endpointsMatcher)
+            .with(authorizationServerConfigurer) { it.oidc(Customizer.withDefaults()) }
+            .authorizeHttpRequests { it.anyRequest().authenticated() }
+            .exceptionHandling {
+                it.defaultAuthenticationEntryPointFor(
+                    LoginUrlAuthenticationEntryPoint("/login"),
+                    MediaTypeRequestMatcher(MediaType.TEXT_HTML)
+                )
+            }
+        return http.build()
     }
 
-    override fun configure(endpoints: AuthorizationServerEndpointsConfigurer) {
-        endpoints.tokenStore(tokenStore)
-            .authenticationManager(authenticationManager)
-            .allowedTokenEndpointRequestMethods()
+    @Bean
+    fun registeredClientRepository(): RegisteredClientRepository {
+        val registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+            .clientId(CLIENT_ID)
+            .clientSecret(passwordEncoder.encode(CLIENT_SECRET))
+            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+            .redirectUri(REDIRECT_URI)
+            .scope(SCOPE_READ)
+            .scope(SCOPE_WRITE)
+            .clientSettings(ClientSettings.builder().requireAuthorizationConsent(false).build())
+            .tokenSettings(
+                TokenSettings.builder()
+                    .accessTokenTimeToLive(Duration.ofDays(VALID_FOREVER_DAYS))
+                    .refreshTokenTimeToLive(Duration.ofDays(VALID_FOREVER_DAYS))
+                    .build()
+            )
+            .build()
+        return InMemoryRegisteredClientRepository(registeredClient)
     }
 
-    override fun configure(oauthServer: AuthorizationServerSecurityConfigurer) {
-        oauthServer.passwordEncoder(passwordEncoder)
-            .allowFormAuthenticationForClients()
+    @Bean
+    fun authorizationService(): OAuth2AuthorizationService = InMemoryOAuth2AuthorizationService()
+
+    @Bean
+    fun jwkSource(): JWKSource<SecurityContext> {
+        val keyPair = KeyPairGenerator.getInstance("RSA").apply { initialize(2048) }.generateKeyPair()
+        val rsaKey = RSAKey.Builder(keyPair.public as RSAPublicKey)
+            .privateKey(keyPair.private as RSAPrivateKey)
+            .keyID(UUID.randomUUID().toString())
+            .build()
+        return ImmutableJWKSet(JWKSet(rsaKey))
     }
 
-    companion object {
-        private const val CLIENT_ID = "stamps-and-coins-client"
-        private const val CLIENT_SECRET = "stamps-and-coins"
-        private const val GRANT_TYPE_PASSWORD = "password"
-        private const val AUTHORIZATION_CODE = "authorization_code"
-        private const val REFRESH_TOKEN = "refresh_token"
-        private const val SCOPE_READ = "read"
-        private const val SCOPE_WRITE = "write"
-        private const val TRUST = "trust"
-        private const val VALID_FOREVER = -1
-    }
-
+    @Bean
+    fun authorizationServerSettings(): AuthorizationServerSettings = AuthorizationServerSettings.builder().build()
 
     @Bean
     fun runner(): CommandLineRunner = CommandLineRunner {
@@ -72,5 +110,14 @@ class AuthorizationServerConfigurer(
             }
             userRepository.save(user)
         }
+    }
+
+    companion object {
+        private const val CLIENT_ID = "stamps-and-coins-client"
+        private const val CLIENT_SECRET = "stamps-and-coins"
+        private const val REDIRECT_URI = "http://127.0.0.1:8080/authorized"
+        private const val SCOPE_READ = "read"
+        private const val SCOPE_WRITE = "write"
+        private const val VALID_FOREVER_DAYS = 3650L
     }
 }

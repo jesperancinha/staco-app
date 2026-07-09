@@ -156,7 +156,12 @@ internal class StaCoImageController(
 
 Essentially, this means replacing calls to it.asByteBuffer().array() with a more explicit way of creating a ByteBuffer, writing the data into it, and then flipping it before getting the byte array.
 
-## 4. Checklist
+## 4. Follow OAuth2 Guidelines for dependencies coming from deprecated `org.springframework.security.oauth2` package
+
+`OAuth2` from dependencies `org.springframework.security.oauth2` has been deprecated. There is a guideline manual located at: https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide
+Please make sure that the new code follows the guidelines. Make the eventual necessary changes to the `pom.xml` files, code, en what may be necessary.
+
+## 5. Checklist
 
 [ ] All old security configurations have been updated to the new style. 
 [ ] All usages of `NestedServletException` have been replaced with `ServletException`.

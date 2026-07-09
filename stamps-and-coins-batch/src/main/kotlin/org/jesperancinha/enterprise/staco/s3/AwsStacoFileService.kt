@@ -111,7 +111,9 @@ class AwsStacoFileService(
                             runCatching {
                                 decompressGzip(path, output)
                                 val reader = Files.newBufferedReader(output)
-                                val csvParser = CSVParser(reader, CSV_HEADER)
+                                val csvParser = CSVParser.builder()
+                                    .setReader(reader)
+                                    .setFormat(CSV_HEADER).get()
                                 val records = csvParser.records
                                 for (csvRecord in records.takeLast(records.size - 1)) {
                                     try {
